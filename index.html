@@ -440,6 +440,19 @@
       margin-bottom: 18px;
     }
     @media(max-width:660px){ .upsell-featured{ grid-template-columns:1fr; } }
+    @media(max-width:660px){
+      .upsell-hosting-wrap { grid-template-columns:1fr 1fr !important; }
+      .upsell-hosting-wrap .upsell-name { font-size:13px; }
+      .upsell-hosting-wrap .upsell-price { font-size:18px; margin-bottom:8px; }
+      .upsell-hosting-wrap .upsell-price .unit { font-size:11px; }
+      .upsell-hosting-wrap .upsell-badges { flex-wrap:wrap; gap:4px; margin-bottom:6px; }
+      .upsell-hosting-wrap .upsell-badge { font-size:8px; padding:2px 6px; }
+      .upsell-hosting-wrap .upsell-list { gap:5px; }
+      .upsell-hosting-wrap .upsell-list li { font-size:11px; gap:5px; }
+      .upsell-hosting-wrap .upsell-cta { font-size:11px; padding:10px 8px; }
+      .upsell-hosting-inner-left { padding:14px 12px !important; border-radius:12px 0 0 12px !important; }
+      .upsell-hosting-inner-right { padding:14px 12px !important; border-radius:0 12px 12px 0 !important; }
+    }
     .upsell-badges { display:flex; gap:8px; align-items:center; margin-bottom:10px; }
     .upsell-badge {
       font-size:10px; font-weight:700; letter-spacing:0.07em;
@@ -975,9 +988,9 @@
     <p class="upsell-intro reveal reveal-d2">Alle Add-ons werden nach Abschluss des Hauptauftrags angeboten — kein Druck, kein Paket-Zwang. Jederzeit einzeln buchbar.</p>
 
     <!-- Hosting: zwei Tiers nebeneinander als Featured -->
-    <div class="upsell-featured reveal" style="grid-template-columns:1fr 1fr;gap:0;padding:0;background:transparent;border:none;">
+    <div class="upsell-featured upsell-hosting-wrap reveal" style="grid-template-columns:1fr 1fr;gap:0;padding:0;background:transparent;border:none;">
       <!-- Hosting Starter -->
-      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:16px 0 0 16px;padding:26px 28px;border-right:none;">
+      <div class="upsell-hosting-inner-left" style="background:var(--bg3);border:1px solid var(--border);border-radius:16px 0 0 16px;padding:26px 28px;border-right:none;">
         <div class="upsell-badges">
           <span class="upsell-badge tag">Monatlich</span>
           <span class="upsell-badge" style="color:var(--muted);background:rgba(255,255,255,0.04);">Für Starter</span>
@@ -994,7 +1007,7 @@
         <a href="https://wa.me/4917670368821?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20das%20Hosting-Starter-Paket" class="upsell-cta" style="margin-top:18px;width:100%;justify-content:center;" target="_blank">Dazubuchen →</a>
       </div>
       <!-- Hosting Pro -->
-      <div style="background:var(--bg3);border:1px solid rgba(45,122,58,0.45);border-top:3px solid var(--green-light);border-radius:0 16px 16px 0;padding:26px 28px;position:relative;">
+      <div class="upsell-hosting-inner-right" style="background:var(--bg3);border:1px solid rgba(45,122,58,0.45);border-top:3px solid var(--green-light);border-radius:0 16px 16px 0;padding:26px 28px;position:relative;">
         <div class="upsell-badges">
           <span class="upsell-badge highlight">Meistgewählt</span>
           <span class="upsell-badge tag">Für Pro & Shop</span>
