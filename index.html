@@ -46,6 +46,17 @@
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
+    @media(max-width:600px){
+      nav { justify-content: flex-start; }
+      .nav-cta {
+        position: static;
+        margin-left: auto;
+        padding: 10px 18px;
+        font-size: 14px;
+        background: var(--green);
+        box-shadow: 0 0 16px rgba(45,122,58,0.5);
+      }
+    }
     .nav-logo {
       height: 56px;
       width: auto;
@@ -189,6 +200,11 @@
     .proof-number { font-size: 48px; font-weight: 900; color: #fff; line-height: 1; }
     .proof-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; text-align: center; }
     .proof-sep { width:1px; height:56px; background:var(--border); }
+    @media(max-width:600px){
+      .hero-proof { flex-direction:column; gap:24px; align-items:center; width:100%; }
+      .proof-sep { width:60px; height:1px; }
+      .proof-item { align-items:center; text-align:center; }
+    }
 
     /* ─── SECTION BASE ─── */
     section { padding: 96px 24px; }
@@ -573,6 +589,11 @@
     }
     footer a { color:var(--muted); text-decoration:none; }
     footer a:hover { color:var(--green); }
+    .footer-inner { display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; }
+    .footer-logo { height:36px; width:auto; mix-blend-mode:screen; }
+    @media(max-width:600px){
+      .footer-inner { justify-content:flex-start; text-align:left; }
+    }
 
     /* ─── SCROLL REVEAL ─── */
     .reveal { opacity:0; transform:translateY(30px); transition:opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1); }
@@ -1142,7 +1163,10 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 MonetaScale · <a href="./impressum.html">Impressum</a> · <a href="./datenschutz.html">Datenschutz</a></p>
+  <div class="footer-inner">
+    <img src="./MonetaScale Logo.png" alt="MonetaScale" class="footer-logo">
+    <p>© 2026 MonetaScale · <a href="./impressum.html">Impressum</a> · <a href="./datenschutz.html">Datenschutz</a></p>
+  </div>
 </footer>
 
 <script>
