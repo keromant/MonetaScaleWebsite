@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MonetaScale – Professionelle Websites für Selbstständige | Ab 250 €</title>
-  <meta name="description" content="Fertige Website in 72 Stunden. Starter ab 150 €, Pro für 200 €, Shopify-Shop für 500 €. Custom Build ab 1.000 €. 100 € Anzahlung, Rest nach Zufriedenheit.">
+  <title>Website-Leasing – 100 €/Monat | MonetaScale</title>
+  <meta name="description" content="Professionelle Website inklusive Erstellung, SEO, Google Analytics, unbegrenzte Änderungen, Hosting & Support – alles für 100 €/Monat.">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&display=swap');
 
@@ -57,12 +57,7 @@
         box-shadow: 0 0 16px rgba(45,122,58,0.5);
       }
     }
-    .nav-logo {
-      height: 56px;
-      width: auto;
-      mix-blend-mode: screen;
-      display: block;
-    }
+    .nav-logo { height: 56px; width: auto; display: block; }
     .nav-cta {
       position: absolute;
       right: 32px;
@@ -144,11 +139,11 @@
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.25} }
 
     .hero-headline {
-      font-size: clamp(38px, 6.2vw, 74px);
+      font-size: clamp(36px, 5.8vw, 68px);
       font-weight: 900;
       line-height: 1.06;
       letter-spacing: -0.03em;
-      max-width: 860px;
+      max-width: 820px;
       margin-bottom: 24px;
     }
     .grad {
@@ -169,7 +164,6 @@
       flex-direction: column;
       align-items: center;
       gap: 12px;
-      margin-bottom: 64px;
     }
     .btn-primary {
       display: inline-flex;
@@ -189,27 +183,10 @@
     .btn-primary:hover { background: var(--green-light); transform: translateY(-1px); }
     .cta-note { font-size: 12px; color: var(--muted); }
 
-    .hero-proof {
-      display: flex;
-      align-items: center;
-      gap: 48px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .proof-item { display:flex; flex-direction:column; align-items:center; gap:5px; }
-    .proof-number { font-size: 48px; font-weight: 900; color: #fff; line-height: 1; }
-    .proof-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; text-align: center; }
-    .proof-sep { width:1px; height:56px; background:var(--border); }
-    @media(max-width:600px){
-      .hero-proof { flex-direction:column; gap:24px; align-items:center; width:100%; }
-      .proof-sep { width:60px; height:1px; }
-      .proof-item { align-items:center; text-align:center; }
-    }
-
     /* ─── SECTION BASE ─── */
     section { padding: 96px 24px; }
     .container { max-width: 1080px; margin: 0 auto; }
-    .container-narrow { max-width: 860px; margin: 0 auto; }
+    .container-narrow { max-width: 780px; margin: 0 auto; }
     .section-eyebrow {
       font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
       text-transform: uppercase; color: var(--green); margin-bottom: 12px;
@@ -220,35 +197,92 @@
     }
     .section-sub { font-size: 15px; color: var(--muted); max-width: 520px; line-height: 1.65; }
 
-    /* ─── PAIN / CONTRAST ─── */
-    #pain { background: var(--bg2); }
-    .pain-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-top: 48px;
-    }
-    @media(max-width:680px){ .pain-grid{ grid-template-columns:1fr; } }
-    .pain-col {
+    /* ─── LEASING CARD ─── */
+    #leasing { background: var(--bg2); }
+    .leasing-wrap {
+      max-width: 700px;
+      margin: 52px auto 0;
       background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
+      border: 1px solid rgba(45,122,58,0.45);
+      border-top: 3px solid var(--green-light);
+      border-radius: 20px;
+      overflow: hidden;
     }
-    .pain-col.bad { border-top: 3px solid rgba(224,82,82,0.5); }
-    .pain-col.good { border-top: 3px solid var(--green-light); }
-    .pain-col-label {
+    .leasing-header {
+      padding: 36px 40px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    @media(max-width:560px){ .leasing-header{ padding: 28px 24px 22px; } }
+    .leasing-badge-row { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+    .leasing-badge {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.09em;
+      text-transform: uppercase; border-radius: 6px;
+      padding: 3px 10px;
+      color: var(--green-light);
+      background: rgba(45,122,58,0.2);
+      border: 1px solid rgba(45,122,58,0.4);
+    }
+    .leasing-name { font-size: 26px; font-weight: 900; margin-bottom: 6px; }
+    .leasing-tagline { font-size: 14px; color: var(--muted); margin-bottom: 24px; line-height: 1.55; }
+    .leasing-price-row { display:flex; align-items:baseline; gap:8px; margin-bottom:6px; }
+    .leasing-price {
+      font-size: 64px; font-weight: 900; line-height: 1;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .leasing-price sup { font-size: 26px; font-weight: 700; }
+    .leasing-price-unit { font-size: 14px; color: var(--muted); font-weight: 400; }
+    .leasing-note { font-size: 12px; color: var(--muted); margin-bottom: 28px; }
+    .leasing-note strong { color: var(--green-light); }
+
+    .leasing-cta {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 15px 32px;
+      background: var(--green); color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px; font-weight: 700;
+      border-radius: 10px; text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 8px 28px rgba(45,122,58,0.3);
+    }
+    .leasing-cta:hover { background: var(--green-light); transform: translateY(-1px); }
+
+    .leasing-body { padding: 32px 40px 36px; }
+    @media(max-width:560px){ .leasing-body{ padding: 24px 24px 28px; } }
+    .leasing-list-label {
       font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; margin-bottom: 18px;
+      text-transform: uppercase; color: var(--muted);
+      margin-bottom: 16px; padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
     }
-    .pain-col.bad .pain-col-label { color: #E05252; }
-    .pain-col.good .pain-col-label { color: var(--green-light); }
-    .pain-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
-    .pain-list li {
-      display:flex; align-items:flex-start; gap:10px;
-      font-size: 13px; font-weight: 500; line-height: 1.5;
+    .leasing-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .leasing-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px; font-weight: 500; line-height: 1.5; color: var(--text);
     }
-    .pain-icon { flex-shrink:0; font-size:13px; margin-top:1px; }
+    .leasing-list li:last-child { border-bottom: none; }
+    .leasing-check {
+      flex-shrink: 0; margin-top: 2px;
+      width: 18px; height: 18px;
+      background: rgba(45,122,58,0.18);
+      border: 1px solid rgba(45,122,58,0.4);
+      border-radius: 5px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; color: var(--green-light); font-weight: 800;
+    }
+
+    .leasing-footer-note {
+      margin-top: 24px;
+      background: rgba(45,122,58,0.07);
+      border: 1px solid rgba(45,122,58,0.2);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 13px; font-weight: 700; color: var(--text); text-align: center;
+    }
 
     /* ─── HOW IT WORKS ─── */
     #how { background: var(--bg); }
@@ -270,256 +304,6 @@
     }
     .step-title { font-size: 15px; font-weight: 700; margin-bottom: 7px; }
     .step-text { font-size: 13px; color: var(--muted); line-height: 1.6; }
-    .step-pill {
-      display: inline-block; margin-top: 12px;
-      font-size: 11px; font-weight: 700; color: var(--green);
-      background: var(--green-dim); border-radius: 6px; padding: 3px 9px;
-    }
-
-    /* ─── PRICING ─── */
-    #pricing { background: var(--bg2); }
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      margin-top: 52px;
-    }
-    @media(max-width:860px){ .pricing-grid{ grid-template-columns:1fr; } }
-
-    .plan-card {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: border-color 0.2s;
-    }
-    .plan-card:hover { border-color: rgba(45,122,58,0.25); }
-    .plan-card.popular {
-      border-color: rgba(45,122,58,0.45);
-      border-top: 3px solid var(--green-light);
-    }
-    .plan-card.custom-card {
-      border-style: dashed;
-      border-color: rgba(255,255,255,0.1);
-    }
-
-    .plan-header { padding: 26px 28px 20px; }
-    .plan-badge-row { display:flex; align-items:center; gap:8px; margin-bottom:14px; }
-    .plan-badge {
-      display: inline-block;
-      font-size: 10px; font-weight: 700; letter-spacing: 0.09em;
-      text-transform: uppercase; border-radius: 6px;
-      padding: 3px 9px;
-    }
-    .plan-badge.green { color: var(--green); background: var(--green-dim); }
-    .plan-badge.highlight {
-      color: var(--green-light);
-      background: rgba(45,122,58,0.2);
-      border: 1px solid rgba(45,122,58,0.4);
-    }
-    .plan-badge.muted { color: var(--muted); background: rgba(255,255,255,0.04); }
-    .plan-popular-label {
-      font-size: 10px; font-weight: 700;
-      color: var(--green-light); letter-spacing: 0.06em;
-    }
-
-    .plan-name { font-size: 20px; font-weight: 800; margin-bottom: 4px; }
-    .plan-tagline { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 18px; }
-    .plan-price-row { display:flex; align-items:baseline; gap:6px; margin-bottom:4px; }
-    .plan-price {
-      font-size: 52px; font-weight: 900; line-height: 1;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .plan-price sup { font-size: 22px; font-weight: 700; }
-    .plan-price-custom {
-      font-size: 36px; font-weight: 900; line-height: 1; color: var(--text);
-    }
-    .plan-price-unit { font-size: 13px; color: var(--muted); font-weight: 400; }
-    .plan-value { font-size: 12px; color: var(--muted); margin-bottom: 20px; }
-    .plan-value s { color: var(--muted); }
-    .plan-value strong { color: var(--green-light); }
-
-    .plan-cta {
-      display: flex; align-items: center; justify-content: center; gap: 9px;
-      padding: 13px 22px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 14px; font-weight: 700;
-      border-radius: 9px; text-decoration: none;
-      transition: background 0.2s, transform 0.15s, opacity 0.2s;
-      width: 100%;
-    }
-    .plan-cta.green { background: var(--green); color: #fff; }
-    .plan-cta.green:hover { background: var(--green-light); transform: translateY(-1px); }
-    .plan-cta.wa { background: #25D366; color: #fff; }
-    .plan-cta.wa:hover { opacity: 0.88; transform: translateY(-1px); }
-    .plan-cta.outline {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.12);
-      color: var(--text);
-    }
-    .plan-cta.outline:hover { border-color: rgba(45,122,58,0.4); color: var(--green-light); }
-
-    .plan-divider { height:1px; background: var(--border); margin: 0 28px; }
-
-    .plan-stack { padding: 20px 28px; flex: 1; }
-    .plan-stack-label {
-      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--muted);
-      margin-bottom: 14px; padding-bottom: 10px;
-      border-bottom: 1px solid var(--border);
-    }
-    .stack-rows { list-style:none; display:flex; flex-direction:column; gap:0; }
-    .stack-row {
-      display:flex; justify-content:space-between; align-items:center;
-      padding: 8px 0; border-bottom: 1px solid var(--border); gap: 12px;
-    }
-    .stack-row:last-child { border-bottom: none; }
-    .stack-name { font-size:12.5px; font-weight:500; color:var(--text); flex:1; line-height:1.3; }
-    .stack-val { flex-shrink:0; text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:2px; }
-    .stack-price { font-size:12px; font-weight:600; color:var(--muted); text-decoration:line-through; white-space:nowrap; }
-    .stack-free {
-      font-size:10px; font-weight:700; color:var(--green-light);
-      letter-spacing:0.04em; white-space:nowrap;
-    }
-    .stack-total-row {
-      display:flex; justify-content:space-between; align-items:center;
-      padding-top: 12px; margin-top: 4px;
-      border-top: 1px solid rgba(255,255,255,0.12);
-    }
-    .stack-total-label { font-size:11px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:0.07em; }
-    .stack-total-val { font-size:12px; font-weight:700; color:var(--muted); text-decoration:line-through; }
-    .stack-savings {
-      margin-top: 10px;
-      background: rgba(45,122,58,0.08);
-      border: 1px solid rgba(45,122,58,0.2);
-      border-radius: 8px;
-      padding: 8px 12px;
-      display:flex; justify-content:space-between; align-items:center;
-    }
-    .savings-label { font-size:10px; font-weight:700; color:var(--green); text-transform:uppercase; letter-spacing:0.07em; }
-    .savings-val { font-size:14px; font-weight:900; color:var(--green-light); }
-
-    .plan-footer { padding: 18px 28px 24px; }
-    .plan-guarantee {
-      display:flex; gap:8px; align-items:flex-start;
-      font-size: 11px; color: var(--muted); line-height: 1.5;
-      background: rgba(45,122,58,0.06);
-      border: 1px solid rgba(45,122,58,0.18);
-      border-radius: 8px;
-      padding: 10px 12px;
-      margin-bottom: 14px;
-    }
-    .plan-guarantee-icon { flex-shrink:0; font-size:13px; }
-
-    .plan-custom-bullets { list-style:none; display:flex; flex-direction:column; gap:8px; }
-    .plan-custom-bullets li {
-      display:flex; gap:8px; align-items:flex-start;
-      font-size: 13px; color: var(--muted); line-height: 1.5;
-    }
-    .plan-custom-bullets li::before { content:'→'; color:var(--green-light); flex-shrink:0; font-size:12px; }
-
-    /* ─── UPSELLS ─── */
-    #upsells { background: var(--bg); }
-    .upsell-intro { font-size:14px; color:var(--muted); margin-top:8px; margin-bottom:48px; max-width:520px; line-height:1.65; }
-
-    .upsell-featured {
-      background: var(--bg3);
-      border: 1px solid rgba(45,122,58,0.4);
-      border-top: 3px solid var(--green-light);
-      border-radius: 16px;
-      padding: 28px 32px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 32px;
-      align-items: start;
-      margin-bottom: 18px;
-    }
-    @media(max-width:660px){ .upsell-featured{ grid-template-columns:1fr; } }
-    @media(max-width:660px){
-      .upsell-hosting-wrap { grid-template-columns:1fr 1fr !important; }
-      .upsell-hosting-wrap .upsell-name { font-size:13px; }
-      .upsell-hosting-wrap .upsell-price { font-size:18px; margin-bottom:8px; }
-      .upsell-hosting-wrap .upsell-price .unit { font-size:11px; }
-      .upsell-hosting-wrap .upsell-badges { flex-wrap:wrap; gap:4px; margin-bottom:6px; }
-      .upsell-hosting-wrap .upsell-badge { font-size:8px; padding:2px 6px; }
-      .upsell-hosting-wrap .upsell-list { gap:5px; }
-      .upsell-hosting-wrap .upsell-list li { font-size:11px; gap:5px; }
-      .upsell-hosting-wrap .upsell-cta { font-size:11px; padding:10px 8px; }
-      .upsell-hosting-inner-left { padding:14px 12px !important; border-radius:12px 0 0 12px !important; }
-      .upsell-hosting-inner-right { padding:14px 12px !important; border-radius:0 12px 12px 0 !important; }
-    }
-    .upsell-badges { display:flex; gap:8px; align-items:center; margin-bottom:10px; }
-    .upsell-badge {
-      font-size:10px; font-weight:700; letter-spacing:0.07em;
-      text-transform:uppercase; border-radius:5px; padding:3px 8px;
-    }
-    .upsell-badge.highlight {
-      color:var(--green-light);
-      background:rgba(45,122,58,0.2);
-      border:1px solid rgba(45,122,58,0.35);
-    }
-    .upsell-badge.tag { color:var(--green); background:var(--green-dim); }
-    .upsell-recommended { font-size:10px; font-weight:700; letter-spacing:0.06em; color:var(--green-light); }
-    .upsell-name { font-size:18px; font-weight:800; margin-bottom:6px; }
-    .upsell-price { font-size:26px; font-weight:900; color:var(--text); margin-bottom:12px; }
-    .upsell-price .unit { font-size:13px; font-weight:400; color:var(--muted); }
-    .upsell-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
-    .upsell-list li {
-      font-size:13px; color:var(--muted);
-      display:flex; gap:8px; align-items:flex-start; line-height:1.45;
-    }
-    .upsell-list li::before { content:'✓'; color:var(--green-light); flex-shrink:0; font-size:12px; font-weight:700; margin-top:1px; }
-    .upsell-cta {
-      display:inline-flex; align-items:center; gap:8px;
-      padding:13px 22px;
-      background:var(--green); color:#fff;
-      font-family:'Montserrat',sans-serif;
-      font-size:13px; font-weight:700;
-      border-radius:9px; text-decoration:none; white-space:nowrap;
-      transition:background 0.2s, transform 0.15s;
-      align-self:start;
-    }
-    .upsell-cta:hover { background:var(--green-light); transform:translateY(-1px); }
-
-    .upsell-grid {
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 16px;
-    }
-    @media(max-width:660px){ .upsell-grid{ grid-template-columns:1fr; } }
-    .upsell-card {
-      background:var(--bg3); border:1px solid var(--border);
-      border-radius:14px; padding:24px 22px;
-      transition:border-color 0.2s;
-    }
-    .upsell-card:hover { border-color:rgba(45,122,58,0.3); }
-    .upsell-card-badge {
-      font-size:10px; font-weight:700; letter-spacing:0.07em;
-      text-transform:uppercase; color:var(--green);
-      background:var(--green-dim); border-radius:5px;
-      padding:3px 8px; display:inline-block; margin-bottom:12px;
-    }
-    .upsell-card-name { font-size:15px; font-weight:800; margin-bottom:6px; }
-    .upsell-card-price { font-size:22px; font-weight:900; color:var(--text); margin-bottom:12px; }
-    .upsell-card-price .unit { font-size:12px; font-weight:400; color:var(--muted); }
-    .upsell-card-list { list-style:none; display:flex; flex-direction:column; gap:7px; }
-    .upsell-card-list li {
-      font-size:12.5px; color:var(--muted);
-      display:flex; gap:7px; align-items:flex-start; line-height:1.45;
-    }
-    .upsell-card-list li::before { content:'→'; color:var(--green-light); flex-shrink:0; font-size:11px; margin-top:2px; }
-    .upsell-bundle {
-      margin-top:16px; text-align:center;
-      font-size:13px; color:var(--muted);
-      background:var(--bg3); border:1px solid var(--border);
-      border-radius:12px; padding:14px 20px;
-    }
-    .upsell-bundle strong { color:var(--text); }
 
     /* ─── FAQ ─── */
     #faq { background: var(--bg2); }
@@ -549,31 +333,11 @@
     }
     .faq-item.open .faq-a { max-height:320px; padding:0 22px 18px; }
 
-    /* ─── GUARANTEE ─── */
-    #guarantee { background: var(--bg); }
-    .guarantee-box {
-      max-width: 780px; margin:0 auto;
-      background:var(--bg3); border:1px solid rgba(45,122,58,0.28);
-      border-radius:20px; padding:52px 48px;
-      display:grid; grid-template-columns:auto 1fr; gap:36px; align-items:center;
-    }
-    @media(max-width:680px){ .guarantee-box{grid-template-columns:1fr;padding:36px 24px;text-align:center;} }
-    .g-shield { font-size:62px; line-height:1; }
-    .g-eyebrow { font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--green); margin-bottom:10px; }
-    .g-headline { font-size:clamp(22px,3vw,28px); font-weight:900; letter-spacing:-0.02em; margin-bottom:12px; }
-    .g-text { font-size:14px; color:var(--muted); line-height:1.7; }
-    .g-points { list-style:none; display:flex; flex-direction:column; gap:8px; margin-top:16px; }
-    .g-points li {
-      display:flex; align-items:flex-start; gap:8px;
-      font-size:13px; color:var(--text); line-height:1.45;
-    }
-    .g-points li::before { content:'✓'; color:var(--green-light); font-weight:700; flex-shrink:0; }
-
     /* ─── FINAL CTA ─── */
-    #final-cta { background: var(--bg2); text-align:center; }
-    .fc-inner { max-width:580px; margin:0 auto; }
-    .fc-h { font-size:clamp(28px,4.5vw,48px); font-weight:900; line-height:1.12; letter-spacing:-0.025em; margin-bottom:18px; }
-    .fc-sub { font-size:15px; color:var(--muted); line-height:1.65; margin-bottom:36px; }
+    #final-cta { background: var(--bg); text-align:center; }
+    .fc-inner { max-width:560px; margin:0 auto; }
+    .fc-h { font-size:clamp(26px,4vw,44px); font-weight:900; line-height:1.12; letter-spacing:-0.025em; margin-bottom:16px; }
+    .fc-sub { font-size:15px; color:var(--muted); line-height:1.65; margin-bottom:32px; }
     .fc-btn {
       display:inline-flex; align-items:center; gap:10px;
       padding:17px 38px; background:#25D366; color:#fff;
@@ -585,14 +349,6 @@
     }
     .fc-btn:hover { opacity:0.88; transform:translateY(-1px); }
     .fc-note { font-size:12px; color:var(--muted); margin-top:12px; }
-    .fc-scarcity {
-      margin-top:20px;
-      display:inline-flex; align-items:center; gap:7px;
-      font-size:12px; font-weight:600; color:var(--green-light);
-      background:rgba(45,122,58,0.1); border:1px solid rgba(45,122,58,0.25);
-      border-radius:100px; padding:7px 16px;
-    }
-    .fc-scarcity::before { content:'●'; font-size:7px; animation:pulse 1.8s infinite; }
 
     /* ─── FOOTER ─── */
     footer {
@@ -603,7 +359,7 @@
     footer a { color:var(--muted); text-decoration:none; }
     footer a:hover { color:var(--green); }
     .footer-inner { display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap; }
-    .footer-logo { height:36px; width:auto; mix-blend-mode:screen; }
+    .footer-logo { height:36px; width:auto; }
     @media(max-width:600px){
       .footer-inner { justify-content:flex-start; text-align:left; }
     }
@@ -614,7 +370,6 @@
     .reveal-d1 { transition-delay:0.08s; }
     .reveal-d2 { transition-delay:0.16s; }
     .reveal-d3 { transition-delay:0.24s; }
-    .reveal-d4 { transition-delay:0.32s; }
   </style>
 </head>
 <body>
@@ -622,7 +377,7 @@
 <!-- NAV -->
 <nav>
   <img src="./MonetaScale Logo.png" alt="MonetaScale" class="nav-logo">
-  <a href="https://wa.me/4917670368821?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Website" class="nav-cta" target="_blank">Jetzt anfragen →</a>
+  <a href="https://wa.me/4917670368821?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20das%20Website-Leasing." class="nav-cta" target="_blank">Jetzt anfragen →</a>
 </nav>
 
 <!-- HERO -->
@@ -638,70 +393,84 @@
 
   <div class="hero-badge">
     <span class="badge-dot"></span>
-    Nur noch 3 Plätze im April verfügbar
+    All-Inclusive · Keine versteckten Kosten
   </div>
 
   <h1 class="hero-headline">
-    Deine fertige Website.<br>
-    <span class="grad">72 Stunden. Ab 250 €.</span>
+    Deine professionelle Website.<br>
+    <span class="grad">100 €/Monat. Alles drin.</span>
   </h1>
 
   <p class="hero-sub">
-    Für Selbstständige & Kleinunternehmen — professionell, mobil-optimiert, DSGVO-konform.<br>
-    Du lieferst Infos. Wir bauen alles.
+    Website-Erstellung, SEO, Hosting, Wartung & unbegrenzte Änderungen —<br>ein Ansprechpartner für alles. Ohne Aufpreis.
   </p>
 
   <div class="hero-cta-group">
-    <a href="#pricing" class="btn-primary">
-      Pakete ansehen →
+    <a href="#leasing" class="btn-primary">
+      Angebot ansehen →
     </a>
-    <span class="cta-note">100 € Anzahlung · Rest nach Zufriedenheit · Kein Risiko</span>
-  </div>
-
-  <div class="hero-proof">
-    <div class="proof-item">
-      <span class="proof-number">72h</span>
-      <span class="proof-label">Lieferung<br>garantiert</span>
-    </div>
-    <div class="proof-sep"></div>
-    <div class="proof-item">
-      <span class="proof-number">Ab 250€</span>
-      <span class="proof-label">Festpreis<br>einmalig</span>
-    </div>
-    <div class="proof-sep"></div>
-    <div class="proof-item">
-      <span class="proof-number">0 €</span>
-      <span class="proof-label">Risiko für<br>dich</span>
-    </div>
+    <span class="cta-note">Keine Erstellungskosten · Monatlich kündbar · Kein Risiko</span>
   </div>
 </section>
 
-<!-- PAIN / CONTRAST -->
-<section id="pain">
+<!-- LEASING ANGEBOT -->
+<section id="leasing">
   <div class="container-narrow">
-    <div class="section-eyebrow reveal">Die Realität</div>
-    <h2 class="section-h reveal reveal-d1">Andere zahlen Tausende.<br>Warten wochenlang.</h2>
+    <div class="section-eyebrow reveal">Das Angebot</div>
+    <h2 class="section-h reveal reveal-d1">Website-Leasing – alles aus einer Hand.</h2>
+    <p class="section-sub reveal reveal-d2">Kein einmaliger Erstellungspreis. Kein Hin-und-Her mit Agenturen. Einfach monatlich zahlen und eine professionelle Online-Präsenz genießen.</p>
 
-    <div class="pain-grid">
-      <div class="pain-col bad reveal reveal-d2">
-        <div class="pain-col-label">✗ &nbsp;Der typische Weg</div>
-        <ul class="pain-list">
-          <li><span class="pain-icon">✗</span>Agenturen verlangen 2.000–8.000 € — warum weiß niemand</li>
-          <li><span class="pain-icon">✗</span>4–12 Wochen Wartezeit, endlose Meetings</li>
-          <li><span class="pain-icon">✗</span>Baukastensysteme sehen billig aus und schränken ein</li>
-          <li><span class="pain-icon">✗</span>Kein Support danach — du bist auf dich gestellt</li>
-          <li><span class="pain-icon">✗</span>Zahlung komplett im Voraus — hohes Risiko</li>
-        </ul>
+    <div class="leasing-wrap reveal reveal-d2">
+      <div class="leasing-header">
+        <div class="leasing-badge-row">
+          <span class="leasing-badge">⭑ Empfohlen</span>
+        </div>
+        <div class="leasing-name">Website-Leasing</div>
+        <div class="leasing-tagline">Professionelle Website-Erstellung inklusive — kein Aufpreis, kein Risiko.</div>
+        <div class="leasing-price-row">
+          <div class="leasing-price"><sup>€</sup>100</div>
+          <span class="leasing-price-unit">/ Monat</span>
+        </div>
+        <div class="leasing-note">Ohne zusätzliche Erstellungskosten. <strong>Alles inklusive.</strong></div>
+        <a href="https://wa.me/4917670368821?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20das%20Website-Leasing%20f%C3%BCr%20100%20%E2%82%AC%2FMonat." class="leasing-cta" target="_blank">
+          Jetzt auf WhatsApp anfragen →
+        </a>
       </div>
-      <div class="pain-col good reveal reveal-d3">
-        <div class="pain-col-label">✓ &nbsp;Der MonetaScale-Weg</div>
-        <ul class="pain-list">
-          <li><span class="pain-icon" style="color:var(--green-light)">✓</span>Festpreis — keine Überraschungen, kein Stundensatz</li>
-          <li><span class="pain-icon" style="color:var(--green-light)">✓</span>Fertig in 72 Stunden — oder Geld zurück</li>
-          <li><span class="pain-icon" style="color:var(--green-light)">✓</span>Custom-Design — kein Template, einzigartig</li>
-          <li><span class="pain-icon" style="color:var(--green-light)">✓</span>Lebenslanger technischer Support inklusive</li>
-          <li><span class="pain-icon" style="color:var(--green-light)">✓</span>Nur 100 € Anzahlung — Rest nach Zufriedenheit</li>
+      <div class="leasing-body">
+        <div class="leasing-list-label">Was inklusive ist</div>
+        <ul class="leasing-list">
+          <li>
+            <span class="leasing-check">✓</span>
+            Professionelle Website-Erstellung inklusive (kein Aufpreis)
+          </li>
+          <li>
+            <span class="leasing-check">✓</span>
+            Google Search Console eingerichtet &amp; laufend optimiert
+          </li>
+          <li>
+            <span class="leasing-check">✓</span>
+            Google Analytics eingebunden – du siehst jederzeit was läuft
+          </li>
+          <li>
+            <span class="leasing-check">✓</span>
+            Aktive SEO-Arbeit – Ziel: Seite 1 bei Google für deine Keywords
+          </li>
+          <li>
+            <span class="leasing-check">✓</span>
+            Unbegrenzte Änderungen auf Wunsch – einfach schreiben, ich setz's um
+          </li>
+          <li>
+            <span class="leasing-check">✓</span>
+            Hosting, Wartung &amp; Sicherheit inklusive
+          </li>
+          <li>
+            <span class="leasing-check">✓</span>
+            Ein Ansprechpartner für alles – kein Hin-und-Her mit Agenturen
+          </li>
         </ul>
+        <div class="leasing-footer-note">
+          100 €/Monat – alles drin. Nichts extra.
+        </div>
       </div>
     </div>
   </div>
@@ -712,370 +481,24 @@
   <div class="container-narrow">
     <div class="section-eyebrow reveal">So läuft es ab</div>
     <h2 class="section-h reveal reveal-d1">Drei Schritte. Fertige Website.</h2>
-    <p class="section-sub reveal reveal-d2">Kein technisches Wissen nötig — 15 Minuten Aufwand von dir, der Rest liegt bei uns.</p>
+    <p class="section-sub reveal reveal-d2">Kein technisches Wissen nötig — du schreibst mir, ich kümmere mich um den Rest.</p>
 
     <div class="steps">
       <div class="step reveal reveal-d1">
         <div class="step-num">1</div>
         <div class="step-title">Kurzes Gespräch</div>
         <div class="step-text">15 Minuten WhatsApp: dein Business, deine Ziele, dein Stil. Das war's von deiner Seite.</div>
-        <span class="step-pill">15 Min. Aufwand</span>
       </div>
       <div class="step reveal reveal-d2">
         <div class="step-num">2</div>
-        <div class="step-title">Wir bauen — du wartest</div>
-        <div class="step-text">72 Stunden. Deine komplette Website: mobil-optimiert, DSGVO-konform, sofort einsatzbereit.</div>
-        <span class="step-pill">72h Lieferung</span>
+        <div class="step-title">Ich baue deine Website</div>
+        <div class="step-text">Custom-Design, mobil-optimiert, DSGVO-konform — fertig geliefert, ohne dass du etwas tun musst.</div>
       </div>
       <div class="step reveal reveal-d3">
         <div class="step-num">3</div>
-        <div class="step-title">Review & Go Live</div>
-        <div class="step-text">Du schaust drüber, eine kostenlose Anpassungsrunde ist inklusive. Erst dann zahlst du den Rest.</div>
-        <span class="step-pill">Erst zahlen wenn zufrieden</span>
+        <div class="step-title">Online &amp; laufend optimiert</div>
+        <div class="step-text">SEO, Analytics, unbegrenzte Änderungen — ich halte deine Website aktuell und optimiere kontinuierlich.</div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing">
-  <div class="container">
-    <div class="section-eyebrow reveal">Pakete & Preise</div>
-    <h2 class="section-h reveal reveal-d1">Das richtige Paket für dein Business.</h2>
-    <p class="section-sub reveal reveal-d2">Von der einfachen Visitenkarte bis zum vollständigen Online-Shop — alles fertig in 72 Stunden.</p>
-
-    <div class="pricing-grid">
-
-      <!-- ─── STARTER ─── -->
-      <div class="plan-card reveal reveal-d1">
-        <div class="plan-header">
-          <div class="plan-badge-row">
-            <span class="plan-badge green">Einsteiger</span>
-          </div>
-          <div class="plan-name">Starter Site</div>
-          <div class="plan-tagline">Für Selbstständige, die professionell online gehen wollen — schlank, schnell, wirkungsvoll.</div>
-          <div class="plan-price-row">
-            <div class="plan-price"><sup>€</sup>250</div>
-            <span class="plan-price-unit">einmalig</span>
-          </div>
-          <div class="plan-value">Gesamtwert: <s>910 €</s> — du sparst <strong>660 €</strong></div>
-          <a href="https://wa.me/4917670368821?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20die%20Starter%20Site." class="plan-cta green" target="_blank">
-            Jetzt anfragen →
-          </a>
-        </div>
-        <div class="plan-divider"></div>
-        <div class="plan-stack">
-          <div class="plan-stack-label">Was du bekommst</div>
-          <ul class="stack-rows">
-            <li class="stack-row">
-              <span class="stack-name">Custom Website Design (1-seitig)</span>
-              <div class="stack-val"><span class="stack-price">400 €</span></div>
-            </li>
-            <li class="stack-row">
-              <span class="stack-name">Mobil-Optimierung & Responsiv-Design</span>
-              <div class="stack-val"><span class="stack-free">GRATIS</span><span class="stack-price">150 €</span></div>
-            </li>
-            <li class="stack-row">
-              <span class="stack-name">Kontaktformular</span>
-              <div class="stack-val"><span class="stack-free">GRATIS</span><span class="stack-price">80 €</span></div>
-            </li>
-            <li class="stack-row">
-              <span class="stack-name">DSGVO Impressum & Datenschutz</span>
-              <div class="stack-val"><span class="stack-free">GRATIS</span><span class="stack-price">100 €</span></div>
-            </li>
-            <li class="stack-row">
-              <span class="stack-name">SEO-Grundstruktur (Meta, Titles)</span>
-              <div class="stack-val"><span class="stack-free">GRATIS</span><span class="stack-price">100 €</span></div>
-            </li>
-            <li class="stack-row">
-              <span class="stack-name">Lebenslanger technischer Support</span>
-              <div class="stack-val"><span class="stack-free">GRATIS</span><span class="stack-price">80 €</span></div>
-            </li>
-          </ul>
-          <div class="stack-total-row">
-            <span class="stack-total-label">Gesamtwert</span>
-            <span class="stack-total-val">910 €</span>
-          </div>
-          <div class="stack-savings">
-            <span class="savings-label">Dein Preis</span>
-            <span class="savings-val">250 € einmalig</span>
-          </div>
-        </div>
-        <div class="plan-footer">
-          <div class="plan-guarantee">
-            <span class="plan-guarantee-icon">🛡️</span>
-            100 € Anzahlung — Rest erst bei Zufriedenheit. Nicht fertig in 72h? Vollständige Rückerstattung.
-          </div>
-        </div>
-      </div>
-
-      <!-- ─── PRO (POPULAR) ─── -->
-      <div class="plan-card popular reveal reveal-d2">
-        <div class="plan-header">
-          <div class="plan-badge-row">
-            <span class="plan-badge highlight">Beliebteste Wahl</span>
-            <span class="plan-popular-label">⭑ Empfohlen</span>
-          </div>
-          <div class="plan-name">Pro Site</div>
-          <div class="plan-tagline">Vollständige Business-Website — mehr Seiten, stärkeres SEO, mehr Wirkung.</div>
-          <div class="plan-price-row">
-            <div class="plan-price"><sup>€</sup>500</div>
-            <span class="plan-price-unit">einmalig</span>
-          </div>
-          <div class="plan-value">Gesamtwert: <s>1.450 €</s> — du sparst <strong>950 €</strong></div>
-          <a href="https://wa.me/4917670368821?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20die%20Pro%20Site." class="plan-cta wa" target="_blank">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Jetzt auf WhatsApp anfragen
-          </a>
-        </div>
-        <div class="plan-divider"></div>
-        <div class="plan-stack">
-          <div class="plan-stack-label">Was du bekommst</div>
-          <ul class="stack-rows">
-            <li class="stack-row">
-              <span class="stack-name">Custom Website Design (mehrseitig)</span>
-              <div class="stack-val"><span class="stack-price">600 €</span></div>
-            </li>
-            <li class="stack-row">
-              <span class="stack-name">Responsive Mobil-Design</span>
-              <div class="stack-val"><span class="stack-free">GRATIS</span><span class="stack-price">200 €</span></div>
-            </li>
-            <li class="stack-row">
-              <span class="stack-name">SEO-Grundoptimierung (Meta, Struktur, Speed)</span>
-              <div class="stack-val"><span class="stack-free">GRATIS</span><span class="stack-price">150 €</span></div>
-            </li>
-            <li class="stack-row">
-              <span class="stack-name">DSGVO Impressum & Datenschutz</span>
-              <div class="stack-val"><span class="stack-free">GRATIS</span><span class="stack-price">100 €</span></div>
-            </li>
-            <li class="stack-row">
-              <span class="stack-name">Kontaktformular</span>
-              <div class="stack-val"><span class="stack-free">GRATIS</span><span class="stack-price">100 €</span></div>
-            </li>
-            <li class="stack-row">
-              <span class="stack-name">1 kostenlose Anpassungsrunde (7 Tage)</span>
-              <div class="stack-val"><span class="stack-free">GRATIS</span><span class="stack-price">100 €</span></div>
-            </li>
-            <li class="stack-row">
-              <span class="stack-name">Lebenslanger technischer Support</span>
-              <div class="stack-val"><span class="stack-free">GRATIS</span><span class="stack-price">200 €</span></div>
-            </li>
-          </ul>
-          <div class="stack-total-row">
-            <span class="stack-total-label">Gesamtwert</span>
-            <span class="stack-total-val">1.450 €</span>
-          </div>
-          <div class="stack-savings">
-            <span class="savings-label">Dein Preis</span>
-            <span class="savings-val">500 € einmalig</span>
-          </div>
-        </div>
-        <div class="plan-footer">
-          <div class="plan-guarantee">
-            <span class="plan-guarantee-icon">🛡️</span>
-            100 € Anzahlung — Rest erst bei Zufriedenheit. Nicht fertig in 72h? Vollständige Rückerstattung.
-          </div>
-        </div>
-      </div>
-
-      <!-- ─── SHOPIFY SHOP ─── -->
-      <div class="plan-card reveal reveal-d3">
-        <div class="plan-header">
-          <div class="plan-badge-row">
-            <span class="plan-badge green">Online-Shop</span>
-          </div>
-          <div class="plan-name">Shop Setup</div>
-          <div class="plan-tagline">Professioneller Shopify-Shop — verkaufsfertig, DSGVO-konform, custom designed.</div>
-          <div class="plan-price-row">
-            <div class="plan-price"><sup>€</sup>500</div>
-            <span class="plan-price-unit">einmalig</span>
-          </div>
-          <div class="plan-value">Gesamtwert: <s>1.350 €</s> — du sparst <strong>850 €</strong> &nbsp;·&nbsp; <span style="font-size:11px;color:var(--muted)">zzgl. Shopify 33 €/Monat</span></div>
-          <a href="https://wa.me/4917670368821?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20das%20Shop%20Setup." class="plan-cta green" target="_blank">
-            Jetzt anfragen →
-          </a>
-        </div>
-        <div class="plan-divider"></div>
-        <div class="plan-stack">
-          <div class="plan-stack-label">Was du bekommst</div>
-          <ul class="stack-rows">
-            <li class="stack-row">
-              <span class="stack-name">Shopify Store Einrichtung & Konfiguration</span>
-              <div class="stack-val"><span class="stack-price">300 €</span></div>
-            </li>
-            <li class="stack-row">
-              <span class="stack-name">Custom Design & Branding</span>
-              <div class="stack-val"><span class="stack-free">GRATIS</span><span class="stack-price">400 €</span></div>
-            </li>
-            <li class="stack-row">
-              <span class="stack-name">Produkt-Upload & Kategorien</span>
-              <div class="stack-val"><span class="stack-free">GRATIS</span><span class="stack-price">200 €</span></div>
-            </li>
-            <li class="stack-row">
-              <span class="stack-name">SEO-Grundstruktur (Titles, Descriptions)</span>
-              <div class="stack-val"><span class="stack-free">GRATIS</span><span class="stack-price">150 €</span></div>
-            </li>
-            <li class="stack-row">
-              <span class="stack-name">DSGVO: Impressum, Datenschutz & AGB</span>
-              <div class="stack-val"><span class="stack-free">GRATIS</span><span class="stack-price">100 €</span></div>
-            </li>
-            <li class="stack-row">
-              <span class="stack-name">1 kostenlose Anpassungsrunde</span>
-              <div class="stack-val"><span class="stack-free">GRATIS</span><span class="stack-price">100 €</span></div>
-            </li>
-          </ul>
-          <div class="stack-total-row">
-            <span class="stack-total-label">Gesamtwert</span>
-            <span class="stack-total-val">1.350 €</span>
-          </div>
-          <div class="stack-savings">
-            <span class="savings-label">Dein Preis</span>
-            <span class="savings-val">500 € einmalig</span>
-          </div>
-        </div>
-        <div class="plan-footer">
-          <div class="plan-guarantee">
-            <span class="plan-guarantee-icon">🛡️</span>
-            100 € Anzahlung — Rest erst bei Zufriedenheit. Nicht fertig in 72h? Vollständige Rückerstattung.
-          </div>
-        </div>
-      </div>
-
-      <!-- ─── CUSTOM BUILD ─── -->
-      <div class="plan-card custom-card reveal reveal-d4">
-        <div class="plan-header">
-          <div class="plan-badge-row">
-            <span class="plan-badge muted">Maßanfertigung</span>
-          </div>
-          <div class="plan-name">Custom Build</div>
-          <div class="plan-tagline">Individuelle WordPress-Websites für komplexe Anforderungen — Preis nach Projektumfang.</div>
-          <div class="plan-price-row">
-            <div class="plan-price-custom">Ab 1.000 €</div>
-          </div>
-          <div class="plan-value" style="margin-bottom:20px;">Individuelles Angebot — kostenfreies Erstgespräch</div>
-          <a href="https://wa.me/4917670368821?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Custom%20Build%20Projekt%20und%20m%C3%B6chte%20ein%20Erstgespr%C3%A4ch." class="plan-cta outline" target="_blank">
-            Erstgespräch anfragen →
-          </a>
-        </div>
-        <div class="plan-divider"></div>
-        <div class="plan-stack">
-          <div class="plan-stack-label">Geeignet für</div>
-          <ul class="plan-custom-bullets">
-            <li>Umfangreiche WordPress-Projekte mit individuellem Funktionsumfang</li>
-            <li>Mittelständische Unternehmen mit mehreren Seiten & Bereichen</li>
-            <li>Buchungs- oder Mitgliedersysteme, Portale, Landingpage-Funnels</li>
-            <li>Redesign bestehender Websites mit Daten-Migration</li>
-            <li>DSGVO & Rechtliche Texte immer inklusive</li>
-          </ul>
-        </div>
-        <div class="plan-footer">
-          <div class="plan-guarantee">
-            <span class="plan-guarantee-icon">💬</span>
-            Wir klären im kostenlosen Erstgespräch deinen Bedarf und erstellen ein individuelles Angebot — unverbindlich.
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /pricing-grid -->
-  </div>
-</section>
-
-<!-- UPSELLS -->
-<section id="upsells">
-  <div class="container">
-    <div class="section-eyebrow reveal">Optional dazubuchbar</div>
-    <h2 class="section-h reveal reveal-d1">Ergänze dein Paket.</h2>
-    <p class="upsell-intro reveal reveal-d2">Alle Add-ons werden nach Abschluss des Hauptauftrags angeboten — kein Druck, kein Paket-Zwang. Jederzeit einzeln buchbar.</p>
-
-    <!-- Hosting: zwei Tiers nebeneinander als Featured -->
-    <div class="upsell-featured upsell-hosting-wrap reveal" style="grid-template-columns:1fr 1fr;gap:0;padding:0;background:transparent;border:none;">
-      <!-- Hosting Starter -->
-      <div class="upsell-hosting-inner-left" style="background:var(--bg3);border:1px solid var(--border);border-radius:16px 0 0 16px;padding:26px 28px;border-right:none;">
-        <div class="upsell-badges">
-          <span class="upsell-badge tag">Monatlich</span>
-          <span class="upsell-badge" style="color:var(--muted);background:rgba(255,255,255,0.04);">Für Starter</span>
-        </div>
-        <div class="upsell-name">Hosting, Domain<br>& Wartung</div>
-        <div class="upsell-price">20 € <span class="unit">/ Monat · kündbar</span></div>
-        <ul class="upsell-list">
-          <li>Managed Hosting (schnell, sicher, DE-Server)</li>
-          <li>Domain-Registrierung & Verwaltung</li>
-          <li>SSL-Zertifikat inklusive</li>
-          <li>Monatliche Sicherheits-Backups</li>
-          <li>Änderungen auf Wunsch jederzeit möglich</li>
-        </ul>
-        <a href="https://wa.me/4917670368821?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20das%20Hosting-Starter-Paket" class="upsell-cta" style="margin-top:18px;width:100%;justify-content:center;" target="_blank">Dazubuchen →</a>
-      </div>
-      <!-- Hosting Pro -->
-      <div class="upsell-hosting-inner-right" style="background:var(--bg3);border:1px solid rgba(45,122,58,0.45);border-top:3px solid var(--green-light);border-radius:0 16px 16px 0;padding:26px 28px;position:relative;">
-        <div class="upsell-badges">
-          <span class="upsell-badge highlight">Meistgewählt</span>
-          <span class="upsell-badge tag">Für Pro & Shop</span>
-        </div>
-        <div class="upsell-name">Hosting, Domain<br>& Wartung</div>
-        <div class="upsell-price">40 € <span class="unit">/ Monat · kündbar</span></div>
-        <ul class="upsell-list">
-          <li>Managed Hosting (schnell, sicher, DE-Server)</li>
-          <li>Domain-Registrierung & Verwaltung</li>
-          <li>SSL-Zertifikat inklusive</li>
-          <li>Monatliche Sicherheits-Backups</li>
-          <li>Änderungen auf Wunsch jederzeit möglich</li>
-        </ul>
-        <a href="https://wa.me/4917670368821?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20das%20Hosting-Pro-Paket" class="upsell-cta" style="margin-top:18px;width:100%;justify-content:center;background:var(--green-light);" target="_blank">Dazubuchen →</a>
-      </div>
-    </div>
-
-    <!-- Einmalige Add-ons -->
-    <div class="upsell-grid" style="margin-top:18px;">
-
-      <!-- Texterstellung + KI -->
-      <div class="upsell-card reveal reveal-d1">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-          <span style="font-size:20px;">✍️</span>
-          <span class="upsell-card-badge" style="margin-bottom:0;">Einmalig</span>
-        </div>
-        <div class="upsell-card-name">Texterstellung + KI-Sichtbarkeit</div>
-        <div class="upsell-card-price">75 € <span class="unit">einmalig</span></div>
-        <ul class="upsell-card-list">
-          <li>Full-Service Texterstellung — alles auf Basis eines 5-Minuten-Interviews</li>
-          <li>AEO-Turbo: ChatGPT, Perplexity & Apple Intelligence empfehlen dich als Antwort</li>
-          <li>Psychologische Verkaufsstruktur — Besucher direkt zur Anfrage führen</li>
-          <li>Zukunftssicher: Optimiert für KI-Suche 2026</li>
-        </ul>
-      </div>
-
-      <!-- Google Komplett-Setup -->
-      <div class="upsell-card reveal reveal-d2">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-          <span style="font-size:20px;">📊</span>
-          <span class="upsell-card-badge" style="margin-bottom:0;">Einmalig</span>
-        </div>
-        <div class="upsell-card-name">Google Komplett-Setup</div>
-        <div class="upsell-card-price">100 € <span class="unit">einmalig</span></div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px;">
-          <div>
-            <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--green-light);padding-bottom:7px;border-bottom:1px solid var(--border);margin-bottom:8px;">GA4 & Conversions</div>
-            <ul class="upsell-card-list">
-              <li>Conversion-Tracking (Anrufe, Formulare, Käufe)</li>
-              <li>DSGVO-konformer Consent Mode v2</li>
-              <li>Monatliches Automatik-Reporting</li>
-            </ul>
-          </div>
-          <div>
-            <div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--green-light);padding-bottom:7px;border-bottom:1px solid var(--border);margin-bottom:8px;">Google Sichtbarkeit</div>
-            <ul class="upsell-card-list">
-              <li>Search Console & Keyword-Analysen</li>
-              <li>Google Business Profile (Maps) Dominanz</li>
-              <li>Optimiertes Bewertungs-Tool</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="upsell-bundle reveal">
-      <strong>Tipp:</strong> Alle Add-ons zusammen für weniger als 1,50 € pro Tag — vollständig verwaltete, messbare und wachsende Online-Präsenz.
     </div>
   </div>
 </section>
@@ -1084,69 +507,43 @@
 <section id="faq">
   <div class="container-narrow">
     <div class="section-eyebrow reveal">Häufige Fragen</div>
-    <h2 class="section-h reveal reveal-d1">Deine Fragen. Ehrliche Antworten.</h2>
+    <h2 class="section-h reveal reveal-d1">Alles geklärt.</h2>
 
     <div class="faq-list reveal reveal-d2">
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
-          Wirklich 72 Stunden? Ist das realistisch?
+          Gibt es eine Mindestlaufzeit?
           <span class="faq-icon">+</span>
         </div>
-        <div class="faq-a">72 Stunden nach unserem kurzen Onboarding-Gespräch hast du deine fertige Website. Nicht fertig? Du bekommst die Anzahlung vollständig zurück. Kein Wenn und Aber.</div>
+        <div class="faq-a">Nein. Du kannst monatlich kündigen. Keine versteckten Bindungsfristen, kein Kleingedrucktes.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
-          Was ist der Unterschied zwischen Starter und Pro?
+          Was bedeutet "Erstellung inklusive"?
           <span class="faq-icon">+</span>
         </div>
-        <div class="faq-a">Die Starter Site ist eine einseitige Website — ideal als digitale Visitenkarte für Selbstständige. Die Pro Site ist mehrseitig (z.B. Startseite, Über mich, Leistungen, Kontakt) mit stärkerem SEO und einer kostenlosen Anpassungsrunde. Für die meisten Selbstständigen empfehlen wir die Pro Site.</div>
+        <div class="faq-a">Du zahlst keine einmalige Erstellungsgebühr on top. Der erste Monat 100 € deckt bereits die komplette Erstellung deiner Website ab — kein Aufpreis.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
-          Ist der Preis wirklich alles? Keine versteckten Kosten?
+          Was bedeutet "unbegrenzte Änderungen"?
           <span class="faq-icon">+</span>
         </div>
-        <div class="faq-a">Ja — der Paketpreis ist komplett. Kein Stundensatz, keine versteckten Aufschläge. Hosting & Domain sind optional (40 €/Monat) und werden transparent kommuniziert. Beim Shop-Paket kommt die Shopify-Lizenz direkt von Shopify (33 €/Monat) — das zahlt ihr selbst.</div>
+        <div class="faq-a">Texte, Bilder, Preise, neue Abschnitte, Farben — einfach per WhatsApp schicken, ich setz's um. Kein Stundensatz, kein Extra.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
-          Was wenn mir die Website nicht gefällt?
+          Ist Hosting wirklich inklusive?
           <span class="faq-icon">+</span>
         </div>
-        <div class="faq-a">Du hast eine kostenlose Anpassungsrunde inklusive (außer Starter — dieser ist über einen separaten Support abgedeckt). Du sagst uns was geändert werden soll — wir setzen es um ohne Aufpreis. Den Restbetrag zahlst du erst danach.</div>
+        <div class="faq-a">Ja. Domain, Hosting, SSL-Zertifikat, technische Wartung — alles geregelt. Du musst dich um nichts kümmern.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q" onclick="toggleFaq(this)">
-          Wie viel muss ich selbst tun?
+          Wie lange bis meine Website online ist?
           <span class="faq-icon">+</span>
         </div>
-        <div class="faq-a">15 Minuten. Wir fragen dich kurz zu deinem Business, deinen Leistungen und deinem Stil — das war's. Danach bauen wir alles. Du bekommst die fertige Website zur Freigabe.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">
-          Warum ist es so günstig? Was ist der Haken?
-          <span class="faq-icon">+</span>
-        </div>
-        <div class="faq-a">Wir arbeiten mit einem effizienten, KI-gestützten Workflow — kein aufgeblähtes Agentur-Team, kein Overhead. Diese Effizienz geben wir direkt an dich weiter. Unser Ziel ist eine langfristige Kundenbeziehung, nicht der einmalige Abzug.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GUARANTEE -->
-<section id="guarantee">
-  <div class="container">
-    <div class="guarantee-box reveal">
-      <div class="g-shield">🛡️</div>
-      <div>
-        <div class="g-eyebrow">Deine Garantie</div>
-        <h3 class="g-headline">Nicht zufrieden? Kein Cent mehr.</h3>
-        <p class="g-text">Dein Risiko ist null — egal für welches Paket du dich entscheidest.</p>
-        <ul class="g-points">
-          <li>Nicht fertig in 72 Stunden → Anzahlung vollständig zurück</li>
-          <li>Nicht zufrieden nach Anpassungsrunde → kein Restbetrag fällig</li>
-          <li>Lebenslanger technischer Support — auch nach Go-Live</li>
-        </ul>
+        <div class="faq-a">In der Regel innerhalb von 72 Stunden nach unserem Erstgespräch. Du bekommst einen Link zum Review, kannst Feedback geben — und dann geht's live.</div>
       </div>
     </div>
   </div>
@@ -1154,23 +551,14 @@
 
 <!-- FINAL CTA -->
 <section id="final-cta">
-  <div class="container">
-    <div class="fc-inner">
-      <div class="section-eyebrow reveal" style="text-align:center">Bereit loszulegen?</div>
-      <h2 class="fc-h reveal reveal-d1">
-        Deine Website.<br>
-        <span class="grad">Morgen live.</span>
-      </h2>
-      <p class="fc-sub reveal reveal-d2">
-        Schreib uns jetzt auf WhatsApp — wir antworten innerhalb weniger Stunden, klären das richtige Paket und liefern deine Website in 72 Stunden.
-      </p>
-      <a href="https://wa.me/4917670368821?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Website" class="fc-btn reveal reveal-d3" target="_blank">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Jetzt auf WhatsApp schreiben
-      </a>
-      <p class="fc-note reveal reveal-d4">+49 176 70368821 · Antwort innerhalb weniger Stunden</p>
-      <div class="fc-scarcity reveal reveal-d4">Nur noch 3 Plätze im April verfügbar</div>
-    </div>
+  <div class="fc-inner">
+    <h2 class="fc-h reveal">Bereit für deine professionelle Website?</h2>
+    <p class="fc-sub reveal reveal-d1">Schreib mir kurz auf WhatsApp — kein Angebot, kein Stress, einfach ein kurzes Gespräch.</p>
+    <a href="https://wa.me/4917670368821?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20das%20Website-Leasing%20f%C3%BCr%20100%20%E2%82%AC%2FMonat." class="fc-btn reveal reveal-d2" target="_blank">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Auf WhatsApp schreiben
+    </a>
+    <p class="fc-note reveal reveal-d3">Kostenlos &amp; unverbindlich · Antworte innerhalb von 24h</p>
   </div>
 </section>
 
@@ -1178,26 +566,21 @@
 <footer>
   <div class="footer-inner">
     <img src="./MonetaScale Logo.png" alt="MonetaScale" class="footer-logo">
-    <p>© 2026 MonetaScale · <a href="./impressum.html">Impressum</a> · <a href="./datenschutz.html">Datenschutz</a></p>
+    <span>© 2026 MonetaScale</span>
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
   </div>
 </footer>
 
 <script>
-  // Scroll Reveal
-  const ro = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); ro.unobserve(e.target); }
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-
-  // FAQ Toggle
   function toggleFaq(el) {
-    const item = el.parentElement;
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
+    el.closest('.faq-item').classList.toggle('open');
   }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
