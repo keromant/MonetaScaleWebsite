@@ -4,45 +4,90 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Datenschutz – MonetaScale</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
-      --green:    #2D7A3A;
-      --red:      #8B2030;
-      --bg:       #0C0C0E;
-      --bg2:      #111114;
-      --bg3:      #17171B;
-      --border:   rgba(255,255,255,0.07);
-      --text:     #F2EFE9;
-      --muted:    #6B6B70;
+      --bg-primary: #0A0A0A;
+      --bg-secondary: #111111;
+      --bg-tertiary: #1A1A1A;
+      --green-main: #65C83D;
+      --green-highlight: #84E55A;
+      --green-hover: #4D9B2E;
+      --text-white: #FFFFFF;
+      --text-muted: #B8B8B8;
+      --text-subtle: #7A7A7A;
+      --border-dark: #232323;
+      --border-mid: #333333;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Montserrat', sans-serif;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
+      background-color: var(--bg-primary);
+      color: var(--text-white);
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
     }
 
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.028;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* NAV */
     nav {
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 100;
-      padding: 0 28px;
-      height: 100px;
+      left: 0;
+      right: 0;
+      height: 72px;
+      padding: 0 48px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      background: rgba(12,12,14,0.95);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--border);
+      background: linear-gradient(to bottom, rgba(10,10,10,0.88), transparent);
+      z-index: 100;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
-    .nav-logo { height: 180px; }
+
+    nav a.logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    nav a.logo img {
+      height: 34px;
+      display: block;
+    }
+
+    /* MAIN */
+    main {
+      position: relative;
+      z-index: 1;
+      padding-top: 72px;
+    }
 
     .page {
       max-width: 720px;
@@ -50,171 +95,285 @@
       padding: 72px 24px 96px;
     }
 
-    .page-eyebrow {
+    /* EYEBROW */
+    .eyebrow {
+      font-family: 'Hanken Grotesk', sans-serif;
       font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.13em;
+      font-weight: 600;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 12px;
+      color: var(--green-main);
+      margin-bottom: 16px;
     }
 
+    /* H1 */
     h1 {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800;
       font-size: clamp(32px, 5vw, 48px);
-      font-weight: 900;
+      color: var(--text-white);
       line-height: 1.1;
       letter-spacing: -0.02em;
-      margin-bottom: 12px;
+      margin-bottom: 20px;
     }
 
+    /* INTRO */
     .intro {
       font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 48px;
-      line-height: 1.7;
+      color: var(--text-subtle);
+      line-height: 1.75;
+      margin-bottom: 56px;
+    }
+
+    /* SECTIONS */
+    .section {
+      margin-bottom: 44px;
     }
 
     h2 {
+      font-family: 'Hanken Grotesk', sans-serif;
       font-size: 15px;
-      font-weight: 700;
-      color: var(--text);
-      margin: 40px 0 10px;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.07em;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    h3 {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--text);
-      margin: 22px 0 6px;
+      letter-spacing: 0.1em;
+      color: var(--text-white);
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-dark);
+      margin-bottom: 20px;
     }
 
     p {
       font-size: 14px;
-      color: var(--muted);
+      color: var(--text-subtle);
       line-height: 1.75;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
     }
 
     ul {
-      margin: 8px 0 12px 20px;
+      list-style: disc;
+      margin-left: 18px;
+      margin-top: 8px;
+      margin-bottom: 12px;
     }
+
     ul li {
       font-size: 14px;
-      color: var(--muted);
-      line-height: 1.7;
+      color: var(--text-subtle);
+      line-height: 1.75;
       margin-bottom: 4px;
     }
 
-    a { color: var(--green); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .highlight-box {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px 24px;
-      margin: 16px 0;
+    a {
+      color: var(--green-main);
+      text-decoration: none;
+      transition: color 0.2s ease;
     }
-    .highlight-box p { margin-bottom: 0; }
 
+    a:hover {
+      color: var(--green-highlight);
+    }
+
+    /* CARD */
+    .card {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-dark);
+      border-radius: 20px;
+      padding: 24px 28px;
+      margin-top: 4px;
+    }
+
+    .card p {
+      margin-bottom: 6px;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* FOOTER */
     footer {
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-      padding: 28px 24px;
-      text-align: center;
-      font-size: 13px;
-      color: var(--muted);
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border-dark);
+      padding: 36px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
     }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--green); }
+
+    footer .footer-logo img {
+      height: 28px;
+      display: block;
+      opacity: 0.6;
+    }
+
+    footer .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    footer .footer-links a {
+      font-size: 13px;
+      color: var(--text-subtle);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    footer .footer-links a:hover {
+      color: var(--text-muted);
+    }
+
+    footer .footer-copy {
+      font-size: 13px;
+      color: var(--text-subtle);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav {
+        padding: 0 24px;
+      }
+
+      .page {
+        padding: 48px 24px 72px;
+      }
+
+      footer {
+        padding: 28px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .card {
+        padding: 20px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      footer .footer-links {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="./index.html">
-    <img src="./MonetaScale Logo.png" alt="MonetaScale" class="nav-logo">
-  </a>
-</nav>
+  <!-- NAV -->
+  <nav>
+    <a href="./index.html" class="logo">
+      <img src="./MonetaScale Logo.png" alt="MonetaScale">
+    </a>
+  </nav>
 
-<div class="page">
-  <div class="page-eyebrow">Rechtliches</div>
-  <h1>Datenschutzerklärung</h1>
-  <p class="intro">Der Schutz Ihrer persönlichen Daten ist uns wichtig. Diese Datenschutzerklärung informiert Sie darüber, welche Daten wir erheben, wie wir sie verwenden und welche Rechte Sie haben.</p>
+  <!-- MAIN -->
+  <main>
+    <div class="page">
 
-  <!-- 1 -->
-  <h2>1. Verantwortlicher</h2>
-  <div class="highlight-box">
-    <p>Kerem Ulas<br>
-    Am Röttchen 104a<br>
-    40468 Düsseldorf<br>
-    Deutschland<br><br>
-    E-Mail: <a href="mailto:ulas@monetascale.de">ulas@monetascale.de</a><br>
-    Telefon: <a href="tel:+4917670368821">+49 176 70368821</a></p>
-  </div>
+      <p class="eyebrow">Rechtliches</p>
+      <h1>Datenschutzerklärung</h1>
+      <p class="intro">Der Schutz Ihrer persönlichen Daten ist uns wichtig. Diese Datenschutzerklärung informiert Sie darüber, welche Daten wir erheben, wie wir sie verwenden und welche Rechte Sie haben.</p>
 
-  <!-- 2 -->
-  <h2>2. Hosting</h2>
-  <p>Diese Website wird auf externen Servern gehostet. Beim Aufruf der Website werden automatisch Informationen in sogenannten Server-Log-Dateien gespeichert, die Ihr Browser automatisch übermittelt. Dies sind:</p>
-  <ul>
-    <li>IP-Adresse des anfragenden Geräts</li>
-    <li>Datum und Uhrzeit des Zugriffs</li>
-    <li>Name und URL der abgerufenen Datei</li>
-    <li>Browsertyp und -version</li>
-    <li>Betriebssystem</li>
-    <li>Referrer-URL (zuvor besuchte Seite)</li>
-  </ul>
-  <p>Die Rechtsgrundlage für die Verarbeitung ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren und stabilen Betrieb der Website). Die Daten werden nach spätestens 7 Tagen gelöscht.</p>
+      <!-- 1. Verantwortlicher -->
+      <div class="section">
+        <h2>1. Verantwortlicher</h2>
+        <div class="card">
+          <p>Kerem Ulas</p>
+          <p>Am Röttchen 104a, 40468 Düsseldorf, Deutschland</p>
+          <p>E-Mail: <a href="mailto:ulas@monetascale.de">ulas@monetascale.de</a></p>
+          <p>Telefon: <a href="tel:+4917670368821">+49 176 70368821</a></p>
+        </div>
+      </div>
 
-  <!-- 3 -->
-  <h2>3. Kontaktaufnahme via WhatsApp</h2>
-  <p>Auf dieser Website bieten wir die Möglichkeit, uns über WhatsApp zu kontaktieren. Wenn Sie diesen Link nutzen, werden Sie zu WhatsApp weitergeleitet. Die Verarbeitung Ihrer dort eingegebenen Daten (z. B. Name, Telefonnummer, Nachricht) erfolgt durch WhatsApp Inc. (Meta Platforms, Inc.) nach deren eigenen Datenschutzbestimmungen.</p>
-  <p>Wir verarbeiten die über WhatsApp erhaltenen Nachrichten ausschließlich zur Beantwortung Ihrer Anfrage. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).</p>
-  <p>Weitere Informationen zum Datenschutz bei WhatsApp finden Sie unter: <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener">https://www.whatsapp.com/legal/privacy-policy</a></p>
+      <!-- 2. Hosting -->
+      <div class="section">
+        <h2>2. Hosting</h2>
+        <p>Diese Website wird auf externen Servern gehostet. Beim Aufruf der Website werden automatisch Informationen in sogenannten Server-Log-Dateien gespeichert, die Ihr Browser automatisch übermittelt. Dies sind:</p>
+        <ul>
+          <li>IP-Adresse des anfragenden Geräts</li>
+          <li>Datum und Uhrzeit des Zugriffs</li>
+          <li>Name und URL der abgerufenen Datei</li>
+          <li>Browsertyp und -version</li>
+          <li>Betriebssystem</li>
+          <li>Referrer-URL (zuvor besuchte Seite)</li>
+        </ul>
+        <p>Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO. Löschung nach spätestens 7 Tagen.</p>
+      </div>
 
-  <!-- 4 -->
-  <h2>4. Keine Cookies / kein Tracking</h2>
-  <p>Diese Website verwendet keine Cookies und setzt keine Analyse- oder Tracking-Tools (z. B. Google Analytics) ein. Es werden keine Daten zu Werbezwecken erhoben oder weitergegeben.</p>
+      <!-- 3. WhatsApp -->
+      <div class="section">
+        <h2>3. Kontaktaufnahme via WhatsApp</h2>
+        <p>Auf dieser Website bieten wir die Möglichkeit, uns über WhatsApp zu kontaktieren. Wenn Sie diesen Link nutzen, werden Sie zu WhatsApp weitergeleitet. Die Verarbeitung Ihrer dort eingegebenen Daten (z.&thinsp;B. Name, Telefonnummer, Nachricht) erfolgt durch WhatsApp Inc. (Meta Platforms, Inc.) nach deren eigenen Datenschutzbestimmungen.</p>
+        <p>Wir verarbeiten die über WhatsApp erhaltenen Nachrichten ausschließlich zur Beantwortung Ihrer Anfrage. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).</p>
+        <p>Weitere Informationen: <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">https://www.whatsapp.com/legal/privacy-policy</a></p>
+      </div>
 
-  <!-- 5 -->
-  <h2>5. Externe Schriftarten (Google Fonts)</h2>
-  <p>Diese Website lädt Schriftarten über den Dienst Google Fonts (Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA). Beim Laden der Schriftarten wird Ihre IP-Adresse an Google übermittelt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.</p>
-  <p>Informationen zum Datenschutz bei Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">https://policies.google.com/privacy</a></p>
+      <!-- 4. Keine Cookies -->
+      <div class="section">
+        <h2>4. Keine Cookies / kein Tracking</h2>
+        <p>Diese Website verwendet keine Cookies und setzt keine Analyse- oder Tracking-Tools (z.&thinsp;B. Google Analytics) ein. Es werden keine Daten zu Werbezwecken erhoben oder weitergegeben.</p>
+      </div>
 
-  <!-- 6 -->
-  <h2>6. Ihre Rechte</h2>
-  <p>Sie haben gegenüber uns folgende Rechte hinsichtlich der Sie betreffenden personenbezogenen Daten:</p>
-  <ul>
-    <li><strong style="color:var(--text)">Auskunft</strong> – Sie können Auskunft über Ihre bei uns gespeicherten Daten verlangen (Art. 15 DSGVO)</li>
-    <li><strong style="color:var(--text)">Berichtigung</strong> – Sie können die Berichtigung unrichtiger Daten verlangen (Art. 16 DSGVO)</li>
-    <li><strong style="color:var(--text)">Löschung</strong> – Sie können die Löschung Ihrer Daten verlangen (Art. 17 DSGVO)</li>
-    <li><strong style="color:var(--text)">Einschränkung</strong> – Sie können die Einschränkung der Verarbeitung verlangen (Art. 18 DSGVO)</li>
-    <li><strong style="color:var(--text)">Widerspruch</strong> – Sie können der Verarbeitung Ihrer Daten widersprechen (Art. 21 DSGVO)</li>
-    <li><strong style="color:var(--text)">Datenübertragbarkeit</strong> – Sie können Ihre Daten in einem gängigen Format erhalten (Art. 20 DSGVO)</li>
-  </ul>
-  <p>Zur Ausübung Ihrer Rechte wenden Sie sich an: <a href="mailto:ulas@monetascale.de">ulas@monetascale.de</a></p>
+      <!-- 5. Google Fonts -->
+      <div class="section">
+        <h2>5. Externe Schriftarten (Google Fonts)</h2>
+        <p>Diese Website lädt Schriftarten über den Dienst Google Fonts (Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA). Beim Laden der Schriftarten wird Ihre IP-Adresse an Google übermittelt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.</p>
+        <p>Informationen zum Datenschutz bei Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a></p>
+      </div>
 
-  <!-- 7 -->
-  <h2>7. Beschwerderecht</h2>
-  <p>Sie haben das Recht, sich bei einer Datenschutzbehörde über die Verarbeitung Ihrer personenbezogenen Daten durch uns zu beschweren. Die zuständige Aufsichtsbehörde für Nordrhein-Westfalen ist:</p>
-  <div class="highlight-box">
-    <p>Landesbeauftragte für Datenschutz und Informationsfreiheit NRW<br>
-    Kavalleriestraße 2–4, 40213 Düsseldorf<br>
-    <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener">www.ldi.nrw.de</a></p>
-  </div>
+      <!-- 6. Ihre Rechte -->
+      <div class="section">
+        <h2>6. Ihre Rechte</h2>
+        <p>Sie haben gegenüber uns folgende Rechte:</p>
+        <ul>
+          <li>Auskunft – Art. 15 DSGVO</li>
+          <li>Berichtigung – Art. 16 DSGVO</li>
+          <li>Löschung – Art. 17 DSGVO</li>
+          <li>Einschränkung – Art. 18 DSGVO</li>
+          <li>Widerspruch – Art. 21 DSGVO</li>
+          <li>Datenübertragbarkeit – Art. 20 DSGVO</li>
+        </ul>
+        <p>Zur Ausübung Ihrer Rechte wenden Sie sich bitte an: <a href="mailto:ulas@monetascale.de">ulas@monetascale.de</a></p>
+      </div>
 
-  <!-- 8 -->
-  <h2>8. Aktualität</h2>
-  <p>Diese Datenschutzerklärung ist aktuell gültig und hat den Stand März 2026.</p>
-</div>
+      <!-- 7. Beschwerderecht -->
+      <div class="section">
+        <h2>7. Beschwerderecht</h2>
+        <div class="card">
+          <p>Landesbeauftragte für Datenschutz und Informationsfreiheit NRW</p>
+          <p>Kavalleriestraße 2–4, 40213 Düsseldorf</p>
+          <p><a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer">www.ldi.nrw.de</a></p>
+        </div>
+      </div>
 
-<footer>
-  <p>© 2026 MonetaScale · <a href="./impressum.html">Impressum</a> · <a href="./datenschutz.html">Datenschutz</a></p>
-</footer>
+      <!-- 8. Aktualität -->
+      <div class="section">
+        <h2>8. Aktualität</h2>
+        <p>Diese Datenschutzerklärung ist aktuell gültig und hat den Stand März 2026.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      <a href="./index.html">
+        <img src="./MonetaScale Logo.png" alt="MonetaScale">
+      </a>
+    </div>
+    <div class="footer-links">
+      <a href="./impressum.html">Impressum</a>
+      <a href="./datenschutz.html">Datenschutz</a>
+    </div>
+    <div class="footer-copy">© 2026 MonetaScale</div>
+  </footer>
 
 </body>
 </html>
