@@ -704,16 +704,30 @@
       text-align: center;
       margin-top: 4px;
     }
-    .form-success {
+    .form-success-overlay {
       display: none;
-      font-size: 14px;
-      color: var(--green);
-      font-weight: 500;
-      padding: 16px 20px;
-      background: rgba(101,200,61,0.08);
-      border: 1px solid rgba(101,200,61,0.2);
-      border-radius: 10px;
       text-align: center;
+      padding: 60px 20px;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0;
+    }
+    #lottieSuccess {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 28px;
+    }
+    .form-success-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--green);
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+    .form-success-sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
     }
 
     /* ─── FOOTER ─── */
@@ -943,10 +957,13 @@
           </button>
           <span class="form-note">Keine Verpflichtung · Antwort in 24 h</span>
         </div>
-        <div class="form-success" id="formSuccess" role="alert">
-          Vielen Dank — Ihre Anfrage ist bei uns eingegangen. Wir melden uns innerhalb von 24 Stunden.
-        </div>
       </form>
+
+      <div class="form-success-overlay" id="formSuccessOverlay" role="alert">
+        <div id="lottieSuccess"></div>
+        <p class="form-success-title">Anfrage erfolgreich gesendet!</p>
+        <p class="form-success-sub">Vielen Dank — wir melden uns innerhalb von 24 Stunden.</p>
+      </div>
     </div>
   </section>
 
@@ -967,6 +984,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
 
   <script>
     'use strict';
@@ -1229,7 +1247,6 @@
 
     /* ── CONTACT FORM: AJAX submit (no redirect) ── */
     const contactForm = document.getElementById('contactForm');
-    const formSuccess = document.getElementById('formSuccess');
 
     contactForm?.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -1244,9 +1261,32 @@
           headers: { 'Accept': 'application/json' },
         });
         if (res.ok) {
-          contactForm.querySelectorAll('input,textarea').forEach(el => el.value = '');
-          formSuccess.style.display = 'block';
-          btn.style.display = 'none';
+          const overlay = document.getElementById('formSuccessOverlay');
+
+          const anim = lottie.loadAnimation({
+            container: document.getElementById('lottieSuccess'),
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            path: './lottie-success.json',
+          });
+
+          gsap.to(contactForm, {
+            opacity: 0,
+            y: -16,
+            duration: 0.4,
+            ease: 'power2.in',
+            onComplete() {
+              contactForm.style.display = 'none';
+              overlay.style.display = 'block';
+              gsap.fromTo(overlay,
+                { opacity: 0, y: 24 },
+                { opacity: 1, y: 0, duration: 0.55, ease: 'power2.out',
+                  onComplete() { anim.play(); }
+                }
+              );
+            },
+          });
         } else {
           btn.textContent = 'Fehler – bitte erneut versuchen';
           btn.disabled = false;
