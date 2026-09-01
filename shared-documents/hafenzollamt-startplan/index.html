@@ -105,6 +105,7 @@ footer{border-top:1px solid var(--line);padding:26px 0 46px;color:var(--muted);f
         <tr><td>1 · Resend</td><td>Konto, Domain <span class="mono">ipm-kg.de</span>, DNS-Einträge selbst setzen, API-Key</td><td>Secrets setzen, Absender eintragen, deployen</td><td>Mailkette steht, wartet nur auf DNS</td></tr>
         <tr><td>2 · Meta-App</td><td>App, Systemnutzer „Digitaler Assistent", Assets, Token</td><td>Verbindung testen, Locale prüfen</td><td>API-Anbindung — für Kampagne per Klick <em>und</em> für die Zahlen in der Leadliste</td></tr>
         <tr><td>3 · Creatives</td><td>6 Higgsfield-Bilder nach Prompt, 3 vorhandene Visualisierungen bleiben</td><td>Zuschnitt 1:1 + 4:5, Kennzeichnung, Prüfung</td><td>9 Startanzeigen bebildert</td></tr>
+        <tr><td>3b · Videos</td><td>3 Clips (A/B/C) nach Storyboard mit dem Asset-Kit, 4:5 + 9:16</td><td>Kit aus der echten Seite, Storyboards, Plan mit Video-Anzeigen</td><td>4 Anzeigen je Thema, Bild gegen Video messbar</td></tr>
         <tr><td>4 · Kampagne</td><td>Zahlungsmethode, Dataset ↔ Werbekonto, Zusatz für Verantwortliche</td><td><span class="mono">plan apply</span>: Kampagne pausiert anlegen, Vorschau-Links</td><td>Alles steht, nichts läuft</td></tr>
         <tr><td>5 · Leadliste-Zahlen</td><td>—</td><td>Meta-Zahlen täglich in die Leadliste holen, Seite „Zahlen" erweitern</td><td>Ausgaben, Klicks, Leads, Kosten je Lead — je Thema/Anzeige</td></tr>
         <tr><td>6 · Henno</td><td>Termin: DNS, Freigaben, DSA, Exposé, Domain</td><td>Freigabe-Paket + Fragenliste liegen bereit</td><td>Freigabe</td></tr>
@@ -218,6 +219,39 @@ footer{border-top:1px solid var(--line);padding:26px 0 46px;color:var(--muted);f
     <div class="prompt"><b>B2 · „Gut zu wissen, dass jemand da ist."</b><p>Motiv: Detail — Klingeltableau/Video-Gegensprechanlage in edlem Material, daneben frische Blumen; Präsenz ohne Person.</p><span class="mono">Detail of a modern video intercom panel set into warm brick wall beside an apartment door, a small vase of fresh flowers on a side table, evening light, feeling of safety and someone looking after the house, </span></div>
     <div class="prompt"><b>B3 · „Ihre Wohnung hört nicht an der Wohnungstür auf."</b><p>Motiv: Wein- &amp; Cocktaillounge im Turm — zwei Gläser, Rheinblick durch hohe Fenster, Abend.</p><span class="mono">A small elegant wine lounge at the top of a brick tower, two glasses of white wine on a marble ledge, tall windows with a river panorama at dusk, leather armchairs, warm pendant lights, intimate and refined, </span></div>
     <p style="margin-top:10px">Thema C bleibt bei den Kundenvisualisierungen (Turm an der Promenade, Luftbild Rhein, Hero-Motiv) — die sind bereits zugeschnitten.</p>
+  </section>
+
+  <section>
+    <span class="eyebrow">Phase 3b <span class="sym">&middot;</span> Videos <span class="sym">&middot;</span> heute oder morgen</span>
+    <h2>Drei Videos zum Start — eines je Thema. Nicht mehr.</h2>
+    <p>Zu den neun Bild-Anzeigen kommt je Thema <strong>ein</strong> Video: 4 Anzeigen je Ad-Set. Mehr verteilt das Tagesbudget von 90 € auf zu viele Anzeigen — dann bekommt keine genug Signale. Nach Tag 5–7 zeigt der Vergleich Bild gegen Video je Thema, was funktioniert; dann rücken zwei bis drei weitere Videos als Reserve nach.</p>
+    <div class="how">
+      <div><b>Format</b>Ein Schnitt, zwei Zuschnitte: 4:5 (1080×1350, Feed) und 9:16 (1080×1920, Reels/Stories). 10–12 Sekunden, davon die letzten 3 Sekunden Endkarte.</div>
+      <div><b>Text statt Ton</b>Der Hook steht in Sekunde 0–2 eingebrannt im Bild — Feeds laufen stumm. Ohne Sprecher liefern; Ton ist Zugabe (unten).</div>
+      <div><b>Bewegung</b>Langsamer Push-in (1,00 → 1,06 über 4–5 s) oder sanfter Schwenk. Keine Schnitte unter 2,5 s, keine Effekte. Keine Gesichter, kein anderes Gebäude.</div>
+      <div><b>Echte Elemente</b>Alles aus der Seite liegt fertig als PNG bereit: Buttons (3 Frames für die Sweep-Animation), Logo, Headlines in Playfair (dunkel und weiß), Quiz-Karten, Schritte-Karten, fertige Endkarten, Farbkarte, Schriften.</div>
+    </div>
+    <div class="lanes" style="margin-top:18px">
+      <div class="lane you"><span class="who">Du</span>
+        <ol class="steps">
+          <li><i></i><div>Ordner <span class="mono">creatives\kit\</span> öffnen — Übersicht aller Dateien und Maße in <span class="mono">kit.md</span>. PNGs und die drei Schriften (<span class="mono">kit\fonts</span>) im Videoprogramm als Assets anlegen.</div></li>
+          <li><i></i><div>Storyboard lesen: <span class="mono">docs\video-storyboards.md</span> — je Thema Bild, Bewegung, Text, Timing, Endkarte mit Dateinamen. Werkzeugneutral.</div></li>
+          <li><i></i><div>Ausgangsbilder: <span class="mono">creatives\*-9x16.jpg</span> bzw. <span class="mono">*-4x5.jpg</span> (mit Kennzeichnung) — oder deine eigenen Motive aus <span class="mono">creatives\src</span>. Je Clip 4–5 s leicht animieren, zwei Clips schneiden, Endkarte anhängen (<span class="mono">kit\endcard-9x16.png</span> bzw. <span class="mono">endcard-4x5.png</span>, dunkle Variante für Thema B).</div></li>
+          <li><i></i><div>Button-Animation auf der Endkarte: <span class="mono">cta-gold.png</span> → <span class="mono">cta-gold-sweep.png</span> → <span class="mono">cta-gold-hover.png</span>, je 0,25 s bei Sekunde 10.</div></li>
+          <li><i></i><div>Export H.264, 30 fps, ≤ 15 s, mind. 12 Mbit/s, <strong>ohne Ton</strong>. Dateinamen: <span class="mono">A-video-4x5.mp4</span>, <span class="mono">A-video-9x16.mp4</span>, <span class="mono">B-…</span>, <span class="mono">C-…</span> nach <span class="mono">creatives\src\video\</span>.</div></li>
+          <li><i></i><div>Mir schreiben: <strong>„Videos liegen da."</strong></div></li>
+        </ol>
+      </div>
+      <div class="lane me"><span class="who">Ich</span>
+        <ol class="steps">
+          <li class="done"><i></i><div>Asset-Kit aus der echten Seite gerendert (41 Dateien, transparent, 2–3-fache Auflösung) — <span class="mono">creatives/kit/</span>.</div></li>
+          <li class="done"><i></i><div>Storyboards A/B/C geschrieben; Kampagnenplan hat drei Video-Anzeigen (A-V1, B-V1, C-V1) in Reserve; Bild-Export auch in 9:16.</div></li>
+          <li><i></i><div>Sobald die Videos da sind: Sichtprüfung, Video-Anzeigen auf „live", Upload zu Meta (pausiert), Vorschau-Links ins Freigabe-Paket.</div></li>
+          <li><i></i><div>Tag 5–7: Bild gegen Video je Thema auswerten (Kosten je Anfrage), Reserve nachziehen.</div></li>
+        </ol>
+      </div>
+    </div>
+    <div class="note"><p><strong>Ton (später, kein Muss):</strong> Meta Sound Collection — kostenlos und für Facebook/Instagram lizenziert (im Ads Manager oder unter facebook.com/sound/collection). Suchbegriffe: „calm piano", „ambient warm", „minimal acoustic". 70–95 BPM, ohne Gesang, ohne Beat-Drop, leise (−18 LUFS), Ausblenden über die Endkarte. Bei eigener Lizenz (Artlist, Epidemic) gelten dieselben Kriterien. Keine Stimme — Sprechertexte kommen in einer späteren Runde.</p></div>
   </section>
 
   <section>
