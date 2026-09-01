@@ -114,12 +114,14 @@ footer{border-top:1px solid var(--line);padding:26px 0 46px;color:var(--muted);f
     <span class="eyebrow">1 <span class="sym">&middot;</span> Conversions-API ohne App <span class="sym">&middot;</span> 5 Min.</span>
     <h2>Zugriffsschlüssel direkt am Dataset erzeugen</h2>
     <p>Dafür braucht es <strong>keinen</strong> Developer-Account. Der Schlüssel sorgt dafür, dass jede Anfrage zusätzlich serverseitig an Meta gemeldet wird (bessere Zuordnung trotz Adblocker/iOS).</p>
+    <div class="note no"><p><strong>Nicht „Conversions API Gateway".</strong> Wenn ein Fenster „Wie möchtest du die Verbindung herstellen?" mit <em>Birch</em>, <em>Mit Meta einrichten</em>, <em>Cloud-Anbieter</em> erscheint: <strong>Abbrechen</strong>. Das Gateway ist ein kostenpflichtiger Cloud-Server — den brauchen wir nicht, unser Cloudflare-Worker <em>ist</em> die serverseitige Anbindung. Uns fehlt nur der Schlüssel.</p></div>
     <ol class="steps">
-      <li><div><span class="field">Events Manager</span> → Dataset <span class="mono">1104066098789211</span> → <strong>Einstellungen</strong>.</div></li>
-      <li><div>Abschnitt <strong>Conversions API</strong> → „Manuell einrichten" / „Direkte Integration" → <strong>Zugriffsschlüssel generieren</strong>.<small>Falls Meta einen Systemnutzer verlangt: den Vorschlag annehmen, er wird automatisch angelegt.</small></div></li>
-      <li><div>Schlüssel kopieren → in <span class="mono">C:\Website-Business\Websiten\altes-hafenzollamt\.secrets.local</span> als Zeile <span class="mono">META_CAPI_TOKEN=EAA…</span> einfügen, speichern.</div></li>
+      <li><div><span class="field">Events Manager</span> → linke Leiste <strong>Datensätze</strong> → Dataset <span class="mono">1104066098789211</span> anklicken.<small>Nicht „Daten verknüpfen" — das führt ins Gateway.</small></div></li>
+      <li><div>Oben Reiter <strong>Einstellungen</strong> → runterscrollen zum Abschnitt <strong>Conversions API</strong> (nicht „Conversions API Gateway") → <strong>Zugriffsschlüssel generieren</strong>.<small>Es erscheint nur ein langer Text, kein Assistent und kein Cloud-Anbieter.</small></div></li>
+      <li><div>Schlüssel kopieren (beginnt mit <span class="mono">EAA…</span>) → in <span class="mono">C:\Website-Business\Websiten\altes-hafenzollamt\.secrets.local</span> als Zeile <span class="mono">META_CAPI_TOKEN=EAA…</span> einfügen, speichern.</div></li>
       <li><div>Mir schreiben: <strong>„CAPI-Token ist drin."</strong> Ich lade ihn als Secret in den Landingpage-Worker und prüfe im Events Manager unter „Testevents", dass ein Lead-Ereignis serverseitig ankommt.</div></li>
     </ol>
+    <div class="note"><p><strong>Falls „Zugriffsschlüssel generieren" fehlt:</strong> Dann verlangt Meta den Systemnutzer-Weg, und der braucht doch eine App — also morgen. <strong>Kein Hindernis für den Start:</strong> Der Browser-Pixel läuft bereits vollständig (PageView, ViewContent, Contact, Lead — nach Zustimmung), die Kampagne misst also von Anfang an. Die Conversions API ist die zusätzliche serverseitige Meldung; sie lässt sich jederzeit nachrüsten, auch Tage später.</p></div>
   </section>
 
   <section id="kampagne">
