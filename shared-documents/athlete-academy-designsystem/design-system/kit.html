@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F7F4EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E0D0B" media="(prefers-color-scheme: dark)">
+<meta name="robots" content="noindex, nofollow">
+<title>Athlete Academy · Designsystem-Kit</title>
+<link rel="icon" href="../assets/logo/favicon.svg" type="image/svg+xml">
+<script src="aa.js"></script>
+<link rel="preload" href="fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  /* ---- nur Kit-Darstellung ---- */
+  .kit-bar { position: sticky; top: 0; z-index: 30; background: var(--surface); border-bottom: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; justify-content: space-between; padding: 10px var(--gutter); font-size: .85rem; }
+  .kit-bar b { font-family: var(--font-ui); text-transform: var(--ui-transform); letter-spacing: var(--ui-tracking); font-weight: var(--ui-weight); }
+  .kit-seg { display: inline-flex; border: 1px solid var(--line-strong); border-radius: var(--r-sm); overflow: hidden; }
+  .kit-seg button { border: 0; background: transparent; color: var(--text); padding: 7px 12px; font: inherit; cursor: pointer; }
+  .kit-seg button[aria-pressed="true"] { background: var(--gold); color: var(--on-gold); font-weight: 600; }
+  html[data-shot] .kit-bar, html[data-shot] .kit-h { display: none; }
+  .kit-sec { border-bottom: 1px solid var(--line); }
+  .kit-h { padding: 28px var(--gutter) 0; max-width: calc(var(--container) + 2 * var(--gutter)); margin: 0 auto; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .kit-h h2 { font-size: calc(1.6rem * var(--display-scale)); margin: 0; }
+  .kit-h span { color: var(--text-muted); font-size: .9rem; }
+  .kit-stage { padding: 48px var(--gutter); background: var(--bg); }
+  .kit-stage > .kit-in { max-width: var(--container); margin: 0 auto; }
+  .kit-stage--bleed { padding: 0; }
+  .kit-cap { display: block; margin-top: 10px; font-size: .78rem; color: var(--text-muted); letter-spacing: .02em; }
+  .kit-states { display: grid; gap: 22px 18px; grid-template-columns: 120px repeat(5, minmax(0, 1fr)); align-items: center; }
+  .kit-states .kit-rowlabel { font-weight: 600; font-size: .9rem; }
+  .kit-states .kit-colhead { font-size: .75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .1em; }
+  .kit-states > div { min-width: 0; }
+  @media (max-width: 760px) {
+    .kit-states { display: flex; flex-wrap: wrap; gap: 14px 12px; }
+    .kit-states .kit-rowlabel { flex: 0 0 100%; margin-top: 10px; }
+    .kit-states .kit-desk, .kit-states .kit-colhead, .kit-states .kit-corner { display: none; }
+    .kit-states > div[data-cap]::before { content: attr(data-cap); display: block; margin-bottom: 6px; font-size: .7rem;
+      color: var(--text-muted); text-transform: uppercase; letter-spacing: .1em; }
+  }
+  .kit-type { display: grid; gap: 26px; }
+  .kit-type > div { display: grid; grid-template-columns: 110px 1fr; gap: 18px; align-items: baseline; border-bottom: 1px dashed var(--line); padding-bottom: 20px; }
+  .kit-type > div > small { color: var(--text-muted); font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; line-height: 1.4; }
+  .kit-type > div > small em { display: block; font-style: normal; text-transform: none; letter-spacing: 0; opacity: .85; }
+  .kit-type h1, .kit-type h2, .kit-type h3, .kit-type .aa-claim, .kit-type p, .kit-type .aa-display { margin: 0; }
+  @media (max-width: 760px) { .kit-type > div { grid-template-columns: 1fr; gap: 8px; } }
+  .kit-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .kit-2 { display: grid; gap: 32px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); align-items: start; }
+  .kit-menu-demo { position: relative; height: 700px; overflow: hidden; }
+  .kit-menu-demo .aa-menu.is-open { position: absolute; }
+  .kit-glyph { display: grid; gap: 10px; }
+  .kit-glyph div { font-size: 1.6rem; }
+
+  /* Zustände fürs Kit erzwingen (Screenshots + Live-Ansicht) – spiegeln die echten Hover-Regeln */
+  .aa-btn[data-force~="hover"]::after { transform: skewX(-45deg) scale(1, 1); }
+  .aa-btn--gold[data-force~="hover"], .aa-btn--gold[data-force~="sweep"] { color: var(--gold); box-shadow: inset 0 0 0 1.5px var(--gold); }
+  .aa-btn--solid:is([data-force~="hover"], [data-force~="sweep"]), .aa-btn--ghost:is([data-force~="hover"], [data-force~="sweep"]),
+  .aa-btn--ghost-frame:is([data-force~="hover"], [data-force~="sweep"]), .aa-btn--ink:is([data-force~="hover"], [data-force~="sweep"]) { color: #16140F; }
+  .aa-btn[data-force~="sweep"]::after { transform: skewX(-45deg) scale(.56, 1); transition: none; }
+  [data-force~="focus"] { outline: 2px solid var(--focus); outline-offset: 3px; }
+  .aa-card[data-force~="hover"] { transform: var(--pop-lift); border-color: var(--gold); box-shadow: var(--glow-strong); }
+  .aa-card--sm[data-force~="hover"] { transform: var(--pop-lift-sm); }
+  .aa-nav__list a[data-force~="hover"] { color: #fff; text-shadow: 0 0 6px rgba(196,172,116,.9), 0 0 18px rgba(196,172,116,.55), 0 0 36px rgba(196,172,116,.28); }
+  .aa-nav__list a[data-force~="hover"]::before { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  .aa-nav__list a[data-force~="hover"]::after { width: calc(100% - 40px); }
+  .aa-link[data-force~="hover"] { text-decoration-color: currentColor; }
+  .aa-link-arrow[data-force~="hover"] .aa-ico { transform: translateX(5px); }
+  .cap-touch { display: none; }
+  /* Touch-Geräte kennen kein Hover: erzwungene Hover-Zustände dort neutral zeigen */
+  html[data-touch] .aa-card[data-force~="hover"] { transform: none; border-color: rgba(var(--accent-rgb), .42); box-shadow: var(--glow-soft); }
+  html[data-touch] .aa-link[data-force~="hover"] { text-decoration-color: rgba(var(--accent-rgb), .55); }
+  html[data-touch] .aa-link-arrow[data-force~="hover"], html[data-touch] .cap-hover { display: none; }
+  html[data-touch] .cap-touch { display: block; }
+</style>
+</head>
+<body>
+
+<div class="kit-bar" role="region" aria-label="Kit-Einstellungen">
+  <b>Athlete Academy · Designsystem-Kit</b>
+  <div class="kit-row">
+    <span>Schrift</span>
+    <div class="kit-seg" data-group="font"><button data-v="a">A</button><button data-v="b">B</button><button data-v="c">C</button></div>
+    <span>Modus</span>
+    <div class="kit-seg" data-group="theme"><button data-v="system">System</button><button data-v="light">Hell</button><button data-v="dark">Dunkel</button></div>
+  </div>
+</div>
+
+<!-- ============ TYPOGRAFIE ============ -->
+<section class="kit-sec" id="typo">
+  <div class="kit-h"><h2>Typografie</h2><span data-fontnames></span></div>
+  <div class="kit-stage" data-shot="typo"><div class="kit-in kit-type">
+    <div><small>Kicker<em data-role="ui"></em></small><span class="aa-kicker">Individualtraining · Fußball</span></div>
+    <div><small>Display<em data-role="display"></em></small><div class="aa-display">Stärker am Ball.</div></div>
+    <div><small>H1</small><h1>Individualtraining für junge Fußballer</h1></div>
+    <div><small>H2</small><h2>Camps in den Ferien</h2></div>
+    <div><small>H3</small><h3>Technik, Tempo, Entscheidung</h3></div>
+    <div><small>Marke<em data-role="brand"></em></small><p class="aa-claim">Werde besser. Jeden Tag.</p></div>
+    <div><small>Einleitung<em data-role="body"></em></small><p class="aa-lead">Gezieltes Training in kleinen Gruppen oder eins zu eins – für Spielerinnen und Spieler, die mehr wollen als das Mannschaftstraining.</p></div>
+    <div><small>Fließtext</small><p>Jede Einheit beginnt mit einem klaren Ziel: erster Kontakt, Schusstechnik, Spielübersicht. Wir arbeiten mit vielen Ballkontakten, kurzen Pausen und ehrlichem Feedback. Nach dem Training wissen Eltern und Kind, woran als Nächstes gearbeitet wird.</p></div>
+    <div><small>Zahl</small><div class="kit-row" style="gap:40px"><span class="aa-stat-n">1:1</span><span class="aa-stat-n">U8–U17</span><span class="aa-stat-n">189 €</span></div></div>
+    <div><small>Meta</small><span class="aa-meta">Herbstferien 2026 · Anmeldeschluss 01.10.</span></div>
+  </div></div>
+</section>
+
+<!-- ============ GLYPHEN (Prüfung) ============ -->
+<section class="kit-sec" id="glyphs">
+  <div class="kit-h"><h2>Zeichentest</h2><span>Umlaute, ß und Sonderzeichen in allen Rollen</span></div>
+  <div class="kit-stage" data-shot="glyphs"><div class="kit-in kit-glyph">
+    <div style="font-family:var(--font-display);font-weight:var(--display-weight)">Fußball Größe ÄÖÜ äöü ß ẞ „Zitat“ – 189 € 0123456789</div>
+    <div style="font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase">Fußball Größe Übung</div>
+    <div style="font-family:var(--font-brand);font-weight:var(--brand-weight)">Fußball Größe ÄÖÜ äöü ß „Zitat“ – 189 €</div>
+    <div style="font-family:var(--font-ui);font-weight:var(--ui-weight)">Fußball Größe ÄÖÜ äöü ß „Zitat“ – 189 €</div>
+    <div style="font-family:var(--font-body)">Fußball Größe ÄÖÜ äöü ß ẞ „Zitat“ – 189 € 0123456789</div>
+  </div></div>
+</section>
+
+<!-- ============ BUTTONS ============ -->
+<section class="kit-sec" id="buttons">
+  <div class="kit-h"><h2>Buttons</h2><span>Schräger Sweep – die Aktion startet erst, wenn die Animation durch ist</span></div>
+  <div class="kit-stage" data-shot="buttons"><div class="kit-in">
+    <div class="kit-states">
+      <div class="kit-corner"></div>
+      <div class="kit-colhead">Standard</div><div class="kit-colhead kit-desk">Hover</div><div class="kit-colhead kit-desk">Tastatur-Fokus</div><div class="kit-colhead">Klick / Tippen</div><div class="kit-colhead">Deaktiviert</div>
+
+      <div class="kit-rowlabel">Gold · Haupt-Aktion</div>
+      <div data-cap="Standard"><a class="aa-btn aa-btn--gold" href="#buttons">Camp buchen</a></div>
+      <div class="kit-desk" data-cap="Hover"><a class="aa-btn aa-btn--gold" href="#buttons" data-force="hover">Camp buchen</a></div>
+      <div class="kit-desk" data-cap="Tastatur-Fokus"><a class="aa-btn aa-btn--gold" href="#buttons" data-force="focus">Camp buchen</a></div>
+      <div data-cap="Klick / Tippen"><a class="aa-btn aa-btn--gold" href="#buttons" data-force="sweep">Camp buchen</a></div>
+      <div data-cap="Deaktiviert"><a class="aa-btn aa-btn--gold" aria-disabled="true">Camp buchen</a></div>
+
+      <div class="kit-rowlabel">Solid · Zweit-Aktion</div>
+      <div data-cap="Standard"><a class="aa-btn aa-btn--solid" href="#buttons">Probetraining</a></div>
+      <div class="kit-desk" data-cap="Hover"><a class="aa-btn aa-btn--solid" href="#buttons" data-force="hover">Probetraining</a></div>
+      <div class="kit-desk" data-cap="Tastatur-Fokus"><a class="aa-btn aa-btn--solid" href="#buttons" data-force="focus">Probetraining</a></div>
+      <div data-cap="Klick / Tippen"><a class="aa-btn aa-btn--solid" href="#buttons" data-force="sweep">Probetraining</a></div>
+      <div data-cap="Deaktiviert"><a class="aa-btn aa-btn--solid" aria-disabled="true">Probetraining</a></div>
+
+      <div class="kit-rowlabel">Ghost · leise Aktion</div>
+      <div data-cap="Standard"><a class="aa-btn aa-btn--ghost" href="#buttons">Mehr erfahren</a></div>
+      <div class="kit-desk" data-cap="Hover"><a class="aa-btn aa-btn--ghost" href="#buttons" data-force="hover">Mehr erfahren</a></div>
+      <div class="kit-desk" data-cap="Tastatur-Fokus"><a class="aa-btn aa-btn--ghost" href="#buttons" data-force="focus">Mehr erfahren</a></div>
+      <div data-cap="Klick / Tippen"><a class="aa-btn aa-btn--ghost" href="#buttons" data-force="sweep">Mehr erfahren</a></div>
+      <div data-cap="Deaktiviert"><a class="aa-btn aa-btn--ghost" aria-disabled="true">Mehr erfahren</a></div>
+    </div>
+    <div class="kit-row" style="margin-top:36px">
+      <a class="aa-btn aa-btn--gold aa-btn--lg" href="#buttons">Jetzt anmelden <svg class="aa-ico"><use href="icons.svg#arrow-right"/></svg></a>
+      <a class="aa-btn aa-btn--gold aa-btn--sm" href="#buttons">Klein</a>
+      <button class="aa-btn aa-btn--solid is-loading" type="button"><span class="aa-btn__label">Wird gesendet</span><span class="aa-spinner" aria-hidden="true"></span></button>
+      <span class="kit-cap" style="margin:0">Groß · Klein · Lädt</span>
+    </div>
+  </div></div>
+</section>
+
+<!-- ============ LINKS ============ -->
+<section class="kit-sec" id="links">
+  <div class="kit-h"><h2>Links</h2></div>
+  <div class="kit-stage" data-shot="links"><div class="kit-in kit-2">
+    <div>
+      <p>Alle Termine stehen im <a class="aa-link" href="#links">Camp-Kalender</a>. Fragen zur Anmeldung beantworten wir gern per <a class="aa-link" href="#links" data-force="hover">E-Mail oder WhatsApp</a>.</p>
+      <span class="kit-cap cap-hover">Textlink · Standard und Hover</span><span class="kit-cap cap-touch">Textlink</span>
+    </div>
+    <div class="kit-row" style="gap:28px">
+      <a class="aa-link-arrow" href="#links">Alle Camps <svg class="aa-ico"><use href="icons.svg#arrow-right"/></svg></a>
+      <a class="aa-link-arrow" href="#links" data-force="hover">Alle Camps <svg class="aa-ico"><use href="icons.svg#arrow-right"/></svg></a>
+      <span class="kit-cap cap-hover" style="width:100%;margin:0">Pfeil-Link · Standard und Hover</span><span class="kit-cap cap-touch" style="width:100%;margin:0">Pfeil-Link</span>
+    </div>
+  </div></div>
+</section>
+
+<!-- ============ NAVIGATION ============ -->
+<section class="kit-sec" id="nav">
+  <div class="kit-h"><h2>Navigation</h2><span>Kopfzeile bleibt in beiden Modi dunkel (Heritage-Rahmen)</span></div>
+  <div class="kit-stage kit-stage--bleed" data-shot="nav">
+    <header class="aa-header">
+      <div class="aa-container aa-header__bar">
+        <a class="aa-header__brand" href="#nav" aria-label="Athlete Academy – Startseite"><span class="aa-logo aa-logo--h"></span></a>
+        <nav class="aa-nav" aria-label="Hauptnavigation">
+          <ul class="aa-nav__list">
+            <li><a href="#nav">Training</a></li>
+            <li><a href="#nav" aria-current="page">Camps</a></li>
+            <li><a href="#nav" data-force="hover">Über uns</a></li>
+            <li><a href="#nav">Kontakt</a></li>
+          </ul>
+          <a class="aa-btn aa-btn--gold aa-btn--sm" href="#nav" style="margin-left:14px">Probetraining</a>
+        </nav>
+        <button class="aa-burger" type="button" aria-label="Menü öffnen" aria-expanded="false"><svg class="aa-ico"><use href="icons.svg#menu"/></svg></button>
+      </div>
+    </header>
+    <div style="height:48px;background:var(--bg)"></div>
+  </div>
+</section>
+
+<section class="kit-sec" id="menu">
+  <div class="kit-h"><h2>Menü am Handy</h2><span>Öffnet über das Burger-Symbol, schließt mit X oder Esc</span></div>
+  <div class="kit-stage kit-stage--bleed" data-shot="menu">
+    <div class="kit-menu-demo">
+      <div class="aa-menu is-open" aria-label="Menü">
+        <div class="aa-menu__top">
+          <span class="aa-logo aa-logo--h" style="--logo-h:34px"></span>
+          <button class="aa-burger" type="button" aria-label="Menü schließen" style="display:inline-flex"><svg class="aa-ico"><use href="icons.svg#x"/></svg></button>
+        </div>
+        <ul class="aa-menu__list">
+          <li><a href="#menu">Training <svg class="aa-ico"><use href="icons.svg#chevron-right"/></svg></a></li>
+          <li><a href="#menu" aria-current="page">Camps <svg class="aa-ico"><use href="icons.svg#chevron-right"/></svg></a></li>
+          <li><a href="#menu">Über uns <svg class="aa-ico"><use href="icons.svg#chevron-right"/></svg></a></li>
+          <li><a href="#menu">Kontakt <svg class="aa-ico"><use href="icons.svg#chevron-right"/></svg></a></li>
+        </ul>
+        <div class="aa-menu__foot">
+          <a class="aa-btn aa-btn--gold aa-btn--block" href="#menu">Probetraining anfragen</a>
+          <a class="aa-btn aa-btn--ghost-frame aa-btn--block" href="#menu">Camp buchen</a>
+          <div class="aa-menu__contact"><a href="#menu"><svg class="aa-ico aa-ico--sm"><use href="icons.svg#mail"/></svg>E-Mail</a><a href="#menu"><svg class="aa-ico aa-ico--sm"><use href="icons.svg#chat"/></svg>WhatsApp</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAMP-CARDS ============ -->
+<section class="kit-sec" id="camps">
+  <div class="kit-h"><h2>Camp-Karten</h2><span>Weiches Gold-Spotlight immer, beim Hover hebt sich die Karte federnd an</span></div>
+  <div class="kit-stage" data-shot="camp-cards"><div class="kit-in aa-grid aa-grid--3">
+    <article class="aa-card aa-camp">
+      <div class="aa-camp__media"><div class="aa-art"><svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#C4AC74" stroke-opacity=".38" stroke-width="1.4"><path d="M200 0v225"/><circle cx="200" cy="112" r="48"/><circle cx="200" cy="112" r="2.6" fill="#C4AC74"/><path d="M0 44h64v137H0M0 80h22v65H0M400 44h-64v137h64M400 80h-22v65h22"/><path d="M64 88a28 28 0 0 1 0 49M336 88a28 28 0 0 0 0 49"/></svg></div>
+        <div class="aa-camp__date"><b>13–15</b><span>Okt</span></div><span class="aa-camp__status aa-badge aa-badge--free">Plätze frei</span></div>
+      <div class="aa-camp__body">
+        <span class="aa-kicker" style="margin:0">Jahrgänge 2012–2015</span>
+        <h3>Herbstcamp Technik</h3>
+        <ul class="aa-facts"><li><svg class="aa-ico"><use href="icons.svg#clock"/></svg>3 Tage · 9:30–15:00 Uhr</li><li><svg class="aa-ico"><use href="icons.svg#pin"/></svg>Sportanlage Süd</li></ul>
+        <div class="aa-price"><span class="aa-price__n">169 €</span><span class="aa-price__old">189 €</span><span class="aa-price__note">Frühbucher bis 30.09.</span></div>
+        <div class="aa-seats"><div class="aa-seats__bar"><i style="width:42%"></i></div><div class="aa-seats__label"><span>Noch 9 von 16 Plätzen</span></div></div>
+        <a class="aa-btn aa-btn--gold" href="#camps">Platz sichern</a>
+      </div>
+    </article>
+    <article class="aa-card aa-camp" data-force="hover">
+      <div class="aa-camp__media"><div class="aa-art aa-art--b"><svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#C4AC74" stroke-opacity=".42" stroke-width="1.4"><path d="M30 190C110 150 150 60 230 70s120 90 150 40" stroke-dasharray="4 7"/><g fill="#C4AC74" fill-opacity=".55" stroke="none"><path d="M70 170l9-22 9 22z"/><path d="M140 118l9-22 9 22z"/><path d="M215 86l9-22 9 22z"/><path d="M290 112l9-22 9 22z"/><path d="M350 100l9-22 9 22z"/></g><circle cx="42" cy="186" r="10"/></svg></div>
+        <div class="aa-camp__date"><b>27–30</b><span>Okt</span></div><span class="aa-camp__status aa-badge aa-badge--few">Fast voll</span></div>
+      <div class="aa-camp__body">
+        <span class="aa-kicker" style="margin:0">Jahrgänge 2010–2013</span>
+        <h3>Speed &amp; Dribbling</h3>
+        <ul class="aa-facts"><li><svg class="aa-ico"><use href="icons.svg#clock"/></svg>4 Tage · 10:00–15:30 Uhr</li><li><svg class="aa-ico"><use href="icons.svg#pin"/></svg>Kunstrasen am Stadtpark</li></ul>
+        <div class="aa-price"><span class="aa-price__n">229 €</span><span class="aa-price__note">Geschwister −10 %</span></div>
+        <div class="aa-seats"><div class="aa-seats__bar"><i style="width:88%"></i></div><div class="aa-seats__label"><span>Noch 2 von 16 Plätzen</span></div></div>
+        <a class="aa-btn aa-btn--gold" href="#camps">Platz sichern</a>
+      </div>
+    </article>
+    <article class="aa-card aa-camp">
+      <div class="aa-camp__media"><div class="aa-art aa-art--c"><svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#C4AC74" stroke-opacity=".4" stroke-width="1.4"><path d="M110 225V70h180v155"/><path d="M110 70l-30 30v125M290 70l30 30v125M80 100h240" stroke-opacity=".25"/><path d="M130 70v155M150 70v155M170 70v155M190 70v155M210 70v155M230 70v155M250 70v155M270 70v155M110 95h180M110 120h180M110 145h180M110 170h180M110 195h180" stroke-opacity=".16"/></svg></div>
+        <div class="aa-camp__date"><b>22–23</b><span>Dez</span></div><span class="aa-camp__status aa-badge aa-badge--full">Ausgebucht</span></div>
+      <div class="aa-camp__body">
+        <span class="aa-kicker" style="margin:0">Jahrgänge 2011–2016</span>
+        <h3>Wintercamp Torabschluss</h3>
+        <ul class="aa-facts"><li><svg class="aa-ico"><use href="icons.svg#clock"/></svg>2 Tage · 10:00–14:00 Uhr</li><li><svg class="aa-ico"><use href="icons.svg#pin"/></svg>Soccerhalle West</li></ul>
+        <div class="aa-price"><span class="aa-price__n">119 €</span></div>
+        <div class="aa-seats"><div class="aa-seats__bar"><i style="width:100%"></i></div><div class="aa-seats__label"><span>Alle 12 Plätze vergeben</span></div></div>
+        <a class="aa-btn aa-btn--ghost" href="#camps">Auf die Warteliste</a>
+      </div>
+    </article>
+  </div>
+  <div class="kit-in"><span class="kit-cap cap-hover">Links: Standard · Mitte: Hover (hebt sich an, Spotlight wird stärker) · Rechts: ausgebucht mit Warteliste</span><span class="kit-cap cap-touch">Oben: Plätze frei · Mitte: fast voll · Unten: ausgebucht mit Warteliste</span></div>
+  </div>
+</section>
+
+<!-- ============ TRAININGSPAKETE ============ -->
+<section class="kit-sec" id="packages">
+  <div class="kit-h"><h2>Angebots-Karten</h2></div>
+  <div class="kit-stage" data-shot="packages"><div class="kit-in aa-grid aa-grid--3">
+    <article class="aa-card aa-package aa-card--sm">
+      <div class="aa-package__icon"><svg class="aa-ico"><use href="icons.svg#target"/></svg></div>
+      <h3>Einzeltraining</h3><p class="aa-meta" style="margin:0">60 Minuten · eins zu eins</p>
+      <ul class="aa-checks"><li><svg class="aa-ico"><use href="icons.svg#check"/></svg>Trainingsplan nach Stärken und Schwächen</li><li><svg class="aa-ico"><use href="icons.svg#check"/></svg>Videoanalyse nach jeder vierten Einheit</li><li><svg class="aa-ico"><use href="icons.svg#check"/></svg>Termine flexibel am Nachmittag</li></ul>
+      <div class="aa-price" style="margin-bottom:20px"><span class="aa-price__n">55 €</span><span class="aa-meta">pro Einheit</span></div>
+      <a class="aa-btn aa-btn--solid" href="#packages">Termin anfragen</a>
+    </article>
+    <article class="aa-card aa-package aa-package--featured aa-card--sm">
+      <span class="aa-badge aa-badge--gold aa-package__flag">Beliebt</span>
+      <div class="aa-package__icon"><svg class="aa-ico"><use href="icons.svg#bolt"/></svg></div>
+      <h3>10er-Karte</h3><p class="aa-meta" style="margin:0">10 × 60 Minuten · eins zu eins</p>
+      <ul class="aa-checks"><li><svg class="aa-ico"><use href="icons.svg#check"/></svg>Alles aus dem Einzeltraining</li><li><svg class="aa-ico"><use href="icons.svg#check"/></svg>Entwicklungsbericht für die Eltern</li><li><svg class="aa-ico"><use href="icons.svg#check"/></svg>6 Monate gültig</li></ul>
+      <div class="aa-price" style="margin-bottom:20px"><span class="aa-price__n">490 €</span><span class="aa-meta">statt 550 €</span></div>
+      <a class="aa-btn aa-btn--gold" href="#packages">Karte anfragen</a>
+    </article>
+    <article class="aa-card aa-package aa-card--sm" data-force="hover">
+      <div class="aa-package__icon"><svg class="aa-ico"><use href="icons.svg#users"/></svg></div>
+      <h3>Kleingruppe</h3><p class="aa-meta" style="margin:0">75 Minuten · 2 bis 4 Spieler</p>
+      <ul class="aa-checks"><li><svg class="aa-ico"><use href="icons.svg#check"/></svg>Spielnahe Übungen mit Gegenspieler</li><li><svg class="aa-ico"><use href="icons.svg#check"/></svg>Gruppen nach Alter und Niveau</li><li><svg class="aa-ico"><use href="icons.svg#check"/></svg>Fester Wochentermin</li></ul>
+      <div class="aa-price" style="margin-bottom:20px"><span class="aa-price__n">35 €</span><span class="aa-meta">pro Spieler</span></div>
+      <a class="aa-btn aa-btn--solid" href="#packages">Platz anfragen</a>
+    </article>
+  </div>
+  <div class="kit-in"><span class="kit-cap cap-hover">Mitte: hervorgehobenes Angebot · Rechts: Hover-Zustand</span><span class="kit-cap cap-touch">Mitte: hervorgehobenes Angebot</span></div>
+  </div>
+</section>
+
+<!-- ============ ZAHLEN & STIMMEN ============ -->
+<section class="kit-sec" id="proof">
+  <div class="kit-h"><h2>Zahlen &amp; Stimmen</h2></div>
+  <div class="kit-stage" data-shot="proof"><div class="kit-in" style="display:grid;gap:32px">
+    <div class="aa-grid aa-grid--4">
+      <div class="aa-card aa-stat aa-card--sm"><span class="aa-stat-n">1:1</span><span class="aa-stat__label">Betreuung</span></div>
+      <div class="aa-card aa-stat aa-card--sm"><span class="aa-stat-n">U8–U17</span><span class="aa-stat__label">Altersklassen</span></div>
+      <div class="aa-card aa-stat aa-card--sm"><span class="aa-stat-n">60</span><span class="aa-stat__label">Minuten pro Einheit</span></div>
+      <div class="aa-card aa-stat aa-card--sm"><span class="aa-stat-n">16</span><span class="aa-stat__label">Plätze pro Camp</span></div>
+    </div>
+    <div class="aa-grid aa-grid--2">
+      <figure class="aa-card aa-quote" style="margin:0">
+        <div class="aa-quote__mark" aria-hidden="true">„</div>
+        <blockquote>Nach acht Einheiten nimmt Leon den Ball viel sauberer an und traut sich endlich ins Eins-gegen-eins. Wir sehen den Unterschied in jedem Spiel.</blockquote>
+        <figcaption><span class="aa-avatar">SK</span><span><span class="aa-stars"><svg class="aa-ico"><use href="icons.svg#star"/></svg><svg class="aa-ico"><use href="icons.svg#star"/></svg><svg class="aa-ico"><use href="icons.svg#star"/></svg><svg class="aa-ico"><use href="icons.svg#star"/></svg><svg class="aa-ico"><use href="icons.svg#star"/></svg></span><cite>Sandra K.</cite><span class="aa-meta">Mutter von Leon, U13</span></span></figcaption>
+      </figure>
+      <figure class="aa-card aa-quote" style="margin:0">
+        <div class="aa-quote__mark" aria-hidden="true">„</div>
+        <blockquote>Das Camp war das Beste an den Ferien. Die Trainer erklären jede Übung genau, und am letzten Tag gab es ein richtiges Turnier.</blockquote>
+        <figcaption><span class="aa-avatar">M</span><span><span class="aa-stars"><svg class="aa-ico"><use href="icons.svg#star"/></svg><svg class="aa-ico"><use href="icons.svg#star"/></svg><svg class="aa-ico"><use href="icons.svg#star"/></svg><svg class="aa-ico"><use href="icons.svg#star"/></svg><svg class="aa-ico"><use href="icons.svg#star"/></svg></span><cite>Mika, 11 Jahre</cite><span class="aa-meta">Herbstcamp 2025</span></span></figcaption>
+      </figure>
+    </div>
+  </div></div>
+</section>
+
+<!-- ============ BADGES ============ -->
+<section class="kit-sec" id="badges">
+  <div class="kit-h"><h2>Status &amp; Auswahl-Chips</h2></div>
+  <div class="kit-stage" data-shot="badges"><div class="kit-in" style="display:grid;gap:28px">
+    <div><div class="kit-row"><span class="aa-badge aa-badge--free">Plätze frei</span><span class="aa-badge aa-badge--few">Fast voll</span><span class="aa-badge aa-badge--full">Ausgebucht</span><span class="aa-badge aa-badge--wait">Warteliste</span></div><span class="kit-cap">Camp-Status (öffentliche Seite)</span></div>
+    <div><div class="kit-row"><span class="aa-badge aa-badge--paid">Bezahlt</span><span class="aa-badge aa-badge--open">Zahlung offen</span><span class="aa-badge aa-badge--draft">Entwurf</span><span class="aa-badge aa-badge--gold">Neu</span><span class="aa-badge aa-badge--solid">Frühbucher</span></div><span class="kit-cap">Verwaltung &amp; Hervorhebung</span></div>
+    <div><div class="kit-row"><button class="aa-chip" aria-pressed="true" type="button">Alle</button><button class="aa-chip" aria-pressed="false" type="button">2010–2012</button><button class="aa-chip" aria-pressed="false" type="button">2013–2015</button><button class="aa-chip" aria-pressed="false" type="button">2016+</button></div><span class="kit-cap">Filter nach Jahrgang</span></div>
+  </div></div>
+</section>
+
+<!-- ============ FORMULARFELDER ============ -->
+<section class="kit-sec" id="inputs">
+  <div class="kit-h"><h2>Formularfelder</h2></div>
+  <div class="kit-stage" data-shot="inputs"><div class="kit-in"><div class="aa-form" style="max-width:820px">
+    <div class="aa-form__row">
+      <div class="aa-field"><label for="k1">Vorname des Kindes <span class="aa-req">*</span></label><input class="aa-input" id="k1" value="Leon" autocomplete="off"><span class="kit-cap" style="margin:0">Standard</span></div>
+      <div class="aa-field"><label for="k2">E-Mail <span class="aa-req">*</span></label><input class="aa-input is-focus" id="k2" placeholder="name@beispiel.de" type="email"><span class="kit-cap" style="margin:0">Fokus</span></div>
+    </div>
+    <div class="aa-form__row">
+      <div class="aa-field"><label for="k3">Telefon für Rückfragen <span class="aa-req">*</span></label><input class="aa-input" id="k3" value="0151 23" aria-invalid="true" aria-describedby="k3e"><span class="aa-error" id="k3e"><svg class="aa-ico"><use href="icons.svg#alert"/></svg>Bitte eine vollständige Nummer eingeben.</span></div>
+      <div class="aa-field"><label for="k4">Jahrgang</label><select class="aa-select" id="k4"><option>2013</option></select><span class="aa-hint">Bestimmt die passende Trainingsgruppe.</span></div>
+    </div>
+    <div class="aa-form__row">
+      <div class="aa-field"><label for="k5">Verein (optional)</label><input class="aa-input" id="k5" value="TSV Beispielstadt" disabled><span class="kit-cap" style="margin:0">Deaktiviert</span></div>
+      <div class="aa-field"><label for="k6">Hinweise zu Gesundheit</label><textarea class="aa-textarea" id="k6" placeholder="z. B. Allergien, Asthma-Spray"></textarea></div>
+    </div>
+    <label class="aa-check"><input type="checkbox" checked> Ich habe die Teilnahmebedingungen gelesen und akzeptiere sie.</label>
+    <label class="aa-check"><input type="checkbox"> Fotos meines Kindes dürfen auf der Website und bei Instagram erscheinen (freiwillig).</label>
+  </div></div></div>
+</section>
+
+<!-- ============ ZAHLUNGSWAHL ============ -->
+<section class="kit-sec" id="choice">
+  <div class="kit-h"><h2>Zahlungswahl</h2><span>Letzter Schritt der Anmeldung</span></div>
+  <div class="kit-stage" data-shot="choice"><div class="kit-in" style="max-width:820px">
+    <fieldset class="aa-fieldset"><legend class="aa-label">Wie möchten Sie bezahlen?</legend>
+      <div class="aa-choices">
+        <label class="aa-choice"><input type="radio" name="pay" checked><span class="aa-choice__dot"></span>
+          <span class="aa-choice__title"><svg class="aa-ico"><use href="icons.svg#card"/></svg>Jetzt online bezahlen</span>
+          <span class="aa-choice__text">Platz sofort fest gebucht. Die Rechnung kommt per E-Mail.</span>
+          <span class="aa-choice__tags"><span>Karte</span><span>PayPal</span><span>Apple Pay</span><span>Google Pay</span><span>Lastschrift</span></span></label>
+        <label class="aa-choice"><input type="radio" name="pay"><span class="aa-choice__dot"></span>
+          <span class="aa-choice__title"><svg class="aa-ico"><use href="icons.svg#invoice"/></svg>Rechnung per E-Mail</span>
+          <span class="aa-choice__text">Überweisung innerhalb von 7 Tagen. Der Platz ist bis dahin reserviert.</span></label>
+      </div>
+    </fieldset>
+    <div class="aa-alert aa-alert--info" style="margin:22px 0"><svg class="aa-ico"><use href="icons.svg#info"/></svg><b>Gesamt: 169 €</b><p>Herbstcamp Technik · Frühbucherpreis · inkl. Trikot und Mittagessen</p></div>
+    <button class="aa-btn aa-btn--gold aa-btn--lg aa-btn--block" type="button">Zahlungspflichtig anmelden</button>
+  </div></div>
+</section>
+
+<!-- ============ STEPPER ============ -->
+<section class="kit-sec" id="stepper">
+  <div class="kit-h"><h2>Fortschritt</h2></div>
+  <div class="kit-stage" data-shot="stepper"><div class="kit-in" style="max-width:640px;display:grid;gap:36px">
+    <ol class="aa-steps"><li class="is-current">Kind</li><li>Eltern</li><li>Zahlung</li></ol>
+    <ol class="aa-steps"><li class="is-done">Kind</li><li class="is-current">Eltern</li><li>Zahlung</li></ol>
+    <ol class="aa-steps"><li class="is-done">Kind</li><li class="is-done">Eltern</li><li class="is-current">Zahlung</li></ol>
+  </div></div>
+</section>
+
+<!-- ============ HINWEISE ============ -->
+<section class="kit-sec" id="alerts">
+  <div class="kit-h"><h2>Hinweise</h2></div>
+  <div class="kit-stage" data-shot="alerts"><div class="kit-in" style="display:grid;gap:14px;max-width:760px">
+    <div class="aa-alert aa-alert--success"><svg class="aa-ico"><use href="icons.svg#check-circle"/></svg><b>Anmeldung eingegangen</b><p>Die Bestätigung ist unterwegs an sandra@beispiel.de.</p></div>
+    <div class="aa-alert aa-alert--warning"><svg class="aa-ico"><use href="icons.svg#hourglass"/></svg><b>Nur noch 2 Plätze frei</b><p>Der Frühbucherpreis gilt bis 30. September.</p></div>
+    <div class="aa-alert aa-alert--danger"><svg class="aa-ico"><use href="icons.svg#alert"/></svg><b>Bitte zwei Angaben prüfen</b><p>Telefonnummer und Geburtsdatum sind noch unvollständig.</p></div>
+    <div class="aa-alert aa-alert--info"><svg class="aa-ico"><use href="icons.svg#info"/></svg><b>Gut zu wissen</b><p>Bei Regen trainieren wir in der Soccerhalle West.</p></div>
+    <div><span class="aa-toast"><svg class="aa-ico"><use href="icons.svg#check-circle"/></svg>Camp gespeichert und veröffentlicht</span><span class="kit-cap">Kurzmeldung (verschwindet nach 4 Sekunden)</span></div>
+  </div></div>
+</section>
+
+<!-- ============ SEKTIONSKOPF ============ -->
+<section class="kit-sec" id="section-head">
+  <div class="kit-h"><h2>Sektionskopf</h2></div>
+  <div class="kit-stage" data-shot="section-head"><div class="kit-in">
+    <header class="aa-section-head">
+      <span class="aa-kicker">Ferienangebot</span>
+      <h2>Camps, die im Kopf bleiben</h2>
+      <span class="aa-rule"></span>
+      <p class="aa-lead">Drei bis fünf Tage Fußball mit festen Gruppen, klaren Trainingszielen und einem Abschlussturnier am letzten Tag.</p>
+      <a class="aa-link-arrow" href="#section-head">Alle Camps ansehen <svg class="aa-ico"><use href="icons.svg#arrow-right"/></svg></a>
+    </header>
+  </div></div>
+</section>
+
+<!-- ============ HERO ============ -->
+<section class="kit-sec" id="hero">
+  <div class="kit-h"><h2>Hero</h2><span>Einstieg der Startseite</span></div>
+  <div class="kit-stage kit-stage--bleed" data-shot="hero">
+    <section class="aa-hero">
+      <div class="aa-hero__art aa-art"><svg viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#C4AC74" stroke-opacity=".16" stroke-width="1.5"><path d="M960 0v800"/><circle cx="960" cy="400" r="170"/><circle cx="960" cy="400" r="4" fill="#C4AC74" fill-opacity=".3"/><path d="M1440 160h-190v480h190M1440 280h-70v240h70"/><path d="M1250 330a90 90 0 0 0 0 140"/></svg></div>
+      <span class="aa-hero__mark" aria-hidden="true"></span>
+      <div class="aa-container"><div class="aa-hero__inner">
+        <span class="aa-kicker">Individualtraining · Fußball</span>
+        <h1 class="aa-display">Stärker am Ball.</h1>
+        <p class="aa-claim">Werde besser. Jeden Tag.</p>
+        <p class="aa-lead">Einzeltraining, Kleingruppen und Ferien-Camps für junge Spielerinnen und Spieler von U8 bis U17.</p>
+        <div class="aa-btn-row"><a class="aa-btn aa-btn--gold aa-btn--lg" href="#hero">Camp finden</a><a class="aa-btn aa-btn--ghost-frame aa-btn--lg" href="#hero">Probetraining anfragen</a></div>
+        <div class="aa-hero__stats">
+          <div><span class="aa-stat-n">1:1</span><span class="aa-stat__label">Betreuung</span></div>
+          <div><span class="aa-stat-n">U8–U17</span><span class="aa-stat__label">Altersklassen</span></div>
+          <div><span class="aa-stat-n">16</span><span class="aa-stat__label">Plätze pro Camp</span></div>
+        </div>
+      </div></div>
+    </section>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="kit-sec" id="cta">
+  <div class="kit-h"><h2>Handlungsaufruf</h2></div>
+  <div class="kit-stage" data-shot="cta"><div class="kit-in">
+    <div class="aa-cta">
+      <div><h2>Bereit für das erste Training?</h2><p>Das Probetraining dauert 45 Minuten und kostet nichts.</p></div>
+      <a class="aa-btn aa-btn--ink aa-btn--lg" href="#cta">Probetraining anfragen</a>
+    </div>
+  </div></div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<section class="kit-sec" id="footer">
+  <div class="kit-h"><h2>Fußzeile</h2></div>
+  <div class="kit-stage kit-stage--bleed" data-shot="footer">
+    <footer class="aa-footer">
+      <div class="aa-container">
+        <div class="aa-footer__grid">
+          <div class="aa-footer__brand"><span class="aa-logo aa-logo--h" style="--logo-h:38px"></span><p>Individualtraining und Ferien-Camps für junge Fußballerinnen und Fußballer.</p>
+            <div class="aa-social"><a href="#footer" aria-label="Instagram"><svg class="aa-ico aa-ico--sm"><use href="icons.svg#image"/></svg></a><a href="#footer" aria-label="WhatsApp"><svg class="aa-ico aa-ico--sm"><use href="icons.svg#chat"/></svg></a><a href="#footer" aria-label="E-Mail"><svg class="aa-ico aa-ico--sm"><use href="icons.svg#mail"/></svg></a></div></div>
+          <div><h4>Angebot</h4><ul><li><a href="#footer">Einzeltraining</a></li><li><a href="#footer">Kleingruppen</a></li><li><a href="#footer">Camps</a></li></ul></div>
+          <div><h4>Academy</h4><ul><li><a href="#footer">Über uns</a></li><li><a href="#footer">Trainer</a></li><li><a href="#footer">Stimmen</a></li></ul></div>
+          <div><h4>Kontakt</h4><ul><li><a href="#footer">E-Mail schreiben</a></li><li><a href="#footer">WhatsApp</a></li><li><a href="#footer">Probetraining</a></li></ul></div>
+        </div>
+        <div class="aa-footer__bottom"><span>© 2026 Athlete Academy</span><span><a href="#footer">Impressum</a> · <a href="#footer">Datenschutz</a> · <a href="#footer">Teilnahmebedingungen</a></span></div>
+      </div>
+    </footer>
+  </div>
+</section>
+
+<script>
+  // Kit-Leiste: Schrift und Modus umschalten, Rollen-Namen einsetzen
+  (function () {
+    var sets = { a: { display: 'Barlow Condensed 700', brand: 'Cinzel 700', ui: 'Barlow Condensed 600', body: 'Barlow 400/600', name: 'A · Athletic + Heritage' },
+                 b: { display: 'Cinzel 700', brand: 'Cinzel 700', ui: 'Montserrat 600', body: 'Montserrat 400/600', name: 'B · Heritage' },
+                 c: { display: 'Oswald 600', brand: 'Oswald 700', ui: 'Oswald 500', body: 'Inter 400/600', name: 'C · Sportlich' } };
+    function paint() {
+      var f = AA.font(), t = AA.theme(), s = sets[f];
+      document.querySelectorAll('[data-group="font"] button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.v === f)); });
+      document.querySelectorAll('[data-group="theme"] button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.v === t)); });
+      document.querySelectorAll('[data-role]').forEach(function (el) { el.textContent = s[el.dataset.role]; });
+      var fn = document.querySelector('[data-fontnames]'); if (fn) fn.textContent = 'Schriftsatz ' + s.name;
+    }
+    document.addEventListener('click', function (e) {
+      var b = e.target.closest('.kit-seg button'); if (!b) return;
+      if (b.parentNode.dataset.group === 'font') AA.setFont(b.dataset.v); else AA.setTheme(b.dataset.v);
+      paint();
+    });
+    paint();
+  })();
+</script>
+</body>
+</html>

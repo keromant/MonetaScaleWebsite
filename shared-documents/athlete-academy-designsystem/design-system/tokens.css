@@ -1,0 +1,189 @@
+/* ==========================================================================
+   Athlete Academy – Design-Tokens
+   GENERIERT von tools/build-tokens.py aus tokens.json + fontsets.json.
+   Nicht von Hand ändern – Werte in den JSON-Dateien pflegen.
+   Theme: folgt der Systemeinstellung; html[data-theme="light|dark"] erzwingt.
+   Schrift: html[data-font="a|b|c"] (Standard a).
+   ========================================================================== */
+@font-face{font-family:"Barlow";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/barlow-latin-400-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Barlow";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/barlow-latin-500-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Barlow";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/barlow-latin-600-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Barlow";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/barlow-latin-700-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/barlow-condensed-latin-500-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/barlow-condensed-latin-600-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/barlow-condensed-latin-700-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Cinzel";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/cinzel-latin-600-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Cinzel";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/cinzel-latin-700-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/montserrat-latin-400-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/montserrat-latin-500-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/montserrat-latin-600-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Montserrat";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/montserrat-latin-700-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Oswald";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/oswald-latin-500-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Oswald";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/oswald-latin-600-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Oswald";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/oswald-latin-700-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/inter-latin-400-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/inter-latin-500-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/inter-latin-600-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/inter-latin-700-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+:root {
+  color-scheme: light;
+  /* Primitive (nur für Ausnahmen, sonst Rollen-Tokens nutzen) */
+  --aa-gold-100:#F1EADB;
+  --aa-gold-200:#E2D5B6;
+  --aa-gold-300:#D6C499;
+  --aa-gold-400:#C4AC74;
+  --aa-gold-500:#A08850;
+  --aa-gold-700:#7A642F;
+  --aa-gold-900:#4A3C1C;
+  --aa-ink-950:#0E0D0B;
+  --aa-ink-900:#171614;
+  --aa-ink-850:#1C1A17;
+  --aa-ink-800:#221F1B;
+  --aa-ink-700:#2E2A24;
+  --aa-stone-600:#7A7366;
+  --aa-stone-500:#8F887B;
+  --aa-stone-400:#A39C8E;
+  --aa-stone-700:#5E5A52;
+  --aa-paper-50:#FFFFFF;
+  --aa-paper-100:#FBF9F4;
+  --aa-paper-200:#F7F4EE;
+  --aa-paper-300:#EFEAE0;
+  --aa-text-900:#16140F;
+  --aa-text-50:#F3EEE3;
+  /* Heritage-Rahmen: Header, Hero, Footer in beiden Modi dunkel */
+  --frame-bg:#0E0D0B;
+  --frame-surface:#171614;
+  --frame-text:#F3EEE3;
+  --frame-muted:#A39C8E;
+  --frame-line:rgba(243,238,227,.10);
+  /* Rollen – Hell */
+  --bg:#F7F4EE;
+  --bg-alt:#EFEAE0;
+  --surface:#FFFFFF;
+  --raised:#FBF9F4;
+  --line:rgba(22,20,15,.12);
+  --line-strong:#8F887B;
+  --text:#16140F;
+  --text-muted:#5E5A52;
+  --gold:#C4AC74;
+  --gold-text:#7A642F;
+  --gold-deep:#A08850;
+  --on-gold:#16140F;
+  --solid:#16140F;
+  --on-solid:#F7F4EE;
+  --focus:#7A642F;
+  --success:#1E7A4C;
+  --success-soft:rgba(30,122,76,.12);
+  --warning:#8F5B00;
+  --warning-soft:rgba(143,91,0,.12);
+  --danger:#B3261E;
+  --danger-soft:rgba(179,38,30,.10);
+  --accent-rgb:160,136,80;
+  /* Effekte (globale Signatur: Pop-Hover + Spotlight) */
+  --pop-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --pop-lift: translateY(-4px) scale(1.03);
+  --pop-lift-sm: translateY(-4px) scale(1.06);
+  --ui-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --glow-soft:   0 0 0 1px rgba(var(--accent-rgb),.34), 0 16px 34px -16px rgba(var(--accent-rgb),.30), 0 5px 14px rgba(var(--accent-rgb),.10);
+  --glow-strong: 0 0 0 2px rgba(var(--accent-rgb),.78), 0 30px 55px -12px rgba(var(--accent-rgb),.42), 0 12px 26px rgba(var(--accent-rgb),.20);
+  /* Form & Raster */
+  --r-xs: 4px; --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-round: 999px;
+  --container: 1200px; --gutter: clamp(16px, 4vw, 40px);
+  --s-1: 8px; --s-2: 16px; --s-3: 24px; --s-4: 32px; --s-5: 48px; --s-6: 64px; --s-7: 96px;
+  --section-y: clamp(64px, 9vw, 112px);
+  /* Schriftsatz A (Standard) */
+  --font-display:"Barlow Condensed", "Arial Narrow", Arial, sans-serif; --display-weight:700; --display-transform:uppercase;
+  --display-tracking:0.005em; --display-scale:1.0; --display-leading:0.98;
+  --font-brand:"Cinzel", Georgia, "Times New Roman", serif; --brand-weight:700; --brand-transform:none;
+  --brand-tracking:0.01em; --brand-scale:1.0;
+  --font-ui:"Barlow Condensed", "Arial Narrow", Arial, sans-serif; --ui-weight:600; --ui-transform:uppercase;
+  --ui-tracking:0.12em; --ui-scale:1.08;
+  --font-body:"Barlow", system-ui, -apple-system, "Segoe UI", Arial, sans-serif; --body-weight:400; --body-strong:600; --body-scale:1.04;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg:#0E0D0B;
+    --bg-alt:#13120F;
+    --surface:#171614;
+    --raised:#221F1B;
+    --line:rgba(243,238,227,.10);
+    --line-strong:#7A7366;
+    --text:#F3EEE3;
+    --text-muted:#A39C8E;
+    --gold:#C4AC74;
+    --gold-text:#C4AC74;
+    --gold-deep:#A08850;
+    --on-gold:#16140F;
+    --solid:#F3EEE3;
+    --on-solid:#16140F;
+    --focus:#C4AC74;
+    --success:#57C08D;
+    --success-soft:rgba(87,192,141,.14);
+    --warning:#E3A64A;
+    --warning-soft:rgba(227,166,74,.14);
+    --danger:#F07B70;
+    --danger-soft:rgba(240,123,112,.14);
+    --accent-rgb:196,172,116;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg:#0E0D0B;
+  --bg-alt:#13120F;
+  --surface:#171614;
+  --raised:#221F1B;
+  --line:rgba(243,238,227,.10);
+  --line-strong:#7A7366;
+  --text:#F3EEE3;
+  --text-muted:#A39C8E;
+  --gold:#C4AC74;
+  --gold-text:#C4AC74;
+  --gold-deep:#A08850;
+  --on-gold:#16140F;
+  --solid:#F3EEE3;
+  --on-solid:#16140F;
+  --focus:#C4AC74;
+  --success:#57C08D;
+  --success-soft:rgba(87,192,141,.14);
+  --warning:#E3A64A;
+  --warning-soft:rgba(227,166,74,.14);
+  --danger:#F07B70;
+  --danger-soft:rgba(240,123,112,.14);
+  --accent-rgb:196,172,116;
+}
+
+/* Schriftsatz A – Athletic + Heritage */
+:root[data-font="a"] {
+  --font-display:"Barlow Condensed", "Arial Narrow", Arial, sans-serif; --display-weight:700; --display-transform:uppercase;
+  --display-tracking:0.005em; --display-scale:1.0; --display-leading:0.98;
+  --font-brand:"Cinzel", Georgia, "Times New Roman", serif; --brand-weight:700; --brand-transform:none;
+  --brand-tracking:0.01em; --brand-scale:1.0;
+  --font-ui:"Barlow Condensed", "Arial Narrow", Arial, sans-serif; --ui-weight:600; --ui-transform:uppercase;
+  --ui-tracking:0.12em; --ui-scale:1.08;
+  --font-body:"Barlow", system-ui, -apple-system, "Segoe UI", Arial, sans-serif; --body-weight:400; --body-strong:600; --body-scale:1.04;
+}
+
+/* Schriftsatz B – Heritage */
+:root[data-font="b"] {
+  --font-display:"Cinzel", Georgia, "Times New Roman", serif; --display-weight:700; --display-transform:none;
+  --display-tracking:0.01em; --display-scale:0.74; --display-leading:1.12;
+  --font-brand:"Cinzel", Georgia, "Times New Roman", serif; --brand-weight:700; --brand-transform:none;
+  --brand-tracking:0.01em; --brand-scale:1.0;
+  --font-ui:"Montserrat", system-ui, -apple-system, "Segoe UI", Arial, sans-serif; --ui-weight:600; --ui-transform:uppercase;
+  --ui-tracking:0.14em; --ui-scale:0.9;
+  --font-body:"Montserrat", system-ui, -apple-system, "Segoe UI", Arial, sans-serif; --body-weight:400; --body-strong:600; --body-scale:0.96;
+}
+
+/* Schriftsatz C – Sportlich */
+:root[data-font="c"] {
+  --font-display:"Oswald", "Arial Narrow", Arial, sans-serif; --display-weight:600; --display-transform:uppercase;
+  --display-tracking:0em; --display-scale:0.9; --display-leading:1.04;
+  --font-brand:"Oswald", "Arial Narrow", Arial, sans-serif; --brand-weight:700; --brand-transform:uppercase;
+  --brand-tracking:0.01em; --brand-scale:0.92;
+  --font-ui:"Oswald", "Arial Narrow", Arial, sans-serif; --ui-weight:500; --ui-transform:uppercase;
+  --ui-tracking:0.1em; --ui-scale:0.96;
+  --font-body:"Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif; --body-weight:400; --body-strong:600; --body-scale:0.97;
+}
