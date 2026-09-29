@@ -35,7 +35,7 @@ a{color:var(--accent)}
 .sym{font-family:"Segoe UI Symbol","Segoe UI",system-ui,sans-serif}
 header.top{display:flex;align-items:center;justify-content:flex-end;gap:16px;padding:20px 0}
 .top-meta{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-weight:600}
-.hero{padding:28px 0 36px}
+.hero{padding:48px 0 36px}
 .lead{font-size:clamp(17px,1.8vw,20px);color:var(--muted)}
 .safe{display:flex;gap:14px;align-items:flex-start;padding:18px 20px;border-radius:var(--r-md);background:rgba(30,158,106,.08);border:1px solid rgba(30,158,106,.25);margin-top:18px}
 .safe svg{flex:none;margin-top:3px}
@@ -52,6 +52,7 @@ header.top{display:flex;align-items:center;justify-content:flex-end;gap:16px;pad
 .card .warn{margin-top:10px;font-size:14px;color:#8A5A0E;background:rgba(199,122,17,.10);border-radius:var(--r-sm);padding:8px 12px}
 .split{display:grid;grid-template-columns:1fr 300px;gap:24px;align-items:start}
 .split .shot{margin-top:0}
+.shot.phone{max-width:300px;justify-self:center;border-radius:22px}
 footer{padding:30px 0 60px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
 @media (hover:hover) and (pointer:fine){ .card:hover{transform:var(--pop-lift);border-color:var(--accent-strong);box-shadow:var(--glow-strong)} }
 @media (max-width:760px){
@@ -64,26 +65,26 @@ footer{padding:30px 0 60px;border-top:1px solid var(--line);color:var(--muted);f
 </head>
 <body>
 <div class="wrap">
-  <header class="top">
-    <div class="top-meta">Praxkas · Kurzanleitung</div>
-  </header>
 
   <section class="hero">
     <span class="eyebrow">Praxkas · Kurzanleitung</span>
     <h1>Die Praxis-Postfächer mit Praxkas verbinden</h1>
-    <p class="lead">Alles andere ist vorbereitet. Es fehlen nur die Zugänge zu den vier Postfächern. Du brauchst dafür etwa eine Viertelstunde, am Praxis-PC.</p>
+    <p class="lead">Alles andere ist vorbereitet. Es fehlen nur die Zugänge zu den vier Postfächern. Du trägst sie über einen Link ein, den Kerem dir schickt, bequem vom Handy aus. Das dauert etwa eine Viertelstunde.</p>
     <div class="safe">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E9E6A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-      <p><strong>Deine Zugangsdaten bleiben auf dem Praxis-PC.</strong> Sie werden dort verschlüsselt gespeichert. Der Schlüssel zum Entschlüsseln liegt getrennt davon, ebenfalls nur auf diesem PC. Die Daten gehen nirgendwo anders hin als an den jeweiligen Mailserver, auch nicht an Kerem oder ins Internet.</p>
+      <p><strong>Deine Zugangsdaten werden schon auf deinem Handy verschlüsselt.</strong> Lesen kann sie nur der Praxkas-PC. Er holt sie ab, prüft die Verbindung und speichert sie dort wieder verschlüsselt. Auf dem Weg dorthin und auf dem Server liegt nur unlesbarer Datensalat, der nach dem Abholen gelöscht wird. Den Link bitte nicht weitergeben.</p>
     </div>
   </section>
 
   <section class="step">
     <span class="num">1</span>
-    <div>
-      <h2>Einrichtung öffnen</h2>
-      <p>Am Praxis-PC auf dem Desktop <strong>„Verbindungen einrichten“</strong> doppelt anklicken. Ein schwarzes Fenster geht auf, das bitte offen lassen. Kurz danach öffnet sich im Browser diese Seite:</p>
-      <div class="shot"><img src="img/einrichtung.webp" alt="Seite Verbindungen einrichten mit KI-Schlüssel und vier Postfächern" loading="lazy"></div>
+    <div class="split">
+      <div>
+        <h2>Link öffnen</h2>
+        <p>Öffne den Link, den dir Kerem geschickt hat, am besten auf dem Handy. Es geht aber auch am Computer. Du siehst fünf Karten: den KI-Schlüssel und die vier Postfächer.</p>
+        <p>Du musst nicht alles auf einmal machen. Jede Karte wird für sich gesendet.</p>
+      </div>
+      <div class="shot phone"><img src="img/handy.webp" alt="Handy-Seite Postfächer verbinden" loading="lazy"></div>
     </div>
   </section>
 
@@ -124,7 +125,7 @@ footer{padding:30px 0 60px;border-top:1px solid var(--line);color:var(--muted);f
           <h3>KI-Schlüssel</h3>
           <ul>
             <li>Ein langer Schlüssel, der mit <strong>sk-ant-</strong> beginnt. Den schickt dir Kerem.</li>
-            <li>Ganz oben einfügen und „Testen &amp; speichern“ klicken.</li>
+            <li>In die oberste Karte einfügen und senden.</li>
           </ul>
         </div>
       </div>
@@ -135,11 +136,11 @@ footer{padding:30px 0 60px;border-top:1px solid var(--line);color:var(--muted);f
     <span class="num">3</span>
     <div class="split">
       <div>
-        <h2>Testen, dann speichern</h2>
-        <p>Pro Postfach erst <strong>„Verbindung testen“</strong>. Wenn es klappt, steht dort, wie viele Mails im Postfach liegen. Dann <strong>„Speichern“</strong>, der Punkt neben dem Namen wird grün.</p>
-        <p>Klappt es nicht, steht in Rot, woran es liegt, meistens am falschen Passwort-Typ. Die Seite liest dabei keine Mails und markiert nichts als gelesen.</p>
+        <h2>Senden, kurz warten</h2>
+        <p>Tippe bei jeder Karte auf <strong>„Verschlüsselt senden“</strong>. Der Praxkas-PC prüft die Verbindung innerhalb von ein paar Minuten. Danach wird der Punkt <strong>grün</strong>, und dort steht, wie viele Mails im Postfach liegen.</p>
+        <p>Wird er <strong>rot</strong>, steht dort, woran es liegt, meistens am falschen Passwort-Typ. Dann die Daten korrigieren und nochmal senden. Dabei werden keine Mails gelesen und nichts als gelesen markiert.</p>
       </div>
-      <div class="shot"><img src="img/fehler.webp" alt="Beispiel einer Fehlermeldung beim Test" loading="lazy"></div>
+      <div class="shot phone"><img src="img/fehler.webp" alt="Beispiel: rote Rückmeldung bei falschem Passwort" loading="lazy"></div>
     </div>
   </section>
 
@@ -147,8 +148,8 @@ footer{padding:30px 0 60px;border-top:1px solid var(--line);color:var(--muted);f
     <span class="num">4</span>
     <div>
       <h2>Fertig</h2>
-      <p>Unten auf <strong>„Fertig“</strong> klicken, das Fenster schließt sich. Danach Praxkas einmal neu starten. Du musst nicht alles auf einmal machen: Die Seite merkt sich, was schon gespeichert ist.</p>
-      <p>Wenn etwas hakt, schick Kerem einfach ein Foto vom Bildschirm.</p>
+      <p>Wenn alle Punkte grün sind, bist du fertig. Die Seite kannst du jederzeit wieder öffnen, um den Stand zu sehen oder ein Passwort zu ändern.</p>
+      <p>Wenn etwas hakt, schick Kerem einfach einen Screenshot.</p>
     </div>
   </section>
 
