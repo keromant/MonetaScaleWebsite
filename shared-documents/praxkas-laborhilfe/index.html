@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Praxkas · LaborHilfe</title>
+<meta name="color-scheme" content="light only">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="LaborHilfe in Praxkas: Laborbefunde als Stapel einscannen, die Sortierung und Versandvorbereitung übernimmt die KI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent-rgb:23,88,122; --accent:rgb(var(--accent-rgb)); --accent-lt:#2E86B0; --accent-strong:#0E3A52; --secondary:#23282D;
+  --bg:#F4F7F9; --surface:#FFFFFF; --ink:#23282D; --muted:#5B6874; --line:rgba(23,88,122,.16);
+  --success:#1E9E6A; --warning:#C77A11; --danger:#C0392B;
+  --pop-ease:cubic-bezier(0.34,1.56,0.64,1); --pop-lift:translateY(-4px) scale(1.03);
+  --glow-soft:0 0 0 1px rgba(var(--accent-rgb),.35),0 16px 34px -16px rgba(var(--accent-rgb),.22),0 5px 14px rgba(var(--accent-rgb),.10);
+  --glow-strong:0 0 0 2px rgba(var(--accent-rgb),.70),0 30px 55px -12px rgba(var(--accent-rgb),.40),0 12px 26px rgba(var(--accent-rgb),.22);
+  --r-sm:10px; --r-md:16px; --r-lg:24px;
+  --font-display:"Chakra Petch","Segoe UI",system-ui,sans-serif; --font-body:"Montserrat","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--font-body);color:var(--ink);line-height:1.6;font-size:16px;
+  background:radial-gradient(900px 520px at 82% -10%,rgba(var(--accent-rgb),.08),transparent 60%),linear-gradient(180deg,#FFFFFF,var(--bg));background-color:var(--bg)}
+h1,h2,h3,.eyebrow,.step__n,.fig__no,.stat__n,.top-meta{font-family:var(--font-display)}
+h1{font-size:clamp(34px,5.6vw,62px);line-height:1.04;letter-spacing:-.01em;font-weight:700;margin:0 0 18px;text-wrap:balance}
+h2{font-size:clamp(26px,3.6vw,40px);line-height:1.1;font-weight:700;margin:0 0 14px;text-wrap:balance}
+h3{font-size:clamp(17px,1.9vw,20px);line-height:1.25;font-weight:600;margin:0 0 8px}
+p,li{font-size:clamp(15px,1.4vw,17px)} p{margin:0 0 14px;max-width:70ch}
+a{color:var(--accent)}
+.eyebrow{display:block;text-transform:uppercase;letter-spacing:.16em;font-weight:600;font-size:13px;color:var(--accent);margin-bottom:10px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.sym{font-family:"Segoe UI Symbol","Segoe UI",system-ui,sans-serif}
+
+header.top{display:flex;align-items:center;justify-content:flex-end;gap:16px;padding:20px 0}
+.top-meta{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-weight:600;text-align:right}
+
+.hero{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center;padding:40px 0 56px}
+.hero .lead{font-size:clamp(17px,1.9vw,21px);color:var(--muted);max-width:52ch}
+.hero__img{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--glow-soft);background:#E9EDF0}
+.hero__img img{display:block;width:100%;height:auto}
+.note{display:inline-flex;gap:8px;align-items:flex-start;margin-top:10px;padding:10px 14px;border-radius:var(--r-sm);
+  background:rgba(var(--accent-rgb),.07);color:var(--accent-strong);font-size:14px;font-weight:500;max-width:60ch}
+
+section.block{padding:56px 0;border-top:1px solid var(--line)}
+.intro{max-width:760px;margin-bottom:28px}
+.intro p{color:var(--muted)}
+
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.card{background:var(--surface);border:1.5px solid rgba(var(--accent-rgb),.40);border-radius:var(--r-lg);padding:28px;
+  box-shadow:var(--glow-soft);transition:transform .4s var(--pop-ease),box-shadow .4s ease,border-color .35s ease}
+.card ul{margin:0;padding-left:20px} .card li{margin-bottom:8px}
+.card--alt{border-color:rgba(35,40,45,.14);box-shadow:0 1px 0 rgba(35,40,45,.04)}
+.card--alt h3{color:var(--muted)}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.step{display:flex;flex-direction:column}
+.step__n{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;margin-bottom:16px;
+  background:var(--accent);color:#fff;font-weight:700;font-size:20px}
+.step p{margin:0;color:var(--muted)}
+
+.fig{margin:0 0 44px}
+.fig__frame{border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);background:#fff;
+  box-shadow:0 24px 50px -28px rgba(var(--accent-rgb),.45)}
+.fig__frame img{display:block;width:100%;height:auto}
+.fig figcaption{display:flex;gap:14px;margin-top:14px;max-width:80ch}
+.fig__no{flex:none;font-weight:700;color:var(--accent);font-size:14px;letter-spacing:.06em;padding-top:2px}
+.fig figcaption p{margin:0;color:var(--muted);font-size:15px}
+.fig figcaption strong{color:var(--ink)}
+.fig-pair{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:8px 0 28px}
+.stat{padding:22px}
+.stat__n{display:block;font-size:clamp(30px,4vw,42px);font-weight:700;color:var(--accent);line-height:1}
+.stat__l{display:block;margin-top:8px;font-size:14px;color:var(--muted)}
+
+.checks{display:grid;grid-template-columns:repeat(2,1fr);gap:12px 32px;padding:0;margin:0;list-style:none}
+.checks li{display:flex;gap:10px;align-items:flex-start}
+.checks li::before{content:"";flex:none;width:18px;height:18px;margin-top:4px;border-radius:5px;
+  background:rgba(var(--accent-rgb),.14) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%2317587A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+
+.areas{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.areas h3{margin-bottom:12px}
+.areas ul{list-style:none;padding:0;margin:0}
+.areas li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:15px}
+.tag{font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:2px 9px;border-radius:999px;white-space:nowrap;align-self:center}
+.tag--live{background:rgba(30,158,106,.12);color:#147A51}
+.tag--neu{background:rgba(var(--accent-rgb),.12);color:var(--accent-strong)}
+.tag--plan{background:rgba(35,40,45,.07);color:var(--muted)}
+.split{display:grid;grid-template-columns:320px 1fr;gap:32px;align-items:start}
+.split .fig{margin:0}
+
+.next{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+
+footer{padding:40px 0 60px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer p{max-width:none;font-size:14px}
+
+@media (hover:hover) and (pointer:fine){
+  .card:not(.card--alt):hover{transform:var(--pop-lift);border-color:var(--accent-strong);box-shadow:var(--glow-strong)}
+}
+@media (max-width:960px){
+  .hero{grid-template-columns:1fr;gap:28px;padding-top:16px}
+  .steps,.areas{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .split{grid-template-columns:1fr}
+  .split .fig{max-width:360px}
+}
+@media (max-width:720px){
+  .wrap{padding:0 16px}
+  .compare,.fig-pair,.next,.checks{grid-template-columns:1fr}
+  section.block{padding:40px 0}
+  .card{padding:22px}
+  .top-meta{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .card{transition:none} .card:hover{transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="top-meta">Praxkas · LaborHilfe · Stand 29.09.2026</div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <span class="eyebrow">Praxkas · Befunde &amp; Dokumente</span>
+      <h1>Befunde einscannen. Den Rest sortiert die LaborHilfe.</h1>
+      <p class="lead">Sie legen die Laborbefunde so in den Scanner, wie sie kommen: gemischt, verdreht, Seite 2 vor Seite 1. Die LaborHilfe erkennt, welche Seite zu welchem Patienten gehört, fügt sie zusammen und legt jeden Befund für das richtige Heim, den richtigen Arzt oder den Patienten bereit.</p>
+      <p class="note"><span class="sym">&#9432;</span><span>Alle Namen, Labore und Werte in diesem Dokument sind ausgedacht. Die Screenshots stammen aus einem echten Durchlauf der App mit diesen Musterbefunden.</span></p>
+    </div>
+    <div class="hero__img"><img src="img/stapel.webp" alt="Ein gemischter Stapel ausgedachter Laborbefunde, teils schief und auf dem Kopf" width="1600" height="1000"></div>
+  </section>
+
+  <section class="block" id="heute">
+    <div class="intro">
+      <span class="eyebrow">Warum</span>
+      <h2>Was heute Zeit kostet</h2>
+      <p>Laborbefunde kommen auf Papier, für viele Patienten auf einmal. Jeder Befund muss an die richtige Stelle: ins Heim, an den mitbehandelnden Arzt oder direkt an den Patienten.</p>
+    </div>
+    <div class="compare">
+      <div class="card card--alt">
+        <h3>Bisher</h3>
+        <ul>
+          <li>Stapel von Hand nach Patienten sortieren</li>
+          <li>Folgeseiten suchen und dazulegen</li>
+          <li>Für jeden Befund nachsehen, wohin er geht</li>
+          <li>Einzeln scannen, benennen und verschicken</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Mit der LaborHilfe</h3>
+        <ul>
+          <li>Den ganzen Stapel auf einmal einscannen, egal in welcher Reihenfolge</li>
+          <li>Seiten werden von selbst gedreht, zugeordnet und zusammengefügt</li>
+          <li>Jeder Befund liegt fertig benannt beim richtigen Empfänger</li>
+          <li>Sie prüfen nur, was die KI nicht sicher zuordnen konnte</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="ablauf">
+    <div class="intro">
+      <span class="eyebrow">Ablauf</span>
+      <h2>Drei Schritte, zwei davon laufen von selbst</h2>
+    </div>
+    <div class="steps">
+      <div class="card step">
+        <span class="step__n">1</span>
+        <h3>Stapel einscannen</h3>
+        <p>Alle Befunde des Tages durch den Scanner und die Datei in die LaborHilfe ziehen. Reihenfolge, Ausrichtung und Anzahl spielen keine Rolle.</p>
+      </div>
+      <div class="card step">
+        <span class="step__n">2</span>
+        <h3>Die KI liest jede Seite</h3>
+        <p>Sie erkennt Patient, Geburtsdatum, Labor, Befunddatum und die Seitenangabe wie „1 von 2“. Verdrehte Seiten werden aufgerichtet, zusammengehörige Seiten zu einem Befund.</p>
+      </div>
+      <div class="card step">
+        <span class="step__n">3</span>
+        <h3>Versandfertig je Empfänger</h3>
+        <p>Die Befunde liegen gebündelt nach Heim, Arzt und Patient. Ein Klick lädt das Paket für einen Empfänger herunter, ein zweiter hakt es als versendet ab.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="durchlauf">
+    <div class="intro">
+      <span class="eyebrow">In Bildern</span>
+      <h2>Ein Durchlauf mit 11 gemischten Seiten</h2>
+      <p>Der Stapel oben enthält acht ausgedachte Befunde von drei Laboren für sechs Patienten. Drei Befunde haben zwei Seiten. Die Seiten sind so gemischt, dass keine Folgeseite neben ihrer ersten Seite liegt. Eine Seite liegt auf dem Kopf, zwei sind schief eingezogen.</p>
+    </div>
+
+    <figure class="fig">
+      <div class="fig__frame"><img src="img/03-labor-leer.webp" alt="LaborHilfe mit leerer Ablagefläche" loading="lazy"></div>
+      <figcaption><span class="fig__no">01</span><p><strong>Die LaborHilfe vor dem Einscannen.</strong> Links wird der Stapel abgelegt, in der Mitte erscheint nur, was geprüft werden muss, rechts liegen die fertigen Befunde.</p></figcaption>
+    </figure>
+
+    <figure class="fig">
+      <div class="fig__frame"><img src="img/04-labor-verarbeitung.webp" alt="Fortschrittsanzeige beim Lesen der Seiten" loading="lazy"></div>
+      <figcaption><span class="fig__no">02</span><p><strong>Der Stapel wird gelesen.</strong> Mehrere Seiten werden gleichzeitig bearbeitet. Währenddessen kann weitergearbeitet werden.</p></figcaption>
+    </figure>
+
+    <figure class="fig">
+      <div class="fig__frame"><img src="img/05-labor-ergebnis.webp" alt="Ergebnis: Befunde nach Empfänger gebündelt" loading="lazy"></div>
+      <figcaption><span class="fig__no">03</span><p><strong>Das Ergebnis.</strong> Alle elf Seiten sind den richtigen Patienten zugeordnet, die drei zweiseitigen Befunde vollständig zusammengefügt und die kopfstehende Seite aufgerichtet. Sieben Befunde liegen versandfertig beim richtigen Heim, beim Hausarzt oder beim Patienten selbst.</p></figcaption>
+    </figure>
+
+    <div class="fig-pair">
+      <figure class="fig">
+        <div class="fig__frame"><img src="img/06-detail-pruefen.webp" alt="Befund in Prüfen: Empfänger fehlt" loading="lazy"></div>
+        <figcaption><span class="fig__no">04</span><p><strong>Nur was offen ist, landet bei Ihnen.</strong> Ein Patient war neu, deshalb fehlte der Empfänger. Einmal auswählen und freigeben, beim nächsten Befund dieses Patienten ist er schon hinterlegt.</p></figcaption>
+      </figure>
+      <figure class="fig">
+        <div class="fig__frame"><img src="img/08-detail-zweiseiter.webp" alt="Zweiseitiger Befund, richtig zusammengefügt" loading="lazy"></div>
+        <figcaption><span class="fig__no">05</span><p><strong>Zusammengefügt und aufgerichtet.</strong> Seite 1 und Seite 2 lagen im Stapel weit auseinander. Die LaborHilfe hat sie über Patient, Datum und „1 von 2“ gefunden und zu einer PDF verbunden.</p></figcaption>
+      </figure>
+    </div>
+
+    <figure class="fig">
+      <div class="fig__frame"><img src="img/09-alles-versandfertig.webp" alt="Alle Befunde versandfertig" loading="lazy"></div>
+      <figcaption><span class="fig__no">06</span><p><strong>Alles versandfertig.</strong> Jede Gruppe hat ein Paket zum Herunterladen, die Dateien sind einheitlich benannt: Patient, Datum, Labor. Die Zuordnung eines neuen Patienten merkt sich die LaborHilfe für das nächste Mal.</p></figcaption>
+    </figure>
+  </section>
+
+  <section class="block" id="erkennung">
+    <div class="intro">
+      <span class="eyebrow">Wie gut es erkennt</span>
+      <h2>Ergebnis des Testlaufs</h2>
+      <p>Für die Musterbefunde gibt es eine Lösung, welche Seite zu wem gehört. Das Ergebnis der LaborHilfe wurde automatisch damit verglichen.</p>
+    </div>
+    <div class="stats">
+      <div class="card stat"><span class="stat__n">11 / 11</span><span class="stat__l">Seiten richtig zugeordnet</span></div>
+      <div class="card stat"><span class="stat__n">8 / 8</span><span class="stat__l">Befunde richtig zusammengefügt</span></div>
+      <div class="card stat"><span class="stat__n">1 / 1</span><span class="stat__l">Kopfstehende Seite erkannt und gedreht</span></div>
+      <div class="card stat"><span class="stat__n">≈ 15 s</span><span class="stat__l">für den ganzen Stapel</span></div>
+    </div>
+    <h3>Das liest die LaborHilfe von jeder Seite</h3>
+    <ul class="checks">
+      <li>Patient und Geburtsdatum</li>
+      <li>Labor und Befunddatum</li>
+      <li>Seitenangabe wie „1 von 2“, auch wenn Seiten fehlen</li>
+      <li>Ausrichtung der Seite</li>
+      <li>Als auffällig markierte Werte, als Hinweis auf der Karte</li>
+      <li>Wie sicher die Erkennung ist. Bei Zweifeln geht der Befund in „Prüfen“</li>
+    </ul>
+  </section>
+
+  <section class="block" id="bereiche">
+    <div class="split">
+      <figure class="fig">
+        <div class="fig__frame"><img src="img/seitenleiste.webp" alt="Neue Seitenleiste mit drei Bereichen" loading="lazy"></div>
+        <figcaption><span class="fig__no">07</span><p><strong>Die neue Seitenleiste.</strong></p></figcaption>
+      </figure>
+      <div>
+        <span class="eyebrow">Praxkas</span>
+        <h2>Drei Bereiche statt einer langen Liste</h2>
+        <p>Praxkas ist jetzt nach dem gegliedert, was in der Praxis passiert: was von außen hereinkommt, was an Befunden und Dokumenten anfällt, und was das Team organisiert.</p>
+        <div class="areas">
+          <div>
+            <h3>Posteingang</h3>
+            <ul>
+              <li>Audiopostfach <span class="tag tag--live">läuft</span></li>
+              <li>Rezeptprüfung <span class="tag tag--plan">geplant</span></li>
+              <li>Medibestellungen <span class="tag tag--plan">geplant</span></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Befunde &amp; Dokumente</h3>
+            <ul>
+              <li>LaborHilfe <span class="tag tag--neu">neu</span></li>
+              <li>Anamnese <span class="tag tag--plan">geplant</span></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Praxisorganisation</h3>
+            <ul>
+              <li>To-Do's <span class="tag tag--live">läuft</span></li>
+              <li>Arbeitsabläufe <span class="tag tag--plan">geplant</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="datenschutz">
+    <div class="intro">
+      <span class="eyebrow">Datenschutz</span>
+      <h2>Wo die Befunde bleiben</h2>
+    </div>
+    <div class="compare">
+      <div class="card">
+        <h3>In der Praxis</h3>
+        <p>Scans und fertige PDFs liegen auf dem Praxisrechner, auf dem Praxkas läuft. Abrufen kann sie nur, wer in Praxkas angemeldet ist.</p>
+      </div>
+      <div class="card">
+        <h3>Beim Lesen der Seiten</h3>
+        <p>Zum Erkennen wird jede Seite einzeln an die KI von Anthropic geschickt, dieselbe, die heute schon die Anrufbeantworter-Nachrichten zusammenfasst. Dafür besteht ein Auftragsverarbeitungsvertrag, der regelt, wie die Daten dort behandelt werden.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="weiter">
+    <div class="intro">
+      <span class="eyebrow">Wie es weitergeht</span>
+      <h2>Nächste Schritte</h2>
+    </div>
+    <div class="next">
+      <div class="card">
+        <h3>Direkt verschicken</h3>
+        <p>Heute wird das Paket je Empfänger heruntergeladen. Als Nächstes kann die LaborHilfe die Befunde selbst per E-Mail oder Fax an Heim, Arzt oder Patient schicken.</p>
+      </div>
+      <div class="card">
+        <h3>Befunde aus dem Postfach</h3>
+        <p>Die Praxis-Postfächer sind verbunden. Als Nächstes können Befunde, die per E-Mail kommen, ohne Scanner direkt im Eingang landen. Dieselbe Anbindung ist die Grundlage für Medibestellungen und Rezeptprüfung.</p>
+      </div>
+      <div class="card">
+        <h3>Medibestellungen der Heime</h3>
+        <p>Bestellungen am Bildschirm abhaken und mit Hinweisen zur Verfügbarkeit versehen, statt sie auszudrucken und von Hand zu bearbeiten.</p>
+      </div>
+      <div class="card">
+        <h3>Anamnese</h3>
+        <p>Kontaktdaten neuer Patienten aus der E-Mail übernehmen, statt sie von Fotos abzutippen. Später auch direkt in die Praxissoftware.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Ulas Systems · Praxkas LaborHilfe · Stand 29.09.2026 · Alle gezeigten Patientendaten sind ausgedacht.</p>
+  </footer>
+</div>
+</body>
+</html>
