@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Wiegescheine · Testlauf und Arbeitsweise</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent-rgb:23,88,122; --accent:rgb(var(--accent-rgb)); --accent-strong:#0E3A52; --secondary:#23282D;
+  --bg:#F4F7F9; --surface:#FFFFFF; --ink:#23282D; --muted:#5B6874; --line:rgba(23,88,122,.16);
+  --ok:#1E9E6A; --warn:#8A5A0E; --warn-bg:rgba(199,122,17,.10); --danger:#C0392B;
+  --pop-ease:cubic-bezier(0.34,1.56,0.64,1); --pop-lift:translateY(-4px) scale(1.02);
+  --glow-soft:0 0 0 1px rgba(var(--accent-rgb),.35),0 16px 34px -16px rgba(var(--accent-rgb),.22),0 5px 14px rgba(var(--accent-rgb),.10);
+  --glow-strong:0 0 0 2px rgba(var(--accent-rgb),.70),0 30px 55px -12px rgba(var(--accent-rgb),.40),0 12px 26px rgba(var(--accent-rgb),.22);
+  --r-sm:10px; --r-md:16px; --r-lg:24px;
+  --font-display:"Chakra Petch","Segoe UI",system-ui,sans-serif; --font-body:"Montserrat","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font-body);color:var(--ink);line-height:1.6;font-size:16px;
+  background:radial-gradient(900px 520px at 82% -10%,rgba(var(--accent-rgb),.08),transparent 60%),linear-gradient(180deg,#FFFFFF,var(--bg));background-color:var(--bg)}
+h1,h2,h3,.eyebrow,.num,.intern,.zahl{font-family:var(--font-display)}
+h1{font-size:clamp(32px,5vw,54px);line-height:1.05;letter-spacing:-.01em;font-weight:700;margin:0 0 16px;text-wrap:balance}
+h2{font-size:clamp(22px,3vw,30px);line-height:1.15;font-weight:700;margin:0 0 12px;text-wrap:balance}
+h3{font-size:18px;line-height:1.25;font-weight:600;margin:0 0 6px}
+p,li{font-size:clamp(15px,1.4vw,17px)} p{margin:0 0 12px;max-width:68ch}
+.eyebrow{display:block;text-transform:uppercase;letter-spacing:.16em;font-weight:600;font-size:13px;color:var(--accent);margin-bottom:10px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+.intern{display:inline-flex;align-items:center;gap:8px;margin-top:28px;padding:6px 12px;border-radius:999px;background:rgba(30,158,106,.10);color:#147A51;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.hero{padding:8px 0 36px}
+.lead{font-size:clamp(17px,1.8vw,20px);color:var(--muted)}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+.flow div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:14px 16px;font-size:14px}
+.flow strong{display:block;font-family:var(--font-display);font-size:15px;margin-bottom:2px;color:var(--accent-strong)}
+.kennzahlen{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0 8px}
+.kennzahlen div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:16px}
+.kennzahlen .zahl{display:block;font-size:30px;font-weight:700;color:var(--accent);line-height:1.1}
+.kennzahlen span:last-child{font-size:14px;color:var(--muted)}
+section.step{display:grid;grid-template-columns:52px minmax(0,1fr);gap:18px;padding:34px 0;border-top:1px solid var(--line);break-inside:avoid}
+.num{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--accent);color:#fff;font-weight:700;font-size:20px}
+.shot{margin:14px 0 0;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 24px 50px -28px rgba(var(--accent-rgb),.45)}
+.shot img{display:block;width:100%;height:auto}
+.shot.small{max-width:460px}
+.shot.mini{max-width:320px}
+.cap{font-size:13px;color:var(--muted);margin-top:8px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.legend{list-style:none;padding:0;margin:0;counter-reset:l}
+.legend li{position:relative;padding:8px 0 8px 38px;border-top:1px solid var(--line);font-size:15px}
+.legend li:first-child{border-top:0}
+.legend li::before{counter-increment:l;content:counter(l);position:absolute;left:0;top:8px;width:26px;height:26px;border-radius:8px;background:rgba(var(--accent-rgb),.12);color:var(--accent-strong);font-family:var(--font-display);font-weight:700;font-size:14px;display:grid;place-items:center}
+section.step>div{min-width:0}
+.tab{overflow-x:auto;margin-top:12px;border-radius:var(--r-md);border:1px solid var(--line);background:var(--surface)}
+.tab table{margin-top:0;border:0;border-radius:0}
+.tab.breit table{min-width:680px}
+.tab.breit td,.tab.breit th{white-space:nowrap}
+table{border-collapse:collapse;width:100%;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;font-size:15px;margin-top:12px}
+th{font-family:var(--font-display);font-weight:600;text-align:left;background:#F8FAFB;color:var(--muted);font-size:13px;padding:9px 12px;border-bottom:1px solid var(--line)}
+td{padding:8px 12px;border-bottom:1px solid rgba(23,88,122,.07)}
+td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
+tr.summe td{font-weight:700;background:rgba(var(--accent-rgb),.05)}
+tr.leer td{padding:4px;border-bottom:0}
+.punkt{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:8px;vertical-align:-1px}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:8px}
+.card{background:var(--surface);border:1.5px solid rgba(var(--accent-rgb),.40);border-radius:var(--r-lg);padding:22px;box-shadow:var(--glow-soft);
+  transition:transform .4s var(--pop-ease),box-shadow .4s ease,border-color .35s ease}
+.card p{margin:0;font-size:15px}
+.note{margin-top:14px;font-size:15px;color:var(--warn);background:var(--warn-bg);border-radius:var(--r-sm);padding:12px 14px;max-width:none}
+ol.schritte{padding-left:22px;margin:0} ol.schritte li{padding:4px 0}
+footer{padding:30px 0 60px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+@media (hover:hover) and (pointer:fine){ .card:hover{transform:var(--pop-lift);border-color:var(--accent-strong);box-shadow:var(--glow-strong)} }
+@media (max-width:760px){
+  .wrap{padding:0 16px} .split,.cards{grid-template-columns:1fr} .flow,.kennzahlen{grid-template-columns:1fr 1fr}
+  section.step{grid-template-columns:1fr;gap:10px} table{font-size:13px} td,th{padding:7px 8px}
+}
+@media (prefers-reduced-motion:reduce){ .card{transition:none} .card:hover{transform:none} }
+@media print{
+  body{background:#fff} .card{box-shadow:none} .shot{box-shadow:none}
+  section.step{padding:22px 0;break-inside:auto} .hero{padding-bottom:18px} .shot,.card,.legend li,table{break-inside:avoid} h2{break-after:avoid}
+  @page{size:A4;margin:14mm 12mm}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="intern">Scheine auf den Bildern unscharf gemacht</span>
+
+  <section class="hero">
+    <span class="eyebrow" style="margin-top:18px">Wiegescheine · Testlauf</span>
+    <h1>280 Seiten, eine fertige Excel</h1>
+    <p class="lead">Die App hat den ganzen Stapel gelesen: 4 PDFs mit 280 Seiten. Sie kommt auf dieselben Zahlen wie die geprüfte Vorschau. Hier stehen das Ergebnis, die App und der Ablauf im Alltag.</p>
+    <div class="flow">
+      <div><strong>1 · Einlesen</strong>Die PDFs kommen in die App. Mehrere Dateien auf einmal gehen.</div>
+      <div><strong>2 · Auslesen</strong>Die App liest jede Seite einzeln. Sie rechnet jedes Gewicht nach.</div>
+      <div><strong>3 · Prüfen</strong>Nur gelbe und rote Zeilen brauchen einen Blick. Der Schein steht daneben.</div>
+      <div><strong>4 · Excel</strong>Ein Klick lädt die Excel. Sie ist nach Material sortiert, mit Summen.</div>
+    </div>
+  </section>
+
+  <section class="step">
+    <span class="num">1</span>
+    <div>
+      <h2>Das Ergebnis vom Testlauf</h2>
+      <div class="kennzahlen">
+        <div><span class="zahl">280</span><span>Seiten in 4 PDFs</span></div>
+        <div><span class="zahl">245</span><span>Scheine zählen</span></div>
+        <div><span class="zahl">6.118,46 t</span><span>zusammen</span></div>
+        <div><span class="zahl">11 min</span><span>für alle Seiten</span></div>
+      </div>
+      <p>Das passt genau zur geprüften Vorschau. Anzahl und Tonnen sind gleich.</p>
+      <p>35 Seiten zählen nicht. Das sind Duplikate und doppelt gescannte Scheine. Die App erkennt sie selbst.</p>
+
+      <h3 style="margin-top:22px">So genau liest die App</h3>
+      <ul>
+        <li>Jede der 245 Tonnagen ist geprüft. Brutto minus Tara ergibt genau das Netto.</li>
+        <li>Die 35 doppelten Scheine hat die App zweimal gelesen, jedes Mal neu. Datum, Nummer, Gewichte und Material stimmen in allen 35 Fällen überein.</li>
+      </ul>
+
+      <h3 style="margin-top:22px">Summen je Material</h3>
+      <div class="tab"><table>
+        <tr><th>Material</th><th>Schlüssel</th><th class="r">Fuhren</th><th class="r">Tonnen</th></tr>
+        <tr><td>Boden und Steine mit Ausnahme derjenigen, die unter 17 05 03 fallen</td><td>170504</td><td class="r">124</td><td class="r">3.141,74</td></tr>
+        <tr><td>Grubenkies / Verladetätigkeit</td><td>87101</td><td class="r">117</td><td class="r">2.899,92</td></tr>
+        <tr><td>Bauschutt überwiegend Beton</td><td>170101</td><td class="r">1</td><td class="r">27,64</td></tr>
+        <tr><td>Füllkies/Grubenkies</td><td>nicht lesbar</td><td class="r">1</td><td class="r">23,66</td></tr>
+        <tr><td>Bauschutt überw. Beton mit Feinanteil &gt; 25 %</td><td>170101</td><td class="r">1</td><td class="r">21,12</td></tr>
+        <tr><td>asbesth. Baustoffe</td><td>170605*</td><td class="r">1</td><td class="r">4,38</td></tr>
+        <tr class="summe"><td>Gesamt</td><td></td><td class="r">245</td><td class="r">6.118,46</td></tr>
+      </table></div>
+      <p class="cap">Die Namen stehen so da, wie sie auf den Scheinen gedruckt sind.</p>
+
+      <h3 style="margin-top:22px">Was noch einen Blick braucht</h3>
+      <p>35 Zeilen sind gelb. Das ist etwa jede siebte Zeile. Das sind die Gründe:</p>
+      <div class="tab"><table>
+        <tr><th>Grund</th><th class="r">Zeilen</th></tr>
+        <tr><td>Das Datum ist nicht lesbar, weil der Druck sehr blass ist. Meist nennt die App die zwei möglichen Tage.</td><td class="r">11</td></tr>
+        <tr><td>Das Datum ist aus der Nummernfolge übernommen. Es muss nur bestätigt werden.</td><td class="r">8</td></tr>
+        <tr><td>Das Datum passt nicht zur Nummernfolge.</td><td class="r">2</td></tr>
+        <tr><td>Das Datum ist unsicher gelesen.</td><td class="r">4</td></tr>
+        <tr><td>Nummer, Baustelle oder Material sind unsicher gelesen.</td><td class="r">10</td></tr>
+        <tr class="summe"><td>Zusammen</td><td class="r">35</td></tr>
+      </table></div>
+      <p style="margin-top:14px">Am schwersten ist das Datum auf den Scheinen von DDG. Es steht blass im grauen Kasten oben rechts. Dafür hat die App den Knopf „Kontrast“ am Bild vom Schein.</p>
+      <div class="split">
+        <div><div class="shot"><img src="img/10-kontrast-ohne.webp" alt="Datum ohne Kontrast"></div><p class="cap">Ohne Kontrast</p></div>
+        <div><div class="shot"><img src="img/10-kontrast-mit.webp" alt="Datum mit Kontrast"></div><p class="cap">Mit Kontrast: 24.04.2026</p></div>
+      </div>
+      <p style="margin-top:14px">Hilft auch der Kontrast nicht, hilft die Nummernfolge. Ein Werk nummeriert seine Scheine fortlaufend. Sind die Nachbarn vom selben Tag, steht das Datum fest.</p>
+    </div>
+  </section>
+
+  <section class="step">
+    <span class="num">2</span>
+    <div>
+      <h2>Anmelden</h2>
+      <div class="split">
+        <div>
+          <p>Die App läuft im Browser. Auf dem Rechner muss nichts eingerichtet werden.</p>
+          <p>Beim ersten Öffnen fragt die App nach dem Zugangscode. Danach merkt sich der Browser die Anmeldung.</p>
+        </div>
+        <div class="shot mini"><img src="img/01-anmelden.webp" alt="Anmeldung mit Zugangscode"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step">
+    <span class="num">3</span>
+    <div>
+      <h2>Einen Stapel einlesen</h2>
+      <p>Die PDFs lassen sich in das große Feld ziehen. Oder ein Klick auf „Dateien auswählen“ öffnet die Auswahl. Mehrere Dateien bilden zusammen einen Stapel. Ein Stapel darf Scheine von mehreren Firmen mischen.</p>
+      <p>Danach liest die App Seite für Seite. Ein Balken zeigt den Stand. Das Fenster muss so lange offen bleiben. Beim Test hat die App für 280 Seiten 11 Minuten gebraucht.</p>
+      <p>Alle Stapel bleiben als Karte auf der Startseite. Die Karte zeigt Seiten, Tonnen und offene Zeilen.</p>
+      <div class="shot"><img src="img/02-uebersicht.webp" alt="Startseite mit Feld zum Einlesen und einer Stapel-Karte"></div>
+    </div>
+  </section>
+
+  <section class="step">
+    <span class="num">4</span>
+    <div>
+      <h2>Die Prüfansicht</h2>
+      <p>Nach dem Lesen öffnet sich die Prüfansicht. Sie hat drei Teile.</p>
+      <div class="shot"><img src="img/03-pruefansicht.webp" alt="Prüfansicht mit Summen links, Tabelle in der Mitte und Schein rechts"></div>
+      <ol class="legend" style="margin-top:14px">
+        <li><strong>Links: Summen je Material.</strong> Jedes Material hat eine Zeile mit Fuhren und Tonnen. Ganz unten steht die Summe von allem. Ein Klick auf ein Material zeigt nur seine Scheine.</li>
+        <li><strong>Mitte: die Tabelle.</strong> Sie zeigt die Spalten der Excel: Material, Datum, Nummer, Tonnage, Herkunft und Entsorgungsstelle. Der Punkt vorn zeigt den Stand der Zeile.</li>
+        <li><strong>Rechts: der Schein.</strong> Oben stehen die Werte zum Ändern. Darunter ist das Bild vom Schein. Es lässt sich drehen und vergrößern.</li>
+      </ol>
+      <p class="cap">Auf den Bildern hier ist der Schein unscharf. In der App ist er gut lesbar.</p>
+    </div>
+  </section>
+
+  <section class="step">
+    <span class="num">5</span>
+    <div>
+      <h2>Summen je Material</h2>
+      <p>Die App nimmt das Material so, wie es auf dem Schein steht. Jede Firma schreibt dasselbe Material manchmal anders.</p>
+      <p>Dafür gibt es den Stift neben jedem Material. Er öffnet ein Feld für einen neuen Namen. Bekommen zwei Materialien denselben Namen, zählt die App sie zusammen.</p>
+      <p>Die Änderung gilt für alle Scheine mit diesem Material. Sie bleibt auch beim nächsten Öffnen erhalten.</p>
+      <div class="split" style="max-width:700px">
+        <div><div class="shot"><img src="img/04-material-leiste.webp" alt="Summen je Material"></div><p class="cap">Summen je Material</p></div>
+        <div><div class="shot"><img src="img/07-umbenennen.webp" alt="Material umbenennen"></div><p class="cap">Neuer Name über den Stift</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step">
+    <span class="num">6</span>
+    <div>
+      <h2>Grün, gelb, rot, grau</h2>
+      <p>Der Punkt vor jeder Zeile zeigt, ob etwas zu tun ist.</p>
+      <div class="tab"><table>
+        <tr><th>Farbe</th><th>Bedeutung</th><th>Was zu tun ist</th></tr>
+        <tr><td><span class="punkt" style="background:var(--ok)"></span>Grün</td><td>Brutto minus Tara ergibt genau das Netto. Die Zahl ist nachgerechnet.</td><td>Nichts.</td></tr>
+        <tr><td><span class="punkt" style="background:#C77A11"></span>Gelb</td><td>Etwas passt nicht ganz. Der Grund steht rechts über den Werten.</td><td>Den Schein ansehen. Wert ändern oder „Als geprüft markieren“.</td></tr>
+        <tr><td><span class="punkt" style="background:var(--danger)"></span>Rot</td><td>Die Nummer fehlt, oder die Tonnen sind um das Tausendfache falsch.</td><td>Den Wert am Schein ablesen und eintragen.</td></tr>
+        <tr><td><span class="punkt" style="background:#CBD5E1"></span>Grau</td><td>Die Seite zählt nicht. Das ist zum Beispiel ein Duplikat oder ein doppelter Scan.</td><td>Nichts. Die Zeile steht nur zur Kontrolle am Ende.</td></tr>
+      </table></div>
+      <p style="margin-top:14px">Der Knopf „Zu prüfen“ über der Tabelle zeigt nur die offenen Zeilen. Die Taste N springt zur nächsten offenen Zeile. Mit Enter ist eine Zeile geprüft.</p>
+      <div class="shot"><img src="img/05-zu-pruefen.webp" alt="Nur die Zeilen, die noch zu prüfen sind"></div>
+      <div class="split" style="margin-top:6px">
+        <div class="shot"><img src="img/06-beleg-detail.webp" alt="Rechte Seite mit Hinweis und Feldern zum Ändern"></div>
+        <div class="shot"><img src="img/08-zaehlt-nicht.webp" alt="Zeilen, die nicht zählen"></div>
+      </div>
+      <p class="cap">Links: ein Schein mit Hinweis. Rechts: Seiten, die nicht zählen, mit dem Grund.</p>
+    </div>
+  </section>
+
+  <section class="step">
+    <span class="num">7</span>
+    <div>
+      <h2>Die Excel-Datei</h2>
+      <p>Ein Klick auf „Excel exportieren“ lädt die Datei. Sie hat vier Blätter.</p>
+      <ol class="legend">
+        <li><strong>Wiegescheine.</strong> Das sind die Spalten der alten Tabelle, vorn das Material. Die Scheine sind nach Material sortiert, dann nach Datum. Unter jedem Material steht die Summe.</li>
+        <li><strong>Summen je Material.</strong> Hier stehen nur die Summen, eine Zeile je Material.</li>
+        <li><strong>Details.</strong> Hier stehen alle Werte, die die App gelesen hat. Dazu steht, wo sie auf dem Schein standen.</li>
+        <li><strong>Zusammenfassung.</strong> Hier stehen Anzahl und Tonnen je Lieferant.</li>
+      </ol>
+      <div class="tab breit"><table>
+        <tr><th>Material</th><th>Datum</th><th>Herkunft</th><th>Entsorgungsstelle</th><th>Nr.</th><th class="r">Tonnage</th></tr>
+        <tr><td>Boden und Steine …</td><td>23.04.2026</td><td>Willich</td><td>Deponie Horm</td><td>••••••</td><td class="r">28,28</td></tr>
+        <tr><td>Boden und Steine …</td><td>24.04.2026</td><td>Willich</td><td>Deponie Horm</td><td>••••••</td><td class="r">29,93</td></tr>
+        <tr><td>…</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr class="summe"><td>Summe Boden und Steine …</td><td></td><td></td><td></td><td>124 Fuhren</td><td class="r">3.141,74</td></tr>
+        <tr class="leer"><td colspan="6"></td></tr>
+        <tr><td>Grubenkies / Verladetätigkeit</td><td>23.04.2026</td><td>Verwertungszentrum Erdenwerk (Werk 67), Neuss</td><td></td><td>••••••</td><td class="r">24,73</td></tr>
+        <tr><td>Grubenkies / Verladetätigkeit</td><td>23.04.2026</td><td>Verwertungszentrum Erdenwerk (Werk 67), Neuss</td><td></td><td>••••••</td><td class="r">25,40</td></tr>
+        <tr><td>…</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr class="summe"><td>Summe Grubenkies / Verladetätigkeit</td><td></td><td></td><td></td><td>117 Fuhren</td><td class="r">2.899,92</td></tr>
+        <tr class="leer"><td colspan="6"></td></tr>
+        <tr class="summe"><td>Gesamt</td><td></td><td></td><td></td><td>245 Fuhren</td><td class="r">6.118,46</td></tr>
+      </table></div>
+      <p class="cap">Ausschnitt aus dem Blatt „Wiegescheine“. Die Nummern sind hier unkenntlich gemacht. Am Handy lässt sich die Tabelle seitlich schieben.</p>
+      <p>Die Seiten, die nicht zählen, stehen ganz am Ende. Sie sind in keiner Summe enthalten.</p>
+    </div>
+  </section>
+
+  <section class="step">
+    <span class="num">8</span>
+    <div>
+      <h2>So läuft es im Alltag</h2>
+      <ol class="schritte">
+        <li>Die Scheine der Woche scannen, gern als ein oder mehrere PDFs.</li>
+        <li>Die App öffnen und die PDFs in das Feld ziehen.</li>
+        <li>Warten, bis alle Seiten gelesen sind. Das Fenster bleibt so lange offen.</li>
+        <li>Auf „Zu prüfen“ klicken und nur diese Zeilen ansehen.</li>
+        <li>Bei Bedarf Materialien zusammenlegen.</li>
+        <li>„Excel exportieren“ klicken. Die Datei liegt dann im Ordner Downloads.</li>
+      </ol>
+      <p style="margin-top:12px">Das Abtippen entfällt. Übrig bleibt der Blick auf die wenigen gelben Zeilen.</p>
+    </div>
+  </section>
+
+  <section class="step">
+    <span class="num">9</span>
+    <div>
+      <h2>Gut zu wissen</h2>
+      <div class="cards">
+        <div class="card"><h3>Daten bleiben im Browser</h3><p>Stapel und Korrekturen liegen nur in diesem Browser auf diesem Rechner. Wer die Browserdaten löscht, löscht auch die Stapel. Die Excel deshalb immer laden und sichern.</p></div>
+        <div class="card"><h3>Ein Rechner, ein Stand</h3><p>An einem anderen Rechner sind die Stapel nicht zu sehen. Später gibt es eine Fassung für mehrere Personen. Dann hat jede Person ein eigenes Login.</p></div>
+        <div class="card"><h3>Neue Lieferanten</h3><p>Die App sucht nicht nach festen Stellen auf dem Schein. Sie liest den Schein wie ein Mensch. Scheine von neuen Firmen gehen deshalb meist ohne Anpassung.</p></div>
+        <div class="card"><h3>Datenschutz</h3><p>Zum Lesen geht jede Seite einzeln an die KI von Anthropic. Die Verbindung ist verschlüsselt. Die Excel und die Stapel bleiben im Browser. Vor dem festen Einsatz folgt ein Vertrag zur Auftragsverarbeitung.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step">
+    <span class="num">10</span>
+    <div>
+      <h2>Offene Fragen</h2>
+      <p>Diese Punkte sind noch zu klären. Sie ändern nur wenig an den Summen.</p>
+      <ol class="schritte">
+        <li>Ein Schein aus Werk 66 trägt eine fremde Kundennummer. Es geht um 23,66 Tonnen Füllkies aus Jüchen. Gehört er zu dieser Baustelle? Er steht zurzeit in der Summe.</li>
+        <li>Die Baustelle heißt je nach Lieferant „Willich“ oder „Hülsdonkstraße Willich“. Soll überall dasselbe stehen?</li>
+        <li>Beim Kies ist die Herkunft das Kieswerk. Die Entsorgungsstelle bleibt dann leer. Passt das so?</li>
+        <li>Die Nummern stehen ohne den Zusatz „/ 1“. Passt das so?</li>
+        <li>Ein Duplikat zählt nicht, wenn das Original im Stapel liegt. Passt das so?</li>
+      </ol>
+    </div>
+  </section>
+
+  <footer>Stand: 30.09.2026</footer>
+</div>
+</body>
+</html>
