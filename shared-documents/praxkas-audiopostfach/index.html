@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Praxkas · Audiopostfach</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent-rgb:23,88,122; --accent:rgb(var(--accent-rgb)); --accent-strong:#0E3A52; --secondary:#23282D;
+  --bg:#F4F7F9; --surface:#FFFFFF; --ink:#23282D; --muted:#5B6874; --line:rgba(23,88,122,.16);
+  --warn:#8A5A0E; --warn-bg:rgba(199,122,17,.10);
+  --pop-ease:cubic-bezier(0.34,1.56,0.64,1); --pop-lift:translateY(-4px) scale(1.02);
+  --glow-soft:0 0 0 1px rgba(var(--accent-rgb),.35),0 16px 34px -16px rgba(var(--accent-rgb),.22),0 5px 14px rgba(var(--accent-rgb),.10);
+  --glow-strong:0 0 0 2px rgba(var(--accent-rgb),.70),0 30px 55px -12px rgba(var(--accent-rgb),.40),0 12px 26px rgba(var(--accent-rgb),.22);
+  --r-sm:10px; --r-md:16px; --r-lg:24px;
+  --font-display:"Chakra Petch","Segoe UI",system-ui,sans-serif; --font-body:"Montserrat","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font-body);color:var(--ink);line-height:1.6;font-size:16px;
+  background:radial-gradient(900px 520px at 82% -10%,rgba(var(--accent-rgb),.08),transparent 60%),linear-gradient(180deg,#FFFFFF,var(--bg));background-color:var(--bg)}
+h1,h2,h3,.eyebrow,.num,.intern{font-family:var(--font-display)}
+h1{font-size:clamp(32px,5vw,54px);line-height:1.05;letter-spacing:-.01em;font-weight:700;margin:0 0 16px;text-wrap:balance}
+h2{font-size:clamp(22px,3vw,30px);line-height:1.15;font-weight:700;margin:0 0 12px;text-wrap:balance}
+h3{font-size:18px;line-height:1.25;font-weight:600;margin:0 0 6px}
+p,li{font-size:clamp(15px,1.4vw,17px)} p{margin:0 0 12px;max-width:68ch}
+.eyebrow{display:block;text-transform:uppercase;letter-spacing:.16em;font-weight:600;font-size:13px;color:var(--accent);margin-bottom:10px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+.intern{display:inline-flex;align-items:center;gap:8px;margin-top:28px;padding:6px 12px;border-radius:999px;background:rgba(192,57,43,.08);color:#9B2C20;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.hero{padding:8px 0 36px}
+.lead{font-size:clamp(17px,1.8vw,20px);color:var(--muted)}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:22px}
+.flow div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:14px 16px;font-size:14px}
+.flow strong{display:block;font-family:var(--font-display);font-size:15px;margin-bottom:2px;color:var(--accent-strong)}
+section.step{display:grid;grid-template-columns:52px 1fr;gap:18px;padding:34px 0;border-top:1px solid var(--line);break-inside:avoid}
+.num{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--accent);color:#fff;font-weight:700;font-size:20px}
+.shot{margin:14px 0 0;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:0 24px 50px -28px rgba(var(--accent-rgb),.45)}
+.shot img{display:block;width:100%;height:auto}
+.shot.small{max-width:460px}
+.shot.phone{max-width:300px;border-radius:24px}
+.cap{font-size:13px;color:var(--muted);margin-top:8px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.legend{list-style:none;padding:0;margin:0;counter-reset:l}
+.legend li{position:relative;padding:8px 0 8px 38px;border-top:1px solid var(--line);font-size:15px}
+.legend li:first-child{border-top:0}
+.legend li::before{counter-increment:l;content:counter(l);position:absolute;left:0;top:8px;width:26px;height:26px;border-radius:8px;background:rgba(var(--accent-rgb),.12);color:var(--accent-strong);font-family:var(--font-display);font-weight:700;font-size:14px;display:grid;place-items:center}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:8px}
+.card{background:var(--surface);border:1.5px solid rgba(var(--accent-rgb),.40);border-radius:var(--r-lg);padding:22px;box-shadow:var(--glow-soft);
+  transition:transform .4s var(--pop-ease),box-shadow .4s ease,border-color .35s ease}
+.card p{margin:0;font-size:15px}
+.note{margin-top:14px;font-size:15px;color:var(--warn);background:var(--warn-bg);border-radius:var(--r-sm);padding:12px 14px;max-width:none}
+footer{padding:30px 0 60px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+@media (hover:hover) and (pointer:fine){ .card:hover{transform:var(--pop-lift);border-color:var(--accent-strong);box-shadow:var(--glow-strong)} }
+@media (max-width:760px){
+  .wrap{padding:0 16px} .split,.cards{grid-template-columns:1fr} .flow{grid-template-columns:1fr 1fr}
+  section.step{grid-template-columns:1fr;gap:10px}
+}
+@media (prefers-reduced-motion:reduce){ .card{transition:none} .card:hover{transform:none} }
+@media print{
+  body{background:#fff} .card{box-shadow:none} .shot{box-shadow:none}
+  section.step{padding:22px 0;break-inside:auto} .hero{padding-bottom:18px} .shot,.card,.legend li{break-inside:avoid} h2{break-after:avoid}
+  @page{size:A4;margin:14mm 12mm}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="intern" style="background:rgba(30,158,106,.10);color:#147A51">Personendaten unkenntlich gemacht</span>
+
+  <section class="hero">
+    <span class="eyebrow" style="margin-top:18px">Praxkas · Audiopostfach</span>
+    <h1>Anrufbeantworter, abgeschrieben und auf einen Blick</h1>
+    <p class="lead">Jede Nachricht auf dem Anrufbeantworter erscheint von selbst im Audiopostfach von Praxkas: abgeschrieben, kurz zusammengefasst und nach Rezepten, Terminabsagen und Anliegen sortiert. Bei Rezeptwünschen stehen die gewünschten Präparate direkt auf der Kachel.</p>
+    <div class="flow">
+      <div><strong>1 · Anruf</strong>Der Patient spricht auf die passende Leitung (15 Rezepte, 16 Terminabsagen, 17 Anliegen).</div>
+      <div><strong>2 · Mail</strong>Die Telefonanlage schickt die Aufnahme an kontakt@praxkas.de, in den passenden Ordner.</div>
+      <div><strong>3 · Abschrift</strong>Praxkas holt neue Nachrichten alle 5 Minuten ab und schreibt sie auf dem Praxis-PC ab.</div>
+      <div><strong>4 · Zusammenfassung</strong>Die KI zieht Name, Geburtsdatum, Rückrufnummer und das Wichtigste heraus.</div>
+    </div>
+  </section>
+
+  <section class="step">
+    <span class="num">1</span>
+    <div>
+      <h2>Überblick auf dem Dashboard</h2>
+      <p>Gleich nach dem Anmelden zeigt das Dashboard, wie viele neue Nachrichten je Bereich warten. Ein Klick auf eine Karte öffnet das Audiopostfach mit genau diesem Bereich. Darunter stehen die offenen Anrufe als Kurzliste.</p>
+      <div class="shot"><img src="img/02-dashboard-kanaele.webp" alt="Zähler für neue Rezeptbestellungen, Terminabsagen und Anliegen"></div>
+      <div class="shot"><img src="img/01-dashboard.webp" alt="Dashboard mit offenen Anrufen"></div>
+    </div>
+  </section>
+
+  <section class="step">
+    <span class="num">2</span>
+    <div>
+      <h2>Das Audiopostfach</h2>
+      <p>Jede Nachricht ist eine kompakte Kachel, die neueste steht oben links. Die farbige Linie oben zeigt den Bereich: <strong>blau</strong> für Rezepte, <strong>grün</strong> für Terminabsagen, <strong>gold</strong> für Anliegen. Dringende Nachrichten haben einen roten Rand und den Hinweis „dringend“.</p>
+      <p>In der Seitenleiste zeigt die Zahl neben „Audiopostfach“ jederzeit, wie viele Nachrichten noch neu sind.</p>
+      <div class="shot"><img src="img/03-audiopostfach.webp" alt="Audiopostfach mit Kacheln"></div>
+    </div>
+  </section>
+
+  <section class="step">
+    <span class="num">3</span>
+    <div>
+      <h2>Filtern</h2>
+      <p>Links oben lässt sich der Bereich wählen: alle Nachrichten, nur Rezepte, nur Terminabsagen oder nur Anliegen. Die Zahl neben jedem Reiter nennt die neuen Nachrichten darin. Rechts oben wird umgeschaltet zwischen <strong>Offen</strong> (noch zu erledigen), <strong>Erledigt</strong> und <strong>Alle</strong>.</p>
+      <div class="shot"><img src="img/04-filter.webp" alt="Reiter für Bereiche und Filter Offen, Erledigt, Alle"></div>
+      <div class="shot"><img src="img/05-rezepte.webp" alt="Nur Rezepte ausgewählt"></div>
+    </div>
+  </section>
+
+  <section class="step">
+    <span class="num">4</span>
+    <div>
+      <h2>Eine Rezept-Kachel lesen</h2>
+      <div class="split">
+        <div>
+          <div class="shot small"><img src="img/06-rezept-kachel.webp" alt="Rezept-Kachel"></div>
+          <div class="shot small"><img src="img/06b-rezept-kachel.webp" alt="Weitere Rezept-Kachel"></div>
+        </div>
+        <ol class="legend">
+          <li><strong>Bereich und Uhrzeit</strong> des Anrufs, rechts der Status „Neu“, „In Bearbeitung“ oder „Erledigt“.</li>
+          <li><strong>Name</strong> des Anrufers, wie er ihn genannt hat. Fehlt der Name, steht dort „Anrufer“ mit Nummer.</li>
+          <li><strong>Geburtsdatum</strong> („geb. …“), sobald es in der Nachricht genannt wurde, damit der Patient eindeutig zu finden ist.</li>
+          <li><strong>Rückrufnummer</strong>. Sie lässt sich anklicken und am Handy direkt anrufen.</li>
+          <li><strong>Gewünschte Präparate</strong>, eines pro Zeile, mit Stärke und Menge, soweit genannt. Ist ein Name nicht sicher zu verstehen, steht daneben „unsicher“.</li>
+          <li><strong>Knöpfe unten:</strong> Aufnahme abspielen, Abschrift aufklappen, Notiz, Erledigt.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="step">
+    <span class="num">5</span>
+    <div>
+      <h2>Anhören und Abschrift lesen</h2>
+      <div class="split">
+        <div>
+          <p>Der runde Knopf links spielt die Aufnahme ab. Es läuft immer nur eine Aufnahme gleichzeitig.</p>
+          <p>Der Knopf mit dem Blatt klappt die <strong>vollständige Abschrift</strong> direkt in der Kachel auf, ein zweiter Klick klappt sie wieder zu. Das hilft bei ungewöhnlichen Präparatnamen oder wenn etwas unklar ist.</p>
+        </div>
+        <div class="shot small"><img src="img/07-transkript.webp" alt="Kachel mit aufgeklappter Abschrift"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step">
+    <span class="num">6</span>
+    <div>
+      <h2>Notiz und Erledigt</h2>
+      <div class="split">
+        <div>
+          <p>Über den Notiz-Knopf lässt sich ein interner Vermerk hinterlegen, etwa „Rezept liegt vorne“ oder „Rückruf erfolgt“. Eine Kachel mit Notiz ist am Knopf mit einem Punkt markiert.</p>
+          <p><strong>Erledigt</strong> nimmt die Nachricht aus der Ansicht „Offen“. Unter „Erledigt“ bleibt sie weiter auffindbar.</p>
+          <p>Gleichzeitig bekommt die zugehörige Mail im Postfach kontakt@ das Schlagwort <strong>„erledigt“</strong>, dasselbe, das in Thunderbird bisher von Hand gesetzt wurde. In Thunderbird ist damit auf jedem Praxis-Rechner sichtbar, dass die Nachricht schon bearbeitet wurde. Wird „Erledigt“ in Praxkas zurückgenommen, verschwindet auch die Markierung, eine von Hand gesetzte Markierung bleibt dagegen immer erhalten.</p>
+        </div>
+        <div class="shot small"><img src="img/08-notiz.webp" alt="Notizfenster"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step">
+    <span class="num">7</span>
+    <div>
+      <h2>Anliegen und Terminabsagen</h2>
+      <p>Auch hier gilt: kurz statt lang. Bei einem <strong>Anliegen</strong> steht das Wichtigste in einem Satz, dazu ein Stichwort wie „Befund“ oder „Überweisung“. Bei einer <strong>Terminabsage</strong> stehen der abgesagte Termin und der Grund, und falls gewünscht der Hinweis „möchte neuen Termin“.</p>
+      <div class="cards">
+        <div><div class="shot small"><img src="img/09-anliegen-kachel.webp" alt="Anliegen-Kachel"></div><p class="cap">Anliegen</p></div>
+        <div><div class="shot small"><img src="img/10-terminabsagen.webp" alt="Bereich Terminabsagen"></div><p class="cap">Terminabsagen. Zum Zeitpunkt der Aufnahme lag hier keine neue Nachricht.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step">
+    <span class="num">8</span>
+    <div>
+      <div class="split">
+        <div>
+          <h2>Auch am Handy</h2>
+          <p>Im Praxis-WLAN ist Praxkas auch am Handy oder Tablet erreichbar. Die Kacheln stehen dort untereinander, das Menü öffnet sich über das Symbol oben links. Die Rückrufnummer lässt sich direkt antippen.</p>
+        </div>
+        <div class="shot phone"><img src="img/12-handy.webp" alt="Audiopostfach am Handy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="step">
+    <span class="num">9</span>
+    <div>
+      <h2>Gut zu wissen</h2>
+      <div class="cards">
+        <div class="card"><h3>Die KI hört mit</h3><p>Abschrift und Zusammenfassung entstehen automatisch. Namen und Präparate können verhört sein. Bei „unsicher“ oder im Zweifel hilft ein Blick in die Abschrift oder kurz die Aufnahme anhören.</p></div>
+        <div class="card"><h3>Falsche Leitung</h3><p>Manchmal sprechen Anrufer auf die falsche Leitung, z. B. eine Terminabsage auf die Rezept-Leitung. Die Kachel steht dann unter „Rezept“, die Zusammenfassung zeigt aber, worum es wirklich geht.</p></div>
+        <div class="card"><h3>Postfach bleibt, wie es ist</h3><p>Praxkas liest die Mails mit. Nichts wird im Postfach gelöscht, verschoben oder als gelesen markiert. Einzige Ausnahme ist das Schlagwort „erledigt“ bei erledigten Nachrichten. In der Testphase werden höchstens die 30 neuesten Mails übernommen.</p></div>
+        <div class="card"><h3>Schlagwort in Thunderbird</h3><p>Fehlt die Markierung „erledigt“ an einem Praxis-PC, dort einmal in Thunderbird unter Einstellungen → Allgemein → Schlagwörter ein Schlagwort mit dem Namen „erledigt“ anlegen. Danach erscheinen die von Praxkas gesetzten Markierungen auch dort.</p></div>
+        <div class="card"><h3>Datenschutz</h3><p>Die Aufnahmen werden auf dem Praxis-PC abgeschrieben. Für die kurze Zusammenfassung geht nur der Text an die KI von Anthropic, auf Grundlage eines Auftragsverarbeitungsvertrags. In diesem Dokument sind Namen, Geburtsdaten, Rufnummern und Abschriften unkenntlich gemacht.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>Praxkas · Audiopostfach · Stand 30.09.2026 · Screenshots aus dem echten Audiopostfach, Personendaten unkenntlich gemacht.</footer>
+</div>
+</body>
+</html>
