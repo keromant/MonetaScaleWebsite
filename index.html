@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MonetaScale — Webdesign mit Charakter</title>
-  <meta name="description" content="Wir bringen Charakter, Klarheit und Eleganz in Ihre Website — und verwandeln sie in eine digitale Bühne, die sich mit Stolz zeigen lässt.">
+  <title>MonetaScale — Content in Menge</title>
+  <meta name="description" content="Bis zu 120 Videos im Monat für alle Plattformen. Aus 30 Minuten Material pro Woche oder ganz ohne Filmen. Schnitt, Untertitel, Animation und Posten übernimmt MonetaScale.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -392,7 +392,14 @@
     }
     .ansatz-quote em {
       font-style: normal;
-      color: var(--white);
+      color: var(--green);
+    }
+    .ansatz-quelle {
+      margin-top: 28px;
+      max-width: 640px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
     }
 
     /* typewriter cursor */
@@ -429,9 +436,10 @@
 
     .pakete-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
+    .pakete-grid .card { padding: 40px 34px; }
 
     .card {
       background: var(--bg2);
@@ -575,6 +583,121 @@
       border-color: var(--green);
     }
     .card.featured .card-btn:hover { background: var(--green-hi); border-color: var(--green-hi); }
+
+    .card-menge {
+      font-size: 15px;
+      color: var(--t2);
+      margin: 14px 0 6px;
+    }
+    .card-menge span {
+      font-family: var(--fh);
+      font-size: 56px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--white);
+      margin-right: 6px;
+    }
+    .card.featured .card-menge span { color: var(--green); }
+
+    .card-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--t2);
+      flex: 1;
+      margin-bottom: 36px;
+    }
+    .card-list li { display: flex; gap: 12px; align-items: baseline; }
+    .card-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+      transform: translateY(-2px);
+    }
+
+    .fussnote {
+      max-width: 660px;
+      margin: 36px auto 0;
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    /* ─── ZAHLEN ─── */
+    #zahlen { background: var(--bg); }
+    .zahlen-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .zahlen-grid .card { padding: 40px 34px; }
+    .zahl-wert {
+      font-family: var(--fh);
+      font-size: clamp(44px, 5vw, 64px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--green);
+      margin-bottom: 18px;
+    }
+    .zahl-text {
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--white);
+      flex: 1;
+      margin-bottom: 22px;
+    }
+    .zahl-quelle {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ─── ABLAUF ─── */
+    #ablauf {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .ablauf-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .ablauf-grid .card { padding: 40px; background: var(--bg); }
+    .ablauf-grid .card-body { margin-bottom: 0; }
+
+    /* ─── GARANTIE ─── */
+    #garantie { background: var(--bg2); border-top: 1px solid var(--border); }
+    .garantie-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .garantie-grid .card { background: var(--bg); }
+    .garantie-grid .card-body { margin-bottom: 14px; }
+    .garantie-bedingung { font-size: 13px; color: var(--muted); }
+    .ehrlich {
+      max-width: 720px;
+      margin: 36px auto 0;
+      padding: 24px 28px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--t2);
+    }
 
     /* ─── CTA SECTION ─── */
     #cta-section {
@@ -775,7 +898,14 @@
       }
       .ansatz-grid { grid-template-columns: 1fr; gap: 36px; }
       .ansatz-left { position: static; }
-      .pakete-grid { grid-template-columns: 1fr; }
+      .pakete-grid,
+      .zahlen-grid,
+      .ablauf-grid,
+      .garantie-grid { grid-template-columns: 1fr; }
+      .pakete-grid .card,
+      .zahlen-grid .card,
+      .ablauf-grid .card { padding: 34px 26px; }
+      .card { padding: 34px 26px; }
       .form-row { grid-template-columns: 1fr; }
       .form-submit { width: 100%; justify-content: center; }
       footer { flex-direction: column; gap: 20px; text-align: center; padding: 28px 24px; }
@@ -815,8 +945,8 @@
       <img src="./MonetaScale Logo.png" alt="MonetaScale" class="nav-logo">
     </a>
     <div class="nav-right">
-      <a href="#pakete" class="nav-link">Angebote</a>
-      <a href="#kontakt" class="nav-cta">Anfragen</a>
+      <a href="#pakete" class="nav-link">Pakete</a>
+      <a href="#kontakt" class="nav-cta">3 Entwürfe gratis</a>
     </div>
   </nav>
 
@@ -831,27 +961,27 @@
 
       <div class="hero-inner">
           <span id="hEyebrow">
-          Das Internet ist voll von generischen, charakterlosen Websites.
+          Ein Video pro Woche ist wie Lotto mit einem einzigen Los.
         </span>
 
-        <h1 class="hero-hl" aria-label="Wir bringen Charakter, Klarheit und Eleganz in Ihre Website — und verwandeln sie in eine digitale Bühne, die sich mit Stolz zeigen lässt.">
-          <span class="hero-line"><span class="hero-line-inner">Wir bringen Charakter,</span></span>
-          <span class="hero-line"><span class="hero-line-inner">Klarheit und Eleganz</span></span>
-          <span class="hero-line"><span class="hero-line-inner">in Ihre Website —</span></span>
+        <h1 class="hero-hl" aria-label="Content in Menge. Bis zu 120 Videos im Monat für alle Plattformen. Ohne Schnitt, ohne Posten, auf Wunsch ohne Gesicht.">
+          <span class="hero-line"><span class="hero-line-inner">Content in Menge.</span></span>
+          <span class="hero-line"><span class="hero-line-inner">Bis zu 120 Videos</span></span>
+          <span class="hero-line"><span class="hero-line-inner">im Monat —</span></span>
         </h1>
 
         <span id="hAccent" aria-hidden="true">
-          und verwandeln sie in eine digitale Bühne,<br>die sich mit Stolz zeigen lässt.
+          für alle Plattformen.<br>Ohne Schnitt, ohne Posten, auf Wunsch ohne Gesicht.
         </span>
 
         <div id="hCta">
-          <a href="tel:+4917670368821" class="btn-primary">
-            Gespräch starten
+          <a href="#kontakt" class="btn-primary">
+            3 kostenlose Entwürfe
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
-          <a href="#pakete" class="btn-outline">Angebote ansehen</a>
+          <a href="#pakete" class="btn-outline">Pakete ansehen</a>
         </div>
       </div>
 
@@ -867,11 +997,77 @@
     <div class="s-in">
       <div class="ansatz-grid">
         <div class="ansatz-left">
-          <div class="eyebrow">Unser Ansatz</div>
-          <div class="ansatz-label">Was uns wirklich<br>unterscheidet</div>
+          <div class="eyebrow">Warum Menge</div>
+          <div class="ansatz-label">Was die Zahlen<br>sagen</div>
         </div>
-        <div class="ansatz-quote">
-          Das Internet fühlt sich oft an wie eine Wiederholung — <em>ein Template, das Sie schon hundertmal gesehen haben.</em> Wir bauen das Eine, das Sie noch nie gesehen haben. Maximale Eleganz, Stil mit Handschrift, <em>kein einziges Element von der Stange.</em>
+        <div>
+          <div class="ansatz-quote">
+            Über 11 Millionen Posts zeigen: Wer elfmal und öfter pro Woche postet, holt mit seinen besten Videos <em>fast viermal so viele Aufrufe.</em> Jedes Video ist ein Los. <em>Mehr Videos heißt mehr Chancen auf einen Treffer.</em>
+          </div>
+          <p class="ansatz-quelle">Quelle: Buffer, Auswertung von 11,4 Mio. TikTok-Posts, 2025. Gemessen wurden die besten 10 % der Posts: 3.722 Aufrufe bei einem Post pro Woche, 14.401 bei elf und mehr. Ein Zusammenhang, kein Versprechen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ ZAHLEN ══════ -->
+  <section id="zahlen" class="s-pad">
+    <div class="s-in">
+      <div class="pakete-header">
+        <div class="eyebrow reveal">Fakten</div>
+        <h2 class="pakete-hl reveal">Mehr Versuche, mehr Treffer.</h2>
+      </div>
+
+      <div class="zahlen-grid">
+        <div class="card reveal">
+          <div class="zahl-wert">fast 4 ×</div>
+          <p class="zahl-text">so viele Aufrufe für die besten Videos, wenn ein Konto elfmal und öfter pro Woche postet.</p>
+          <div class="zahl-quelle">Buffer · TikTok · 2025</div>
+        </div>
+        <div class="card reveal">
+          <div class="zahl-wert">2 ×</div>
+          <p class="zahl-text">so schnell wachsen die Follower in Wochen mit 3 bis 5 Posts statt 1 bis 2.</p>
+          <div class="zahl-quelle">Buffer · Instagram · 2025</div>
+        </div>
+        <div class="card reveal">
+          <div class="zahl-wert">85 %</div>
+          <p class="zahl-text">der befragten Video-Marketer sagen: Video bringt ihnen Leads.</p>
+          <div class="zahl-quelle">Wyzowl · Umfrage · Ende 2025</div>
+        </div>
+      </div>
+
+      <p class="fussnote reveal">Die Studien messen fremde Konten. Sie zeigen einen Zusammenhang und sind kein Versprechen für den Einzelfall. Jedes Video entsteht neu, denn die Plattformen bremsen Kopien.</p>
+    </div>
+  </section>
+
+  <!-- ══════ ABLAUF ══════ -->
+  <section id="ablauf" class="s-pad">
+    <div class="s-in">
+      <div class="pakete-header">
+        <div class="eyebrow reveal">So läuft es</div>
+        <h2 class="pakete-hl reveal">Sie liefern 30 Minuten.<br>Wir machen den Rest.</h2>
+      </div>
+
+      <div class="ablauf-grid">
+        <div class="card reveal">
+          <div class="card-num">Schritt 1</div>
+          <h3 class="card-name">Plan für 90 Tage</h3>
+          <p class="card-body">Ein Termin zum Start. Gemeinsam legen wir Themen und Formate fest, passend zu Ihrem Betrieb und Ihren Kunden.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-num">Schritt 2</div>
+          <h3 class="card-name">30 Minuten Material</h3>
+          <p class="card-body">Jede Woche sagt eine kurze Liste, was zu filmen ist. Das Handy reicht. Oder Sie filmen gar nicht: Dann entstehen animierte Videos mit KI-Stimme.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-num">Schritt 3</div>
+          <h3 class="card-name">Schnitt und Animation</h3>
+          <p class="card-body">Untertitel, Animation und Zahlen im Bild, in Ihren Farben. Einmal pro Woche geben Sie alle Videos per Link frei.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-num">Schritt 4</div>
+          <h3 class="card-name">Überall zu sehen</h3>
+          <p class="card-body">Jede Plattform bekommt ihre eigene Fassung. Wir posten. Jeden Monat kommt ein Bericht mit Aufrufen, Profilbesuchen und Anfragen.</p>
         </div>
       </div>
     </div>
@@ -881,45 +1077,100 @@
   <section id="pakete" class="s-pad">
     <div class="s-in">
       <div class="pakete-header">
-        <div class="eyebrow reveal">Angebote</div>
-        <h2 class="pakete-hl reveal">Ihr nächster Schritt.</h2>
+        <div class="eyebrow reveal">Pakete</div>
+        <h2 class="pakete-hl reveal">Sie wählen die Menge.</h2>
       </div>
 
       <div class="pakete-grid">
-        <!-- 01 -->
         <div class="card reveal">
-          <div class="card-num">01</div>
-          <h3 class="card-name">Die Transformation</h3>
-          <div class="card-price">Redesign · ab 1.000 €</div>
+          <div class="card-num">Paket</div>
+          <h3 class="card-name">Sichtbar</h3>
+          <div class="card-menge"><span>30</span> Videos im Monat</div>
+          <div class="card-price">1 Video pro Tag · 2 Plattformen</div>
           <div class="card-divider"></div>
-          <p class="card-body">
-            Ihre Website funktioniert — aber sie verschwindet in der Masse. Wir geben ihr Charakter, Klarheit und eine Handschrift, die unverkennbar Ihre ist. Aus dem notwendigen Übel wird ein Auftritt, den Sie endlich gerne zeigen.
-          </p>
-          <a href="https://wa.me/4917670368821" target="_blank" rel="noopener" class="card-btn">
-            Jetzt anfragen
+          <ul class="card-list">
+            <li>Instagram und Facebook</li>
+            <li>Plan für 90 Tage</li>
+            <li>Schnitt, Untertitel, Animation</li>
+            <li>Freigabe per Link, Bericht jeden Monat</li>
+          </ul>
+          <a href="#kontakt" class="card-btn">
+            Entwürfe anfordern
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
         </div>
 
-        <!-- 02 -->
         <div class="card featured reveal">
-          <div class="card-num">02</div>
-          <h3 class="card-name">Die Online-Präsenz</h3>
-          <div class="card-price">Neuerstellung · ab 1.300 €</div>
+          <div class="card-badge">Empfohlen</div>
+          <h3 class="card-name">Überall</h3>
+          <div class="card-menge"><span>60</span> Videos im Monat</div>
+          <div class="card-price">2 Videos pro Tag · 4 Plattformen</div>
           <div class="card-divider"></div>
-          <p class="card-body">
-            Kein Template. Kein Baukasten. Kein „sieht aus wie alle anderen". Eine Online-Präsenz, von Grund auf für Sie gestaltet — durchdacht bis ins Detail und so einzigartig wie das, wofür sie steht. Eine digitale Bühne, die es nur einmal gibt.
-          </p>
-          <a href="https://wa.me/4917670368821" target="_blank" rel="noopener" class="card-btn">
-            Jetzt anfragen
+          <ul class="card-list">
+            <li>Instagram, Facebook, TikTok, YouTube Shorts</li>
+            <li>Je Plattform eigener Text und Hashtags</li>
+            <li>Alles aus dem Paket Sichtbar</li>
+            <li>Über elf Videos pro Woche auf jeder Plattform</li>
+          </ul>
+          <a href="#kontakt" class="card-btn">
+            Entwürfe anfordern
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-num">Paket</div>
+          <h3 class="card-name">Allgegenwärtig</h3>
+          <div class="card-menge"><span>120</span> Videos im Monat</div>
+          <div class="card-price">4 Videos pro Tag · 5 Plattformen</div>
+          <div class="card-divider"></div>
+          <ul class="card-list">
+            <li>Dazu Pinterest oder LinkedIn, je nach Branche</li>
+            <li>Querformat und Pins, wo es passt</li>
+            <li>Alles aus dem Paket Überall</li>
+            <li>Jeden Tag mehrmals zu sehen</li>
+          </ul>
+          <a href="#kontakt" class="card-btn">
+            Entwürfe anfordern
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
         </div>
       </div>
+
+      <p class="fussnote reveal">Den Preis besprechen wir im Gespräch. Er richtet sich nach Menge und Plattformen. Alle Videos im Hochformat 9 zu 16, mit KI erstellte Inhalte sind gekennzeichnet.</p>
+    </div>
+  </section>
+
+  <!-- ══════ GARANTIE ══════ -->
+  <section id="garantie" class="s-pad">
+    <div class="s-in">
+      <div class="pakete-header">
+        <div class="eyebrow reveal">Garantie</div>
+        <h2 class="pakete-hl reveal">Menge und Tempo<br>sind garantiert.</h2>
+      </div>
+
+      <div class="garantie-grid">
+        <div class="card reveal">
+          <h3 class="card-name">Menge oder gratis</h3>
+          <div class="card-divider" style="margin-top:22px;"></div>
+          <p class="card-body">Sind am Monatsende nicht alle Videos fertig und eingeplant, ist der nächste Monat gratis.</p>
+          <p class="garantie-bedingung">Bedingung: Material oder Themen kommen jede Woche pünktlich.</p>
+        </div>
+        <div class="card reveal">
+          <h3 class="card-name">Start in 7 Tagen</h3>
+          <div class="card-divider" style="margin-top:22px;"></div>
+          <p class="card-body">Die ersten 10 Videos sind 7 Tage nach dem Start fertig. Sonst kostet der erste Monat die Hälfte.</p>
+          <p class="garantie-bedingung">Gilt ab dem vereinbarten Starttermin.</p>
+        </div>
+      </div>
+
+      <p class="ehrlich reveal">Anfragen garantieren wir nicht. Sie hängen auch von Angebot, Preis und Markt ab. Wir sorgen dafür, dass Ihr Betrieb jeden Tag zu sehen ist.</p>
     </div>
   </section>
 
@@ -928,9 +1179,9 @@
     <div class="s-in">
       <div style="text-align:center;margin-bottom:56px;">
         <div class="eyebrow reveal">Kontakt</div>
-        <h2 class="cta-hl reveal">Projekt anfragen.</h2>
-        <p class="cta-sub reveal" style="max-width:520px;margin:0 auto;">
-          Beschreiben Sie kurz Ihr Vorhaben — kostenlos und unverbindlich. Wir melden uns innerhalb von 24 Stunden.
+        <h2 class="cta-hl reveal">3 Entwürfe, kostenlos.</h2>
+        <p class="cta-sub reveal" style="max-width:540px;margin:0 auto;">
+          Erzählen Sie kurz von Ihrem Betrieb. Wir bauen drei Entwürfe, die zeigen, wie Ihre Videos aussehen könnten. Kostenlos und unverbindlich, Antwort innerhalb von 24 Stunden.
         </p>
         <div class="reveal" style="display:inline-flex;gap:32px;margin-top:24px;flex-wrap:wrap;justify-content:center;">
           <span style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--t2);">
@@ -966,12 +1217,13 @@
           <input type="tel" id="cf-phone" name="phone" placeholder="+49 176 …">
         </div>
         <div class="form-group">
-          <label for="cf-msg">Ihr Projekt</label>
-          <textarea id="cf-msg" name="message" placeholder="Beschreiben Sie kurz Ihre Website oder was Sie sich vorstellen..." required></textarea>
+          <label for="cf-msg">Ihr Betrieb</label>
+          <textarea id="cf-msg" name="message" placeholder="Branche, Stadt und ein Link zu Website oder Instagram …" required></textarea>
         </div>
+        <input type="hidden" name="_subject" value="MENGE: Anfrage für 3 Entwürfe">
         <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
           <button type="submit" class="btn-primary form-submit">
-            Anfrage absenden
+            Entwürfe anfordern
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
