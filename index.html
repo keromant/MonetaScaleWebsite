@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MonetaScale — Content in Menge</title>
-  <meta name="description" content="Bis zu 120 Videos im Monat für alle Plattformen. Aus 30 Minuten Material pro Woche oder ganz ohne Filmen. Schnitt, Untertitel, Animation und Posten übernimmt MonetaScale.">
+  <title>MonetaScale — Videos, die zu Anfragen führen</title>
+  <meta name="description" content="Jeden Tag sichtbar, jede Woche klüger. MonetaScale plant, schneidet und postet 15 bis 60 Videos im Monat und baut den Weg zur Anfrage. Sie filmen 30 Minuten pro Woche. Gratis: der 30-Tage-Contentplan mit Video-Entwurf.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -217,6 +217,17 @@
       margin-top: 2px;
       margin-bottom: 32px;
       clip-path: inset(0 100% 0 0);
+    }
+    #hAccent .hero-sub {
+      display: block;
+      max-width: 620px;
+      margin: 18px auto 0;
+      font-family: var(--fb);
+      font-size: clamp(17px, 1.6vw, 22px);
+      font-weight: 600;
+      line-height: 1.45;
+      letter-spacing: 0;
+      color: var(--white);
     }
 
     #hCta {
@@ -663,29 +674,105 @@
       color: var(--muted);
     }
 
-    /* ─── ABLAUF ─── */
-    #ablauf {
+    .intro {
+      max-width: 620px;
+      margin: 20px auto 0;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--t2);
+    }
+
+    /* ─── LEISTUNGEN ─── */
+    #leistungen {
       background: var(--bg2);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
     }
+    .leistungen-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .leistungen-grid .card { padding: 36px 32px; background: var(--bg); }
+    .leistungen-grid .card-name,
+    .boni-grid .card-name { font-size: 22px; margin-bottom: 12px; }
+    .leistungen-grid .card-body,
+    .boni-grid .card-body,
+    .strecke-grid .card-body,
+    .start-grid .card-body { margin-bottom: 0; }
+
+    /* ─── ABLAUF ─── */
+    #ablauf { background: var(--bg); }
     .ablauf-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
-    .ablauf-grid .card { padding: 40px; background: var(--bg); }
+    .ablauf-grid .card { padding: 40px; }
     .ablauf-grid .card-body { margin-bottom: 0; }
 
+    /* ─── ANFRAGEN-STRECKE ─── */
+    #strecke {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .strecke-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .strecke-grid .card { padding: 30px 24px; background: var(--bg); }
+    .strecke-grid .card-num { color: var(--green); font-size: 13px; }
+    .strecke-grid .card-name { font-size: 20px; margin-bottom: 12px; }
+
+    /* ─── PAKETE: Satz und Bedingungen ─── */
+    .paket-satz {
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--white);
+      margin: -12px 0 26px;
+    }
+    .start-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .start-grid .card { padding: 28px 30px; }
+    .start-grid .card-name { font-size: 18px; margin-bottom: 10px; }
+
+    /* ─── BONI ─── */
+    #boni { background: var(--bg2); border-top: 1px solid var(--border); }
+    .boni-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .boni-grid .card { padding: 30px 26px; background: var(--bg); }
+
     /* ─── GARANTIE ─── */
-    #garantie { background: var(--bg2); border-top: 1px solid var(--border); }
+    #garantie { background: var(--bg); border-top: 1px solid var(--border); }
     .garantie-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
-    .garantie-grid .card { background: var(--bg); }
     .garantie-grid .card-body { margin-bottom: 14px; }
+
+    /* ─── KONTAKT: Inhalt des Plans ─── */
+    .plan-liste {
+      max-width: 560px;
+      margin: 0 auto 20px;
+    }
+    .plan-hinweis {
+      max-width: 560px;
+      margin: 0 auto 32px;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
     .garantie-bedingung { font-size: 13px; color: var(--muted); }
     .ehrlich {
       max-width: 720px;
@@ -880,7 +967,18 @@
     }
 
     /* ─── RESPONSIVE ─── */
+    @media (max-width: 1100px) {
+      .strecke-grid { grid-template-columns: repeat(3, 1fr); }
+      .boni-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 900px) {
+      .leistungen-grid,
+      .strecke-grid,
+      .boni-grid,
+      .start-grid { grid-template-columns: 1fr; }
+      .leistungen-grid .card,
+      .strecke-grid .card,
+      .boni-grid .card { padding: 30px 26px; }
       nav { padding: 0 24px; }
       .nav-right { gap: 12px; }
       .nav-cta { padding: 8px 14px; font-size: 11px; }
@@ -931,6 +1029,7 @@
       .reveal { opacity: 1 !important; transform: none !important; }
       .scroll-hint-line::before { animation: none !important; }
       #hAccent { clip-path: none !important; }
+      .scroll-hint { display: none; }
       * { transition-duration: 0.01ms !important; }
     }
   </style>
@@ -946,7 +1045,7 @@
     </a>
     <div class="nav-right">
       <a href="#pakete" class="nav-link">Pakete</a>
-      <a href="#kontakt" class="nav-cta">3 Entwürfe gratis</a>
+      <a href="#kontakt" class="nav-cta">Content-Plan gratis</a>
     </div>
   </nav>
 
@@ -961,22 +1060,22 @@
 
       <div class="hero-inner">
           <span id="hEyebrow">
-          Ein Video pro Woche ist wie Lotto mit einem einzigen Los.
+          Sie brauchen keinen Cutter. Sie brauchen eine Maschine.
         </span>
 
-        <h1 class="hero-hl" aria-label="Content in Menge. Bis zu 120 Videos im Monat für alle Plattformen. Ohne Schnitt, ohne Posten, auf Wunsch ohne Gesicht.">
-          <span class="hero-line"><span class="hero-line-inner">Content in Menge.</span></span>
-          <span class="hero-line"><span class="hero-line-inner">Bis zu 120 Videos</span></span>
-          <span class="hero-line"><span class="hero-line-inner">im Monat —</span></span>
+        <h1 class="hero-hl" aria-label="Jeden Tag sichtbar. Jede Woche klüger. Jedes Video führt zur Anfrage. Sie filmen 30 Minuten pro Woche. Den Rest macht unser Team.">
+          <span class="hero-line"><span class="hero-line-inner">Jeden Tag sichtbar.</span></span>
+          <span class="hero-line"><span class="hero-line-inner">Jede Woche klüger.</span></span>
+          <span class="hero-line"><span class="hero-line-inner">Jedes Video</span></span>
         </h1>
 
         <span id="hAccent" aria-hidden="true">
-          für alle Plattformen.<br>Ohne Schnitt, ohne Posten, auf Wunsch ohne Gesicht.
+          führt zur Anfrage.<span class="hero-sub">Sie filmen 30 Minuten pro Woche. Den Rest macht unser Team.</span>
         </span>
 
         <div id="hCta">
           <a href="#kontakt" class="btn-primary">
-            3 kostenlose Entwürfe
+            Content-Plan gratis
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -997,14 +1096,14 @@
     <div class="s-in">
       <div class="ansatz-grid">
         <div class="ansatz-left">
-          <div class="eyebrow">Warum Menge</div>
-          <div class="ansatz-label">Was die Zahlen<br>sagen</div>
+          <div class="eyebrow">Das Problem</div>
+          <div class="ansatz-label">Warum es oft<br>nicht klappt</div>
         </div>
         <div>
           <div class="ansatz-quote">
-            Über 11 Millionen Posts zeigen: Wer elfmal und öfter pro Woche postet, holt mit seinen besten Videos <em>fast viermal so viele Aufrufe.</em> Jedes Video ist ein Los. <em>Mehr Videos heißt mehr Chancen auf einen Treffer.</em>
+            Die meisten Betriebe posten ab und zu. Ohne Plan und ohne Zahlen. Dann heißt es: <em>Social Media bringt nichts.</em> Dabei fehlt nur die Maschine dahinter: <em>ein Plan, genug Videos, Tests und ein Weg zur Anfrage.</em>
           </div>
-          <p class="ansatz-quelle">Quelle: Buffer, Auswertung von 11,4 Mio. TikTok-Posts, 2025. Gemessen wurden die besten 10 % der Posts: 3.722 Aufrufe bei einem Post pro Woche, 14.401 bei elf und mehr. Ein Zusammenhang, kein Versprechen.</p>
+          <p class="ansatz-quelle">Viele Anbieter schneiden nur. Wer nur schneidet, kann kein Ergebnis liefern. Darum steuern wir alles: Idee, Skript, Schnitt, Posten und Auswertung.</p>
         </div>
       </div>
     </div>
@@ -1014,8 +1113,8 @@
   <section id="zahlen" class="s-pad">
     <div class="s-in">
       <div class="pakete-header">
-        <div class="eyebrow reveal">Fakten</div>
-        <h2 class="pakete-hl reveal">Mehr Versuche, mehr Treffer.</h2>
+        <div class="eyebrow reveal">Warum Menge</div>
+        <h2 class="pakete-hl reveal">Mehr Videos,<br>mehr Chancen auf einen Treffer.</h2>
       </div>
 
       <div class="zahlen-grid">
@@ -1036,7 +1135,66 @@
         </div>
       </div>
 
-      <p class="fussnote reveal">Die Studien messen fremde Konten. Sie zeigen einen Zusammenhang und sind kein Versprechen für den Einzelfall. Jedes Video entsteht neu, denn die Plattformen bremsen Kopien.</p>
+      <p class="fussnote reveal">Buffer hat 11,4 Millionen TikTok-Posts ausgewertet. Gemessen wurden die besten 10 % der Posts. Die Studien messen fremde Konten. Sie zeigen einen Zusammenhang und sind kein Versprechen für den Einzelfall.</p>
+    </div>
+  </section>
+
+  <!-- ══════ LEISTUNGEN ══════ -->
+  <section id="leistungen" class="s-pad">
+    <div class="s-in">
+      <div class="pakete-header">
+        <div class="eyebrow reveal">Die Maschine</div>
+        <h2 class="pakete-hl reveal">Neun Teile.<br>Ein Ziel: Anfragen.</h2>
+        <p class="intro reveal">Jeder Teil hat feste Regeln. Und jeder Teil wird gemessen.</p>
+      </div>
+
+      <div class="leistungen-grid">
+        <div class="card reveal">
+          <div class="card-num">Teil 1</div>
+          <h3 class="card-name">Markt-Röntgen</h3>
+          <p class="card-body">Vor dem ersten Video liegt Ihr Markt offen. Wir prüfen die 20 stärksten Konten Ihrer Branche. Wir sammeln die 30 häufigsten Fragen Ihrer Kunden. Jeden Monat neu.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-num">Teil 2</div>
+          <h3 class="card-name">90-Tage-Fahrplan</h3>
+          <p class="card-body">Jedes Video hat ein Ziel: Reichweite, Vertrauen oder Anfrage. Fünf feste Themen wechseln sich ab. Den Plan sehen Sie jederzeit online.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-num">Teil 3</div>
+          <h3 class="card-name">Daumen-Stopp-Skripte</h3>
+          <p class="card-body">Jedes Skript startet mit drei Hooks zur Wahl. Ein Hook ist der erste Satz, der den Daumen stoppt. Das Skript spricht wie Ihre Kunden. Am Ende steht ein klarer Schritt.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-num">Teil 4</div>
+          <h3 class="card-name">Video-Fabrik</h3>
+          <p class="card-body">Schnitt, Untertitel und Animation in Ihren Farben. Alle 2 bis 4 Sekunden passiert etwas Neues. Fertig in 72 Stunden, mit zwei Runden für Änderungen.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-num">Teil 5</div>
+          <h3 class="card-name">Beste-Zeit-Ausspielung</h3>
+          <p class="card-body">Jede App bekommt ihre eigene Fassung. Das Video geht online, wenn Ihre Zuschauer da sind. Die Zeiten kommen aus Ihren eigenen Zahlen.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-num">Teil 6</div>
+          <h3 class="card-name">Wochen-Kompass</h3>
+          <p class="card-body">Jede Woche 30 Minuten: Zahlen, Gewinner, Verlierer, nächste Tests. Dazu ein Bericht auf einer Seite. Am Ende steht eine klare Entscheidung.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-num">Teil 7</div>
+          <h3 class="card-name">Gewinner-Schleife</h3>
+          <p class="card-body">Jede Woche ein kleiner Test. Was gewinnt, wird zur Serie. Was verliert, fliegt raus. So wird Ihr Kanal jeden Monat klüger.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-num">Teil 8</div>
+          <h3 class="card-name">Anfragen-Strecke</h3>
+          <p class="card-body">Aus Zuschauern werden Anfragen. Ein Stichwort im Kommentar reicht. Der Rest läuft von allein bis in Ihre Liste.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-num">Teil 9 · ab Paket Überall</div>
+          <h3 class="card-name">Kommentar-Wache</h3>
+          <p class="card-body">Kein Kommentar bleibt liegen. Wir antworten in der ersten Stunde nach dem Posten. Wer kaufen will, landet sofort bei Ihnen.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1044,30 +1202,71 @@
   <section id="ablauf" class="s-pad">
     <div class="s-in">
       <div class="pakete-header">
-        <div class="eyebrow reveal">So läuft es</div>
-        <h2 class="pakete-hl reveal">Sie liefern 30 Minuten.<br>Wir machen den Rest.</h2>
+        <div class="eyebrow reveal">Ihre Woche</div>
+        <h2 class="pakete-hl reveal">Sie filmen 30 Minuten.<br>Wir machen den Rest.</h2>
       </div>
 
       <div class="ablauf-grid">
         <div class="card reveal">
-          <div class="card-num">Schritt 1</div>
-          <h3 class="card-name">Plan für 90 Tage</h3>
-          <p class="card-body">Ein Termin zum Start. Gemeinsam legen wir Themen und Formate fest, passend zu Ihrem Betrieb und Ihren Kunden.</p>
+          <div class="card-num">Start</div>
+          <h3 class="card-name">Fertig in 7 Tagen</h3>
+          <p class="card-body">Wir prüfen Ihren Markt, bauen den Fahrplan und erneuern Ihre Profile. Nach 7 Tagen stehen die ersten 10 Videos.</p>
         </div>
         <div class="card reveal">
-          <div class="card-num">Schritt 2</div>
-          <h3 class="card-name">30 Minuten Material</h3>
-          <p class="card-body">Jede Woche sagt eine kurze Liste, was zu filmen ist. Das Handy reicht. Oder Sie filmen gar nicht: Dann entstehen animierte Videos mit KI-Stimme.</p>
+          <div class="card-num">Montag</div>
+          <h3 class="card-name">Die Liste kommt</h3>
+          <p class="card-body">Die Liste nennt genau die Clips, die wir brauchen. Sie filmen 30 Minuten mit dem Handy. Eine kurze Anleitung zeigt, wie es geht.</p>
         </div>
         <div class="card reveal">
-          <div class="card-num">Schritt 3</div>
-          <h3 class="card-name">Schnitt und Animation</h3>
-          <p class="card-body">Untertitel, Animation und Zahlen im Bild, in Ihren Farben. Einmal pro Woche geben Sie alle Videos per Link frei.</p>
+          <div class="card-num">Freitag</div>
+          <h3 class="card-name">Ein Klick zur Freigabe</h3>
+          <p class="card-body">Wir schneiden, schreiben Untertitel und animieren. Alle Videos kommen per Link. Sie geben sie mit einem Klick frei.</p>
         </div>
         <div class="card reveal">
-          <div class="card-num">Schritt 4</div>
-          <h3 class="card-name">Überall zu sehen</h3>
-          <p class="card-body">Jede Plattform bekommt ihre eigene Fassung. Wir posten. Jeden Monat kommt ein Bericht mit Aufrufen, Profilbesuchen und Anfragen.</p>
+          <div class="card-num">Jede Woche</div>
+          <h3 class="card-name">Posten und lernen</h3>
+          <p class="card-body">Wir posten auf jeder App zur besten Zeit. Jede Woche sprechen wir über Ihre Zahlen. Dann legen wir die nächsten Tests fest.</p>
+        </div>
+      </div>
+
+      <p class="fussnote reveal">Sie wollen nicht vor die Kamera? Müssen Sie nicht. Dann ist Ihre Arbeit der Star.</p>
+    </div>
+  </section>
+
+  <!-- ══════ ANFRAGEN-STRECKE ══════ -->
+  <section id="strecke" class="s-pad">
+    <div class="s-in">
+      <div class="pakete-header">
+        <div class="eyebrow reveal">Anfragen-Strecke</div>
+        <h2 class="pakete-hl reveal">Aufrufe bezahlen<br>keine Rechnungen.</h2>
+        <p class="intro reveal">Darum endet jedes Video mit einem Schritt. So wird aus einem Zuschauer eine Anfrage.</p>
+      </div>
+
+      <div class="strecke-grid">
+        <div class="card reveal">
+          <div class="card-num">1</div>
+          <h3 class="card-name">Stichwort</h3>
+          <p class="card-body">Das Video endet mit einem Stichwort, zum Beispiel „Kommentiere PLAN“.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-num">2</div>
+          <h3 class="card-name">Nachricht</h3>
+          <p class="card-body">Wer kommentiert, bekommt sofort eine Nachricht mit Link.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-num">3</div>
+          <h3 class="card-name">Kurze Seite</h3>
+          <p class="card-body">Der Link führt auf eine kurze Seite mit Formular oder Termin.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-num">4</div>
+          <h3 class="card-name">Ihre Liste</h3>
+          <p class="card-body">Eine Mail bestätigt sofort. Sie sehen jede Anfrage in einer Liste.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-num">5</div>
+          <h3 class="card-name">Bericht</h3>
+          <p class="card-body">Jede Woche sehen Sie, welches Video welche Anfrage gebracht hat.</p>
         </div>
       </div>
     </div>
@@ -1078,24 +1277,26 @@
     <div class="s-in">
       <div class="pakete-header">
         <div class="eyebrow reveal">Pakete</div>
-        <h2 class="pakete-hl reveal">Sie wählen die Menge.</h2>
+        <h2 class="pakete-hl reveal">Sie wählen das Tempo.</h2>
       </div>
 
       <div class="pakete-grid">
         <div class="card reveal">
           <div class="card-num">Paket</div>
           <h3 class="card-name">Sichtbar</h3>
-          <div class="card-menge"><span>30</span> Videos im Monat</div>
-          <div class="card-price">1 Video pro Tag · 2 Plattformen</div>
+          <div class="card-menge"><span>15</span> Videos im Monat</div>
+          <div class="card-price">3 bis 4 pro Woche · 3 Apps</div>
+          <p class="paket-satz">Raus aus der Stille. Jede Woche präsent, mit Plan statt Zufall.</p>
           <div class="card-divider"></div>
           <ul class="card-list">
-            <li>Instagram und Facebook</li>
-            <li>Plan für 90 Tage</li>
-            <li>Schnitt, Untertitel, Animation</li>
-            <li>Freigabe per Link, Bericht jeden Monat</li>
+            <li>Markt-Röntgen, Fahrplan, Skripte, Video-Fabrik, Ausspielung</li>
+            <li>Wochen-Kompass: jede Woche 30 Minuten</li>
+            <li>Ein Test alle 2 Wochen</li>
+            <li>Anfragen-Strecke mit Stichwort und Link</li>
+            <li>7 Boni</li>
           </ul>
           <a href="#kontakt" class="card-btn">
-            Entwürfe anfordern
+            Plan anfordern
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -1105,17 +1306,20 @@
         <div class="card featured reveal">
           <div class="card-badge">Empfohlen</div>
           <h3 class="card-name">Überall</h3>
-          <div class="card-menge"><span>60</span> Videos im Monat</div>
-          <div class="card-price">2 Videos pro Tag · 4 Plattformen</div>
+          <div class="card-menge"><span>30</span> Videos im Monat</div>
+          <div class="card-price">7 pro Woche · 4 Apps</div>
+          <p class="paket-satz">Jeden Tag ein Video auf vier Apps. Jede Woche ein Test. Jeder Monat besser als der davor.</p>
           <div class="card-divider"></div>
           <ul class="card-list">
-            <li>Instagram, Facebook, TikTok, YouTube Shorts</li>
-            <li>Je Plattform eigener Text und Hashtags</li>
             <li>Alles aus dem Paket Sichtbar</li>
-            <li>Über elf Videos pro Woche auf jeder Plattform</li>
+            <li>Instagram, Facebook, TikTok und YouTube Shorts</li>
+            <li>Ein Test pro Woche</li>
+            <li>Die ganze Anfragen-Strecke</li>
+            <li>Kommentar-Wache, Montag bis Freitag</li>
+            <li>Alle 8 Boni</li>
           </ul>
           <a href="#kontakt" class="card-btn">
-            Entwürfe anfordern
+            Plan anfordern
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -1125,17 +1329,20 @@
         <div class="card reveal">
           <div class="card-num">Paket</div>
           <h3 class="card-name">Allgegenwärtig</h3>
-          <div class="card-menge"><span>120</span> Videos im Monat</div>
-          <div class="card-price">4 Videos pro Tag · 5 Plattformen</div>
+          <div class="card-menge"><span>60</span> Videos im Monat</div>
+          <div class="card-price">14 pro Woche · 5 Apps</div>
+          <p class="paket-satz">Zweimal am Tag auf fünf Apps. Wer in Ihrer Stadt sucht, kommt an Ihnen nicht vorbei.</p>
           <div class="card-divider"></div>
           <ul class="card-list">
-            <li>Dazu Pinterest oder LinkedIn, je nach Branche</li>
-            <li>Querformat und Pins, wo es passt</li>
             <li>Alles aus dem Paket Überall</li>
-            <li>Jeden Tag mehrmals zu sehen</li>
+            <li>Dazu LinkedIn oder Pinterest, je nach Branche</li>
+            <li>Zwei Tests pro Woche</li>
+            <li>Anfragen-Strecke mit Mails zum Nachfassen</li>
+            <li>Kommentar-Wache auch am Wochenende</li>
+            <li>Alle 8 Boni</li>
           </ul>
           <a href="#kontakt" class="card-btn">
-            Entwürfe anfordern
+            Plan anfordern
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -1143,7 +1350,70 @@
         </div>
       </div>
 
-      <p class="fussnote reveal">Den Preis besprechen wir im Gespräch. Er richtet sich nach Menge und Plattformen. Alle Videos im Hochformat 9 zu 16, mit KI erstellte Inhalte sind gekennzeichnet.</p>
+      <div class="start-grid">
+        <div class="card reveal">
+          <h3 class="card-name">Einmal zum Start</h3>
+          <p class="card-body">Die Startgebühr deckt Markt-Röntgen, Fahrplan, Profil-Neustart und den Aufbau der Anfragen-Strecke.</p>
+        </div>
+        <div class="card reveal">
+          <h3 class="card-name">Mindestens 3 Monate</h3>
+          <p class="card-body">Testen braucht Zeit. Vorher gibt es keine Gewinner.</p>
+        </div>
+        <div class="card reveal">
+          <h3 class="card-name">20 Prozent weniger</h3>
+          <p class="card-body">Wer 6 Monate im Voraus zahlt, spart 20 Prozent. Das gilt für jedes Paket.</p>
+        </div>
+      </div>
+
+      <p class="fussnote reveal">Den Preis besprechen wir im Gespräch. Alle Videos im Hochformat 9 zu 16. Mit KI erstellte Inhalte sind gekennzeichnet.</p>
+    </div>
+  </section>
+
+  <!-- ══════ BONI ══════ -->
+  <section id="boni" class="s-pad">
+    <div class="s-in">
+      <div class="pakete-header">
+        <div class="eyebrow reveal">Boni</div>
+        <h2 class="pakete-hl reveal">Immer mit dabei.</h2>
+        <p class="intro reveal">Jeder Bonus löst ein Problem, das sonst bremst.</p>
+      </div>
+
+      <div class="boni-grid">
+        <div class="card reveal">
+          <h3 class="card-name">Start in 7 Tagen</h3>
+          <p class="card-body">Die ersten 10 Videos stehen nach 7 Tagen. Kein langes Warten auf die erste Wirkung.</p>
+        </div>
+        <div class="card reveal">
+          <h3 class="card-name">Dreh in 30 Minuten</h3>
+          <p class="card-body">Jede Woche eine Liste mit genau den Clips, die nötig sind. Dazu eine Anleitung fürs Handy.</p>
+        </div>
+        <div class="card reveal">
+          <h3 class="card-name">Profil-Neustart</h3>
+          <p class="card-body">Bio, Bild, Link und Highlights auf allen Apps neu. Wer Ihr Profil besucht, findet sofort, was er sucht.</p>
+        </div>
+        <div class="card reveal">
+          <h3 class="card-name">Hook-Bank</h3>
+          <p class="card-body">100 erprobte Einstiege für Ihre Branche. Sie gehören Ihnen, auch nach dem Ende.</p>
+        </div>
+        <div class="card reveal">
+          <h3 class="card-name">Antwort-Muster</h3>
+          <p class="card-body">Fertige Antworten für Nachrichten und Kommentare. So bleibt keine Anfrage liegen.</p>
+        </div>
+        <div class="card reveal">
+          <h3 class="card-name">Konkurrenz-Radar</h3>
+          <p class="card-body">Jeden Monat die drei stärksten Videos Ihrer Konkurrenz. Mit einer Zeile dazu, was wir daraus lernen.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-num">ab Paket Überall</div>
+          <h3 class="card-name">Werbe-Vorlage</h3>
+          <p class="card-body">Die drei besten Videos im Quartal liegen fertig für Werbung bereit.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-num">nach 6 Monaten</div>
+          <h3 class="card-name">Strategie-Tag</h3>
+          <p class="card-body">Ein halber Tag für den Plan des nächsten Halbjahres.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1152,47 +1422,56 @@
     <div class="s-in">
       <div class="pakete-header">
         <div class="eyebrow reveal">Garantie</div>
-        <h2 class="pakete-hl reveal">Menge und Tempo<br>sind garantiert.</h2>
+        <h2 class="pakete-hl reveal">Ihr Start<br>ist abgesichert.</h2>
       </div>
 
       <div class="garantie-grid">
         <div class="card reveal">
-          <h3 class="card-name">Menge oder gratis</h3>
-          <div class="card-divider" style="margin-top:22px;"></div>
-          <p class="card-body">Sind am Monatsende nicht alle Videos fertig und eingeplant, ist der nächste Monat gratis.</p>
-          <p class="garantie-bedingung">Bedingung: Material oder Themen kommen jede Woche pünktlich.</p>
-        </div>
-        <div class="card reveal">
           <h3 class="card-name">Start in 7 Tagen</h3>
           <div class="card-divider" style="margin-top:22px;"></div>
-          <p class="card-body">Die ersten 10 Videos sind 7 Tage nach dem Start fertig. Sonst kostet der erste Monat die Hälfte.</p>
-          <p class="garantie-bedingung">Gilt ab dem vereinbarten Starttermin.</p>
+          <p class="card-body">Die ersten 10 Videos sind 7 Tage nach dem Start fertig. Sonst bekommen Sie die Startgebühr zurück.</p>
+          <p class="garantie-bedingung">Bedingung: Die Clips nach Liste kommen jede Woche.</p>
+        </div>
+        <div class="card reveal">
+          <h3 class="card-name">Menge oder Geld zurück</h3>
+          <div class="card-divider" style="margin-top:22px;"></div>
+          <p class="card-body">Kommt die vereinbarte Menge nicht, bekommen Sie die Startgebühr zurück.</p>
+          <p class="garantie-bedingung">Bedingung: Die Clips nach Liste kommen jede Woche.</p>
         </div>
       </div>
 
-      <p class="ehrlich reveal">Anfragen garantieren wir nicht. Sie hängen auch von Angebot, Preis und Markt ab. Wir sorgen dafür, dass Ihr Betrieb jeden Tag zu sehen ist.</p>
+      <p class="ehrlich reveal">Anfragen garantieren wir nicht. Sie hängen auch von Angebot, Preis und Markt ab. Unser Teil: Jedes Video ist geplant, getestet und hat einen Weg zur Anfrage.</p>
     </div>
   </section>
 
   <!-- ══════ KONTAKT ══════ -->
   <section id="kontakt" class="s-pad" style="background:var(--bg2);border-top:1px solid var(--border);">
     <div class="s-in">
-      <div style="text-align:center;margin-bottom:56px;">
-        <div class="eyebrow reveal">Kontakt</div>
-        <h2 class="cta-hl reveal">3 Entwürfe, kostenlos.</h2>
-        <p class="cta-sub reveal" style="max-width:540px;margin:0 auto;">
-          Erzählen Sie kurz von Ihrem Betrieb. Wir bauen drei Entwürfe, die zeigen, wie Ihre Videos aussehen könnten. Kostenlos und unverbindlich, Antwort innerhalb von 24 Stunden.
+      <div style="text-align:center;margin-bottom:48px;">
+        <div class="eyebrow reveal">Gratis</div>
+        <h2 class="cta-hl reveal">Der 30-Tage-Contentplan<br>für volle Auftragsbücher.</h2>
+        <p class="cta-sub reveal" style="max-width:560px;margin:0 auto;">
+          Dazu ein Video-Entwurf. Kostenlos und ohne Verpflichtung. So sehen Sie das Ergebnis, bevor Sie etwas zahlen.
         </p>
-        <div class="reveal" style="display:inline-flex;gap:32px;margin-top:24px;flex-wrap:wrap;justify-content:center;">
-          <span style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--t2);">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.25" stroke="#65C83D" stroke-width="1.5"/><path d="M4.5 8.5l2.5 2.5 4.5-5" stroke="#65C83D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Kostenlos &amp; unverbindlich
-          </span>
-          <span style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--t2);">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.25" stroke="#65C83D" stroke-width="1.5"/><path d="M4.5 8.5l2.5 2.5 4.5-5" stroke="#65C83D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Antwort innerhalb von 24 h
-          </span>
-        </div>
+      </div>
+
+      <ul class="card-list plan-liste reveal">
+        <li>Ein Blick auf Ihren Markt: 3 starke Konten Ihrer Branche und was dort zieht</li>
+        <li>5 Themen, die sich abwechseln</li>
+        <li>12 Ideen für 30 Tage, jede mit Hook</li>
+        <li>Ihr erstes Video als Entwurf, aus Material, das Sie schon gepostet haben</li>
+      </ul>
+      <p class="plan-hinweis reveal">Plan und Video gehören Ihnen, auch ohne Auftrag. Das Video bleibt privat. Es geht nur mit Ihrer Freigabe online.</p>
+
+      <div class="reveal" style="display:flex;gap:32px;margin:0 0 48px;flex-wrap:wrap;justify-content:center;">
+        <span style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--t2);">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.25" stroke="#65C83D" stroke-width="1.5"/><path d="M4.5 8.5l2.5 2.5 4.5-5" stroke="#65C83D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Kostenlos &amp; unverbindlich
+        </span>
+        <span style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--t2);">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7.25" stroke="#65C83D" stroke-width="1.5"/><path d="M4.5 8.5l2.5 2.5 4.5-5" stroke="#65C83D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Antwort innerhalb von 24 h
+        </span>
       </div>
 
       <form
@@ -1218,12 +1497,12 @@
         </div>
         <div class="form-group">
           <label for="cf-msg">Ihr Betrieb</label>
-          <textarea id="cf-msg" name="message" placeholder="Branche, Stadt und ein Link zu Website oder Instagram …" required></textarea>
+          <textarea id="cf-msg" name="message" placeholder="Branche, Stadt und ein Link zu Instagram oder Website …" required></textarea>
         </div>
-        <input type="hidden" name="_subject" value="MENGE: Anfrage für 3 Entwürfe">
+        <input type="hidden" name="_subject" value="PLAN: Anfrage 30-Tage-Contentplan">
         <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
           <button type="submit" class="btn-primary form-submit">
-            Entwürfe anfordern
+            Plan anfordern
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
