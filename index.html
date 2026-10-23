@@ -610,6 +610,8 @@
       margin-right: 6px;
     }
     .card.featured .card-menge span { color: var(--green); }
+    .pakete-grid .card-menge span { font-size: clamp(44px, 4.4vw, 56px); }
+    .pakete-grid .card-name { font-size: clamp(24px, 2.4vw, 29px); }
 
     .card-list {
       list-style: none;
@@ -975,6 +977,7 @@
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1100px) {
+      .pakete-grid .card { padding: 36px 26px; }
       .strecke-grid { grid-template-columns: repeat(3, 1fr); }
       .boni-grid { grid-template-columns: repeat(2, 1fr); }
     }
@@ -1313,8 +1316,8 @@
         <div class="card reveal">
           <div class="card-num">Paket</div>
           <h3 class="card-name">Sichtbar</h3>
-          <div class="card-menge"><span>15</span> Videos im Monat</div>
-          <div class="card-price">auf 3 Apps · 45 Posts im Monat</div>
+          <div class="card-menge"><span>45</span> Posts&nbsp;im&nbsp;Monat</div>
+          <div class="card-price">15 Short-Form-Videos · auf&nbsp;3&nbsp;Apps</div>
           <p class="paket-satz">Raus aus der Stille. Jede Woche präsent, mit Plan statt Zufall.</p>
           <div class="card-divider"></div>
           <ul class="card-list">
@@ -1336,8 +1339,8 @@
         <div class="card featured reveal">
           <div class="card-badge">Empfohlen</div>
           <h3 class="card-name">Überall</h3>
-          <div class="card-menge"><span>30</span> Videos im Monat</div>
-          <div class="card-price">auf 4 Apps · 120 Posts im Monat</div>
+          <div class="card-menge"><span>120</span> Posts&nbsp;im&nbsp;Monat</div>
+          <div class="card-price">30 Short-Form-Videos · auf&nbsp;4&nbsp;Apps</div>
           <p class="paket-satz">Jeden Tag ein Video auf vier Apps. Jede Woche ein Test. Jeder Monat besser als der davor.</p>
           <div class="card-divider"></div>
           <ul class="card-list">
@@ -1359,8 +1362,8 @@
         <div class="card reveal">
           <div class="card-num">Paket</div>
           <h3 class="card-name">Allgegenwärtig</h3>
-          <div class="card-menge"><span>60</span> Videos im Monat</div>
-          <div class="card-price">auf 5 Apps · 300 Posts im Monat</div>
+          <div class="card-menge"><span>300</span> Posts&nbsp;im&nbsp;Monat</div>
+          <div class="card-price">60 Short-Form-Videos · auf&nbsp;5&nbsp;Apps</div>
           <p class="paket-satz">Zweimal am Tag auf fünf Apps. Wer in Ihrer Stadt sucht, kommt an Ihnen nicht vorbei.</p>
           <div class="card-divider"></div>
           <ul class="card-list">
