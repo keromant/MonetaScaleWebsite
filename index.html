@@ -1514,6 +1514,9 @@
         id="contactForm"
         novalidate
       >
+        <p id="cf-angebot" hidden style="margin:0 0 18px;padding:12px 14px;border:1.5px solid #65C83D;border-radius:12px;font-size:14px;font-weight:600;color:var(--t2);">
+          <span style="color:#65C83D;">Black-Friday-Angebot aus dem Report:</span> 50 % auf die Startgebühr und den ersten Monat. Gilt bis 27.11.2026. Den 30-Tage-Contentplan gibt es dazu.
+        </p>
         <div class="form-row">
           <div class="form-group">
             <label for="cf-name">Name</label>
@@ -1532,7 +1535,8 @@
           <label for="cf-msg">Ihr Betrieb</label>
           <textarea id="cf-msg" name="message" placeholder="Branche, Stadt und ein Link zu Instagram oder Website …" required></textarea>
         </div>
-        <input type="hidden" name="_subject" value="PLAN: Anfrage 30-Tage-Contentplan">
+        <input type="hidden" name="_subject" id="cf-subject" value="PLAN: Anfrage 30-Tage-Contentplan">
+        <input type="hidden" name="quelle" id="cf-quelle" value="">
         <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
           <button type="submit" class="btn-primary form-submit">
             Plan anfordern
@@ -1832,6 +1836,19 @@
 
     /* ── CONTACT FORM: AJAX submit (no redirect) ── */
     const contactForm = document.getElementById('contactForm');
+
+    /* Quelle aus dem Link (z. B. Wärmepumpen-Report): Betreff, Hinweis und Knopf anpassen */
+    try {
+      const quelle = new URLSearchParams(location.search).get('quelle');
+      if (quelle && contactForm) {
+        document.getElementById('cf-quelle').value = quelle.slice(0, 200);
+        document.getElementById('cf-subject').value = 'Black Friday: ' + quelle.slice(0, 160);
+        document.getElementById('cf-angebot').hidden = false;
+        const knopf = contactForm.querySelector('.form-submit');
+        const text = knopf && [...knopf.childNodes].find((n) => n.nodeType === 3 && n.textContent.trim());
+        if (text) text.textContent = ' Gespräch anfragen ';
+      }
+    } catch (_) {}
 
     contactForm?.addEventListener('submit', async (e) => {
       e.preventDefault();
