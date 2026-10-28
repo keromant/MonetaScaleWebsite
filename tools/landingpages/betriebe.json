@@ -1,0 +1,16 @@
+[
+  {
+    "slug": "muster-waermepumpe",
+    "name": "Muster Wärmepumpen GmbH",
+    "kurzname": "Muster Wärmepumpen",
+    "ort": "Musterstadt",
+    "sterne": 4.8,
+    "farben": { "primaer": "#0B5CAD", "sekundaer": "#F2A900" },
+    "videos": [
+      "https://videos.example.com/muster-waermepumpe/reel-1-tankfuellung.mp4",
+      "https://videos.example.com/muster-waermepumpe/reel-2-lohnt-sich.mp4",
+      "https://videos.example.com/muster-waermepumpe/reel-3-ab-februar.mp4"
+    ],
+    "reportLink": null
+  }
+]
