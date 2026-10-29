@@ -520,14 +520,33 @@
       transition: transform .4s var(--pop-ease), box-shadow .4s ease, border-color .35s ease;
     }
     .leistung h3 { margin: 0; font: inherit; }
-    .leistung .lk-knopf { color: #FFFFFF; }
-    .leistung .lk-kurz { color: #C7D6CE; }
-    .leistung .lk-name { color: #84E55A; }
-    .leistung .lk-klein { color: #A9BBB2; }
-    .leistung .lk-innen ul { border-top-color: rgba(255,255,255,.14); }
-    .leistung .lk-innen li { color: #DCE6E1; }
-    .leistung .lk-zeichen { background: rgba(255,255,255,.14); }
+    /* Inneres im Stil der Marktführer-Karte auf monetascale.de (Petrol, grüne Icon-Quadrate) */
+    .paket-rahmen {
+      background:
+        radial-gradient(110% 85% at 0% 0%, rgba(101,200,61,.17) 0%, transparent 55%),
+        radial-gradient(70% 60% at 100% 100%, rgba(101,200,61,.08) 0%, transparent 60%),
+        linear-gradient(150deg, #0E3A37 0%, #0A1D1C 52%, #111111 100%);
+    }
+    .paket-rahmen .paket-titel { color: #FFFFFF; }
+    .paket-rahmen .leistungen-hilfe { color: #B8B8B8; }
+    .paket-rahmen .pakete-link { color: #B8B8B8; }
+    .paket-rahmen .pakete-link a { color: #84E55A; }
+    .leistungen { align-items: stretch; }
+    .leistungen:not(:has(.ist-offen)) { grid-auto-rows: 1fr; }
+    .leistung.leistung { background: rgba(10,10,10,.42); border: 1px solid rgba(101,200,61,.28); border-radius: 16px; box-shadow: none; }
+    .leistung .lk-knopf { grid-template-columns: auto 1fr auto; column-gap: 12px; align-items: center; color: #FFFFFF; padding: 20px 20px 18px; }
+    .leistung .lk-icon { grid-column: 1; grid-row: 1 / span 2; width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; background: rgba(101,200,61,.14); color: #65C83D; }
+    .leistung .lk-icon svg { width: 20px; height: 20px; }
+    .leistung .lk-titel { grid-column: 2; grid-row: 1; color: #FFFFFF; }
+    .leistung .lk-tag { grid-column: 2; grid-row: 2; margin-top: 2px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #B8B8B8; }
+    .leistung .lk-kurz { grid-column: 1 / -1; grid-row: 3; margin-top: 12px; font-size: 14px; line-height: 1.6; color: #B8B8B8; }
+    .leistung .lk-zeichen { grid-column: 3; grid-row: 1 / span 2; align-self: center; background: rgba(255,255,255,.10); }
     .leistung .lk-zeichen::before, .leistung .lk-zeichen::after { background: #FFFFFF; }
+    .leistung .lk-knopf[aria-expanded="true"] .lk-zeichen { background: #65C83D; }
+    .leistung .lk-knopf[aria-expanded="true"] .lk-zeichen::before { background: #0A0A0A; }
+    .leistung .lk-klein { color: #9AA8A1; }
+    .leistung .lk-innen ul { border-top-color: rgba(255,255,255,.12); }
+    .leistung .lk-innen li { color: #D9E2DD; }
     .lk-knopf {
       width: 100%; display: grid; grid-template-columns: 1fr auto; column-gap: 12px; align-items: start;
       padding: 18px 20px; border: 0; border-radius: 18px; background: none; cursor: pointer;
@@ -1004,27 +1023,27 @@
           <p class="leistungen-hilfe">Ein Klick auf eine Kachel zeigt, wie wir das machen.</p>
           <ul class="leistungen">
           <li class="leistung">
-            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-1"><span class="lk-titel">300 Posts im Monat</span><span class="lk-kurz">60 kurze Videos auf 5 Apps.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
+            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-1"><span class="lk-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="13" height="13" rx="3"/><path d="M16 10.2l4.5-2.7v9l-4.5-2.7"/></svg></span><span class="lk-titel">300 Posts im Monat</span><span class="lk-tag">60 Videos · 5 Apps</span><span class="lk-kurz">Jeden Tag sichtbar, auf jeder wichtigen App.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
             <div class="lk-mehr" id="lst-1"><div class="lk-innen"><ul><li>Markt-Röntgen: die 20 stärksten Konten Ihrer Branche und die 30 häufigsten Fragen Ihrer Kunden.</li><li>90-Tage-Fahrplan mit fünf festen Themen. Jedes Skript startet mit drei Hooks zur Wahl.</li><li>Video-Fabrik: Schnitt, Untertitel und Animation in Ihren Farben. Fertig in 72 Stunden.</li><li>Jede App bekommt ihre eigene Fassung, zur besten Zeit. Jede Woche ein Test, Gewinner werden zur Serie.</li><li>Ihr Aufwand: 30 Minuten Dreh pro Woche.</li></ul></div></div>
           </li>
           <li class="leistung">
-            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-2"><span class="lk-titel">Anfragen-Motor</span><span class="lk-kurz">Ihre besten Videos als Werbung in Ihrer Region.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
+            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-2"><span class="lk-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10v4h3l6.5 4.5v-13L6.5 10h-3z"/><path d="M16.5 9.2a4 4 0 010 5.6M19.3 6.6a7.7 7.7 0 010 10.8"/></svg></span><span class="lk-titel">Anfragen-Motor</span><span class="lk-tag">Meta Ads</span><span class="lk-kurz">Ihre besten Videos als Werbung in Ihrer Region.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
             <div class="lk-mehr" id="lst-2"><div class="lk-innen"><ul><li>Ihre besten Videos laufen als Werbung auf Meta Ads, also bei Facebook und Instagram.</li><li>Nur Menschen aus Ihrer Region sehen sie.</li><li>Wir bauen und steuern die Werbung für Sie.</li></ul></div></div>
           </li>
           <li class="leistung">
-            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-3"><span class="lk-titel">Vertrauens-Kanal</span><span class="lk-kurz">Lange YouTube-Videos zu den Fragen Ihrer Kunden.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
+            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-3"><span class="lk-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor"/></svg></span><span class="lk-titel">Vertrauens-Kanal</span><span class="lk-tag">Lange Videos · YouTube</span><span class="lk-kurz">Lange Videos zu den Fragen Ihrer Kunden.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
             <div class="lk-mehr" id="lst-3"><div class="lk-innen"><ul><li>Lange Videos auf YouTube beantworten die Fragen Ihrer Kunden.</li><li>Die Themen kommen aus dem Markt-Röntgen.</li><li>So vertrauen Kunden Ihnen schon vor dem ersten Anruf.</li></ul></div></div>
           </li>
           <li class="leistung" data-kachel="such-magnet">
-            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-4"><span class="lk-name">Such-Magnet</span><span class="lk-titel">Gebaut für die Top 5 in der Google-Suche</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
+            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-4"><span class="lk-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></span><span class="lk-titel">Gebaut für die Top 5 in der Google-Suche</span><span class="lk-tag">Such-Magnet</span><span class="lk-kurz">Gefunden werden, wenn Kunden suchen.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
             <div class="lk-mehr" id="lst-4"><div class="lk-innen"><ul><li>Wir pflegen Ihr Google-Profil: Ort, Zeiten, Branche, Text.</li><li>Videos und Texte nutzen die Suchwörter Ihrer Region.</li><li>Jede Frage von Kunden bekommt eine klare Antwort. Die können auch KI-Suchen wie ChatGPT finden.</li><li>Lange YouTube-Videos geben die Antworten.</li><li>Jeden Monat schauen wir: Wo tauchen Sie bei Google und in KI-Suchen auf?</li></ul><p class="lk-klein">Plätze bei Google können wir nicht zusagen. Wir arbeiten jeden Monat daran.</p></div></div>
           </li>
           <li class="leistung">
-            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-5"><span class="lk-titel">Anfragen-Strecke mit Mail-Folge</span><span class="lk-kurz">Die Schritte 5 bis 7 von oben laufen für Sie.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
+            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-5"><span class="lk-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.8 7l8.2 6 8.2-6"/></svg></span><span class="lk-titel">Anfragen-Strecke</span><span class="lk-tag">Stichwort · Mail-Folge</span><span class="lk-kurz">Die Schritte 5 bis 7 von oben laufen für Sie.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
             <div class="lk-mehr" id="lst-5"><div class="lk-innen"><ul><li>Jedes Video endet mit einem klaren Schritt, zum Beispiel einem Stichwort im Kommentar.</li><li>Wer kommentiert, bekommt sofort eine Nachricht mit Link zu einer kurzen Seite.</li><li>Mails zum Nachfassen bleiben dran, bis eine Entscheidung fällt.</li><li>Jede Woche sehen Sie, welches Video welche Anfrage gebracht hat.</li></ul></div></div>
           </li>
           <li class="leistung">
-            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-6"><span class="lk-titel">Kommentar-Wache</span><span class="lk-kurz">Kein Kommentar bleibt liegen.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
+            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-6"><span class="lk-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16v10H9.5L4 19.5z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span><span class="lk-titel">Kommentar-Wache</span><span class="lk-tag">Auch am Wochenende</span><span class="lk-kurz">Kein Kommentar bleibt liegen.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
             <div class="lk-mehr" id="lst-6"><div class="lk-innen"><ul><li>Wir antworten in der ersten Stunde nach dem Posten.</li><li>Auch am Wochenende.</li><li>Wer kaufen will, landet sofort bei Ihnen.</li></ul></div></div>
           </li>
           </ul>
