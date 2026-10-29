@@ -18,6 +18,8 @@
   <meta property="og:image:height" content="1080">
   <meta name="referrer" content="no-referrer">
   <link rel="icon" type="image/png" href="../brand/profilbild/monetascale-profilbild-hell-1080.png">
+  <!-- Nutzung der Seite zählen (ohne Cookies, Datenschutz Abschnitt 8); ?intern=1 sendet nichts -->
+  <script src="/assets/lp-tracking.js" defer></script>
 
   <script>
     (function () {
@@ -1450,6 +1452,7 @@
       fetch(rrForm.action, { method: 'POST', body: new FormData(rrForm), headers: { 'Accept': 'application/json' } })
         .then(function (res) {
           if (!res.ok) throw new Error('Status ' + res.status);
+          if (window.msLp) window.msLp('gespraech', 'abgeschickt');
           rrZeige(rueckruf === 'ja' ? 'kontakt' : 'danke');
           rrForm.reset();
           document.getElementById('rrNotiz').value = '';
@@ -1770,6 +1773,8 @@
     function zeige(id, fokus) {
       var s = S[id];
       var html = '';
+      // Förder-Check-Schritt melden (lp-tracking.js); nur bei Schritten durch den Besucher, nicht beim ersten Aufbau
+      if (fokus && window.msLp) window.msLp('check', id);
       if (id === 'start') {
         html =
           '<div class="k-eyebrow">Kostenloser Förder-Check</div>' +
