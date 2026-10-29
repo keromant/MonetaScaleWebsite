@@ -490,46 +490,78 @@
 
     /* ─── NACH DEM CHECK ─── */
     .danach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .folge { margin-top: 48px; padding: 34px; }
-    .folge h3 { font-size: 22px; margin-bottom: 6px; }
-    .folge > p { margin-bottom: 22px; }
-    .folge ol { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
-    .folge li { border-top: 3px solid var(--green); padding-top: 12px; }
-    .folge li b { display: block; font-family: var(--fh); font-size: 15px; color: var(--ink); margin-bottom: 4px; }
-    .folge li span { display: block; font-size: 15px; color: var(--t2); line-height: 1.5; }
-
     /* ─── ANRISS ─── */
-    .weiter { background: var(--band); color: var(--band-text); }
-    .weiter-in { max-width: 1040px; margin: 0 auto; text-align: center; }
-    .weiter .eyebrow { color: var(--green); }
-    .abschluss-kopf { max-width: 720px; margin: 0 auto; }
-    .abschluss-kopf p { color: var(--band-t2); font-size: 18px; margin-top: 16px; }
-    .abschluss-kopf p strong { color: var(--band-text); font-weight: 600; }
-    .leistungen-label {
-      margin: 44px 0 16px; font-size: 13px; font-weight: 700; letter-spacing: .16em;
-      text-transform: uppercase; color: var(--green);
+    .abschluss-kopf { max-width: 760px; margin: 0 auto; text-align: center; }
+    .abschluss-kopf p { color: var(--t2); font-size: 18px; margin-top: 16px; }
+    .abschluss-kopf p strong { color: var(--text); font-weight: 700; }
+    .paket-rahmen {
+      max-width: 1080px; margin: 44px auto 0; padding: 30px 30px 34px; border-radius: 28px;
+      background: var(--bg2);
+      border: 2px solid rgba(var(--accent-rgb), .75);
+      box-shadow: var(--glow-strong);
+      text-align: center;
     }
-    .leistungen { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: left; }
+    .leistungen-label {
+      font-size: 13px; font-weight: 700; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--ink);
+    }
+    .leistungen-hilfe { margin: 6px 0 18px; font-size: 15px; color: var(--muted); }
+    .leistungen { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: left; align-items: start; }
     .leistung {
-      padding: 20px 22px; border-radius: 18px;
-      background: rgba(255, 255, 255, .04);
-      border: 1.5px solid rgba(101, 200, 61, .35);
-      box-shadow: 0 0 0 1px rgba(101, 200, 61, .10), 0 16px 34px -20px rgba(101, 200, 61, .40);
+      border-radius: 18px; background: var(--bg);
+      border: 1.5px solid rgba(var(--accent-rgb), .35);
+      box-shadow: var(--glow-soft);
       transition: transform .4s var(--pop-ease), box-shadow .4s ease, border-color .35s ease;
     }
-    .leistung h3 { font-size: 18px; line-height: 1.25; color: var(--band-text); }
-    .leistung p { margin-top: 6px; font-size: 15px; line-height: 1.5; color: var(--band-t2); }
-    .abschluss-cta { margin-top: 36px; display: flex; flex-direction: column; align-items: center; }
-    .abschluss-cta > .btn { --sweep-farbe: #FFFFFF; --sweep-text: #0A0A0A; }
-    .pakete-link { margin-top: 16px; font-size: 15px; }
-    .pakete-link a { color: var(--green); font-weight: 600; text-underline-offset: 3px; }
-    .weiter .rr-feld { max-width: 520px; }
+    .leistung h3 { margin: 0; font: inherit; }
+    .lk-knopf {
+      width: 100%; display: grid; grid-template-columns: 1fr auto; column-gap: 12px; align-items: start;
+      padding: 18px 20px; border: 0; border-radius: 18px; background: none; cursor: pointer;
+      text-align: left; color: var(--text); font: inherit;
+    }
+    .lk-titel { font-family: var(--fh); font-size: 18px; font-weight: 800; line-height: 1.25; letter-spacing: -0.015em; }
+    .lk-kurz { grid-column: 1; margin-top: 6px; font-size: 15px; line-height: 1.5; color: var(--t2); }
+    .lk-name { grid-column: 1; grid-row: 1; margin-bottom: 4px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); }
+    .lk-name + .lk-titel { grid-column: 1; grid-row: 2; }
+    .lk-klein { margin: -8px 20px 16px; font-size: 13px; line-height: 1.45; color: var(--muted); }
+    .lk-zeichen {
+      grid-column: 2; grid-row: 1 / span 2; width: 30px; height: 30px; border-radius: 50%;
+      background: rgba(var(--accent-rgb), .16); position: relative; transition: transform .35s var(--pop-ease), background .3s ease;
+    }
+    .lk-zeichen::before, .lk-zeichen::after {
+      content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 2px; border-radius: 2px;
+      background: var(--ink); transform: translate(-50%, -50%);
+    }
+    .lk-zeichen::after { transform: translate(-50%, -50%) rotate(90deg); transition: opacity .25s ease; }
+    .lk-knopf[aria-expanded="true"] .lk-zeichen { transform: rotate(180deg); background: var(--green); }
+    .lk-knopf[aria-expanded="true"] .lk-zeichen::before { background: var(--on-green); }
+    .lk-knopf[aria-expanded="true"] .lk-zeichen::after { opacity: 0; }
+    .lk-mehr {
+      display: grid; grid-template-rows: 0fr; visibility: hidden;
+      transition: grid-template-rows .4s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear .4s;
+    }
+    .lk-mehr.offen { grid-template-rows: 1fr; visibility: visible; transition: grid-template-rows .4s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s; }
+    .lk-innen { overflow: hidden; min-height: 0; }
+    .lk-innen ul { list-style: none; margin: 0 20px 18px; padding-top: 12px; border-top: 1px solid var(--border); display: grid; gap: 8px; }
+    .lk-innen li { position: relative; padding-left: 18px; font-size: 15px; line-height: 1.5; color: var(--t2); }
+    .lk-innen li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+    .leistung.ist-offen { border-color: rgba(var(--accent-rgb), .8); }
+    .abschluss-cta { margin-top: 30px; display: flex; flex-direction: column; align-items: center; }
+    .pakete-link { margin-top: 14px; font-size: 15px; color: var(--muted); }
+    .pakete-link a { color: var(--ink); font-weight: 700; text-underline-offset: 3px; }
+    .abschluss .rr-feld { max-width: 520px; }
     @media (hover: hover) and (pointer: fine) {
-      .leistung:hover { transform: translateY(-3px) scale(1.02); border-color: rgba(101, 200, 61, .8); box-shadow: 0 0 0 2px rgba(101, 200, 61, .5), 0 26px 48px -18px rgba(101, 200, 61, .55); }
+      .leistung:hover { transform: translateY(-3px) scale(1.015); border-color: rgba(var(--accent-rgb), .8); box-shadow: var(--glow-strong); }
     }
     @media (max-width: 900px) { .leistungen { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 560px) { .leistungen { grid-template-columns: 1fr; } }
-    @media (prefers-reduced-motion: reduce) { .leistung { transition: none; } .leistung:hover { transform: none; } }
+    @media (max-width: 600px) {
+      .paket-rahmen { padding: 22px 14px 26px; border-radius: 22px; }
+      .leistungen { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .leistung, .lk-mehr, .lk-zeichen { transition: none; }
+      .leistung:hover { transform: none; }
+    }
 
     /* ─── FOOTER ─── */
     footer {
@@ -675,7 +707,6 @@
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1080px) {
       .schritte { grid-template-columns: repeat(2, 1fr); }
-      .folge ol { grid-template-columns: repeat(2, 1fr); }
       .danach-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 900px) {
@@ -700,8 +731,6 @@
       .reel { scroll-snap-align: start; padding: 12px 12px 20px; }
       .reels-hinweis { display: block; text-align: center; font-size: 14px; color: var(--muted); margin-top: 4px; }
       .schritte { grid-template-columns: 1fr; }
-      .folge { padding: 26px 22px; }
-      .folge ol { grid-template-columns: 1fr; }
       .card { padding: 26px 22px; }
       .k-body { padding: 22px 18px 18px; min-height: 440px; }
       .k-box-euro { font-size: 22px; }
@@ -955,56 +984,54 @@
       </div>
     </section>
 
-    <!-- ══════ 4 · NACH DEM CHECK ══════ -->
-    <section class="s-pad band" id="danach" aria-labelledby="danachTitel">
-      <div class="s-in">
-        <div class="s-kopf">
-          <div class="eyebrow">Schritt 6 im Detail</div>
-          <h2 id="danachTitel">So bleibt die Mail-Folge dran.</h2>
-          <p class="intro">Eine Anfrage ist noch kein Auftrag. Darum bleibt die Folge dran, bis eine Entscheidung fällt.</p>
-        </div>
-        <div class="card folge">
-          <h3>Beispiel für eine Mail-Folge</h3>
-          <p>Jeder Betrieb bekommt seine eigene Folge. So kann sie aussehen:</p>
-          <ol>
-            <li><b>Sofort</b><span>Das PDF mit dem Ergebnis. Dazu das Angebot für einen Termin.</span></li>
-            <li><b>Tag 1</b><span>Ein Anruf oder eine kurze Mail: Passt ein Termin diese Woche?</span></li>
-            <li><b>Tag 3</b><span>Drei Fragen für jedes Angebot.</span></li>
-            <li><b>Tag 7</b><span>Ein Haus aus der Gegend: Kosten, Förderung, Ergebnis.</span></li>
-            <li><b>Mitte Januar</b><span>Die Erinnerung: Bis 31. Januar gibt es mehr Förderung.</span></li>
-          </ol>
-        </div>
-        <p class="fussnote">Quelle: Alex Hormozi, $100M Scaling Roadmap. Dort ist die Zeit bis zur Antwort eine von vier Zahlen zum Messen. Feste Prozentwerte stehen hier bewusst nicht. Jeder Betrieb misst seine eigenen.</p>
-      </div>
-    </section>
-
     
 
     <!-- ══════ 5 · ABSCHLUSS: der einzige Aufruf ══════ -->
-    <section class="s-pad weiter" id="weiter" aria-labelledby="weiterTitel">
-      <div class="weiter-in">
+    <section class="s-pad band abschluss" id="weiter" aria-labelledby="weiterTitel">
+      <div class="s-in">
         <div class="abschluss-kopf">
           <div class="eyebrow">Ihr nächster Schritt</div>
-          <h2 id="weiterTitel">Ihr kostenloses Gespräch: der 90-Tage-Plan</h2>
-          <p>Sie möchten ein kostenloses Gespräch? Wir zeigen Ihnen unseren 90-Tage-Plan. So wird Ihr Betrieb überall sichtbar: auf allen Apps, bei Google und in der KI-Suche.</p>
-          <p><strong>Wir machen das alles für Sie. Ihr Aufwand: 30 Minuten pro Woche.</strong></p>
+          <h2 id="weiterTitel">Ihr kostenloses Gespräch: der 90-Tage-Fahrplan</h2>
+          <p>Wir wollen diesen Weg gemeinsam mit Ihnen gehen. Wir sehen in Ihrem Betrieb die Chance, mit der richtigen Strategie Marktführer zu werden. Dafür bauen wir Ihre Sichtbarkeit Schritt für Schritt auf: überall und in großer Menge.</p>
+          <p><strong>Wir laden Sie zu einem Gespräch von 20 Minuten ein.</strong> Darin zeigen wir Ihnen einen 90-Tage-Fahrplan. Mit ihm können Sie zum Marktführer in Ihrer Region werden.</p>
         </div>
 
-        <div class="leistungen-label">Das steckt im Paket Marktführer</div>
-        <ul class="leistungen">
-          <li class="leistung"><h3>300 Posts im Monat</h3><p>60 kurze Videos auf 5 Apps.</p></li>
-          <li class="leistung"><h3>Anfragen-Motor</h3><p>Ihre besten Videos als Werbung in Ihrer Region.</p></li>
-          <li class="leistung"><h3>Vertrauens-Kanal</h3><p>Lange YouTube-Videos zu den Fragen Ihrer Kunden.</p></li>
-          <li class="leistung"><h3>Such-Magnet</h3><p>Gefunden werden bei Google und in der KI-Suche.</p></li>
-          <li class="leistung"><h3>Anfragen-Strecke mit Mail-Folge</h3><p>Die Schritte 5 bis 7 von oben laufen für Sie.</p></li>
-          <li class="leistung"><h3>Kommentar-Wache</h3><p>Kein Kommentar bleibt liegen.</p></li>
-        </ul>
+        <div class="paket-rahmen">
+          <div class="leistungen-label">Das steckt im Paket Marktführer</div>
+          <p class="leistungen-hilfe">Ein Klick auf eine Kachel zeigt, wie wir das machen.</p>
+          <ul class="leistungen">
+          <li class="leistung">
+            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-1"><span class="lk-titel">300 Posts im Monat</span><span class="lk-kurz">60 kurze Videos auf 5 Apps.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
+            <div class="lk-mehr" id="lst-1"><div class="lk-innen"><ul><li>Markt-Röntgen: die 20 stärksten Konten Ihrer Branche und die 30 häufigsten Fragen Ihrer Kunden.</li><li>90-Tage-Fahrplan mit fünf festen Themen. Jedes Skript startet mit drei Hooks zur Wahl.</li><li>Video-Fabrik: Schnitt, Untertitel und Animation in Ihren Farben. Fertig in 72 Stunden.</li><li>Jede App bekommt ihre eigene Fassung, zur besten Zeit. Jede Woche ein Test, Gewinner werden zur Serie.</li><li>Ihr Aufwand: 30 Minuten Dreh pro Woche.</li></ul></div></div>
+          </li>
+          <li class="leistung">
+            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-2"><span class="lk-titel">Anfragen-Motor</span><span class="lk-kurz">Ihre besten Videos als Werbung in Ihrer Region.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
+            <div class="lk-mehr" id="lst-2"><div class="lk-innen"><ul><li>Ihre besten Videos laufen als Werbung auf Meta Ads, also bei Facebook und Instagram.</li><li>Nur Menschen aus Ihrer Region sehen sie.</li><li>Wir bauen und steuern die Werbung für Sie.</li></ul></div></div>
+          </li>
+          <li class="leistung">
+            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-3"><span class="lk-titel">Vertrauens-Kanal</span><span class="lk-kurz">Lange YouTube-Videos zu den Fragen Ihrer Kunden.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
+            <div class="lk-mehr" id="lst-3"><div class="lk-innen"><ul><li>Lange Videos auf YouTube beantworten die Fragen Ihrer Kunden.</li><li>Die Themen kommen aus dem Markt-Röntgen.</li><li>So vertrauen Kunden Ihnen schon vor dem ersten Anruf.</li></ul></div></div>
+          </li>
+          <li class="leistung" data-kachel="such-magnet">
+            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-4"><span class="lk-name">Such-Magnet</span><span class="lk-titel">Gebaut für die Top 5 in der Google-Suche</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
+            <div class="lk-mehr" id="lst-4"><div class="lk-innen"><ul><li>Wir pflegen Ihr Google-Profil: Ort, Zeiten, Branche, Text.</li><li>Videos und Texte nutzen die Suchwörter Ihrer Region.</li><li>Jede Frage von Kunden bekommt eine klare Antwort. Die können auch KI-Suchen wie ChatGPT finden.</li><li>Lange YouTube-Videos geben die Antworten.</li><li>Jeden Monat schauen wir: Wo tauchen Sie bei Google und in KI-Suchen auf?</li></ul><p class="lk-klein">Plätze bei Google können wir nicht zusagen. Wir arbeiten jeden Monat daran.</p></div></div>
+          </li>
+          <li class="leistung">
+            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-5"><span class="lk-titel">Anfragen-Strecke mit Mail-Folge</span><span class="lk-kurz">Die Schritte 5 bis 7 von oben laufen für Sie.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
+            <div class="lk-mehr" id="lst-5"><div class="lk-innen"><ul><li>Jedes Video endet mit einem klaren Schritt, zum Beispiel einem Stichwort im Kommentar.</li><li>Wer kommentiert, bekommt sofort eine Nachricht mit Link zu einer kurzen Seite.</li><li>Mails zum Nachfassen bleiben dran, bis eine Entscheidung fällt.</li><li>Jede Woche sehen Sie, welches Video welche Anfrage gebracht hat.</li></ul></div></div>
+          </li>
+          <li class="leistung">
+            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-6"><span class="lk-titel">Kommentar-Wache</span><span class="lk-kurz">Kein Kommentar bleibt liegen.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
+            <div class="lk-mehr" id="lst-6"><div class="lk-innen"><ul><li>Wir antworten in der ersten Stunde nach dem Posten.</li><li>Auch am Wochenende.</li><li>Wer kaufen will, landet sofort bei Ihnen.</li></ul></div></div>
+          </li>
+          </ul>
 
-        <div class="abschluss-cta">
-          <button type="button" class="btn btn-gruen btn-gross" data-rueckruf data-stelle="Abschluss" aria-expanded="false" aria-controls="rueckrufFeld">Kostenloses Gespräch anfragen
-            <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <p class="pakete-link"><a href="https://monetascale.de/#pakete">Alle Pakete ansehen</a></p>
+          <div class="abschluss-cta">
+            <button type="button" class="btn btn-gruen btn-gross" data-rueckruf data-stelle="Abschluss" aria-expanded="false" aria-controls="rueckrufFeld">Kostenloses Gespräch anfragen
+              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <p class="pakete-link">Gespräch von 20 Minuten, kostenlos. <a href="https://monetascale.de/#pakete">Alle Pakete ansehen</a></p>
+          </div>
         </div>
       </div>
     </section>
@@ -1193,6 +1220,16 @@
       if (rrKnopf === knopf) rrSchliessen(false); else rrOeffnen(knopf);
     }
     rrFeld.querySelector('.rr-zu').addEventListener('click', function () { rrSchliessen(true); });
+    /* ─── Leistungs-Kacheln: Klick oder Enter klappt die Beschreibung auf ─── */
+    Array.prototype.forEach.call(document.querySelectorAll('.lk-knopf'), function (k) {
+      k.addEventListener('click', function () {
+        var auf = k.getAttribute('aria-expanded') !== 'true';
+        k.setAttribute('aria-expanded', auf ? 'true' : 'false');
+        document.getElementById(k.getAttribute('aria-controls')).classList.toggle('offen', auf);
+        k.closest('.leistung').classList.toggle('ist-offen', auf);
+      });
+    });
+
     /* ─── Förder-Check geschenkt: Formular klappt unter dem Knopf auf ─── */
     var gsKnopf = document.getElementById('gsKnopf');
     var gsFeld = document.getElementById('gsFeld');
