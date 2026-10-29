@@ -123,18 +123,6 @@ ${titelSvg}
   return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
 }
 
-// Haupt-Aufruf: überall derselbe Block (Kopf und nach dem Förder-Check)
-function planBlock(kurzname, stelle, ebene) {
-  return `          <div class="plan">
-            <${ebene} class="plan-titel">Ihr 90-Tage-Plan für mehr Anfragen</${ebene}>
-            <p class="plan-text">In 15 Minuten am Telefon zeigen wir, wie es bei ${esc(kurzname)} aussehen kann. Ihr Aufwand danach: 30 Minuten pro Woche.</p>
-            <button type="button" class="btn btn-gruen btn-gross" data-rueckruf data-stelle="${esc(stelle)}" aria-expanded="false" aria-controls="rueckrufFeld">90-Tage-Plan besprechen
-              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <p class="plan-tel">Rückruf heute noch. Oder direkt anrufen: <a href="tel:${TELEFON.link}">${TELEFON.text}</a></p>
-          </div>`;
-}
-
 function reelsHtml(betrieb, farben) {
   return betrieb.videos.map((v, i) => {
     const eintrag = typeof v === 'string' ? { url: v } : v || {};
@@ -229,8 +217,6 @@ async function main() {
       ort: b.ort,
       initialen: daten.initialen,
       kurzname,
-      plan_strategie: planBlock(kurzname, 'Nach den Schritten', 'h3'),
-      plan_check: planBlock(kurzname, 'Nach dem Förder-Check', 'h3'),
       farbe1: f1, farbe1_text: farben.f1t, farbe1_dunkel: farben.f1d, farbe1_hell: farben.f1h,
       farbe2: f2, farbe2_text: farben.f2t,
       sterne: sterneOk, sterne_text: sterneText,

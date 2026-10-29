@@ -248,12 +248,7 @@
 
     /* ─── STRATEGIE ─── */
     .schritte { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; counter-reset: s; }
-    .schritte-label { margin: 6px 0 14px; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--t2); }
-    .schritte-label-wir { margin-top: 34px; color: var(--ink); }
-    .schritte-wir { grid-template-columns: repeat(3, 1fr); }
-    .schritt-wir { border: 2px solid rgba(var(--accent-rgb), .8); background: rgba(var(--accent-rgb), .16); }
-    .schritt-wir .schritt-zahl { background: var(--green); color: var(--on-green); }
-    #strategie .plan { margin-top: 40px; }
+    .schritte-2 { grid-template-columns: repeat(3, 1fr); margin-top: 20px; }
     .schritt { position: relative; display: flex; flex-direction: column; }
     .schritt-zahl {
       width: 44px; height: 44px; border-radius: 12px; margin-bottom: 18px;
@@ -434,11 +429,36 @@
 
     /* ─── ANRISS ─── */
     .weiter { background: var(--band); color: var(--band-text); }
-    .weiter-in { max-width: 760px; margin: 0 auto; text-align: center; }
+    .weiter-in { max-width: 1040px; margin: 0 auto; text-align: center; }
     .weiter .eyebrow { color: var(--green); }
-    .weiter p { color: var(--band-t2); font-size: 18px; margin-top: 16px; }
-    .weiter p strong { color: var(--band-text); font-weight: 600; }
-    .weiter .btn { margin-top: 30px; --sweep-farbe: #FFFFFF; --sweep-text: #0A0A0A; }
+    .abschluss-kopf { max-width: 720px; margin: 0 auto; }
+    .abschluss-kopf p { color: var(--band-t2); font-size: 18px; margin-top: 16px; }
+    .abschluss-kopf p strong { color: var(--band-text); font-weight: 600; }
+    .leistungen-label {
+      margin: 44px 0 16px; font-size: 13px; font-weight: 700; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--green);
+    }
+    .leistungen { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: left; }
+    .leistung {
+      padding: 20px 22px; border-radius: 18px;
+      background: rgba(255, 255, 255, .04);
+      border: 1.5px solid rgba(101, 200, 61, .35);
+      box-shadow: 0 0 0 1px rgba(101, 200, 61, .10), 0 16px 34px -20px rgba(101, 200, 61, .40);
+      transition: transform .4s var(--pop-ease), box-shadow .4s ease, border-color .35s ease;
+    }
+    .leistung h3 { font-size: 18px; line-height: 1.25; color: var(--band-text); }
+    .leistung p { margin-top: 6px; font-size: 15px; line-height: 1.5; color: var(--band-t2); }
+    .abschluss-cta { margin-top: 36px; display: flex; flex-direction: column; align-items: center; }
+    .abschluss-cta > .btn { --sweep-farbe: #FFFFFF; --sweep-text: #0A0A0A; }
+    .pakete-link { margin-top: 16px; font-size: 15px; }
+    .pakete-link a { color: var(--green); font-weight: 600; text-underline-offset: 3px; }
+    .weiter .rr-feld { max-width: 520px; }
+    @media (hover: hover) and (pointer: fine) {
+      .leistung:hover { transform: translateY(-3px) scale(1.02); border-color: rgba(101, 200, 61, .8); box-shadow: 0 0 0 2px rgba(101, 200, 61, .5), 0 26px 48px -18px rgba(101, 200, 61, .55); }
+    }
+    @media (max-width: 900px) { .leistungen { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .leistungen { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .leistung { transition: none; } .leistung:hover { transform: none; } }
 
     /* ─── FOOTER ─── */
     footer {
@@ -452,11 +472,7 @@
 
     /* ─── HAUPT-AUFRUF: 90-Tage-Plan + Rückruf zum Aufklappen ─── */
     .btn-gross { padding: 19px 34px; font-size: 18px; border-radius: 16px; text-align: center; max-width: 100%; }
-    .plan { max-width: 620px; margin: 34px auto 0; text-align: center; display: flex; flex-direction: column; align-items: center; }
-    .plan-titel { font-family: var(--fh); font-size: clamp(22px, 2.4vw, 28px); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; }
-    .plan-text { margin: 10px 0 20px; font-size: 17px; color: var(--t2); }
-    .plan-tel { margin-top: 14px; font-size: 15px; color: var(--muted); }
-    .plan-tel a, .reel-frage a, .rr-karte a { color: var(--ink); font-weight: 700; text-underline-offset: 3px; }
+    .rr-karte a { color: var(--ink); font-weight: 700; text-underline-offset: 3px; }
     .chip-link { text-decoration: none; color: var(--ink); }
     a[href^="tel:"] { white-space: nowrap; }
     .reel-frage { margin-top: auto; padding-top: 16px; font-size: 15px; color: var(--t2); border-top: 1px solid var(--border); }
@@ -466,8 +482,6 @@
       font: inherit; font-weight: 700; color: var(--ink); text-decoration: underline; text-underline-offset: 3px;
     }
     .link-knopf[aria-expanded="true"] { text-decoration-thickness: 2px; }
-    .mail-ende { grid-column: 1 / -1; }
-    .mail-ende .plan { margin-top: 8px; }
     .beispiel-karte { max-width: 760px; margin: 0 auto; }
     .beispiel-text { font-size: 19px; color: var(--text); }
     .beispiel-quelle { margin-top: 12px; font-size: 14px; color: var(--muted); }
@@ -521,7 +535,21 @@
     .rr-danke h3:focus { outline: none; }
     .rr-danke p { color: var(--t2); }
     .rr-hilfe { font-size: 13.5px; color: var(--muted); margin-top: -2px; }
-    .rr-frage[hidden], .rr-danke[hidden], .rr-kontakt[hidden] { display: none; }
+    .rr-frage[hidden], .rr-danke[hidden], .rr-kontakt[hidden], .rr-mailweg[hidden], .rr-nummer[hidden] { display: none; }
+    .rr-mailweg { padding: 18px 20px 22px; display: grid; gap: 8px; }
+    .rr-mailweg h3 { font-size: 21px; line-height: 1.3; margin-bottom: 6px; }
+    .rr-mailweg h3:focus { outline: none; }
+    .rr-mailweg label, .rr-nummer label { font-size: 14px; font-weight: 700; color: var(--t2); }
+    .rr-mailweg label span { font-weight: 500; color: var(--muted); }
+    .rr-karte textarea {
+      width: 100%; padding: 13px 15px; border-radius: 12px; border: 1.5px solid var(--borders);
+      background: var(--bg2); color: var(--text); font: inherit; font-size: 16px; outline: none; resize: vertical;
+    }
+    .rr-karte textarea:focus { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(var(--accent-rgb), .18); }
+    .rr-mailweg .btn { margin-top: 8px; width: 100%; }
+    .rr-nummer { display: grid; gap: 8px; margin-top: 16px; }
+    .rr-nummer .btn { margin-top: 4px; width: 100%; }
+    .rr-wahl .btn[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--text); }
     .rr-frage, .rr-danke { padding: 18px 20px 22px; }
     .rr-frage h3 { font-size: 22px; line-height: 1.25; margin-bottom: 6px; }
     .rr-frage h3:focus, .kk-name:focus { outline: none; }
@@ -646,7 +674,7 @@
         <div class="kopf-text">
           <div class="eyebrow">Drei Reels · fertig gebaut</div>
           <h1 id="kopfTitel">Für {{kurzname}} in <span>{{ort}}</span></h1>
-          <p class="intro">Am 01.02.2027 sinkt die Förderung. Für Hausbesitzer ist das der stärkste Grund, jetzt anzufragen. Diese 3 Videos nutzen genau diese Frist.</p>
+          <p class="intro">Am 01.02.2027 sinkt die Förderung. Diese Frist ist ein großer Hebel für Ihr Marketing. Für Hausbesitzer ist sie der stärkste Grund, jetzt anzufragen. Die 3 Videos unten sind Beispiele. So kann das aussehen.</p>
           {{#chips}}<div class="chips">
             {{#sterne}}<span class="chip"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.5 2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8Z"/></svg>{{sterne_text}}</span>{{/sterne}}
             {{#report}}<a class="chip chip-link" href="{{report_link}}">Ihr Markt-Report ansehen</a>{{/report}}
@@ -655,7 +683,7 @@
 
         <div class="figur-hinweis" role="note">
           <span class="fh-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span>
-          <p><strong>Hier spricht noch eine gezeichnete Figur.</strong> Auf dem Shirt steht schon Ihr Name, im Bild sehen Sie Ihre Farben. Später spricht hier jemand aus Ihrem Team. Will sich niemand zeigen? Dann bauen wir Ihnen eine eigene Figur, die man sofort wiedererkennt.</p>
+          <p><strong>Hier spricht noch eine gezeichnete Figur.</strong> Auf dem Shirt steht schon Ihr Name, im Bild sehen Sie Ihre Farben. Später spricht hier jemand aus Ihrem Team. Will sich niemand zeigen? Dann gibt es eine eigene Figur, die man sofort wiedererkennt.</p>
         </div>
 
         <div class="reels">
@@ -671,9 +699,8 @@
         <div class="s-kopf">
           <div class="eyebrow">Die Strategie</div>
           <h2 id="strategieTitel">Vom Video bis zum Termin.</h2>
-          <p class="intro">Die Reels verkaufen nicht. Sie zeigen Zahlen, die Hausbesitzer betreffen. Den Rest machen der Förder-Check und wir.</p>
+          <p class="intro">Die Reels verkaufen nicht. Sie zeigen Zahlen, die Hausbesitzer betreffen. Den Rest machen der Förder-Check und eine kluge Mail-Folge.</p>
         </div>
-        <div class="schritte-label">So kommt der Hausbesitzer zu Ihnen</div>
         <div class="schritte">
           <div class="card schritt">
             <span class="schritt-zahl">1</span>
@@ -696,26 +723,24 @@
             <p>Für das PDF gibt der Hausbesitzer seine Mail-Adresse. So kommt er bei Ihnen an. Heizung, Haus und Kosten kennen Sie dann schon.</p>
           </div>
         </div>
-        <div class="schritte-label schritte-label-wir">Danach übernehmen wir</div>
-        <div class="schritte schritte-wir">
-          <div class="card schritt schritt-wir">
+        <div class="schritte schritte-2">
+          <div class="card schritt">
             <span class="schritt-zahl">5</span>
             <h3>Sofort antworten</h3>
             <p>Das PDF mit dem Ergebnis geht sofort raus, in Ihrem Namen. Der Kunde denkt gerade an sein Haus. Genau dann hört er von Ihnen.</p>
           </div>
-          <div class="card schritt schritt-wir">
+          <div class="card schritt">
             <span class="schritt-zahl">6</span>
             <h3>Klug nachfassen</h3>
             <p>Nicht jeder entscheidet sofort. Eine Folge von Mails beantwortet Fragen und erinnert an den Stichtag. Das läuft von allein.</p>
           </div>
-          <div class="card schritt schritt-wir">
+          <div class="card schritt">
             <span class="schritt-zahl">7</span>
-            <h3>Termin bei Ihnen</h3>
+            <h3>Termin vor Ort</h3>
             <p>Am Ende steht ein Termin vor Ort. Haus, Heizung und Förderung kennen Sie schon vorher. Jede Mail zielt auf ein klares Ja oder Nein.</p>
           </div>
         </div>
         <p class="fussnote">Warum das wirkt: Jedes Reel beginnt bei der Lage des Zuschauers. Der Stichtag gibt einen Grund, jetzt zu handeln. Und der Check gibt etwas zurück, bevor jemand anruft.</p>
-{{{plan_strategie}}}
       </div>
     </section>
 
@@ -787,9 +812,6 @@
             <p>In dieser Vorschau geht keine Mail raus. Im echten Check geht sie sofort raus, im Namen von {{name}}.</p>
             <p>Das PDF hängt an. Der nächste Schritt steht gleich darin: ein Termin bei Ihnen.</p>
           </div>
-          <div class="mail-ende">
-{{{plan_check}}}
-          </div>
         </div>
       </div>
     </section>
@@ -804,7 +826,7 @@
         </div>
         <div class="card folge">
           <h3>Beispiel für eine Mail-Folge</h3>
-          <p>Wir bauen die Folge passend zu Ihrem Betrieb. So kann sie aussehen:</p>
+          <p>Jeder Betrieb bekommt seine eigene Folge. So kann sie aussehen:</p>
           <ol>
             <li><b>Sofort</b><span>Das PDF mit dem Ergebnis. Dazu das Angebot für einen Termin.</span></li>
             <li><b>Tag 1</b><span>Ein Anruf oder eine kurze Mail: Passt ein Termin diese Woche?</span></li>
@@ -813,7 +835,7 @@
             <li><b>Mitte Januar</b><span>Die Erinnerung: Bis 31. Januar gibt es mehr Förderung.</span></li>
           </ol>
         </div>
-        <p class="fussnote">Quelle: Alex Hormozi, $100M Scaling Roadmap. Dort ist die Zeit bis zur Antwort eine von vier Zahlen zum Messen. Feste Prozentwerte nennen wir hier nicht. Jeder Betrieb misst seine eigenen.</p>
+        <p class="fussnote">Quelle: Alex Hormozi, $100M Scaling Roadmap. Dort ist die Zeit bis zur Antwort eine von vier Zahlen zum Messen. Feste Prozentwerte stehen hier bewusst nicht. Jeder Betrieb misst seine eigenen.</p>
       </div>
     </section>
 
@@ -834,17 +856,32 @@
     </section>
     {{/beispiel}}
 
-    <!-- ══════ 5 · ANRISS CONTENTMASCHINE ══════ -->
+    <!-- ══════ 5 · ABSCHLUSS: der einzige Aufruf ══════ -->
     <section class="s-pad weiter" id="weiter" aria-labelledby="weiterTitel">
       <div class="weiter-in">
-        <div class="eyebrow">Und dann?</div>
-        <h2 id="weiterTitel">Bis Februar überall gesehen werden.</h2>
-        <p>Bis zum 1. Februar haben Ihre Kunden einen Grund zu handeln. Diese Zeit lässt sich nutzen.</p>
-        <p><strong>Wir sorgen dafür, dass Sie bis Februar überall gesehen werden, wo Ihre Kunden suchen.</strong> Mit Videos, die zu Anfragen führen. Sie filmen 30 Minuten pro Woche. Nach 7 Tagen läuft alles, mit bis zu 300 Posts im Monat.</p>
-        <p>Wenn Sie interessiert, wie wir das auf allen Apps für Sie schaffen: Schauen Sie sich das Angebot an.</p>
-        <a class="btn btn-gruen" href="https://monetascale.de/#pakete">Angebot ansehen
-          <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
+        <div class="abschluss-kopf">
+          <div class="eyebrow">Ihr nächster Schritt</div>
+          <h2 id="weiterTitel">Ihr kostenloses Gespräch: der 90-Tage-Plan</h2>
+          <p>Sie möchten ein kostenloses Gespräch? Wir zeigen Ihnen unseren 90-Tage-Plan. So wird Ihr Betrieb überall sichtbar: auf allen Apps, bei Google und in der KI-Suche.</p>
+          <p><strong>Wir machen das alles für Sie. Ihr Aufwand: 30 Minuten pro Woche.</strong></p>
+        </div>
+
+        <div class="leistungen-label">Das steckt im Paket Marktführer</div>
+        <ul class="leistungen">
+          <li class="leistung"><h3>300 Posts im Monat</h3><p>60 kurze Videos auf 5 Apps.</p></li>
+          <li class="leistung"><h3>Anfragen-Motor</h3><p>Ihre besten Videos als Werbung in Ihrer Region.</p></li>
+          <li class="leistung"><h3>Vertrauens-Kanal</h3><p>Lange YouTube-Videos zu den Fragen Ihrer Kunden.</p></li>
+          <li class="leistung"><h3>Such-Magnet</h3><p>Gefunden werden bei Google und in der KI-Suche.</p></li>
+          <li class="leistung"><h3>Anfragen-Strecke mit Mail-Folge</h3><p>Die Schritte 5 bis 7 von oben laufen für Sie.</p></li>
+          <li class="leistung"><h3>Kommentar-Wache</h3><p>Kein Kommentar bleibt liegen.</p></li>
+        </ul>
+
+        <div class="abschluss-cta">
+          <button type="button" class="btn btn-gruen btn-gross" data-rueckruf data-stelle="Abschluss" aria-expanded="false" aria-controls="rueckrufFeld">Kostenloses Gespräch anfragen
+            <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="pakete-link"><a href="https://monetascale.de/#pakete">Alle Pakete ansehen</a></p>
+        </div>
       </div>
     </section>
   </main>
@@ -858,10 +895,10 @@
   </footer>
 
   <!-- ══════ RÜCKRUF-FELD (eines für alle Aufrufe, klappt unter dem gewählten Knopf auf) ══════ -->
-  <div class="rr-feld" id="rueckrufFeld" role="region" aria-label="90-Tage-Plan anfordern" hidden>
+  <div class="rr-feld" id="rueckrufFeld" role="region" aria-label="Kostenloses Gespräch anfragen" hidden>
     <div class="rr-innen">
       <div class="rr-karte">
-        <div class="rr-kopf"><span>Ihr 90-Tage-Plan</span>
+        <div class="rr-kopf"><span>Kostenloses Gespräch</span>
           <button type="button" class="rr-zu" aria-label="Schließen">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
           </button>
@@ -874,36 +911,52 @@
           <label for="rrMail">E-Mail</label>
           <input id="rrMail" name="email" type="email" autocomplete="email" inputmode="email" maxlength="160" required>
           <label for="rrTel">Telefon <span>(optional)</span></label>
-          <input id="rrTel" name="telefon" type="tel" autocomplete="tel" inputmode="tel" maxlength="60" aria-describedby="rrTelHilfe">
-          <p class="rr-hilfe" id="rrTelHilfe">Nur für einen kurzen Anruf, wenn Sie das möchten.</p>
+          <input id="rrTel" name="telefon" type="tel" autocomplete="tel" inputmode="tel" maxlength="60">
           <input type="hidden" name="rueckruf" id="rrRueckruf" value="">
-          <input type="hidden" name="rueckruf_zeit" id="rrRueckrufZeit" value="">
-          <input type="hidden" name="ortszeit" id="rrOrtszeit" value="">
           <input type="hidden" name="quelle" id="rrQuelle" value="{{quelle}}">
-          <input type="hidden" name="_subject" id="rrBetreff" value="90-Tage-Plan: {{name}}">
+          <input type="hidden" name="_subject" id="rrBetreff" value="Kostenloses Gespräch: {{name}}">
           <p class="rr-fehler" id="rrFehler" role="alert" hidden></p>
-          <button class="btn btn-gruen" type="submit" id="rrWeiter">Absenden
+          <button class="btn btn-gruen" type="submit" id="rrWeiter">Weiter
             <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <p class="rr-klein">Ihre Angaben gehen über Formspree an MonetaScale. Wir nutzen sie nur für Ihren Plan und, wenn Sie zustimmen, für einen Anruf. <a href="../datenschutz.html">Datenschutz</a></p>
+          <p class="rr-klein">Ihre Angaben gehen über Formspree an MonetaScale. Wir nutzen sie nur für das Gespräch. Anrufen dürfen wir nur, wenn Sie zustimmen. <a href="../datenschutz.html">Datenschutz</a></p>
         </form>
 
-        <!-- Schritt 2: nur mit Telefonnummer – Einwilligung zum Anruf, nichts vorausgewählt -->
+        <!-- Schritt 2: Einwilligung zum Anruf (§ 7 UWG), nichts vorausgewählt -->
         <div class="rr-frage" id="rrFrage" hidden>
-          <h3 tabindex="-1" id="rrFrageTitel">Darf ich Sie in den nächsten Stunden kurz anrufen?</h3>
-          <p class="rr-frage-tel">Unter <span id="rrFrageTel"></span>. Es geht um Ihren 90-Tage-Plan.</p>
+          <h3 tabindex="-1" id="rrFrageTitel">Dürfen wir Sie anrufen?</h3>
+          <p class="rr-frage-tel" id="rrFrageMitTel">Unter <span id="rrFrageTel"></span>. Es geht um Ihr kostenloses Gespräch.</p>
+          <p class="rr-frage-tel" id="rrFrageOhneTel">Es geht um Ihr kostenloses Gespräch.</p>
           <div class="rr-wahl" role="group" aria-labelledby="rrFrageTitel">
-            <button type="button" class="btn btn-gruen" data-rr-wahl="ja">Ja, gern</button>
-            <button type="button" class="btn btn-rand" data-rr-wahl="nein">Lieber per Mail</button>
+            <button type="button" class="btn btn-gruen" data-rr-wahl="ja" aria-pressed="false">Ja, gern anrufen</button>
+            <button type="button" class="btn btn-rand" data-rr-wahl="nein" aria-pressed="false">Nein, lieber per Mail</button>
+          </div>
+          <div class="rr-nummer" id="rrNummer" hidden>
+            <label for="rrTel2">Gern. Unter welcher Nummer erreichen wir Sie?</label>
+            <input id="rrTel2" type="tel" autocomplete="tel" inputmode="tel" maxlength="60">
+            <button type="button" class="btn btn-gruen" id="rrNummerWeiter">Absenden
+              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
           </div>
           <p class="rr-fehler" id="rrFehler2" role="alert" hidden></p>
-          <button type="button" class="link-knopf rr-zurueck" id="rrZurueck">Angaben ändern</button>
+          <button type="button" class="link-knopf rr-zurueck" data-rr-zurueck="form">Angaben ändern</button>
         </div>
 
-        <!-- Ende ohne Anruf -->
+        <!-- Schritt 3 bei „Nein“: per Mail, optional ein Terminwunsch -->
+        <div class="rr-mailweg" id="rrMailweg" hidden>
+          <h3 tabindex="-1" id="rrMailwegTitel">Alles klar. Wir melden uns per Mail, um einen Termin zu finden.</h3>
+          <label for="rrNotiz">Haben Sie einen Terminwunsch? <span>(optional)</span></label>
+          <textarea id="rrNotiz" name="notiz" form="rrForm" rows="3" maxlength="500" placeholder="Zum Beispiel: Dienstag ab 15 Uhr"></textarea>
+          <p class="rr-fehler" id="rrFehler3" role="alert" hidden></p>
+          <button type="button" class="btn btn-gruen" id="rrMailAbsenden">Absenden
+            <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button type="button" class="link-knopf rr-zurueck" data-rr-zurueck="frage">Zurück</button>
+        </div>
+
+        <!-- Ende per Mail -->
         <div class="rr-danke" id="rrDanke" hidden>
-          <h3 tabindex="-1" id="rrDankeTitel">Danke! Sie bekommen Ihren 90-Tage-Plan per Mail.</h3>
-          <p id="rrDankeText">Wir melden uns heute noch.</p>
+          <h3 tabindex="-1" id="rrDankeTitel">Danke! Kerem meldet sich ganz einfach per Mail bei Ihnen.</h3>
         </div>
 
         <!-- Ende mit Anruf: Kontaktkarte -->
@@ -1019,69 +1072,108 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && rrKnopf) { e.preventDefault(); rrSchliessen(true); }
     });
-    var ANRUF_ZEIT = 'in den nächsten Stunden';   // Kerem ruft immer innerhalb weniger Stunden an, oft sofort
-
-    var rrSchritte = { form: rrForm, frage: document.getElementById('rrFrage'), danke: document.getElementById('rrDanke'), kontakt: document.getElementById('rrKontakt') };
-    var rrStand = 'form';
+    /* Ablauf: Angaben → Frage zum Anruf → (Nummer) → Kontaktkarte  |  → Mail-Weg mit Terminwunsch → Danke.
+       Pro Anfrage genau ein Versand an Formspree, erst ganz am Ende. */
+    var rrSchritte = {
+      form: rrForm, frage: document.getElementById('rrFrage'), mailweg: document.getElementById('rrMailweg'),
+      danke: document.getElementById('rrDanke'), kontakt: document.getElementById('rrKontakt')
+    };
+    var rrStand = 'form', rrGesendet = false;
     var rrKarte = rrFeld.querySelector('.rr-karte');
     var rrFehler2 = document.getElementById('rrFehler2');
+    var rrFehler3 = document.getElementById('rrFehler3');
     var rrWeiter = document.getElementById('rrWeiter');
-    function rrZeige(stand) {
+    var rrTel = document.getElementById('rrTel');
+    var rrNummer = document.getElementById('rrNummer');
+    var rrTel2 = document.getElementById('rrTel2');
+    var rrWahl = rrFeld.querySelectorAll('[data-rr-wahl]');
+    function rrZeige(stand, fokus) {
       rrStand = stand;
       Object.keys(rrSchritte).forEach(function (k) { rrSchritte[k].hidden = (k !== stand); });
       rrKarte.classList.toggle('ist-kontakt', stand === 'kontakt');
-      var ziel = rrFokusZiel();
+      var ziel = fokus || rrFokusZiel();
       try { ziel.focus({ preventScroll: true }); } catch (x) { ziel.focus(); }
     }
     function rrFokusZiel() {
       return { form: document.getElementById('rrName'), frage: document.getElementById('rrFrageTitel'),
-               danke: document.getElementById('rrDankeTitel'), kontakt: document.getElementById('rrKontaktTitel') }[rrStand];
+               mailweg: document.getElementById('rrMailwegTitel'), danke: document.getElementById('rrDankeTitel'),
+               kontakt: document.getElementById('rrKontaktTitel') }[rrStand];
     }
-    function telZiffern() { return document.getElementById('rrTel').value.replace(/[^\d]/g, ''); }
-    document.getElementById('rrTel').addEventListener('input', function () {
-      var t = rrWeiter.firstChild;
-      if (t && t.nodeType === 3) t.textContent = telZiffern().length ? 'Weiter ' : 'Absenden ';
-    });
+    function ziffern(wert) { return String(wert || '').replace(/[^\d]/g, ''); }
+    function fehlerZeigen(feldFehler, text, feld) {
+      feldFehler.textContent = text;
+      feldFehler.hidden = false;
+      if (feld) { feld.setAttribute('aria-invalid', 'true'); feld.focus(); }
+    }
+    function wahlZuruecksetzen() {
+      Array.prototype.forEach.call(rrWahl, function (b) { b.setAttribute('aria-pressed', 'false'); });
+      rrNummer.hidden = true;
+      rrFehler2.hidden = true;
+    }
+
     rrForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      var felder = { name: document.getElementById('rrName'), mail: document.getElementById('rrMail'), tel: document.getElementById('rrTel') };
-      Object.keys(felder).forEach(function (k) { felder[k].removeAttribute('aria-invalid'); });
-      var ziffern = telZiffern();
-      var fehler = null, feld = null;
-      if (!felder.name.value.trim()) { fehler = 'Wie dürfen wir Sie ansprechen? Ihr Name fehlt noch.'; feld = felder.name; }
-      else if (!felder.mail.value.trim()) { fehler = 'Wohin dürfen wir den Plan schicken? Die E-Mail-Adresse fehlt noch.'; feld = felder.mail; }
-      else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(felder.mail.value.trim())) { fehler = 'Die E-Mail-Adresse sieht noch nicht vollständig aus.'; feld = felder.mail; }
-      else if (felder.tel.value.trim() && ziffern.length < 6) { fehler = 'Die Telefonnummer sieht noch nicht vollständig aus. Sie können das Feld auch leer lassen.'; feld = felder.tel; }
-      if (fehler) {
-        rrFehler.textContent = fehler;
-        rrFehler.hidden = false;
-        feld.setAttribute('aria-invalid', 'true');
-        feld.focus();
-        return;
-      }
+      var name = document.getElementById('rrName'), mail = document.getElementById('rrMail');
+      [name, mail, rrTel].forEach(function (f) { f.removeAttribute('aria-invalid'); });
       rrFehler.hidden = true;
+      if (!name.value.trim()) return fehlerZeigen(rrFehler, 'Wie dürfen wir Sie ansprechen? Ihr Name fehlt noch.', name);
+      if (!mail.value.trim()) return fehlerZeigen(rrFehler, 'Wohin dürfen wir schreiben? Die E-Mail-Adresse fehlt noch.', mail);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail.value.trim())) return fehlerZeigen(rrFehler, 'Die E-Mail-Adresse sieht noch nicht vollständig aus.', mail);
+      if (rrTel.value.trim() && ziffern(rrTel.value).length < 6) return fehlerZeigen(rrFehler, 'Die Telefonnummer sieht noch nicht vollständig aus. Sie können das Feld auch leer lassen.', rrTel);
       nachSweep(rrWeiter, function () {
-        if (ziffern.length) {
-          document.getElementById('rrFrageTel').textContent = felder.tel.value.trim();
-          rrFehler2.hidden = true;
-          rrZeige('frage');
-        } else {
-          rrSenden('nein', rrWeiter, rrFehler);
-        }
-      });
-    });
-    document.getElementById('rrZurueck').addEventListener('click', function () { rrZeige('form'); });
-    Array.prototype.forEach.call(rrFeld.querySelectorAll('[data-rr-wahl]'), function (b) {
-      b.addEventListener('click', function () {
-        nachSweep(b, function () { rrSenden(b.getAttribute('data-rr-wahl'), b, rrFehler2); });
+        var mitTel = ziffern(rrTel.value).length >= 6;
+        document.getElementById('rrFrageTel').textContent = rrTel.value.trim();
+        document.getElementById('rrFrageMitTel').hidden = !mitTel;
+        document.getElementById('rrFrageOhneTel').hidden = mitTel;
+        wahlZuruecksetzen();
+        rrZeige('frage');
       });
     });
 
-    function rrSenden(rueckruf, knopf, fehlerFeld) {
+    Array.prototype.forEach.call(rrWahl, function (b) {
+      b.addEventListener('click', function () {
+        var wert = b.getAttribute('data-rr-wahl');
+        nachSweep(b, function () {
+          Array.prototype.forEach.call(rrWahl, function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+          rrFehler2.hidden = true;
+          if (wert === 'nein') { rrNummer.hidden = true; rrZeige('mailweg'); return; }
+          if (ziffern(rrTel.value).length >= 6) { rrSenden('ja', rrFehler2); return; }
+          rrNummer.hidden = false;           // Ja, aber ohne Nummer: freundlich danach fragen
+          try { rrTel2.focus({ preventScroll: true }); } catch (x) { rrTel2.focus(); }
+        });
+      });
+    });
+    var rrNummerWeiter = document.getElementById('rrNummerWeiter');
+    function nummerAbsenden() {
+      rrTel2.removeAttribute('aria-invalid');
+      if (ziffern(rrTel2.value).length < 6) return fehlerZeigen(rrFehler2, 'Bitte eine Telefonnummer eintragen. Oder lieber per Mail?', rrTel2);
+      rrFehler2.hidden = true;
+      nachSweep(rrNummerWeiter, function () {
+        rrTel.value = rrTel2.value.trim();
+        rrSenden('ja', rrFehler2);
+      });
+    }
+    rrNummerWeiter.addEventListener('click', nummerAbsenden);
+    rrTel2.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); nummerAbsenden(); } });
+
+    var rrMailAbsenden = document.getElementById('rrMailAbsenden');
+    rrMailAbsenden.addEventListener('click', function () {
+      nachSweep(rrMailAbsenden, function () { rrSenden('nein', rrFehler3); });
+    });
+    Array.prototype.forEach.call(rrFeld.querySelectorAll('[data-rr-zurueck]'), function (b) {
+      b.addEventListener('click', function () {
+        var ziel = b.getAttribute('data-rr-zurueck');
+        if (ziel === 'frage') wahlZuruecksetzen();
+        rrZeige(ziel);
+      });
+    });
+
+    function rrSenden(rueckruf, fehlerFeld) {
+      if (rrGesendet) return;                // genau ein Versand pro Anfrage
+      rrGesendet = true;
       document.getElementById('rrRueckruf').value = rueckruf;
-      document.getElementById('rrRueckrufZeit').value = rueckruf === 'ja' ? ANRUF_ZEIT : '';
-      document.getElementById('rrOrtszeit').value = new Date().toLocaleString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-      document.getElementById('rrBetreff').value = (rueckruf === 'ja' ? 'ANRUF ' + ANRUF_ZEIT + ' · ' : '') + '90-Tage-Plan: ' + D.name;
+      if (rueckruf === 'ja') document.getElementById('rrNotiz').value = '';
+      document.getElementById('rrBetreff').value = (rueckruf === 'ja' ? 'ANRUF erwünscht · ' : 'Per Mail · ') + 'Kostenloses Gespräch: ' + D.name;
       var knoepfe = rrFeld.querySelectorAll('button.btn');
       Array.prototype.forEach.call(knoepfe, function (k) { k.disabled = true; });
       fetch(rrForm.action, { method: 'POST', body: new FormData(rrForm), headers: { 'Accept': 'application/json' } })
@@ -1089,15 +1181,16 @@
           if (!res.ok) throw new Error('Status ' + res.status);
           rrZeige(rueckruf === 'ja' ? 'kontakt' : 'danke');
           rrForm.reset();
+          document.getElementById('rrNotiz').value = '';
         })
         .catch(function () {
-          fehlerFeld.textContent = 'Das hat leider nicht geklappt. Bitte gleich noch einmal versuchen. Oder direkt anrufen: ' + D.telText;
-          fehlerFeld.hidden = false;
+          rrGesendet = false;
+          fehlerZeigen(fehlerFeld, 'Das hat leider nicht geklappt. Bitte gleich noch einmal versuchen. Oder direkt anrufen: ' + D.telText);
         })
         .then(function () { Array.prototype.forEach.call(knoepfe, function (k) { k.disabled = false; }); });
     }
 
-    /* Kontakt speichern: vCard mit kleinem Foto, als Datei mit Typ text/vcard */
+
     function vcardFoto() {
       return new Promise(function (ok) {
         var img = new Image();
