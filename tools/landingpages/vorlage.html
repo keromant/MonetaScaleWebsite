@@ -494,6 +494,12 @@
     .abschluss-kopf { max-width: 760px; margin: 0 auto; text-align: center; }
     .abschluss-kopf p { color: var(--t2); font-size: 18px; margin-top: 16px; }
     .abschluss-kopf p strong { color: var(--text); font-weight: 700; }
+    .abschluss-kopf .einladung {
+      margin-top: 28px; padding: 20px 26px; border-radius: 20px; font-size: 22px; line-height: 1.45; color: var(--text);
+      background: rgba(var(--accent-rgb), .10); border: 2px solid rgba(var(--accent-rgb), .75); box-shadow: var(--glow-strong);
+    }
+    .paket-titel { margin: 0; font-family: var(--fh); font-size: clamp(26px, 3vw, 34px); font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
+    @media (max-width: 600px) { .abschluss-kopf .einladung { font-size: 19px; padding: 16px 18px; } }
     .paket-rahmen {
       max-width: 1080px; margin: 44px auto 0; padding: 30px 30px 34px; border-radius: 28px;
       background: var(--bg2);
@@ -508,12 +514,20 @@
     .leistungen-hilfe { margin: 6px 0 18px; font-size: 15px; color: var(--muted); }
     .leistungen { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: left; align-items: start; }
     .leistung {
-      border-radius: 18px; background: var(--bg);
-      border: 1.5px solid rgba(var(--accent-rgb), .35);
+      border-radius: 18px; background: linear-gradient(160deg, #123E33 0%, #0B201B 100%);
+      border: 1.5px solid rgba(var(--accent-rgb), .45);
       box-shadow: var(--glow-soft);
       transition: transform .4s var(--pop-ease), box-shadow .4s ease, border-color .35s ease;
     }
     .leistung h3 { margin: 0; font: inherit; }
+    .leistung .lk-knopf { color: #FFFFFF; }
+    .leistung .lk-kurz { color: #C7D6CE; }
+    .leistung .lk-name { color: #84E55A; }
+    .leistung .lk-klein { color: #A9BBB2; }
+    .leistung .lk-innen ul { border-top-color: rgba(255,255,255,.14); }
+    .leistung .lk-innen li { color: #DCE6E1; }
+    .leistung .lk-zeichen { background: rgba(255,255,255,.14); }
+    .leistung .lk-zeichen::before, .leistung .lk-zeichen::after { background: #FFFFFF; }
     .lk-knopf {
       width: 100%; display: grid; grid-template-columns: 1fr auto; column-gap: 12px; align-items: start;
       padding: 18px 20px; border: 0; border-radius: 18px; background: none; cursor: pointer;
@@ -980,13 +994,13 @@
       <div class="s-in">
         <div class="abschluss-kopf">
           <div class="eyebrow">Ihr nächster Schritt</div>
-          <h2 id="weiterTitel">Ihr kostenloses Gespräch: der 90-Tage-Fahrplan</h2>
-          <p>Wir wollen diesen Weg gemeinsam mit Ihnen gehen. Wir sehen in Ihrem Betrieb die Chance, mit der richtigen Strategie Marktführer zu werden. Dafür bauen wir Ihre Sichtbarkeit Schritt für Schritt auf: überall und in großer Menge.</p>
-          <p><strong>Wir laden Sie zu einem Gespräch von 20 Minuten ein.</strong> Darin zeigen wir Ihnen einen 90-Tage-Fahrplan. Mit ihm können Sie zum Marktführer in Ihrer Region werden.</p>
+          <h2 id="weiterTitel">Wir wollen diesen Weg gemeinsam mit Ihnen gehen.</h2>
+          <p>Wir sehen in Ihrem Betrieb die Chance, mit der richtigen Strategie Marktführer zu werden. Dafür bauen wir Ihre Sichtbarkeit Schritt für Schritt auf: überall und in großer Menge.</p>
+          <p class="einladung"><strong>Wir laden Sie zu einem Gespräch von 20 Minuten ein.</strong> Darin zeigen wir Ihnen einen 90-Tage-Fahrplan, mit dem Sie zum Marktführer in Ihrer Region werden.</p>
         </div>
 
         <div class="paket-rahmen">
-          <div class="leistungen-label">Das steckt im Paket Marktführer</div>
+          <h3 class="paket-titel">Unser Marktführerpaket</h3>
           <p class="leistungen-hilfe">Ein Klick auf eine Kachel zeigt, wie wir das machen.</p>
           <ul class="leistungen">
           <li class="leistung">
