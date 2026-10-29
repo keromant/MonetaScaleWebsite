@@ -248,6 +248,12 @@
 
     /* ─── STRATEGIE ─── */
     .schritte { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; counter-reset: s; }
+    .schritte-label { margin: 6px 0 14px; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--t2); }
+    .schritte-label-wir { margin-top: 34px; color: var(--ink); }
+    .schritte-wir { grid-template-columns: repeat(3, 1fr); }
+    .schritt-wir { border: 2px solid rgba(var(--accent-rgb), .8); background: rgba(var(--accent-rgb), .16); }
+    .schritt-wir .schritt-zahl { background: var(--green); color: var(--on-green); }
+    #strategie .plan { margin-top: 40px; }
     .schritt { position: relative; display: flex; flex-direction: column; }
     .schritt-zahl {
       width: 44px; height: 44px; border-radius: 12px; margin-bottom: 18px;
@@ -641,14 +647,6 @@
           <div class="eyebrow">Drei Reels · fertig gebaut</div>
           <h1 id="kopfTitel">Für Muster Wärmepumpen in <span>Musterstadt</span></h1>
           <p class="intro">Am 01.02.2027 sinkt die Förderung. Für Hausbesitzer ist das der stärkste Grund, jetzt anzufragen. Diese 3 Videos nutzen genau diese Frist.</p>
-          <div class="plan">
-            <h2 class="plan-titel">Ihr 90-Tage-Plan für mehr Anfragen</h2>
-            <p class="plan-text">In 15 Minuten am Telefon zeigen wir, wie es bei Muster Wärmepumpen aussehen kann. Ihr Aufwand danach: 30 Minuten pro Woche.</p>
-            <button type="button" class="btn btn-gruen btn-gross" data-rueckruf data-stelle="Kopf" aria-expanded="false" aria-controls="rueckrufFeld">90-Tage-Plan besprechen
-              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <p class="plan-tel">Rückruf heute noch. Oder direkt anrufen: <a href="tel:+491763209802">+49 176 3209802</a></p>
-          </div>
           <div class="chips">
             <span class="chip"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2.5 2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8Z"/></svg>4,8 Sterne bei Google</span>
             
@@ -657,7 +655,7 @@
 
         <div class="figur-hinweis" role="note">
           <span class="fh-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span>
-          <p><strong>Hier spricht noch eine gezeichnete Figur.</strong> Sie hält den Platz frei für jemanden aus Ihrem Team. Auf dem Shirt steht schon Ihr Name, im Bild sehen Sie Ihre Farben.</p>
+          <p><strong>Hier spricht noch eine gezeichnete Figur.</strong> Auf dem Shirt steht schon Ihr Name, im Bild sehen Sie Ihre Farben. Später spricht hier jemand aus Ihrem Team. Will sich niemand zeigen? Dann bauen wir Ihnen eine eigene Figur, die man sofort wiedererkennt.</p>
         </div>
 
         <div class="reels">
@@ -669,7 +667,6 @@
             <div class="card-num">Reel 1</div>
             <h3>Tankfüllung</h3>
             <p>Heizöl kostet fast 75 Prozent mehr als vor einem Jahr. Das Reel rechnet in drei Zahlen nach.</p>
-            <p class="reel-frage">Möchten Sie das für Ihren Betrieb so einsetzen? <button type="button" class="link-knopf" data-rueckruf data-stelle="Reel 1" aria-expanded="false" aria-controls="rueckrufFeld">90-Tage-Plan besprechen</button></p>
           </article>
           <article class="card reel">
             <div class="reel-video ist-leer">
@@ -679,7 +676,6 @@
             <div class="card-num">Reel 2</div>
             <h3>Lohnt sich das?</h3>
             <p>Eine Beispielrechnung Schritt für Schritt: Preis, Förderung bis 80 %, wann das Geld wieder drin ist.</p>
-            <p class="reel-frage">Möchten Sie das für Ihren Betrieb so einsetzen? <button type="button" class="link-knopf" data-rueckruf data-stelle="Reel 2" aria-expanded="false" aria-controls="rueckrufFeld">90-Tage-Plan besprechen</button></p>
           </article>
           <article class="card reel">
             <div class="reel-video ist-leer">
@@ -689,7 +685,6 @@
             <div class="card-num">Reel 3</div>
             <h3>Ab Februar</h3>
             <p>Am 1. Februar 2027 sinkt die Förderung. Das Reel zeigt den Unterschied in Euro.</p>
-            <p class="reel-frage">Möchten Sie das für Ihren Betrieb so einsetzen? <button type="button" class="link-knopf" data-rueckruf data-stelle="Reel 3" aria-expanded="false" aria-controls="rueckrufFeld">90-Tage-Plan besprechen</button></p>
           </article>
         </div>
         <p class="reels-hinweis">Zur Seite wischen für Reel 2 und 3</p>
@@ -701,9 +696,10 @@
       <div class="s-in">
         <div class="s-kopf">
           <div class="eyebrow">Die Strategie</div>
-          <h2 id="strategieTitel">Vom Video zur Anfrage. In vier Schritten.</h2>
-          <p class="intro">Die Reels verkaufen nicht. Sie zeigen Zahlen, die Hausbesitzer betreffen. Den Rest macht der Förder-Check.</p>
+          <h2 id="strategieTitel">Vom Video bis zum Termin.</h2>
+          <p class="intro">Die Reels verkaufen nicht. Sie zeigen Zahlen, die Hausbesitzer betreffen. Den Rest machen der Förder-Check und wir.</p>
         </div>
+        <div class="schritte-label">So kommt der Hausbesitzer zu Ihnen</div>
         <div class="schritte">
           <div class="card schritt">
             <span class="schritt-zahl">1</span>
@@ -726,7 +722,33 @@
             <p>Für das PDF gibt der Hausbesitzer seine Mail-Adresse. So kommt er bei Ihnen an. Heizung, Haus und Kosten kennen Sie dann schon.</p>
           </div>
         </div>
+        <div class="schritte-label schritte-label-wir">Danach übernehmen wir</div>
+        <div class="schritte schritte-wir">
+          <div class="card schritt schritt-wir">
+            <span class="schritt-zahl">5</span>
+            <h3>Sofort antworten</h3>
+            <p>Das PDF mit dem Ergebnis geht sofort raus, in Ihrem Namen. Der Kunde denkt gerade an sein Haus. Genau dann hört er von Ihnen.</p>
+          </div>
+          <div class="card schritt schritt-wir">
+            <span class="schritt-zahl">6</span>
+            <h3>Klug nachfassen</h3>
+            <p>Nicht jeder entscheidet sofort. Eine Folge von Mails beantwortet Fragen und erinnert an den Stichtag. Das läuft von allein.</p>
+          </div>
+          <div class="card schritt schritt-wir">
+            <span class="schritt-zahl">7</span>
+            <h3>Termin bei Ihnen</h3>
+            <p>Am Ende steht ein Termin vor Ort. Haus, Heizung und Förderung kennen Sie schon vorher. Jede Mail zielt auf ein klares Ja oder Nein.</p>
+          </div>
+        </div>
         <p class="fussnote">Warum das wirkt: Jedes Reel beginnt bei der Lage des Zuschauers. Der Stichtag gibt einen Grund, jetzt zu handeln. Und der Check gibt etwas zurück, bevor jemand anruft.</p>
+          <div class="plan">
+            <h3 class="plan-titel">Ihr 90-Tage-Plan für mehr Anfragen</h3>
+            <p class="plan-text">In 15 Minuten am Telefon zeigen wir, wie es bei Muster Wärmepumpen aussehen kann. Ihr Aufwand danach: 30 Minuten pro Woche.</p>
+            <button type="button" class="btn btn-gruen btn-gross" data-rueckruf data-stelle="Nach den Schritten" aria-expanded="false" aria-controls="rueckrufFeld">90-Tage-Plan besprechen
+              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <p class="plan-tel">Rückruf heute noch. Oder direkt anrufen: <a href="tel:+491763209802">+49 176 3209802</a></p>
+          </div>
       </div>
     </section>
 
@@ -816,28 +838,10 @@
     <section class="s-pad band" id="danach" aria-labelledby="danachTitel">
       <div class="s-in">
         <div class="s-kopf">
-          <div class="eyebrow">Nach dem Check</div>
-          <h2 id="danachTitel">Der Weg nach dem Check zählt genauso viel.</h2>
-          <p class="intro">Eine Anfrage ist noch kein Auftrag. Zwei Dinge machen den Unterschied: schnell antworten und klug nachfassen.</p>
+          <div class="eyebrow">Schritt 6 im Detail</div>
+          <h2 id="danachTitel">So bleibt die Mail-Folge dran.</h2>
+          <p class="intro">Eine Anfrage ist noch kein Auftrag. Darum bleibt die Folge dran, bis eine Entscheidung fällt.</p>
         </div>
-        <div class="danach-grid">
-          <div class="card">
-            <div class="card-num">Schnell antworten</div>
-            <h3>Frisches Interesse nutzen</h3>
-            <p>Der Kunde denkt gerade an sein Haus. Genau dann soll er von Ihnen hören. Eine schnelle Antwort zeigt: Hier kümmert sich jemand. Fachleute nennen das Speed to Lead.</p>
-          </div>
-          <div class="card">
-            <div class="card-num">Klug nachfassen</div>
-            <h3>Mails, die dranbleiben</h3>
-            <p>Nicht jeder entscheidet sofort. Eine Folge von Mails beantwortet Fragen. Sie erinnert an den Stichtag und lädt zum Termin ein. So können mehr Anfragen zu Aufträgen werden.</p>
-          </div>
-          <div class="card">
-            <div class="card-num">Abschlussquote</div>
-            <h3>Ein klares Ja oder Nein</h3>
-            <p>Die Abschlussquote zeigt, wie viele Anfragen zu Aufträgen werden. Jede Mail hat darum ein Ziel: eine Entscheidung. Auch ein Nein hilft. Dann wissen Sie, woran Sie sind.</p>
-          </div>
-        </div>
-
         <div class="card folge">
           <h3>Beispiel für eine Mail-Folge</h3>
           <p>Wir bauen die Folge passend zu Ihrem Betrieb. So kann sie aussehen:</p>

@@ -153,7 +153,6 @@ function reelsHtml(betrieb, farben) {
             <div class="card-num">Reel ${i + 1}</div>
             <h3>${esc(titel)}</h3>
             <p>${esc(eintrag.text || reel.text)}</p>
-            <p class="reel-frage">Möchten Sie das für Ihren Betrieb so einsetzen? <button type="button" class="link-knopf" data-rueckruf data-stelle="Reel ${i + 1}" aria-expanded="false" aria-controls="rueckrufFeld">90-Tage-Plan besprechen</button></p>
           </article>`;
   }).join('\n');
 }
@@ -230,7 +229,7 @@ async function main() {
       ort: b.ort,
       initialen: daten.initialen,
       kurzname,
-      plan_kopf: planBlock(kurzname, 'Kopf', 'h2'),
+      plan_strategie: planBlock(kurzname, 'Nach den Schritten', 'h3'),
       plan_check: planBlock(kurzname, 'Nach dem Förder-Check', 'h3'),
       farbe1: f1, farbe1_text: farben.f1t, farbe1_dunkel: farben.f1d, farbe1_hell: farben.f1h,
       farbe2: f2, farbe2_text: farben.f2t,
