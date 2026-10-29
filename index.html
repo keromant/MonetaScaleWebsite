@@ -717,11 +717,8 @@
       gap: 20px;
     }
     .leistungen-grid .card { padding: 36px 32px; background: var(--bg); }
-    /* 11 Teile: 9 Karten zu je 2 von 6 Spalten, Teil 10 + 11 zu je 3 (volle letzte Reihe) */
-    .leistungen-grid { grid-template-columns: repeat(6, 1fr); }
-    .leistungen-grid .card { grid-column: span 2; }
+    /* Teile nur im Paket Marktführer: Petrol-Fläche wie die Marktführer-Karte */
     .leistungen-grid .card.teil-mf {
-      grid-column: span 3;
       background: linear-gradient(150deg, var(--petrol) 0%, var(--petrol-dk) 55%, var(--bg) 100%);
       border-color: rgba(var(--green-rgb), 0.32);
     }
@@ -800,9 +797,9 @@
       grid-template-areas:
         "badge   badge"
         "kopf    neu"
-        "partner liste"
+        "partner neu"
         "knopf   liste";
-      grid-template-rows: auto auto auto 1fr;
+      grid-template-rows: auto auto 1fr auto;
       column-gap: 56px;
       padding: 48px 52px;
       border-radius: 24px;
@@ -908,6 +905,7 @@
       color: var(--t2);
     }
     .mf-leistung p { font-size: 14px; line-height: 1.6; color: var(--t2); }
+    .mf-leistung-breit { grid-column: 1 / -1; }
 
     .mf-liste {
       grid-area: liste;
@@ -1267,8 +1265,6 @@
       .leistungen-grid .card,
       .strecke-grid .card,
       .boni-grid .card { padding: 30px 26px; }
-      .leistungen-grid .card,
-      .leistungen-grid .card.teil-mf { grid-column: auto; }
       nav { padding: 0 24px; }
       .nav-right { gap: 12px; }
       .nav-cta { padding: 8px 14px; font-size: 11px; }
@@ -1475,8 +1471,8 @@
     <div class="s-in">
       <div class="pakete-header">
         <div class="eyebrow reveal">Die Maschine</div>
-        <h2 class="pakete-hl reveal">Elf Teile.<br>Ein Ziel: Anfragen.</h2>
-        <p class="intro reveal">Ein Cutter macht nur Teil 4. Wir machen alle elf. Und jeder Teil wird gemessen.</p>
+        <h2 class="pakete-hl reveal">Zwölf Teile.<br>Ein Ziel: Anfragen.</h2>
+        <p class="intro reveal">Ein Cutter macht nur Teil 4. Wir machen alle zwölf. Und jeder Teil wird gemessen.</p>
       </div>
 
       <div class="leistungen-grid">
@@ -1534,6 +1530,11 @@
           <div class="card-num">Teil 11 · nur Marktführer</div>
           <h3 class="card-name">Vertrauens-Kanal</h3>
           <p class="card-body">Lange Videos auf YouTube beantworten die Fragen von Ihren Kunden. So vertrauen Kunden Ihnen schon vor dem ersten Anruf. Die Themen kommen aus dem Markt-Röntgen.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-num">Teil 12 · ab Paket Überall</div>
+          <h3 class="card-name">Such-Magnet</h3>
+          <p class="card-body">Kunden suchen bei Google und fragen KI wie ChatGPT. Wir pflegen Ihr Google-Profil: Ort, Zeiten, Branche, Text. Videos und Texte nutzen die Suchwörter aus Ihrer Region. Jede Frage von Kunden bekommt eine klare Antwort. Die kann eine KI-Suche finden.</p>
         </div>
       </div>
     </div>
@@ -1659,6 +1660,7 @@
             <li>Ein Test pro Woche</li>
             <li>Die ganze Anfragen-Strecke</li>
             <li>Kommentar-Wache, Montag bis Freitag</li>
+            <li>Such-Magnet: die Grundlage für Google und KI-Suche</li>
             <li>Alle 8 Boni</li>
           </ul>
           <a href="#kontakt" class="card-btn" data-paket="Überall">
@@ -1719,6 +1721,22 @@
                   </div>
                   <p>Lange Videos beantworten die Fragen von Ihren Kunden. So vertrauen Kunden Ihnen vor dem ersten Anruf.</p>
                 </div>
+                <div class="mf-leistung mf-leistung-breit">
+                  <div class="mf-leistung-kopf">
+                    <span class="mf-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <circle cx="10.5" cy="10.5" r="6.2" stroke="currentColor" stroke-width="1.7"/>
+                        <path d="M15.2 15.2L20.5 20.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                        <path d="M10.5 7.4l.85 1.95 1.95.85-1.95.85-.85 1.95-.85-1.95-1.95-.85 1.95-.85.85-1.95z" fill="currentColor"/>
+                      </svg>
+                    </span>
+                    <div>
+                      <h4>Such-Magnet, voll</h4>
+                      <span class="mf-tag">Google &amp; KI-Suche</span>
+                    </div>
+                  </div>
+                  <p>Lange YouTube-Videos geben Antwort auf Fragen aus Ihrer Region. Jeden Monat prüfen wir: Wo tauchen Sie bei Google und in KI-Suchen auf?</p>
+                </div>
               </div>
             </div>
 
@@ -1755,7 +1773,7 @@
       <div class="start-grid">
         <div class="card reveal">
           <h3 class="card-name">Einmal zum Start</h3>
-          <p class="card-body">Die Startgebühr deckt Markt-Röntgen, Fahrplan, Profil-Neustart und den Aufbau der Anfragen-Strecke. Beim Marktführer richten wir auch Werbung und YouTube ein.</p>
+          <p class="card-body">Die Startgebühr deckt Markt-Röntgen, Fahrplan, Profil-Neustart und den Aufbau der Anfragen-Strecke. Ab Paket Überall richten wir auch Ihr Google-Profil ein. Beim Marktführer kommen Werbung und YouTube dazu.</p>
         </div>
         <div class="card reveal">
           <h3 class="card-name">Mindestens 3 Monate</h3>
@@ -1842,7 +1860,7 @@
         </div>
       </div>
 
-      <p class="ehrlich reveal">Anfragen garantieren wir nicht. Sie hängen auch von Angebot, Preis und Markt ab. Unser Teil: Jedes Video ist geplant, getestet und hat einen Weg zur Anfrage.</p>
+      <p class="ehrlich reveal">Anfragen garantieren wir nicht. Sie hängen auch von Angebot, Preis und Markt ab. Plätze bei Google und in KI-Suchen sagen wir auch nicht zu. Unser Teil: Jedes Video ist geplant, getestet und hat einen Weg zur Anfrage.</p>
     </div>
   </section>
 
