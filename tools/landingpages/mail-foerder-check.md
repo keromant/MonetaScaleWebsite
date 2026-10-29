@@ -14,6 +14,7 @@ Platzhalter beim Ausfüllen ein. Es geht keine Mail raus.
 | `{{betrieb}}` | Name des Betriebs | Muster Wärmepumpen GmbH |
 | `{{ort}}` | Ort des Betriebs | Musterstadt |
 | `{{email}}` | Adresse des Hausbesitzers | name@beispiel.de |
+| `{{bundesland}}` | Bundesland des Hauses | Nordrhein-Westfalen |
 | `{{prozent_bis}}` / `{{euro_bis}}` | Ergebnis bei Antrag bis 31.01.2027 | 46 % / 12.880 € |
 | `{{prozent_ab}}` / `{{euro_ab}}` | Ergebnis bei Antrag ab 01.02.2027 | 42 % / 11.445 € |
 | `{{basis_bis}}` / `{{basis_ab}}` | Förderfähige Kosten, auf die sich der Prozentwert bezieht | 28.000 € / 27.250 € |
@@ -42,7 +43,7 @@ Ihre Zahlen: {{euro_bis}} bei Antrag bis 31.01.2027. Das PDF hängt an.
 ```text
 Guten Tag,
 
-danke für Ihren Förder-Check. Ihr Ergebnis hängt als PDF an dieser Mail.
+danke für Ihren Förder-Check für Ihr Haus in {{bundesland}}. Ihr Ergebnis hängt als PDF an dieser Mail.
 
 Ihre Zahlen auf einen Blick:
 - Antrag bis 31.01.2027: {{prozent_bis}} von {{basis_bis}}, also {{euro_bis}}
@@ -78,7 +79,7 @@ Ihr Team von {{betrieb}}
 <tr><td style="background:{{farbe}};color:{{farbe_text}};padding:20px 28px;font-size:18px;font-weight:bold;">{{betrieb}}<div style="font-size:13px;font-weight:normal;opacity:.85;margin-top:4px;">Förder-Check Wärmepumpe · {{ort}}</div></td></tr>
 <tr><td style="padding:28px 28px 8px;font-size:16px;line-height:1.6;">
 <p style="margin:0 0 14px;">Guten Tag,</p>
-<p style="margin:0 0 18px;">danke für Ihren Förder-Check. Ihr Ergebnis hängt als PDF an dieser Mail.</p>
+<p style="margin:0 0 18px;">danke für Ihren Förder-Check für Ihr Haus in {{bundesland}}. Ihr Ergebnis hängt als PDF an dieser Mail.</p>
 </td></tr>
 <tr><td style="padding:0 28px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #E5E7EB;border-radius:10px;">

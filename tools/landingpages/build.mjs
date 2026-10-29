@@ -20,6 +20,10 @@ const PDF_LIB = '../assets/lp/jspdf-4.2.1.umd.min.js';
 // Telefon für Rückruf, tel:-Links und vCard auf den persönlichen Seiten (Impressum bleibt vorerst wie es ist)
 const TELEFON = { link: '+491763209802', text: '+49 176 3209802' };
 
+const LAENDER = ['Baden-Württemberg', 'Bayern', 'Berlin', 'Brandenburg', 'Bremen', 'Hamburg', 'Hessen',
+  'Mecklenburg-Vorpommern', 'Niedersachsen', 'Nordrhein-Westfalen', 'Rheinland-Pfalz', 'Saarland', 'Sachsen',
+  'Sachsen-Anhalt', 'Schleswig-Holstein', 'Thüringen'];
+
 const REELS = [
   { titel: 'Tankfüllung', text: 'Heizöl kostet fast 75 Prozent mehr als vor einem Jahr. Das Reel rechnet in drei Zahlen nach.' },
   { titel: 'Lohnt sich das?', text: 'Eine Beispielrechnung Schritt für Schritt: Preis, Förderung bis 80 %, wann das Geld wieder drin ist.' },
@@ -171,6 +175,8 @@ async function main() {
     for (const k of ['name', 'ort']) if (!b[k] || typeof b[k] !== 'string') throw new Error(`${f}: Feld ${k} fehlt`);
     // Kurzname für Kopf und Aufruf (voller Name bleibt im Förder-Check, im PDF und in der Mail)
     const kurzname = (b.kurzname ?? b.name).trim();
+    // Bundesland des Betriebs: Der Förder-Check sortiert Anfragen aus anderen Ländern aus
+    if (!LAENDER.includes(b.bundesland)) throw new Error(`${f}: bundesland muss eines der 16 Länder sein („${b.bundesland}“)`);
     if (!kurzname || kurzname.length > 24) throw new Error(`${f}: kurzname höchstens 24 Zeichen („${kurzname}“ hat ${kurzname.length})`);
     if (!Array.isArray(b.videos) || b.videos.length !== 3) throw new Error(`${f}: genau 3 videos angeben`);
     if (b.reportLink && !/^https:\/\//.test(b.reportLink)) throw new Error(`${f}: reportLink muss mit https:// beginnen`);
@@ -206,11 +212,14 @@ async function main() {
       pdfLib: PDF_LIB,
       telText: TELEFON.text,
       telLink: TELEFON.link,
+      bundesland: b.bundesland,
+      laender: LAENDER,
       kurzname,
       fotoUrl: '../assets/lp/kerem-ulas.jpg',
     };
 
     const html = render(vorlage, {
+      slug: b.slug,
       titel: `Förder-Reels für ${b.name} · MonetaScale`,
       og_url: `https://monetascale.de/${b.slug}/`,
       name: b.name,

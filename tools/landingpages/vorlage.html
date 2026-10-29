@@ -190,6 +190,52 @@
     .fh-icon { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center;
       background: var(--green); color: var(--on-green); }
     .fh-icon svg { width: 24px; height: 24px; }
+    /* Förder-Check geschenkt: Spotlight-Card im Akzent des Figur-Hinweises */
+    .geschenk {
+      max-width: 760px; margin: 64px auto 0; padding: 26px 28px;
+      border: 1.5px solid rgba(var(--accent-rgb), .55); background: rgba(var(--accent-rgb), .10); border-radius: 20px;
+      box-shadow: var(--glow-soft); text-align: left;
+      transition: transform .4s var(--pop-ease), box-shadow .4s ease, border-color .35s ease;
+    }
+    .gs-kopf { display: flex; gap: 16px; align-items: flex-start; }
+    .geschenk h3 { font-size: clamp(21px, 2.2vw, 25px); line-height: 1.25; }
+    .gs-satz { margin-top: 10px; font-size: 16px; color: var(--t2); }
+    .gs-liste { margin: 6px 0 0 20px; display: grid; gap: 4px; font-size: 16px; color: var(--text); }
+    .gs-knopf { margin: 20px 0 0 62px; }
+    .gs-feld { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows .45s cubic-bezier(0.22, 1, 0.36, 1), opacity .35s ease, margin .45s ease; }
+    .gs-feld.is-offen { grid-template-rows: 1fr; opacity: 1; margin-top: 18px; }
+    .gs-feld[hidden] { display: none; }
+    .gs-innen { overflow: hidden; min-height: 0; }
+    .gs-form { display: grid; gap: 6px; max-width: 520px; margin-left: 62px; }
+    .gs-zeile { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .gs-zeile > div { display: grid; gap: 6px; }
+    .gs-form label { font-size: 14px; font-weight: 700; color: var(--t2); margin-top: 6px; }
+    .gs-form input {
+      width: 100%; padding: 13px 15px; border-radius: 12px; border: 1.5px solid var(--borders);
+      background: var(--bg2); color: var(--text); font: inherit; font-size: 16px; outline: none;
+    }
+    .gs-form input:focus { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(var(--accent-rgb), .18); }
+    .gs-form input[aria-invalid="true"] { border-color: #D92D20; }
+    .gs-form .btn { margin-top: 12px; justify-self: start; }
+    .gs-form .rr-klein a { color: var(--ink); font-weight: 700; }
+    .gs-form[hidden], .gs-danke[hidden] { display: none; }
+    .gs-danke { margin-left: 62px; padding: 4px 0 2px; }
+    .gs-danke:not([hidden]) { animation: rr-rein .5s ease both; }
+    .gs-danke h4 { font-family: var(--fh); font-size: 20px; line-height: 1.3; letter-spacing: -0.01em; }
+    .gs-danke h4:focus { outline: none; }
+    .gs-danke p { margin-top: 6px; color: var(--t2); }
+    @media (hover: hover) and (pointer: fine) {
+      .geschenk:hover { transform: translateY(-3px) scale(1.01); box-shadow: var(--glow-strong); border-color: rgba(var(--accent-rgb), .8); }
+    }
+    @media (max-width: 600px) {
+      .geschenk { margin-top: 48px; padding: 20px 18px; }
+      .gs-kopf { gap: 12px; }
+      .gs-knopf { margin-left: 0; width: 100%; }
+      .gs-form, .gs-danke { margin-left: 0; }
+      .gs-zeile { grid-template-columns: 1fr; gap: 0; }
+      .gs-form .btn { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) { .geschenk, .gs-feld { transition: none; } .geschenk:hover { transform: none; } .gs-danke:not([hidden]) { animation: none; } }
     @media (max-width: 600px) { .figur-hinweis { margin: 26px 0 20px; padding: 14px 16px; font-size: 16px; gap: 12px; } .fh-icon { width: 40px; height: 40px; } }
     .fussnote { max-width: 720px; margin: 36px auto 0; text-align: center; font-size: 15px; color: var(--muted); }
     .band { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -328,7 +374,32 @@
       font: inherit; font-size: 20px; font-weight: 700; color: var(--k-text); outline: none;
     }
     .k-feld span { padding: 0 16px; font-weight: 700; color: var(--k-muted); }
-    .k-regler { width: 100%; accent-color: var(--b1); }
+    .k-auswahl select {
+      flex: 1; min-width: 0; border: 0; background: transparent; padding: 14px 40px 14px 16px; border-radius: 12px;
+      font: inherit; font-size: 17px; font-weight: 600; color: var(--k-text); outline: none; cursor: pointer;
+      -webkit-appearance: none; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath d='M3 5l4 4 4-4' fill='none' stroke='%236B7280' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center;
+    }
+    .k-quelle { font-size: 12.5px; line-height: 1.45; color: var(--k-muted); margin: -8px 0 16px; }
+    .k-umschalter {
+      display: inline-flex; align-items: center; gap: 10px; padding: 8px 0; margin-bottom: 8px;
+      background: none; border: 0; cursor: pointer; font: inherit; font-size: 15px; font-weight: 700; color: var(--b1); text-align: left;
+    }
+    .k-haken {
+      width: 20px; height: 20px; border-radius: 6px; flex-shrink: 0;
+      box-shadow: inset 0 0 0 2px var(--b1); background: var(--k-bg);
+    }
+    .k-umschalter[aria-expanded="true"] .k-haken {
+      background: var(--b1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath d='M3 7.5l2.5 2.5L11 4.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat;
+    }
+    .k-kosten[hidden] { display: none; }
+    .k-kosten { grid-template-columns: minmax(0, 1fr); }
+    .k-kosten .k-feld { min-width: 0; }
+    .k-feld input { width: 100%; }
+    .k-label { font-size: 14px; font-weight: 600; color: var(--k-t2); }
+    .k-fern { border-left: 4px solid var(--b2); background: var(--k-bg2); border-radius: 10px; padding: 14px 16px; display: grid; gap: 8px; }
+    .k-fern p { font-size: 15px; color: var(--k-text); }
     .k-ergebnis { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 6px 0 12px; }
     .k-box { border-radius: 14px; padding: 14px; background: var(--k-bg2); box-shadow: inset 0 0 0 1px var(--k-rand); }
     .k-box.jetzt { background: var(--b1-hell); box-shadow: inset 0 0 0 2px var(--b1); }
@@ -813,6 +884,48 @@
             <p>Das PDF hängt an. Der nächste Schritt steht gleich darin: ein Termin bei Ihnen.</p>
           </div>
         </div>
+
+        <!-- Förder-Check geschenkt: zweites Angebot neben dem Gespräch ganz unten -->
+        <div class="geschenk" id="geschenk" role="region" aria-labelledby="geschenkTitel">
+          <div class="gs-kopf">
+            <span class="fh-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-1.5-3-5-4-5-1.5S10 8 12 8Zm0 0c1.5-3 5-4 5-1.5S14 8 12 8Z"/></svg></span>
+            <div>
+              <h3 id="geschenkTitel">Diesen Förder-Check können Sie übrigens geschenkt haben.</h3>
+              <p class="gs-satz">Dazu gehört:</p>
+              <ul class="gs-liste">
+                <li>eine eigene Check-Seite mit Ihrem Namen und Ihren Farben</li>
+                <li>ein Link für Ihr Profil und Ihre Website</li>
+              </ul>
+            </div>
+          </div>
+          <button type="button" class="btn btn-gruen gs-knopf" id="gsKnopf" aria-expanded="false" aria-controls="gsFeld">Förder-Check sichern
+            <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="gs-feld" id="gsFeld" hidden>
+            <div class="gs-innen">
+              <form class="gs-form" id="gsForm" action="https://formspree.io/f/xwvjoeak" method="POST" novalidate>
+                <div class="gs-zeile">
+                  <div><label for="gsVorname">Vorname</label><input id="gsVorname" name="vorname" type="text" autocomplete="given-name" maxlength="80" required></div>
+                  <div><label for="gsNachname">Nachname</label><input id="gsNachname" name="nachname" type="text" autocomplete="family-name" maxlength="80" required></div>
+                </div>
+                <label for="gsMail">E-Mail</label>
+                <input id="gsMail" name="email" type="email" autocomplete="email" inputmode="email" maxlength="160" required>
+                <input type="hidden" name="anliegen" value="foerdercheck-geschenk">
+                <input type="hidden" name="quelle" value="{{slug}} · Förder-Check geschenkt">
+                <input type="hidden" name="_subject" value="Förder-Check geschenkt: {{name}}">
+                <p class="rr-fehler" id="gsFehler" role="alert" hidden></p>
+                <button class="btn btn-gruen" type="submit" id="gsAbsenden">Absenden
+                  <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <p class="rr-klein">Ihre Angaben gehen über Formspree an MonetaScale. Wir nutzen sie nur für Ihren Förder-Check. <a href="../datenschutz.html">Datenschutz</a></p>
+              </form>
+              <div class="gs-danke" id="gsDanke" hidden>
+                <h4 tabindex="-1" id="gsDankeTitel"></h4>
+                <p>Sie hören von uns, sobald wir Ihre Nachricht gesehen haben.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1069,7 +1182,77 @@
       if (rrKnopf === knopf) rrSchliessen(false); else rrOeffnen(knopf);
     }
     rrFeld.querySelector('.rr-zu').addEventListener('click', function () { rrSchliessen(true); });
+    /* ─── Förder-Check geschenkt: Formular klappt unter dem Knopf auf ─── */
+    var gsKnopf = document.getElementById('gsKnopf');
+    var gsFeld = document.getElementById('gsFeld');
+    var gsForm = document.getElementById('gsForm');
+    var gsFehler = document.getElementById('gsFehler');
+    var gsZeit = null, gsGesendet = false;
+    function gsOffen() { return gsKnopf.getAttribute('aria-expanded') === 'true'; }
+    function gsUmschalten(auf) {
+      clearTimeout(gsZeit);
+      gsKnopf.setAttribute('aria-expanded', auf ? 'true' : 'false');
+      if (auf) {
+        gsFeld.hidden = false;
+        void gsFeld.offsetHeight;
+        requestAnimationFrame(function () { gsFeld.classList.add('is-offen'); });
+        var ziel = gsForm.hidden ? document.getElementById('gsDankeTitel') : document.getElementById('gsVorname');
+        try { ziel.focus({ preventScroll: true }); } catch (x) { ziel.focus(); }
+        setTimeout(function () {
+          var r = gsFeld.getBoundingClientRect();
+          if (r.bottom > window.innerHeight - 12) gsFeld.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'nearest' });
+        }, reduce.matches ? 0 : 470);
+      } else {
+        gsFeld.classList.remove('is-offen');
+        gsZeit = setTimeout(function () { if (!gsOffen()) gsFeld.hidden = true; }, reduce.matches ? 0 : 460);
+      }
+    }
+    /* Fehlerhinweis verschwindet, sobald jemand im Feld tippt */
+    [['gsForm', 'gsFehler'], ['rrForm', 'rrFehler'], ['rrFrage', 'rrFehler2'], ['rrMailweg', 'rrFehler3']].forEach(function (paar) {
+      document.getElementById(paar[0]).addEventListener('input', function (e) {
+        document.getElementById(paar[1]).hidden = true;
+        if (e.target && e.target.removeAttribute) e.target.removeAttribute('aria-invalid');
+      });
+    });
+    gsKnopf.addEventListener('click', function () {
+      nachSweep(gsKnopf, function () { gsUmschalten(!gsOffen()); });
+    });
+    gsForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var vor = document.getElementById('gsVorname'), nach = document.getElementById('gsNachname'), mail = document.getElementById('gsMail');
+      [vor, nach, mail].forEach(function (f) { f.removeAttribute('aria-invalid'); });
+      gsFehler.hidden = true;
+      if (!vor.value.trim()) return fehlerZeigen(gsFehler, 'Ihr Vorname fehlt noch.', vor);
+      if (!nach.value.trim()) return fehlerZeigen(gsFehler, 'Ihr Nachname fehlt noch.', nach);
+      if (!mail.value.trim()) return fehlerZeigen(gsFehler, 'Wohin dürfen wir den Förder-Check schicken? Die E-Mail-Adresse fehlt noch.', mail);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail.value.trim())) return fehlerZeigen(gsFehler, 'Die E-Mail-Adresse sieht noch nicht vollständig aus.', mail);
+      if (gsGesendet) return;
+      var knopf = document.getElementById('gsAbsenden');
+      nachSweep(knopf, function () {
+        if (gsGesendet) return;
+        gsGesendet = true;
+        knopf.disabled = true;
+        var adresse = mail.value.trim();
+        fetch(gsForm.action, { method: 'POST', body: new FormData(gsForm), headers: { 'Accept': 'application/json' } })
+          .then(function (res) {
+            if (!res.ok) throw new Error('Status ' + res.status);
+            document.getElementById('gsDankeTitel').textContent = 'Danke! Wir richten den Förder-Check für ' + D.kurzname + ' ein und schicken ihn an ' + adresse + '.';
+            gsForm.hidden = true;
+            document.getElementById('gsDanke').hidden = false;
+            document.getElementById('gsDankeTitel').focus();
+          })
+          .catch(function () {
+            gsGesendet = false;
+            fehlerZeigen(gsFehler, 'Das hat leider nicht geklappt. Bitte gleich noch einmal versuchen.');
+          })
+          .then(function () { knopf.disabled = false; });
+      });
+    });
+
     document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && gsOffen() && gsFeld.contains(document.activeElement)) {
+        e.preventDefault(); gsUmschalten(false); gsKnopf.focus(); return;
+      }
       if (e.key === 'Escape' && rrKnopf) { e.preventDefault(); rrSchliessen(true); }
     });
     /* Ablauf: Angaben → Frage zum Anruf → (Nummer) → Kontaktkarte  |  → Mail-Weg mit Terminwunsch → Danke.
@@ -1278,7 +1461,12 @@
       deckel: 70,
       deckelHoch: 80,
       kindAbzug: 10000,
-      kostenStart: 30000
+      /* Kosten, wenn noch kein Angebot da ist: Mittelwert der Gesamtkosten (Gerät und Einbau) von
+         160 Angeboten für Luft-Wasser-Wärmepumpen in Ein- und Zweifamilienhäusern, erstellt 09/2025 bis 04/2026.
+         Quelle: Verbraucherzentrale Rheinland-Pfalz, „Luft-Wasser-Wärmepumpen: 160 Angebote aus Rheinland-Pfalz
+         im zweiten Check“ (Bericht 07/2026, Tabelle 1: Mittelwert 36.397 €, Median 34.898 €, Spanne 21.099–54.168 €),
+         Pressemitteilung vom 02.07.2026. Abgerufen am 29.10.2026. Gerundet auf 36.400 €. */
+      kostenSchnitt: 36400
     };
     var KLIMA_HEIZUNG = ['oel', 'kohle', 'gasetage', 'nachtspeicher'];
 
@@ -1345,6 +1533,16 @@
         erklTitel: 'Der Einstieg',
         erkl: ['Am Anfang steht nur der Nutzen: Wie viel Geld gibt es?', 'Es gibt kein Formular und keine Pflichtfelder. So fangen mehr Menschen an.']
       },
+      bundesland: {
+        stufe: 2, frage: 'In welchem Bundesland steht Ihr Haus?', land: true,
+        erklTitel: 'Frage: Wo steht das Haus?',
+        erkl: ['Das Bundesland sortiert Anfragen von weit weg früh aus. So kommen nur Anfragen aus Ihrem Gebiet bei Ihnen an.']
+      },
+      fern: {
+        stufe: 2,
+        erklTitel: 'Anfrage von weit weg',
+        erkl: ['So sieht es aus, wenn jemand von weit weg den Check macht. Er bekommt einen freundlichen Hinweis.', 'Seine Zahlen darf er trotzdem sehen. Eine Anfrage bei Ihnen entsteht aber nicht.']
+      },
       wohnen: {
         stufe: 2, frage: 'Wer wohnt im Haus?',
         optionen: [['selbst', 'Ich wohne selbst darin'], ['vermietet', 'Ich vermiete es']],
@@ -1384,14 +1582,15 @@
         erkl: ['Mit einem Kind unter 18 zählen 10.000 Euro weniger. So kommt manche Familie in eine bessere Stufe.', 'Der Check fragt das nur, wenn es etwas ändert.']
       },
       kosten: {
-        stufe: 3, frage: 'Was kostet die neue Heizung etwa?',
-        erklTitel: 'Frage: Was kostet die Heizung?',
-        erkl: ['Die Förderung zählt nur bis zu einer Grenze: 28.000 Euro. Ab 1. Februar 2027 sind es 27.250 Euro.', 'Ohne Angebot rechnet der Check mit 30.000 Euro.']
+        stufe: 3,
+        erklTitel: 'Die Kosten',
+        erkl: ['Viele Hausbesitzer haben noch kein Angebot. Darum rechnet der Check mit dem Schnitt: rund 36.400 Euro.', 'Wer schon ein Angebot hat, trägt den Betrag ein. Gefördert werden höchstens 28.000 Euro. Ab 1. Februar 2027 sind es 27.250 Euro.']
       },
       ergebnis: {
         stufe: 4,
         erklTitel: 'Das Ergebnis',
-        erkl: ['Das Ergebnis steht sofort da, in Prozent und in Euro. Daneben steht der Wert ab Februar. So sieht der Kunde: Warten kostet Geld.', 'Für das PDF gibt er seine Mail-Adresse. Das ist Ihre Anfrage.']
+        erkl: ['Das Ergebnis steht sofort da, in Prozent und in Euro. Daneben steht der Wert ab Februar. So sieht der Kunde: Warten kostet Geld.', 'Für das PDF gibt er seine Mail-Adresse. Das ist Ihre Anfrage.'],
+        erklFern: ['Diese Anfrage kommt von weit weg. Der Hausbesitzer sieht seine Zahlen.', 'Den Weg zum PDF gibt es hier nicht. Bei Ihnen kommt keine Anfrage an.']
       },
       fertig: {
         stufe: 5,
@@ -1402,7 +1601,9 @@
 
     function naechster(id, a) {
       switch (id) {
-        case 'start': return 'wohnen';
+        case 'start': return 'bundesland';
+        case 'bundesland': return a.bundesland && a.bundesland !== D.bundesland ? 'fern' : 'wohnen';
+        case 'fern': return 'wohnen';
         case 'wohnen': return 'heizung';
         case 'heizung':
           if (a.wohnen !== 'selbst') return 'kosten';
@@ -1419,19 +1620,24 @@
       return null;
     }
 
-    /* Zahl der Fragen auf dem jetzigen Weg (fehlende Antworten: längster üblicher Weg) */
-    function fragenGesamt(a) {
+    /* Weg durch den Check mit den jetzigen Antworten (fehlende Antworten: längster üblicher Weg) */
+    function pfad(a) {
       var probe = {
+        bundesland: a.bundesland || D.bundesland,
         wohnen: a.wohnen || 'selbst', heizung: a.heizung || 'oel', gasalter: a.gasalter || 'alt',
         laeuft: a.laeuft || 'ja', einkommen: a.einkommen || '40000', kind: a.kind || 'nein'
       };
-      var n = 0, id = 'wohnen';
-      while (id && id !== 'ergebnis') { n++; id = naechster(id, probe); }
-      return n;
+      var liste = [], id = 'bundesland';
+      while (id && id !== 'ergebnis') { liste.push(id); id = naechster(id, probe); }
+      return liste;
+    }
+    function fragenGesamt(a) {
+      return pfad(a).filter(function (id) { return S[id].frage; }).length;
     }
 
     var a = {};
     var verlauf = ['start'];
+    var QUELLE_KOSTEN = 'Quelle: Verbraucherzentrale Rheinland-Pfalz, 160 Angebote für Luft-Wasser-Wärmepumpen in Ein- und Zweifamilienhäusern, 09/2025 bis 04/2026.';
     var body = document.getElementById('kBody');
     var balken = document.getElementById('kBalken');
     var erklTitel = document.getElementById('erklaerTitel');
@@ -1446,7 +1652,8 @@
     function zeigeErklaerung(id) {
       var s = S[id];
       erklTitel.textContent = s.erklTitel;
-      erklText.innerHTML = s.erkl.map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('');
+      var texte = (id === 'ergebnis' && istFern()) ? s.erklFern : s.erkl;
+      erklText.innerHTML = texte.map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('');
       Array.prototype.forEach.call(stufen, function (li) {
         var n = Number(li.getAttribute('data-stufe'));
         li.classList.toggle('aktiv', n === s.stufe);
@@ -1456,6 +1663,8 @@
       zurMail.classList.toggle('zeigen', id === 'fertig');
     }
 
+    function istFern() { return !!a.bundesland && a.bundesland !== D.bundesland; }
+
     function fragenNummer() {
       var n = 0;
       for (var i = 0; i < verlauf.length; i++) if (S[verlauf[i]].frage) n++;
@@ -1463,8 +1672,8 @@
     }
 
     function setzeBalken(id) {
-      var w = 0;
-      if (S[id].frage) w = Math.round(fragenNummer() / (fragenGesamt(a) + 1) * 100);
+      var w = 0, weg = pfad(a), stelle = weg.indexOf(id);
+      if (stelle >= 0) w = Math.round((stelle + 1) / (weg.length + 1) * 100);
       if (id === 'ergebnis') w = 92;
       if (id === 'fertig') w = 100;
       balken.style.width = w + '%';
@@ -1479,6 +1688,25 @@
           '<h3 class="k-titel">Wie viel Förderung bekommen Sie für Ihre Wärmepumpe?</h3>' +
           '<p class="k-text">Ein paar kurze Fragen. Danach sehen Sie Ihre Förderung in Euro. Am 1. Februar 2027 sinkt sie.</p>' +
           '<div class="k-unten" style="margin-top:auto;display:block"><button type="button" class="btn k-btn" data-aktion="weiter">Check starten ' + PFEIL + '</button></div>';
+      } else if (s.land) {
+        html =
+          '<div class="k-eyebrow">Frage ' + fragenNummer() + ' von ' + fragenGesamt(a) + '</div>' +
+          '<h3 class="k-titel">' + esc(s.frage) + '</h3>' +
+          '<div style="height:8px"></div>' +
+          '<label class="sr-only" for="kLand">Bundesland</label>' +
+          '<div class="k-feld k-auswahl"><select id="kLand"><option value="">Bitte wählen</option>' +
+            D.laender.map(function (l) { return '<option' + (a.bundesland === l ? ' selected' : '') + '>' + esc(l) + '</option>'; }).join('') +
+          '</select></div>' +
+          '<p class="k-fehler" id="kLandFehler" hidden></p>' +
+          '<button type="button" class="btn k-btn" data-aktion="land" style="margin-top:16px">Weiter ' + PFEIL + '</button>' +
+          '<div class="k-unten"><button type="button" class="k-link" data-aktion="zurueck">Zurück</button></div>';
+      } else if (id === 'fern') {
+        html =
+          '<div class="k-eyebrow">Gut zu wissen</div>' +
+          '<h3 class="k-titel">' + esc(D.kurzname) + ' arbeitet in ' + esc(D.bundesland) + '.</h3>' +
+          '<p class="k-text">Für Ihr Haus finden Sie besser einen Betrieb in Ihrer Nähe. Ihre Zahlen sehen Sie trotzdem.</p>' +
+          '<button type="button" class="btn k-btn" data-aktion="weiter">Trotzdem ausrechnen ' + PFEIL + '</button>' +
+          '<div class="k-unten"><button type="button" class="k-link" data-aktion="zurueck">Bundesland ändern</button></div>';
       } else if (s.optionen) {
         var nr = fragenNummer();
         html =
@@ -1493,16 +1721,19 @@
           '</div>' +
           '<div class="k-unten"><button type="button" class="k-link" data-aktion="zurueck">Zurück</button></div>';
       } else if (id === 'kosten') {
-        var wert = a.kosten || F.kostenStart;
+        var eigen = a.kostenArt === 'angebot';
         html =
-          '<div class="k-eyebrow">Frage ' + fragenNummer() + ' von ' + fragenGesamt(a) + '</div>' +
-          '<h3 class="k-titel">' + esc(s.frage) + '</h3>' +
-          '<p class="k-hilfe">Mit Einbau. Noch kein Angebot? Dann lassen Sie 30.000 Euro stehen.</p>' +
-          '<div class="k-kosten">' +
-            '<label class="sr-only" for="kKosten">Kosten in Euro</label>' +
-            '<div class="k-feld"><input id="kKosten" type="text" inputmode="numeric" autocomplete="off" value="' + Number(wert).toLocaleString('de-DE') + '"><span>€</span></div>' +
-            '<input class="k-regler" id="kRegler" type="range" min="10000" max="60000" step="500" value="' + Math.min(60000, Math.max(10000, wert)) + '" aria-label="Kosten mit dem Regler wählen">' +
+          '<div class="k-eyebrow">Die Kosten</div>' +
+          '<h3 class="k-titel">Wir rechnen mit rund ' + euro(F.kostenSchnitt) + '.</h3>' +
+          '<p class="k-text">So viel kostet eine Wärmepumpe mit Einbau im Schnitt.</p>' +
+          '<p class="k-quelle">' + esc(QUELLE_KOSTEN) + '</p>' +
+          '<button type="button" class="k-umschalter" id="kAngebotKnopf" aria-expanded="' + eigen + '" aria-controls="kAngebot">' +
+            '<span class="k-haken" aria-hidden="true"></span>Ich habe schon ein Angebot</button>' +
+          '<div class="k-kosten" id="kAngebot"' + (eigen ? '' : ' hidden') + '>' +
+            '<label class="k-label" for="kKosten">Betrag aus Ihrem Angebot, mit Einbau</label>' +
+            '<div class="k-feld"><input id="kKosten" type="text" inputmode="numeric" autocomplete="off" placeholder="zum Beispiel 32.000" value="' + (eigen && a.kosten ? Number(a.kosten).toLocaleString('de-DE') : '') + '"><span>€</span></div>' +
           '</div>' +
+          '<p class="k-fehler" id="kKostenFehler" hidden></p>' +
           '<button type="button" class="btn k-btn" data-aktion="weiter">Ergebnis zeigen ' + PFEIL + '</button>' +
           '<div class="k-unten"><button type="button" class="k-link" data-aktion="zurueck">Zurück</button></div>';
       } else if (id === 'ergebnis') {
@@ -1522,6 +1753,10 @@
             teileListe(r).map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') +
           '</ul></details>' +
           '<p class="k-hinweis">Schätzung, keine Zusage. Die KfW entscheidet. Es zählt der Tag des Antrags.</p>' +
+          (istFern()
+            ? '<div class="k-fern"><p><strong>Für Ihr Haus finden Sie besser einen Betrieb in Ihrer Nähe.</strong> ' + esc(D.kurzname) + ' arbeitet in ' + esc(D.bundesland) + '.</p>' +
+              '<p class="k-demo">Vorschau: Diese Anfrage geht nicht an den Betrieb.</p></div>'
+            :
           '<form class="k-mail" id="kMail" novalidate>' +
             '<p class="k-mail-satz">Sie bekommen Ihren Förder-Check als PDF per Mail.</p>' +
             '<label for="kEmail">Ihre E-Mail-Adresse</label>' +
@@ -1529,14 +1764,14 @@
             '<p class="k-fehler" id="kFehler" hidden></p>' +
             '<button type="submit" class="btn k-btn">PDF anfordern ' + PFEIL + '</button>' +
             '<p class="k-demo">Vorschau: Hier geht keine Mail raus. Das PDF lädt direkt herunter. Nichts wird gespeichert.</p>' +
-          '</form>' +
+          '</form>') +
           '<div class="k-unten"><button type="button" class="k-link" data-aktion="zurueck">Angaben ändern</button></div>';
       } else if (id === 'fertig') {
         html =
           '<div class="k-fertig-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>' +
           '<div class="k-eyebrow">Fertig</div>' +
           '<h3 class="k-titel">Ihr Förder-Check ist fertig.</h3>' +
-          '<p class="k-text">Vorschau: Das PDF ist heruntergeladen. Eine Mail geht hier nicht raus.</p>' +
+          '<p class="k-text">Vorschau: Das PDF ist jetzt auf Ihrem Gerät. Eine Mail geht hier nicht raus.</p>' +
           '<button type="button" class="btn k-btn" data-aktion="pdf">PDF noch einmal laden</button>' +
           '<div class="k-unten"><button type="button" class="k-link" data-aktion="neu">Check neu starten</button></div>';
       }
@@ -1544,7 +1779,7 @@
       zeigeErklaerung(id);
       setzeBalken(id);
       if (id === 'kosten') verbindeKosten();
-      if (id === 'ergebnis') verbindeMail();
+      if (id === 'ergebnis' && !istFern()) verbindeMail();
       if (fokus) body.focus({ preventScroll: true });
     }
 
@@ -1556,7 +1791,8 @@
       if (r.eink) t.push('Bonus für Einkommen: ' + prozent(r.eink) + '.');
       else t.push('Bonus für Einkommen: nicht dabei. ' + r.einkGrund);
       t.push('Höchstens ' + prozent(r.deckel) + ' der Kosten.' + (r.bis.summe > r.deckel ? ' Ihre Summe ist ' + prozent(r.bis.summe) + '. Der Check kürzt sie auf ' + prozent(r.deckel) + '.' : ''));
-      t.push('Ihre Kosten: ' + euro(r.kosten) + '. Die Grenze liegt bei ' + euro(F.grenze.bis) + '. Ab 01.02.2027 sind es ' + euro(F.grenze.ab) + '.');
+      t.push((a.kostenArt === 'angebot' ? 'Ihr Angebot: ' + euro(r.kosten) + '.' : 'Gerechnet mit rund ' + euro(r.kosten) + ', dem Schnitt mit Einbau.') +
+        ' Gefördert werden höchstens ' + euro(F.grenze.bis) + '. Ab 01.02.2027 sind es ' + euro(F.grenze.ab) + '.');
       return t;
     }
 
@@ -1566,25 +1802,38 @@
     }
 
     function verbindeKosten() {
+      var knopf = document.getElementById('kAngebotKnopf');
+      var bereich = document.getElementById('kAngebot');
       var feld = document.getElementById('kKosten');
-      var regler = document.getElementById('kRegler');
-      a.kosten = zahlAus(feld.value) || F.kostenStart;
-      feld.addEventListener('input', function () {
-        var n = zahlAus(feld.value);
-        a.kosten = n;
-        if (n >= 10000 && n <= 60000) regler.value = n;
+      knopf.addEventListener('click', function () {
+        var offen = knopf.getAttribute('aria-expanded') !== 'true';
+        knopf.setAttribute('aria-expanded', offen ? 'true' : 'false');
+        bereich.hidden = !offen;
+        document.getElementById('kKostenFehler').hidden = true;
+        if (offen) feld.focus();
       });
       feld.addEventListener('blur', function () {
         var n = zahlAus(feld.value);
-        if (!n) n = F.kostenStart;
-        n = Math.min(n, 500000);
-        a.kosten = n;
-        feld.value = n.toLocaleString('de-DE');
+        if (n) feld.value = Math.min(n, 500000).toLocaleString('de-DE');
       });
-      regler.addEventListener('input', function () {
-        a.kosten = Number(regler.value);
-        feld.value = a.kosten.toLocaleString('de-DE');
-      });
+    }
+    /* Kosten übernehmen: eigenes Angebot oder Schnitt. Gibt false zurück, wenn ein Betrag fehlt. */
+    function kostenUebernehmen() {
+      var knopf = document.getElementById('kAngebotKnopf');
+      var fehler = document.getElementById('kKostenFehler');
+      if (knopf && knopf.getAttribute('aria-expanded') === 'true') {
+        var n = Math.min(zahlAus(document.getElementById('kKosten').value), 500000);
+        if (n < 1000) {
+          fehler.textContent = 'Bitte den Betrag aus dem Angebot eintragen. Oder ohne Angebot mit dem Schnitt rechnen.';
+          fehler.hidden = false;
+          document.getElementById('kKosten').focus();
+          return false;
+        }
+        a.kosten = n; a.kostenArt = 'angebot';
+      } else {
+        a.kosten = F.kostenSchnitt; a.kostenArt = 'schnitt';
+      }
+      return true;
     }
 
     function verbindeMail() {
@@ -1644,10 +1893,18 @@
       if (!akt) return;
       var was = akt.getAttribute('data-aktion');
       if (was === 'weiter') {
-        nachSweep(akt, function () {
-          if (jetzt === 'kosten' && !a.kosten) a.kosten = F.kostenStart;
-          geheZu(naechster(jetzt, a));
-        });
+        if (jetzt === 'kosten' && !kostenUebernehmen()) return;
+        nachSweep(akt, function () { geheZu(naechster(jetzt, a)); });
+      } else if (was === 'land') {
+        var wahl = document.getElementById('kLand').value;
+        if (!wahl) {
+          var lf = document.getElementById('kLandFehler');
+          lf.textContent = 'Bitte das Bundesland wählen.';
+          lf.hidden = false;
+          document.getElementById('kLand').focus();
+          return;
+        }
+        nachSweep(akt, function () { a.bundesland = wahl; geheZu(naechster('bundesland', a)); });
       } else if (was === 'zurueck') {
         if (verlauf.length > 1) {
           verlauf.pop();
@@ -1682,6 +1939,7 @@
     function dateiname() { return 'Foerder-Check-' + D.slug + '.pdf'; }
 
     var LABEL = {
+      bundesland: 'Bundesland',
       wohnen: 'Wer wohnt im Haus?', heizung: 'Heizung heute', gasalter: 'Alter der Gasheizung',
       laeuft: 'Läuft die alte Heizung noch?', einkommen: 'Einkommen im Haushalt', kind: 'Kind unter 18 im Haus?',
       kosten: 'Kosten der neuen Heizung'
@@ -1691,7 +1949,8 @@
       verlauf.forEach(function (id) {
         if (!LABEL[id]) return;
         var wert = a[id];
-        if (id === 'kosten') wert = euro(a.kosten);
+        if (id === 'kosten') wert = euro(a.kosten) + (a.kostenArt === 'angebot' ? ' (Ihr Angebot)' : ' (Schnitt mit Einbau)');
+        else if (id === 'bundesland') wert = a.bundesland;
         else {
           var opt = (S[id].optionen || []).filter(function (o) { return o[0] === wert; })[0];
           wert = opt ? opt[1] : '–';
@@ -1814,7 +2073,7 @@
     }
     function zeigeMail(r) {
       var werte = {
-        betrieb: D.name, ort: D.ort, email: a.email,
+        betrieb: D.name, ort: D.ort, email: a.email, bundesland: a.bundesland || '',
         prozent_bis: prozent(r.bis.prozent), euro_bis: euro(r.bis.euro),
         prozent_ab: prozent(r.ab.prozent), euro_ab: euro(r.ab.euro),
         basis_bis: euro(r.bis.basis), basis_ab: euro(r.ab.basis),

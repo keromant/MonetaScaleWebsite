@@ -4,6 +4,7 @@
     "name": "Muster Wärmepumpen GmbH",
     "kurzname": "Muster Wärmepumpen",
     "ort": "Musterstadt",
+    "bundesland": "Nordrhein-Westfalen",
     "sterne": 4.8,
     "farben": { "primaer": "#0B5CAD", "sekundaer": "#F2A900" },
     "videos": [
