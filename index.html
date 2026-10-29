@@ -38,6 +38,11 @@
       --borders:   #333333;
       --fh:        'Sora', sans-serif;
       --fb:        'Hanken Grotesk', sans-serif;
+      /* Paket Marktführer */
+      --green-rgb: 101,200,61;
+      --petrol:    #0E3A37;
+      --petrol-dk: #0A1D1C;
+      --pop-ease:  cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     /* ─── BASE ─── */
@@ -456,7 +461,7 @@
 
     .pakete-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     }
     .pakete-grid .card { padding: 40px 34px; }
@@ -712,6 +717,12 @@
       gap: 20px;
     }
     .leistungen-grid .card { padding: 36px 32px; background: var(--bg); }
+    /* Teile nur im Paket Marktführer: Petrol-Fläche wie die Marktführer-Karte */
+    .leistungen-grid .card.teil-mf {
+      background: linear-gradient(150deg, var(--petrol) 0%, var(--petrol-dk) 55%, var(--bg) 100%);
+      border-color: rgba(var(--green-rgb), 0.32);
+    }
+    .leistungen-grid .card.teil-mf .card-num { color: var(--green); }
     .leistungen-grid .card-name,
     .boni-grid .card-name { font-size: 22px; margin-bottom: 12px; }
     .leistungen-grid .card-body,
@@ -759,6 +770,260 @@
     }
     .start-grid .card { padding: 28px 30px; }
     .start-grid .card-name { font-size: 18px; margin-bottom: 10px; }
+
+    /* ─── PAKET MARKTFÜHRER ───
+       Eigene Karte: Petrol-Bühne, wandernder Rahmen-Glanz, Krone.
+       Spotlight dauerhaft weich, beim Hover kräftig + Pop (easeOutBack).
+       Reveal sitzt auf .mf-wrap, Hover auf .mf-card: GSAP schreibt sonst
+       ein Inline-transform und hebelt den Hover aus. */
+    @property --mf-winkel {
+      syntax: '<angle>';
+      inherits: false;
+      initial-value: 0deg;
+    }
+    .mf-wrap { grid-column: 1 / -1; margin-top: 16px; }
+    .mf-card {
+      --mf-glow-soft:
+        0 0 0 1px rgba(var(--green-rgb), 0.18),
+        0 30px 64px -26px rgba(var(--green-rgb), 0.40),
+        0 0 90px -24px rgba(var(--green-rgb), 0.26);
+      --mf-glow-strong:
+        0 0 0 1px rgba(var(--green-rgb), 0.45),
+        0 42px 84px -24px rgba(var(--green-rgb), 0.58),
+        0 0 130px -14px rgba(var(--green-rgb), 0.36);
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+      grid-template-areas:
+        "badge   badge"
+        "kopf    neu"
+        "partner neu"
+        "knopf   liste";
+      grid-template-rows: auto auto 1fr auto;
+      column-gap: 56px;
+      padding: 48px 52px;
+      border-radius: 24px;
+      border: 1.5px solid transparent;
+      background:
+        radial-gradient(110% 85% at 0% 0%, rgba(var(--green-rgb), 0.17) 0%, transparent 55%) padding-box,
+        radial-gradient(70% 60% at 100% 100%, rgba(var(--green-rgb), 0.08) 0%, transparent 60%) padding-box,
+        linear-gradient(150deg, var(--petrol) 0%, var(--petrol-dk) 52%, var(--bg2) 100%) padding-box,
+        conic-gradient(from var(--mf-winkel),
+          rgba(var(--green-rgb), 0.22) 0deg,
+          var(--green-hi) 40deg,
+          rgba(var(--green-rgb), 0.22) 90deg,
+          rgba(var(--green-rgb), 0.22) 180deg,
+          var(--green) 220deg,
+          rgba(var(--green-rgb), 0.22) 270deg,
+          rgba(var(--green-rgb), 0.22) 360deg) border-box;
+      box-shadow: var(--mf-glow-soft);
+      transition:
+        transform  0.45s var(--pop-ease),
+        box-shadow 0.4s ease;
+      animation: mf-glanz 9s linear infinite;
+    }
+    @keyframes mf-glanz { to { --mf-winkel: 360deg; } }
+
+    .mf-badge {
+      grid-area: badge;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 7px 16px 7px 12px;
+      margin-bottom: 26px;
+      border-radius: 100px;
+      background: linear-gradient(90deg, var(--green) 0%, var(--green-hi) 100%);
+      color: #0A0A0A;
+      font-family: var(--fh);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: 0 8px 24px -8px rgba(var(--green-rgb), 0.65);
+    }
+    .mf-badge svg { width: 17px; height: 17px; flex-shrink: 0; }
+
+    .mf-kopf { grid-area: kopf; }
+    .pakete-grid .mf-card .card-name { font-size: clamp(34px, 3.8vw, 48px); margin-bottom: 4px; }
+    .pakete-grid .mf-card .card-menge span { font-size: clamp(52px, 5.4vw, 72px); color: var(--green); }
+    .mf-card .paket-satz { font-size: 17px; margin-bottom: 0; }
+
+    .mf-neu { grid-area: neu; }
+    .mf-neu-label,
+    .mf-liste-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 14px;
+    }
+    .mf-neu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .mf-leistung {
+      padding: 20px 20px 18px;
+      border-radius: 16px;
+      background: rgba(10, 10, 10, 0.42);
+      border: 1px solid rgba(var(--green-rgb), 0.28);
+    }
+    .mf-leistung-kopf {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .mf-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      background: rgba(var(--green-rgb), 0.14);
+      color: var(--green);
+    }
+    .mf-icon svg { width: 20px; height: 20px; }
+    .mf-leistung h4 {
+      font-family: var(--fh);
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--white);
+    }
+    .mf-tag {
+      display: block;
+      margin-top: 2px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--t2);
+    }
+    .mf-leistung p { font-size: 14px; line-height: 1.6; color: var(--t2); }
+    .mf-leistung-breit { grid-column: 1 / -1; }
+
+    .mf-liste {
+      grid-area: liste;
+      margin-top: 28px;
+      padding-top: 26px;
+      border-top: 1px solid rgba(var(--green-rgb), 0.18);
+    }
+    .mf-card .card-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 24px;
+      margin-bottom: 0;
+    }
+
+    .mf-partner {
+      grid-area: partner;
+      margin-top: 28px;
+      padding: 18px 20px;
+      border-radius: 14px;
+      background: rgba(var(--green-rgb), 0.07);
+      border: 1px solid rgba(var(--green-rgb), 0.24);
+    }
+    .mf-partner strong {
+      display: block;
+      font-family: var(--fh);
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .mf-partner p { font-size: 14px; line-height: 1.6; color: var(--t2); }
+
+    .mf-aktion {
+      grid-area: knopf;
+      align-self: end;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+    .mf-preis {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--t2);
+    }
+
+    /* Knopf: schräger Farb-Sweep, Sprung erst nach der Animation (JS) */
+    .mf-btn {
+      --sweep: var(--white);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 30px;
+      border-radius: 14px;
+      background: var(--green);
+      color: #0A0A0A;
+      font-family: var(--fb);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      isolation: isolate;
+      box-shadow: 0 10px 28px -10px rgba(var(--green-rgb), 0.75);
+      transition: color 0.45s ease, box-shadow 0.35s ease;
+    }
+    .mf-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0 -20%;
+      z-index: -1;
+      background: var(--sweep);
+      transform: skewX(-45deg) scale(0, 1);
+      transform-origin: center;
+      transition: transform 0.5s ease;
+    }
+    .mf-btn.is-activating::after { animation: mf-sweep 0.5s ease forwards; }
+    @keyframes mf-sweep {
+      from { transform: skewX(-45deg) scale(0, 1); }
+      to   { transform: skewX(-45deg) scale(1, 1); }
+    }
+    .mf-btn:focus-visible { outline: 2px solid var(--green-hi); outline-offset: 3px; }
+
+    @media (hover: hover) and (pointer: fine) {
+      .mf-card:hover {
+        transform: translateY(-6px) scale(1.012);
+        box-shadow: var(--mf-glow-strong);
+      }
+      .mf-btn:hover::after { transform: skewX(-45deg) scale(1, 1); }
+      .mf-btn:hover { box-shadow: 0 14px 34px -10px rgba(var(--green-rgb), 0.9); }
+    }
+
+    /* Formular: Paket-Auswahl */
+    .form-group select {
+      background: var(--bg3) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none'%3E%3Cpath d='M3 5l4 4 4-4' stroke='%2365C83D' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 16px center;
+      border: 1px solid var(--borders);
+      border-radius: 10px;
+      padding: 14px 44px 14px 18px;
+      color: var(--white);
+      font-family: var(--fb);
+      font-size: 15px;
+      outline: none;
+      width: 100%;
+      cursor: pointer;
+      color-scheme: dark;
+      -webkit-appearance: none;
+      appearance: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group select:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(101,200,61,0.12);
+    }
+    .form-group select option { background: var(--bg3); color: var(--white); }
 
     /* ─── BONI ─── */
     #boni { background: var(--bg2); border-top: 1px solid var(--border); }
@@ -989,6 +1254,8 @@
       .pakete-grid .card { padding: 36px 26px; }
       .strecke-grid { grid-template-columns: repeat(3, 1fr); }
       .boni-grid { grid-template-columns: repeat(2, 1fr); }
+      .mf-card { padding: 42px 38px; column-gap: 40px; }
+      .mf-neu-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 900px) {
       .leistungen-grid,
@@ -1023,10 +1290,26 @@
       .zahlen-grid .card,
       .ablauf-grid .card { padding: 34px 26px; }
       .card { padding: 34px 26px; }
+      .mf-wrap { margin-top: 8px; }
+      .mf-card {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: "badge" "kopf" "neu" "liste" "partner" "knopf";
+        grid-template-rows: none;
+        padding: 36px 28px;
+      }
+      .mf-neu { margin-top: 28px; }
+      .mf-neu-grid { grid-template-columns: 1fr 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .form-submit { width: 100%; justify-content: center; }
       footer { flex-direction: column; gap: 20px; text-align: center; padding: 28px 24px; }
       .footer-links { justify-content: center; flex-wrap: wrap; }
+    }
+    @media (max-width: 640px) {
+      .mf-card { padding: 32px 22px; border-radius: 20px; }
+      .mf-neu-grid,
+      .mf-card .card-list { grid-template-columns: 1fr; }
+      .mf-btn { width: 100%; justify-content: center; }
+      .mf-aktion { justify-content: center; }
     }
 
     /* ─── HERO DESKTOP-FIT (nur Desktop; Mobile bleibt unberuehrt) ───
@@ -1050,6 +1333,9 @@
       #hAccent { clip-path: none !important; }
       .scroll-hint { display: none; }
       * { transition-duration: 0.01ms !important; }
+      .mf-card { animation: none; }
+      .mf-card:hover { transform: none; }
+      .mf-btn::after { transition: none; animation: none; }
     }
   </style>
 </head>
@@ -1185,8 +1471,8 @@
     <div class="s-in">
       <div class="pakete-header">
         <div class="eyebrow reveal">Die Maschine</div>
-        <h2 class="pakete-hl reveal">Neun Teile.<br>Ein Ziel: Anfragen.</h2>
-        <p class="intro reveal">Ein Cutter macht nur Teil 4. Wir machen alle neun. Und jeder Teil wird gemessen.</p>
+        <h2 class="pakete-hl reveal">Zwölf Teile.<br>Ein Ziel: Anfragen.</h2>
+        <p class="intro reveal">Ein Cutter macht nur Teil 4. Wir machen alle zwölf. Und jeder Teil wird gemessen.</p>
       </div>
 
       <div class="leistungen-grid">
@@ -1234,6 +1520,21 @@
           <div class="card-num">Teil 9 · ab Paket Überall</div>
           <h3 class="card-name">Kommentar-Wache</h3>
           <p class="card-body">Kein Kommentar bleibt liegen. Wir antworten in der ersten Stunde nach dem Posten. Wer kaufen will, landet sofort bei Ihnen.</p>
+        </div>
+        <div class="card teil-mf reveal">
+          <div class="card-num">Teil 10 · nur Marktführer</div>
+          <h3 class="card-name">Anfragen-Motor</h3>
+          <p class="card-body">Ihre besten Videos laufen als Werbung auf Meta Ads. Nur Menschen aus Ihrer Region sehen sie. Wir bauen und steuern die Werbung für Sie.</p>
+        </div>
+        <div class="card teil-mf reveal">
+          <div class="card-num">Teil 11 · nur Marktführer</div>
+          <h3 class="card-name">Vertrauens-Kanal</h3>
+          <p class="card-body">Lange Videos auf YouTube beantworten die Fragen von Ihren Kunden. So vertrauen Kunden Ihnen schon vor dem ersten Anruf. Die Themen kommen aus dem Markt-Röntgen.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-num">Teil 12 · ab Paket Überall</div>
+          <h3 class="card-name">Such-Magnet</h3>
+          <p class="card-body">Kunden suchen bei Google und fragen KI wie ChatGPT. Wir pflegen Ihr Google-Profil: Ort, Zeiten, Branche, Text. Videos und Texte nutzen die Suchwörter aus Ihrer Region. Jede Frage von Kunden bekommt eine klare Antwort. Die kann eine KI-Suche finden.</p>
         </div>
       </div>
     </div>
@@ -1338,7 +1639,7 @@
             <li>Anfragen-Strecke mit Stichwort und Link</li>
             <li>7 Boni</li>
           </ul>
-          <a href="#kontakt" class="card-btn">
+          <a href="#kontakt" class="card-btn" data-paket="Sichtbar">
             Plan anfordern
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1359,9 +1660,10 @@
             <li>Ein Test pro Woche</li>
             <li>Die ganze Anfragen-Strecke</li>
             <li>Kommentar-Wache, Montag bis Freitag</li>
+            <li>Such-Magnet: die Grundlage für Google und KI-Suche</li>
             <li>Alle 8 Boni</li>
           </ul>
-          <a href="#kontakt" class="card-btn">
+          <a href="#kontakt" class="card-btn" data-paket="Überall">
             Plan anfordern
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1369,34 +1671,109 @@
           </a>
         </div>
 
-        <div class="card reveal">
-          <div class="card-num">Paket</div>
-          <h3 class="card-name">Allgegenwärtig</h3>
-          <div class="card-menge"><span>300</span> Posts&nbsp;im&nbsp;Monat</div>
-          <div class="card-price">60 Short-Form-Videos · auf&nbsp;5&nbsp;Apps</div>
-          <p class="paket-satz">Zweimal am Tag auf fünf Apps. Wer in Ihrer Stadt sucht, kommt an Ihnen nicht vorbei.</p>
-          <div class="card-divider"></div>
-          <ul class="card-list">
-            <li>Alles aus dem Paket Überall</li>
-            <li>Dazu LinkedIn oder Pinterest, je nach Branche</li>
-            <li>Zwei Tests pro Woche</li>
-            <li>Anfragen-Strecke mit Mails zum Nachfassen</li>
-            <li>Kommentar-Wache auch am Wochenende</li>
-            <li>Alle 8 Boni</li>
-          </ul>
-          <a href="#kontakt" class="card-btn">
-            Plan anfordern
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
+        <div class="mf-wrap reveal">
+          <article class="mf-card" aria-labelledby="mf-name">
+            <div class="mf-badge">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3 8.5l4.6 3.6L12 5l4.4 7.1L21 8.5 19.2 18H4.8L3 8.5z" fill="currentColor"/>
+                <rect x="4.8" y="19.4" width="14.4" height="1.8" rx=".9" fill="currentColor"/>
+              </svg>
+              Für die Nummer&nbsp;1 vor&nbsp;Ort
+            </div>
+
+            <div class="mf-kopf">
+              <h3 class="card-name" id="mf-name">Marktführer</h3>
+              <div class="card-menge"><span>300</span> Posts&nbsp;im&nbsp;Monat</div>
+              <div class="card-price">60 Short-Form-Videos · auf&nbsp;5&nbsp;Apps · plus Werbung und&nbsp;YouTube</div>
+              <p class="paket-satz">Ihre Region sieht Sie jeden Tag. Kurze Videos, Werbung und YouTube arbeiten für Sie.</p>
+            </div>
+
+            <div class="mf-neu">
+              <div class="mf-neu-label">Neu dazu</div>
+              <div class="mf-neu-grid">
+                <div class="mf-leistung">
+                  <div class="mf-leistung-kopf">
+                    <span class="mf-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M3.5 10v4h3l6.5 4.5v-13L6.5 10h-3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                        <path d="M16.5 9.2a4 4 0 010 5.6M19.3 6.6a7.7 7.7 0 010 10.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                      </svg>
+                    </span>
+                    <div>
+                      <h4>Anfragen-Motor</h4>
+                      <span class="mf-tag">Meta Ads</span>
+                    </div>
+                  </div>
+                  <p>Ihre besten Videos laufen als Werbung. Nur Menschen aus Ihrer Region sehen sie.</p>
+                </div>
+                <div class="mf-leistung">
+                  <div class="mf-leistung-kopf">
+                    <span class="mf-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <rect x="2.5" y="5" width="19" height="14" rx="4" stroke="currentColor" stroke-width="1.7"/>
+                        <path d="M10.2 9.4v5.2l4.6-2.6-4.6-2.6z" fill="currentColor"/>
+                      </svg>
+                    </span>
+                    <div>
+                      <h4>Vertrauens-Kanal</h4>
+                      <span class="mf-tag">Lange Videos · YouTube</span>
+                    </div>
+                  </div>
+                  <p>Lange Videos beantworten die Fragen von Ihren Kunden. So vertrauen Kunden Ihnen vor dem ersten Anruf.</p>
+                </div>
+                <div class="mf-leistung mf-leistung-breit">
+                  <div class="mf-leistung-kopf">
+                    <span class="mf-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <circle cx="10.5" cy="10.5" r="6.2" stroke="currentColor" stroke-width="1.7"/>
+                        <path d="M15.2 15.2L20.5 20.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                        <path d="M10.5 7.4l.85 1.95 1.95.85-1.95.85-.85 1.95-.85-1.95-1.95-.85 1.95-.85.85-1.95z" fill="currentColor"/>
+                      </svg>
+                    </span>
+                    <div>
+                      <h4>Such-Magnet, voll</h4>
+                      <span class="mf-tag">Google &amp; KI-Suche</span>
+                    </div>
+                  </div>
+                  <p>Lange YouTube-Videos geben Antwort auf Fragen aus Ihrer Region. Jeden Monat prüfen wir: Wo tauchen Sie bei Google und in KI-Suchen auf?</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mf-liste">
+              <div class="mf-liste-label">Und alles aus der Maschine</div>
+              <ul class="card-list">
+                <li>Alles aus dem Paket Überall</li>
+                <li>Dazu LinkedIn oder Pinterest, je nach Branche</li>
+                <li>Zwei Tests pro Woche</li>
+                <li>Anfragen-Strecke mit Mails zum Nachfassen</li>
+                <li>Kommentar-Wache auch am Wochenende</li>
+                <li>Alle 8 Boni</li>
+              </ul>
+            </div>
+
+            <div class="mf-partner">
+              <strong>Partner auf Erfolg</strong>
+              <p>Ein fester Betrag im Monat. Ein Teil hängt am Erfolg.</p>
+            </div>
+
+            <div class="mf-aktion">
+              <a href="#kontakt" class="mf-btn" data-paket="Marktführer">
+                Gespräch anfragen
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <span class="mf-preis">Preis im Gespräch</span>
+            </div>
+          </article>
         </div>
       </div>
 
       <div class="start-grid">
         <div class="card reveal">
           <h3 class="card-name">Einmal zum Start</h3>
-          <p class="card-body">Die Startgebühr deckt Markt-Röntgen, Fahrplan, Profil-Neustart und den Aufbau der Anfragen-Strecke.</p>
+          <p class="card-body">Die Startgebühr deckt Markt-Röntgen, Fahrplan, Profil-Neustart und den Aufbau der Anfragen-Strecke. Ab Paket Überall richten wir auch Ihr Google-Profil ein. Beim Marktführer kommen Werbung und YouTube dazu.</p>
         </div>
         <div class="card reveal">
           <h3 class="card-name">Mindestens 3 Monate</h3>
@@ -1404,7 +1781,7 @@
         </div>
         <div class="card reveal">
           <h3 class="card-name">20 Prozent weniger</h3>
-          <p class="card-body">Wer 6 Monate im Voraus zahlt, spart 20 Prozent. Das gilt für jedes Paket.</p>
+          <p class="card-body">Wer 6 Monate im Voraus zahlt, spart 20 Prozent. Das gilt für Sichtbar und Überall.</p>
         </div>
       </div>
 
@@ -1483,7 +1860,7 @@
         </div>
       </div>
 
-      <p class="ehrlich reveal">Anfragen garantieren wir nicht. Sie hängen auch von Angebot, Preis und Markt ab. Unser Teil: Jedes Video ist geplant, getestet und hat einen Weg zur Anfrage.</p>
+      <p class="ehrlich reveal">Anfragen garantieren wir nicht. Sie hängen auch von Angebot, Preis und Markt ab. Plätze bei Google und in KI-Suchen sagen wir auch nicht zu. Unser Teil: Jedes Video ist geplant, getestet und hat einen Weg zur Anfrage.</p>
     </div>
   </section>
 
@@ -1537,9 +1914,20 @@
             <input type="email" id="cf-email" name="email" placeholder="max@beispiel.de" required>
           </div>
         </div>
-        <div class="form-group">
-          <label for="cf-phone">Telefon <span style="color:var(--muted);font-weight:400;letter-spacing:0">(optional)</span></label>
-          <input type="tel" id="cf-phone" name="phone" placeholder="+49 176 …">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cf-phone">Telefon <span style="color:var(--muted);font-weight:400;letter-spacing:0">(optional)</span></label>
+            <input type="tel" id="cf-phone" name="phone" placeholder="+49 176 …">
+          </div>
+          <div class="form-group">
+            <label for="cf-paket">Paket <span style="color:var(--muted);font-weight:400;letter-spacing:0">(optional)</span></label>
+            <select id="cf-paket" name="paket">
+              <option value="">Noch offen</option>
+              <option value="Sichtbar">Sichtbar</option>
+              <option value="Überall">Überall</option>
+              <option value="Marktführer">Marktführer</option>
+            </select>
+          </div>
         </div>
         <div class="form-group">
           <label for="cf-msg">Ihr Betrieb</label>
@@ -1860,16 +2248,61 @@
       }
     } catch (_) {}
 
+    /* ── PAKETE: Paket im Formular vorauswählen ──
+       Karten-Knöpfe tragen data-paket. Der Marktführer-Knopf spielt erst
+       den Sweep ab und springt danach zum Formular. Link-Variante:
+       ?paket=sichtbar | ueberall | marktfuehrer */
+    (function () {
+      const auswahl = document.getElementById('cf-paket');
+      if (!auswahl) return;
+      const waehle = (name) => {
+        if ([...auswahl.options].some((o) => o.value === name)) auswahl.value = name;
+      };
+      try {
+        const roh = (new URLSearchParams(location.search).get('paket') || '').toLowerCase();
+        const namen = { sichtbar: 'Sichtbar', ueberall: 'Überall', 'überall': 'Überall', marktfuehrer: 'Marktführer', 'marktführer': 'Marktführer' };
+        if (namen[roh]) waehle(namen[roh]);
+      } catch (_) {}
+
+      document.querySelectorAll('[data-paket]').forEach((knopf) => {
+        knopf.addEventListener('click', (e) => {
+          waehle(knopf.dataset.paket);
+          if (!knopf.classList.contains('mf-btn')) return;
+          if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+          e.preventDefault();
+          if (knopf._aktiv) return;
+          knopf._aktiv = true;
+          let fertig = false;
+          const weiter = () => {
+            if (fertig) return;
+            fertig = true;
+            knopf._aktiv = false;
+            knopf.classList.remove('is-activating');
+            const ziel = document.getElementById('kontakt');
+            if (ziel) ziel.scrollIntoView({ behavior: 'auto', block: 'start' });
+            try { history.replaceState(null, '', '#kontakt'); } catch (_) {}
+          };
+          if (NO_MOTION) return weiter();
+          knopf.classList.add('is-activating');
+          knopf.addEventListener('animationend', weiter, { once: true });
+          setTimeout(weiter, 650);
+        });
+      });
+    })();
+
     contactForm?.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = contactForm.querySelector('.form-submit');
+      const daten = new FormData(contactForm);
+      const paket = daten.get('paket');
+      if (paket) daten.set('_subject', (daten.get('_subject') || '') + ' · Paket ' + paket);
       btn.textContent = 'Wird gesendet…';
       btn.disabled = true;
 
       try {
         const res = await fetch('https://formspree.io/f/xwvjoeak', {
           method: 'POST',
-          body: new FormData(contactForm),
+          body: daten,
           headers: { 'Accept': 'application/json' },
         });
         if (res.ok) {
