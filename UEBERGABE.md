@@ -2,6 +2,18 @@
 
 Kurze Notiz für die nächste Sitzung. Neueste oben, höchstens drei Blöcke. Push auf `master` = Live-Deploy (GitHub Pages).
 
+## 2026-10-29 – 10 persönliche Seiten live, Tracking, Datenschutz (PC)
+**Erledigt:** `foerder/landingpages` nach `master` gemergt: 10 Seiten `/<slug>/` (Dream 100 Wärmepumpe), Videos und
+Vorschaubilder von `media.ulas.systems/wp/<slug>/` (R2-Bucket `dream100-videos`, EU), `assets/lp-tracking.js`
+(meldet an dashboard.ulas.systems/api/lp/ereignis), Datenschutz Abschnitt 8 „Nutzung der persönlichen Seiten“.
+**Offene Fäden:** `paket/marktfuehrer` war schon in `master`. Kein Hell/Dunkel-Umschalter auf der Hauptseite (eigene Aufgabe).
+**Nächster Schritt:** Weitere Betriebe: Daten-JSON außerhalb des Repos (Vorlage `tools/landingpages/betriebe.json`,
+Feld `videos: [{url, poster}]`), `node tools/landingpages/build.mjs --daten <pfad>`, nur die neuen Ordner committen.
+**Fallstricke:** Eigene Besuche und Prüfungen der echten Seiten immer mit `?intern=1`, sonst landen sie beim Lead im
+Dashboard und Johann meldet „Seite geöffnet“. Links in Mails/DMs mit `?q=mail` bzw. `?q=dm`. Listen echter Betriebe nie
+einchecken (Repo öffentlich). Datenschutz ist 381 px breit bei 375 px (schon vorher so, kein sichtbares Element).
+**Wichtige Dateien:** `tools/landingpages/vorlage.html`, `assets/lp-tracking.js`, `datenschutz.html`.
+
 ## 2026-10-28 – Neue Telefonnummer, Marktführer und persönliche Seiten in Arbeit (PC)
 **Erledigt:** Impressum und Datenschutz nennen jetzt +49 176 3209802 (vorher +49 176 70368821), live über `master`.
 **Offene Fäden:** Zwei Zweige, noch nicht in `master`:
