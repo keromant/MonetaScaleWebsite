@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+<!-- lp:generiert · Diese Datei erzeugt tools/landingpages/build.mjs. Nicht von Hand ändern. -->
+<html lang="de" data-theme="hell">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>{{titel}}</title>
+  <meta name="description" content="Drei fertige Reels und ein Förder-Check zum Ausprobieren. Persönlich für Ihren Betrieb erstellt.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{og_url}}">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="MonetaScale">
+  <meta property="og:title" content="Ihre Förder-Reels und Ihr Förder-Check">
+  <meta property="og:description" content="Drei fertige Reels und ein Förder-Check zum Ausprobieren. Persönlich für Ihren Betrieb erstellt.">
+  <meta property="og:image" content="https://monetascale.de/brand/profilbild/monetascale-profilbild-dunkel-1080.png">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" type="image/png" href="../brand/profilbild/monetascale-profilbild-hell-1080.png">
+  <!-- Nutzung der Seite zählen (ohne Cookies, Datenschutz Abschnitt 8); ?intern=1 sendet nichts -->
+  <script src="/assets/lp-tracking.js" defer></script>
+
+  <script>
+    (function () {
+      var t = 'hell';
+      try { var s = localStorage.getItem('ulas.theme'); if (s === 'hell' || s === 'dunkel') t = s; } catch (e) {}
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── TOKENS (MonetaScale, hell + dunkel) ─── */
+    :root {
+      --fh: 'Sora', system-ui, sans-serif;
+      --fb: 'Hanken Grotesk', system-ui, sans-serif;
+      --green: #65C83D;
+      --green-hi: #84E55A;
+      --on-green: #0A0A0A;
+      --pop-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --pop-lift: translateY(-4px) scale(1.02);
+      --glow-soft:   0 0 0 1px rgba(var(--accent-rgb), .30),
+                     0 16px 34px -16px rgba(var(--accent-rgb), .26),
+                     0 5px 14px rgba(var(--accent-rgb), .10);
+      --glow-strong: 0 0 0 2px rgba(var(--accent-rgb), .75),
+                     0 30px 55px -12px rgba(var(--accent-rgb), .42),
+                     0 12px 26px rgba(var(--accent-rgb), .22);
+
+      /* Farben des Betriebs (aus betriebe.json) */
+      --b1: {{farbe1}};
+      --b1-text: {{farbe1_text}};
+      --b1-dunkel: {{farbe1_dunkel}};
+      --b1-hell: {{farbe1_hell}};
+      --b2: {{farbe2}};
+      --b2-text: {{farbe2_text}};
+    }
+    :root, [data-theme="hell"] {
+      --bg: #F5F7F3;
+      --bg2: #FFFFFF;
+      --bg3: #ECF0E8;
+      --text: #0A0A0A;
+      --t2: #3B4237;
+      --muted: #5E665A;
+      --border: #E0E5DC;
+      --borders: #C8D0C2;
+      --ink: #2F7A17;
+      --accent-rgb: 79, 181, 42;
+      --sweep: #0A0A0A;
+      --on-sweep: #FFFFFF;
+      --nav-bg: rgba(245, 247, 243, .88);
+      --band: #0A0A0A;
+      --band-text: #FFFFFF;
+      --band-t2: #B8B8B8;
+      color-scheme: light;
+    }
+    [data-theme="dunkel"] {
+      --bg: #0A0A0A;
+      --bg2: #111111;
+      --bg3: #1A1A1A;
+      --text: #FFFFFF;
+      --t2: #B8B8B8;
+      --muted: #8C8C8C;
+      --border: #232323;
+      --borders: #333333;
+      --ink: #65C83D;
+      --accent-rgb: 101, 200, 61;
+      --sweep: #FFFFFF;
+      --on-sweep: #0A0A0A;
+      --nav-bg: rgba(10, 10, 10, .86);
+      --band: #141A12;
+      --band-text: #FFFFFF;
+      --band-t2: #B8B8B8;
+      color-scheme: dark;
+    }
+
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--fb);
+      font-size: 17px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background-color .3s ease, color .3s ease;
+    }
+    img, svg, video { display: block; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid rgba(var(--accent-rgb), .7); outline-offset: 3px; border-radius: 6px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    /* ─── NAV ─── */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      height: 68px; padding: 0 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--nav-bg);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+    .logo img { height: 30px; width: auto; }
+    .logo-wort { font-family: var(--fh); font-weight: 800; font-size: 19px; letter-spacing: -0.02em; }
+    .logo-wort span { color: var(--ink); }
+    .logo-dunkel { display: none; }
+    [data-theme="dunkel"] .logo-hell { display: none; }
+    [data-theme="dunkel"] .logo-dunkel { display: block; }
+    .nav-rechts { display: flex; align-items: center; gap: 14px; }
+    .nav-fuer { font-size: 13px; color: var(--muted); font-weight: 600; }
+    .modus {
+      width: 42px; height: 42px; border-radius: 50%;
+      border: 1px solid var(--borders); background: var(--bg2); color: var(--text);
+      display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+      transition: border-color .2s ease, transform .4s var(--pop-ease);
+    }
+    .modus svg { width: 19px; height: 19px; }
+    .modus .mond { display: none; }
+    [data-theme="dunkel"] .modus .sonne { display: none; }
+    [data-theme="dunkel"] .modus .mond { display: block; }
+
+    /* ─── BUTTONS: schräger Sweep, Aktion nach der Animation ─── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      padding: 15px 28px; border-radius: 14px; border: 0;
+      font-family: var(--fb); font-size: 16px; font-weight: 700; line-height: 1.2;
+      text-decoration: none; cursor: pointer;
+      position: relative; z-index: 1; overflow: hidden; isolation: isolate;
+      transition: color .45s ease, box-shadow .35s ease, transform .4s var(--pop-ease);
+    }
+    .btn::after {
+      content: ""; position: absolute; inset: 0 -20%; z-index: -1;
+      background: var(--sweep-farbe);
+      transform: skewX(-45deg) scale(0, 1); transform-origin: center;
+      transition: transform .5s ease;
+    }
+    .btn.is-activating::after { animation: btn-sweep .5s ease forwards; }
+    .btn.is-activating { color: var(--sweep-text); }
+    @keyframes btn-sweep {
+      from { transform: skewX(-45deg) scale(0, 1); }
+      to   { transform: skewX(-45deg) scale(1, 1); }
+    }
+    .btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+    .btn-gruen { background: var(--green); color: var(--on-green); --sweep-farbe: var(--sweep); --sweep-text: var(--on-sweep); }
+    .btn-rand {
+      background: transparent; color: var(--text);
+      box-shadow: inset 0 0 0 1.5px var(--borders);
+      --sweep-farbe: var(--text); --sweep-text: var(--bg);
+    }
+
+    /* ─── LAYOUT ─── */
+    .s-pad { padding: 104px 32px; }
+    .s-in { max-width: 1140px; margin: 0 auto; }
+    .s-kopf { max-width: 720px; margin: 0 auto 56px; text-align: center; }
+    .eyebrow {
+      font-family: var(--fb); font-size: 12px; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase; color: var(--ink);
+      margin-bottom: 16px;
+    }
+    h1, h2, h3 { font-family: var(--fh); letter-spacing: -0.025em; text-wrap: balance; }
+    h2 { font-size: clamp(30px, 4.2vw, 50px); font-weight: 800; line-height: 1.1; }
+    .intro { margin-top: 18px; font-size: 18px; color: var(--t2); }
+    .figur-hinweis { display: flex; align-items: center; gap: 16px; max-width: 760px; margin: 34px auto 26px; padding: 16px 22px;
+      border: 1.5px solid rgba(var(--accent-rgb), .55); background: rgba(var(--accent-rgb), .10); border-radius: 16px;
+      box-shadow: var(--glow-soft); font-size: 17px; line-height: 1.5; color: var(--text); text-align: left; }
+    .figur-hinweis strong { font-weight: 700; }
+    .fh-icon { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center;
+      background: var(--green); color: var(--on-green); }
+    .fh-icon svg { width: 24px; height: 24px; }
+    /* Förder-Check geschenkt: Spotlight-Card im Akzent des Figur-Hinweises */
+    .geschenk {
+      max-width: 760px; margin: 64px auto 0; padding: 26px 28px;
+      border: 1.5px solid rgba(var(--accent-rgb), .55); background: rgba(var(--accent-rgb), .10); border-radius: 20px;
+      box-shadow: var(--glow-soft); text-align: left;
+      transition: transform .4s var(--pop-ease), box-shadow .4s ease, border-color .35s ease;
+    }
+    .gs-kopf { display: flex; gap: 16px; align-items: flex-start; }
+    .geschenk h3 { font-size: clamp(21px, 2.2vw, 25px); line-height: 1.25; }
+    .gs-satz { margin-top: 10px; font-size: 16px; color: var(--t2); }
+    .gs-liste { margin: 6px 0 0 20px; display: grid; gap: 4px; font-size: 16px; color: var(--text); }
+    .gs-knopf { margin: 20px 0 0 62px; }
+    .gs-feld { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows .45s cubic-bezier(0.22, 1, 0.36, 1), opacity .35s ease, margin .45s ease; }
+    .gs-feld.is-offen { grid-template-rows: 1fr; opacity: 1; margin-top: 18px; }
+    .gs-feld[hidden] { display: none; }
+    .gs-innen { overflow: hidden; min-height: 0; }
+    .gs-form { display: grid; gap: 6px; max-width: 520px; margin-left: 62px; }
+    .gs-zeile { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .gs-zeile > div { display: grid; gap: 6px; }
+    .gs-form label { font-size: 14px; font-weight: 700; color: var(--t2); margin-top: 6px; }
+    .gs-form input {
+      width: 100%; padding: 13px 15px; border-radius: 12px; border: 1.5px solid var(--borders);
+      background: var(--bg2); color: var(--text); font: inherit; font-size: 16px; outline: none;
+    }
+    .gs-form input:focus { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(var(--accent-rgb), .18); }
+    .gs-form input[aria-invalid="true"] { border-color: #D92D20; }
+    .gs-form .btn { margin-top: 12px; justify-self: start; }
+    .gs-form .rr-klein a { color: var(--ink); font-weight: 700; }
+    .gs-form[hidden], .gs-danke[hidden] { display: none; }
+    .gs-danke { margin-left: 62px; padding: 4px 0 2px; }
+    .gs-danke:not([hidden]) { animation: rr-rein .5s ease both; }
+    .gs-danke h4 { font-family: var(--fh); font-size: 20px; line-height: 1.3; letter-spacing: -0.01em; }
+    .gs-danke h4:focus { outline: none; }
+    .gs-danke p { margin-top: 6px; color: var(--t2); }
+    @media (hover: hover) and (pointer: fine) {
+      .geschenk:hover { transform: translateY(-3px) scale(1.01); box-shadow: var(--glow-strong); border-color: rgba(var(--accent-rgb), .8); }
+    }
+    @media (max-width: 600px) {
+      .geschenk { margin-top: 48px; padding: 20px 18px; }
+      .gs-kopf { gap: 12px; }
+      .gs-knopf { margin-left: 0; width: 100%; }
+      .gs-form, .gs-danke { margin-left: 0; }
+      .gs-zeile { grid-template-columns: 1fr; gap: 0; }
+      .gs-form .btn { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) { .geschenk, .gs-feld { transition: none; } .geschenk:hover { transform: none; } .gs-danke:not([hidden]) { animation: none; } }
+    @media (max-width: 600px) { .figur-hinweis { margin: 26px 0 20px; padding: 14px 16px; font-size: 16px; gap: 12px; } .fh-icon { width: 40px; height: 40px; } }
+    .fussnote { max-width: 720px; margin: 36px auto 0; text-align: center; font-size: 15px; color: var(--muted); }
+    .band { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    /* ─── CARDS: Spotlight + Pop-Hover ─── */
+    .card {
+      background: var(--bg2);
+      border: 1.5px solid rgba(var(--accent-rgb), .35);
+      border-radius: 22px; padding: 30px;
+      box-shadow: var(--glow-soft);
+      transition: transform .4s var(--pop-ease), box-shadow .4s ease, border-color .35s ease;
+    }
+    .band .card { background: var(--bg); }
+    .card-num {
+      font-family: var(--fh); font-size: 13px; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--ink); margin-bottom: 10px;
+    }
+    .card h3 { font-size: 22px; font-weight: 800; line-height: 1.2; margin-bottom: 10px; }
+    .card p { color: var(--t2); font-size: 16px; }
+
+    /* ─── KOPF ─── */
+    .kopf { padding: 72px 32px 96px; }
+    .kopf-text { max-width: 820px; margin: 0 auto; text-align: center; }
+    .kopf h1 { font-size: clamp(36px, 5.6vw, 66px); font-weight: 800; line-height: 1.05; }
+    .kopf h1 span { color: var(--ink); }
+    .kopf .intro { max-width: 640px; margin-left: auto; margin-right: auto; font-size: 19px; }
+    .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 26px; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 14px; border-radius: 999px;
+      background: var(--bg2); border: 1px solid var(--borders);
+      font-size: 14px; font-weight: 600; color: var(--t2);
+    }
+    .chip svg { width: 15px; height: 15px; color: #E3A008; }
+    .kopf-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 30px; }
+
+    .reels {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      margin-top: 64px;
+    }
+    .reel { padding: 18px 18px 24px; display: flex; flex-direction: column; }
+    .reel-video {
+      position: relative; aspect-ratio: 9 / 16; width: 100%; max-width: 320px; margin: 0 auto;
+      border-radius: 16px; overflow: hidden; background: var(--b1);
+    }
+    .reel-video video { width: 100%; height: 100%; object-fit: cover; background: transparent; }
+    .reel-video .reel-leer {
+      position: absolute; left: 14px; right: 14px; top: 56%;
+      display: none; padding: 12px 14px; border-radius: 12px;
+      background: rgba(10, 10, 10, .78); color: #FFFFFF; font-size: 15px; font-weight: 700; line-height: 1.35; text-align: center;
+    }
+    .reel-video.ist-leer .reel-leer { display: block; }
+    .reel .card-num { margin-top: 20px; }
+    .reel h3 { font-size: 24px; }
+    .reels-hinweis { display: none; }
+
+    /* ─── STRATEGIE ─── */
+    .schritte { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; counter-reset: s; }
+    .schritte-2 { grid-template-columns: repeat(3, 1fr); margin-top: 20px; }
+    .schritt { position: relative; display: flex; flex-direction: column; }
+    .schritt-zahl {
+      width: 44px; height: 44px; border-radius: 12px; margin-bottom: 18px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--fh); font-weight: 800; font-size: 19px;
+      background: var(--green); color: var(--on-green);
+    }
+
+    /* ─── FÖRDER-CHECK ─── */
+    .check-grid {
+      display: grid; grid-template-columns: minmax(0, 440px) minmax(0, 1fr);
+      gap: 48px; align-items: start; justify-content: center;
+    }
+    .check-label {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 12px;
+      font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
+    }
+    .check-label::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--b1); }
+
+    /* Ansicht der Kunden: immer hell, in den Farben des Betriebs */
+    .kunde {
+      --k-text: #1F2933; --k-t2: #4B5563; --k-muted: #6B7280; --k-rand: #E5E7EB; --k-bg: #FFFFFF; --k-bg2: #F9FAFB;
+      background: var(--k-bg); color: var(--k-text);
+      border-radius: 26px; overflow: hidden;
+      border: 1px solid var(--borders);
+      box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .35), 0 0 0 6px var(--bg3);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      font-size: 16px; line-height: 1.5;
+      color-scheme: light;
+    }
+    .k-kopf {
+      display: flex; align-items: center; gap: 12px;
+      padding: 16px 20px; background: var(--b1); color: var(--b1-text);
+    }
+    .k-marke {
+      width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--b2); color: var(--b2-text); font-weight: 800; font-size: 15px; letter-spacing: .02em;
+    }
+    .k-name { font-weight: 700; font-size: 16px; line-height: 1.2; }
+    .k-unter { font-size: 13px; opacity: .85; }
+    .k-balken { height: 4px; background: var(--b1-hell); }
+    .k-balken span { display: block; height: 100%; width: 0; background: var(--b2); transition: width .45s ease; }
+    .k-body { padding: 26px 22px 22px; min-height: 470px; display: flex; flex-direction: column; }
+    .k-body:focus { outline: none; }
+    .k-eyebrow { font-size: 13px; font-weight: 700; color: var(--b1); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
+    .k-titel { font-size: 23px; font-weight: 800; line-height: 1.25; margin-bottom: 10px; color: var(--k-text); font-family: inherit; letter-spacing: -0.01em; }
+    .k-text { color: var(--k-t2); margin-bottom: 18px; }
+    .k-hilfe { color: var(--k-muted); font-size: 14px; margin: -2px 0 16px; }
+    .k-optionen { display: grid; gap: 10px; }
+    .k-optionen.zwei { grid-template-columns: 1fr 1fr; }
+    .k-opt {
+      width: 100%; text-align: left; justify-content: flex-start;
+      padding: 15px 16px; border-radius: 12px;
+      background: var(--k-bg); color: var(--k-text);
+      box-shadow: inset 0 0 0 1.5px var(--k-rand);
+      font-family: inherit; font-size: 16px; font-weight: 600;
+      --sweep-farbe: var(--b1); --sweep-text: var(--b1-text);
+    }
+    .k-opt.gewaehlt { box-shadow: inset 0 0 0 2px var(--b1); }
+    .k-btn {
+      width: 100%; background: var(--b1); color: var(--b1-text); font-family: inherit;
+      --sweep-farbe: var(--b1-dunkel); --sweep-text: var(--b1-text);
+      border-radius: 12px; padding: 16px 20px; font-size: 17px;
+    }
+    .k-unten { margin-top: auto; padding-top: 18px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+    .k-link {
+      background: none; border: 0; padding: 6px 2px; cursor: pointer;
+      font: inherit; font-size: 14px; font-weight: 600; color: var(--k-muted); text-decoration: underline; text-underline-offset: 3px;
+    }
+    .k-schritt { font-size: 13px; color: var(--k-muted); }
+    .k-kosten { display: grid; gap: 14px; margin-bottom: 18px; }
+    .k-feld { display: flex; align-items: center; border-radius: 12px; box-shadow: inset 0 0 0 1.5px var(--k-rand); background: var(--k-bg); }
+    .k-feld:focus-within { box-shadow: inset 0 0 0 2px var(--b1); }
+    .k-feld input {
+      flex: 1; min-width: 0; border: 0; background: transparent; padding: 14px 16px;
+      font: inherit; font-size: 20px; font-weight: 700; color: var(--k-text); outline: none;
+    }
+    .k-feld span { padding: 0 16px; font-weight: 700; color: var(--k-muted); }
+    .k-auswahl select {
+      flex: 1; min-width: 0; border: 0; background: transparent; padding: 14px 40px 14px 16px; border-radius: 12px;
+      font: inherit; font-size: 17px; font-weight: 600; color: var(--k-text); outline: none; cursor: pointer;
+      -webkit-appearance: none; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath d='M3 5l4 4 4-4' fill='none' stroke='%236B7280' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center;
+    }
+    .k-quelle { font-size: 12.5px; line-height: 1.45; color: var(--k-muted); margin: -8px 0 16px; }
+    .k-umschalter {
+      display: inline-flex; align-items: center; gap: 10px; padding: 8px 0; margin-bottom: 8px;
+      background: none; border: 0; cursor: pointer; font: inherit; font-size: 15px; font-weight: 700; color: var(--b1); text-align: left;
+    }
+    .k-haken {
+      width: 20px; height: 20px; border-radius: 6px; flex-shrink: 0;
+      box-shadow: inset 0 0 0 2px var(--b1); background: var(--k-bg);
+    }
+    .k-umschalter[aria-expanded="true"] .k-haken {
+      background: var(--b1) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath d='M3 7.5l2.5 2.5L11 4.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 14px no-repeat;
+    }
+    .k-kosten[hidden] { display: none; }
+    .k-kosten { grid-template-columns: minmax(0, 1fr); }
+    .k-kosten .k-feld { min-width: 0; }
+    .k-feld input { width: 100%; }
+    .k-label { font-size: 14px; font-weight: 600; color: var(--k-t2); }
+    .k-fern { border-left: 4px solid var(--b2); background: var(--k-bg2); border-radius: 10px; padding: 14px 16px; display: grid; gap: 8px; }
+    .k-fern p { font-size: 15px; color: var(--k-text); }
+    .k-ergebnis { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 6px 0 12px; }
+    .k-box { border-radius: 14px; padding: 14px; background: var(--k-bg2); box-shadow: inset 0 0 0 1px var(--k-rand); }
+    .k-box.jetzt { background: var(--b1-hell); box-shadow: inset 0 0 0 2px var(--b1); }
+    .k-box-label { font-size: 13px; color: var(--k-t2); font-weight: 600; }
+    .k-box-euro { font-size: 26px; font-weight: 800; line-height: 1.15; margin-top: 4px; color: var(--k-text); }
+    .k-box.jetzt .k-box-euro { color: var(--b1); }
+    .k-box-proz { font-size: 14px; color: var(--k-t2); }
+    .k-diff { font-weight: 700; margin-bottom: 10px; }
+    .k-teile { margin-bottom: 10px; font-size: 14px; color: var(--k-t2); }
+    .k-teile summary { cursor: pointer; font-weight: 700; color: var(--b1); padding: 4px 0; }
+    .k-teile ul { margin: 8px 0 0 18px; display: grid; gap: 4px; }
+    .k-hinweis { font-size: 13px; color: var(--k-muted); padding: 10px 12px; border-radius: 10px; background: var(--k-bg2); margin-bottom: 16px; }
+    .k-mail { border-top: 1px solid var(--k-rand); padding-top: 16px; display: grid; gap: 10px; }
+    .k-mail-satz { font-weight: 700; }
+    .k-mail label { font-size: 14px; font-weight: 600; color: var(--k-t2); }
+    .k-mail input {
+      width: 100%; border: 0; border-radius: 12px; padding: 14px 16px; font: inherit; font-size: 16px;
+      color: var(--k-text); background: var(--k-bg); box-shadow: inset 0 0 0 1.5px var(--k-rand); outline: none;
+    }
+    .k-mail input:focus { box-shadow: inset 0 0 0 2px var(--b1); }
+    .k-demo { font-size: 13px; color: var(--k-muted); }
+    .k-fehler { font-size: 14px; color: #B42318; font-weight: 600; }
+    .k-fertig-icon {
+      width: 64px; height: 64px; border-radius: 50%; margin-bottom: 18px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--b1-hell); color: var(--b1);
+    }
+    .k-fertig-icon svg { width: 32px; height: 32px; }
+    .k-fuss { padding: 10px 20px 14px; font-size: 12px; color: var(--k-muted); border-top: 1px solid var(--k-rand); background: var(--k-bg2); }
+
+    /* Erklärung für den Betrieb */
+    .erklaer { position: sticky; top: 96px; }
+    .erklaer .card { padding: 32px; }
+    .erklaer-titel { font-size: 24px; margin-bottom: 12px; }
+    .erklaer-text { font-size: 17px; color: var(--t2); }
+    .erklaer-text p + p { margin-top: 10px; }
+    .stufen { list-style: none; margin-top: 26px; display: grid; gap: 8px; }
+    .stufen li {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 15px; font-weight: 600; color: var(--muted);
+    }
+    .stufen li::before {
+      content: attr(data-n); width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--fh); font-size: 13px; font-weight: 800;
+      background: var(--bg3); color: var(--muted);
+    }
+    .stufen li.aktiv { color: var(--text); }
+    .stufen li.aktiv::before { background: var(--green); color: var(--on-green); }
+    .stufen li.fertig::before { background: rgba(var(--accent-rgb), .22); color: var(--ink); }
+    .erklaer-link { display: none; margin-top: 22px; }
+    .erklaer-link.zeigen { display: inline-flex; }
+
+    /* Mail-Vorschau */
+    .mail-bereich { margin-top: 72px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); gap: 40px; align-items: start; }
+    .mail-bereich[hidden] { display: none; }
+    .mailfenster {
+      border-radius: 18px; overflow: hidden; border: 1px solid var(--borders);
+      background: #FFFFFF; color: #1F2933; color-scheme: light;
+      box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .35);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    .mf-leiste { display: flex; align-items: center; gap: 7px; padding: 12px 16px; background: #F3F4F6; border-bottom: 1px solid #E5E7EB; }
+    .mf-leiste i { width: 11px; height: 11px; border-radius: 50%; background: #D1D5DB; }
+    .mf-leiste span { margin-left: 10px; font-size: 13px; font-weight: 600; color: #6B7280; }
+    .mf-leiste b { margin-left: auto; font-size: 12px; font-weight: 700; color: #6B7280; text-transform: uppercase; letter-spacing: .1em; }
+    .mf-kopf { padding: 18px 20px 14px; border-bottom: 1px solid #E5E7EB; }
+    .mf-betreff { font-size: 20px; font-weight: 700; margin-bottom: 12px; line-height: 1.3; }
+    .mf-von { display: flex; align-items: center; gap: 12px; }
+    .mf-avatar {
+      width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--b1); color: var(--b1-text); font-weight: 800; font-size: 14px;
+    }
+    .mf-von-name { font-weight: 700; font-size: 15px; }
+    .mf-von-an { font-size: 14px; color: #6B7280; word-break: break-all; }
+    .mf-anhang {
+      display: inline-flex; align-items: center; gap: 10px; margin: 14px 20px 0;
+      padding: 9px 14px; border-radius: 10px; border: 1px solid #E5E7EB; background: #F9FAFB;
+      font-size: 14px; font-weight: 600; color: #374151;
+    }
+    .mf-anhang svg { width: 26px; height: 30px; }
+    .mf-anhang small { display: block; font-size: 12px; font-weight: 500; color: #6B7280; }
+    .mf-inhalt { display: block; width: 100%; height: 640px; border: 0; margin-top: 8px; background: #F3F4F6; }
+    .mail-hinweis h3 { font-size: 26px; line-height: 1.2; margin-bottom: 12px; }
+    .mail-hinweis p { color: var(--t2); }
+    .mail-hinweis p + p { margin-top: 10px; }
+
+    /* ─── NACH DEM CHECK ─── */
+    .danach-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    /* ─── ANRISS ─── */
+    .abschluss-kopf { max-width: 760px; margin: 0 auto; text-align: center; }
+    .abschluss-kopf p { color: var(--t2); font-size: 18px; margin-top: 16px; }
+    .abschluss-kopf p strong { color: var(--text); font-weight: 700; }
+    .abschluss-kopf .einladung {
+      margin-top: 28px; padding: 20px 26px; border-radius: 20px; font-size: 22px; line-height: 1.45; color: var(--text);
+      background: rgba(var(--accent-rgb), .10); border: 2px solid rgba(var(--accent-rgb), .75); box-shadow: var(--glow-strong);
+    }
+    .paket-titel { margin: 0; font-family: var(--fh); font-size: clamp(26px, 3vw, 34px); font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
+    @media (max-width: 600px) { .abschluss-kopf .einladung { font-size: 19px; padding: 16px 18px; } }
+    .paket-rahmen {
+      max-width: 1080px; margin: 44px auto 0; padding: 30px 30px 34px; border-radius: 28px;
+      background: var(--bg2);
+      border: 2px solid rgba(var(--accent-rgb), .75);
+      box-shadow: var(--glow-strong);
+      text-align: center;
+    }
+    .leistungen-label {
+      font-size: 13px; font-weight: 700; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--ink);
+    }
+    .leistungen-hilfe { margin: 6px 0 18px; font-size: 15px; color: var(--muted); }
+    .leistungen { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: left; align-items: start; }
+    .leistung {
+      border-radius: 18px; background: linear-gradient(160deg, #123E33 0%, #0B201B 100%);
+      border: 1.5px solid rgba(var(--accent-rgb), .45);
+      box-shadow: var(--glow-soft);
+      transition: transform .4s var(--pop-ease), box-shadow .4s ease, border-color .35s ease;
+    }
+    .leistung h3 { margin: 0; font: inherit; }
+    /* Inneres im Stil der Marktführer-Karte auf monetascale.de (Petrol, grüne Icon-Quadrate) */
+    .paket-rahmen {
+      background:
+        radial-gradient(110% 85% at 0% 0%, rgba(101,200,61,.17) 0%, transparent 55%),
+        radial-gradient(70% 60% at 100% 100%, rgba(101,200,61,.08) 0%, transparent 60%),
+        linear-gradient(150deg, #0E3A37 0%, #0A1D1C 52%, #111111 100%);
+    }
+    .paket-rahmen .paket-titel { color: #FFFFFF; }
+    .paket-rahmen .leistungen-hilfe { color: #B8B8B8; }
+    .paket-rahmen .pakete-link { color: #B8B8B8; }
+    .paket-rahmen .pakete-link a { color: #84E55A; }
+    .leistungen { align-items: stretch; }
+    .leistungen:not(:has(.ist-offen)) { grid-auto-rows: 1fr; }
+    .leistung.leistung { background: rgba(10,10,10,.42); border: 1px solid rgba(101,200,61,.28); border-radius: 16px; box-shadow: none; }
+    .leistung .lk-knopf { grid-template-columns: auto 1fr auto; column-gap: 12px; align-items: center; color: #FFFFFF; padding: 20px 20px 18px; }
+    .leistung .lk-icon { grid-column: 1; grid-row: 1 / span 2; width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; background: rgba(101,200,61,.14); color: #65C83D; }
+    .leistung .lk-icon svg { width: 20px; height: 20px; overflow: visible; }
+    /* Animierte Icons: dezent, versetzt; schneller bei Hover/Fokus der Kachel */
+    .lk-icon svg * { transform-box: fill-box; transform-origin: center; }
+    .a-rec { animation: a-rec 1.6s ease-in-out infinite; }
+    @keyframes a-rec { 0%, 100% { opacity: 1; } 50% { opacity: .15; } }
+    .a-w1, .a-w2 { animation: a-welle 2s ease-in-out infinite; }
+    .a-w2 { animation-delay: .25s; }
+    @keyframes a-welle { 0%, 100% { opacity: .25; } 40% { opacity: 1; } }
+    .a-play { animation: a-play 2.2s cubic-bezier(.34,1.56,.64,1) infinite; }
+    @keyframes a-play { 0%, 70%, 100% { transform: scale(1); } 35% { transform: scale(1.35); } }
+    .a-such { animation: a-such 3.2s ease-in-out infinite; }
+    @keyframes a-such { 0%, 100% { transform: translate(0, 0); } 25% { transform: translate(1.5px, -1px); } 50% { transform: translate(0, -2px); } 75% { transform: translate(-1.5px, -1px); } }
+    .a-mail { animation: a-mail 2.6s ease-in-out infinite; }
+    @keyframes a-mail { 0%, 60%, 100% { transform: translateY(0) rotate(0); } 70% { transform: translateY(-2.5px) rotate(-6deg); } 80% { transform: translateY(0) rotate(4deg); } 90% { transform: translateY(-1px) rotate(0); } }
+    .a-dot { animation: a-tipp 1.4s ease-in-out infinite; }
+    .a-d2 { animation-delay: .18s; } .a-d3 { animation-delay: .36s; }
+    @keyframes a-tipp { 0%, 60%, 100% { transform: translateY(0); opacity: .45; } 30% { transform: translateY(-2.2px); opacity: 1; } }
+    .leistung:hover .lk-icon svg *, .lk-knopf:focus-visible .lk-icon svg * { animation-duration: 1s; }
+    .leistung:hover .lk-icon, .lk-knopf:focus-visible .lk-icon { background: rgba(101,200,61,.24); }
+    @media (prefers-reduced-motion: reduce) { .lk-icon svg * { animation: none !important; } }
+    .leistung .lk-titel { grid-column: 2; grid-row: 1; color: #FFFFFF; }
+    .leistung .lk-tag { grid-column: 2; grid-row: 2; margin-top: 2px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #B8B8B8; }
+    .leistung .lk-kurz { grid-column: 1 / -1; grid-row: 3; margin-top: 12px; font-size: 14px; line-height: 1.6; color: #B8B8B8; }
+    .leistung .lk-zeichen { grid-column: 3; grid-row: 1 / span 2; align-self: center; background: rgba(255,255,255,.10); }
+    .leistung .lk-zeichen::before, .leistung .lk-zeichen::after { background: #FFFFFF; }
+    .leistung .lk-knopf[aria-expanded="true"] .lk-zeichen { background: #65C83D; }
+    .leistung .lk-knopf[aria-expanded="true"] .lk-zeichen::before { background: #0A0A0A; }
+    .leistung .lk-klein { color: #9AA8A1; }
+    .leistung .lk-innen ul { border-top-color: rgba(255,255,255,.12); }
+    .leistung .lk-innen li { color: #D9E2DD; }
+    .lk-knopf {
+      width: 100%; display: grid; grid-template-columns: 1fr auto; column-gap: 12px; align-items: start;
+      padding: 18px 20px; border: 0; border-radius: 18px; background: none; cursor: pointer;
+      text-align: left; color: var(--text); font: inherit;
+    }
+    .lk-titel { font-family: var(--fh); font-size: 18px; font-weight: 800; line-height: 1.25; letter-spacing: -0.015em; }
+    .lk-kurz { grid-column: 1; margin-top: 6px; font-size: 15px; line-height: 1.5; color: var(--t2); }
+    .lk-name { grid-column: 1; grid-row: 1; margin-bottom: 4px; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); }
+    .lk-name + .lk-titel { grid-column: 1; grid-row: 2; }
+    .lk-klein { margin: -8px 20px 16px; font-size: 13px; line-height: 1.45; color: var(--muted); }
+    .lk-zeichen {
+      grid-column: 2; grid-row: 1 / span 2; width: 30px; height: 30px; border-radius: 50%;
+      background: rgba(var(--accent-rgb), .16); position: relative; transition: transform .35s var(--pop-ease), background .3s ease;
+    }
+    .lk-zeichen::before, .lk-zeichen::after {
+      content: ""; position: absolute; left: 50%; top: 50%; width: 12px; height: 2px; border-radius: 2px;
+      background: var(--ink); transform: translate(-50%, -50%);
+    }
+    .lk-zeichen::after { transform: translate(-50%, -50%) rotate(90deg); transition: opacity .25s ease; }
+    .lk-knopf[aria-expanded="true"] .lk-zeichen { transform: rotate(180deg); background: var(--green); }
+    .lk-knopf[aria-expanded="true"] .lk-zeichen::before { background: var(--on-green); }
+    .lk-knopf[aria-expanded="true"] .lk-zeichen::after { opacity: 0; }
+    .lk-mehr {
+      display: grid; grid-template-rows: 0fr; visibility: hidden;
+      transition: grid-template-rows .4s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear .4s;
+    }
+    .lk-mehr.offen { grid-template-rows: 1fr; visibility: visible; transition: grid-template-rows .4s cubic-bezier(0.22, 1, 0.36, 1), visibility 0s; }
+    .lk-innen { overflow: hidden; min-height: 0; }
+    .lk-innen ul { list-style: none; margin: 0 20px 18px; padding-top: 12px; border-top: 1px solid var(--border); display: grid; gap: 8px; }
+    .lk-innen li { position: relative; padding-left: 18px; font-size: 15px; line-height: 1.5; color: var(--t2); }
+    .lk-innen li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+    .leistung.ist-offen { border-color: rgba(var(--accent-rgb), .8); }
+    .abschluss-cta { margin-top: 30px; display: flex; flex-direction: column; align-items: center; }
+    .pakete-link { margin-top: 14px; font-size: 15px; color: var(--muted); }
+    .pakete-link a { color: var(--ink); font-weight: 700; text-underline-offset: 3px; }
+    .abschluss .rr-feld { max-width: 520px; }
+    @media (hover: hover) and (pointer: fine) {
+      .leistung:hover { transform: translateY(-3px) scale(1.015); border-color: rgba(var(--accent-rgb), .8); box-shadow: var(--glow-strong); }
+    }
+    @media (max-width: 900px) { .leistungen { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) {
+      .paket-rahmen { padding: 22px 14px 26px; border-radius: 22px; }
+      .leistungen { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .leistung, .lk-mehr, .lk-zeichen { transition: none; }
+      .leistung:hover { transform: none; }
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 30px 32px; border-top: 1px solid var(--border);
+      display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;
+      font-size: 14px; color: var(--muted);
+    }
+    footer nav { display: flex; gap: 22px; }
+    footer a { text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    /* ─── HAUPT-AUFRUF: 90-Tage-Plan + Rückruf zum Aufklappen ─── */
+    .btn-gross { padding: 19px 34px; font-size: 18px; border-radius: 16px; text-align: center; max-width: 100%; }
+    .rr-karte a { color: var(--ink); font-weight: 700; text-underline-offset: 3px; }
+    .chip-link { text-decoration: none; color: var(--ink); }
+    a[href^="tel:"] { white-space: nowrap; }
+    .reel-frage { margin-top: auto; padding-top: 16px; font-size: 15px; color: var(--t2); border-top: 1px solid var(--border); }
+    .reel > p:not(.reel-frage) { margin-bottom: 14px; }
+    .link-knopf {
+      display: inline; padding: 0; border: 0; background: none; cursor: pointer;
+      font: inherit; font-weight: 700; color: var(--ink); text-decoration: underline; text-underline-offset: 3px;
+    }
+    .link-knopf[aria-expanded="true"] { text-decoration-thickness: 2px; }
+    .beispiel-karte { max-width: 760px; margin: 0 auto; }
+    .beispiel-text { font-size: 19px; color: var(--text); }
+    .beispiel-quelle { margin-top: 12px; font-size: 14px; color: var(--muted); }
+
+    /* Rückruf-Feld: klappt unter dem Knopf auf (Muster: Exposé-Feld der Seite des Altes Hafen-Zollamts).
+       Höhe über grid-template-rows 0fr → 1fr, dazu Deckkraft. Es gibt nur ein Feld, es wandert zum Knopf. */
+    .rr-feld {
+      width: 100%; max-width: 480px; margin: 0 auto;
+      display: grid; grid-template-rows: 0fr; opacity: 0;
+      transition: grid-template-rows .45s cubic-bezier(0.22, 1, 0.36, 1), opacity .35s ease, margin .45s ease;
+      text-align: left;
+    }
+    .rr-feld.is-offen { grid-template-rows: 1fr; opacity: 1; margin-top: 16px; }
+    .rr-feld[hidden] { display: none; }
+    .rr-innen { overflow: hidden; min-height: 0; }
+    .rr-feld.ganz-offen .rr-innen { overflow: visible; }   /* nach dem Aufklappen: Leuchten der Karte nicht abschneiden */
+    .reel .rr-feld { max-width: none; }
+    html.rr-klappt { overflow-anchor: none; }
+    .rr-karte {
+      background: var(--bg2); color: var(--text); border-radius: 18px;
+      box-shadow: inset 0 0 0 1.5px rgba(var(--accent-rgb), .5), 0 18px 40px -24px rgba(0, 0, 0, .35);
+    }
+    .band .rr-karte, .reel .rr-karte { background: var(--bg); }
+    .rr-kopf {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 10px 10px 10px 20px; border-bottom: 1px solid rgba(var(--accent-rgb), .25);
+      font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--ink);
+    }
+    .rr-zu {
+      flex: none; width: 38px; height: 38px; border: 0; border-radius: 50%; cursor: pointer;
+      background: transparent; color: var(--t2);
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .rr-zu svg { width: 18px; height: 18px; }
+    .rr-zu:hover, .rr-zu:focus-visible { background: var(--bg3); color: var(--text); }
+    .rr-karte form, .rr-danke { padding: 16px 20px 20px; }
+    .rr-karte form { display: grid; gap: 6px; }
+    .rr-karte form[hidden] { display: none; }
+    .rr-karte label { font-size: 14px; font-weight: 700; color: var(--t2); margin-top: 6px; }
+    .rr-karte label span { font-weight: 500; color: var(--muted); }
+    .rr-karte input {
+      width: 100%; padding: 13px 15px; border-radius: 12px; border: 1.5px solid var(--borders);
+      background: var(--bg2); color: var(--text); font: inherit; font-size: 16px; outline: none;
+    }
+    .rr-karte input:focus { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(var(--accent-rgb), .18); }
+    .rr-karte input[aria-invalid="true"] { border-color: #D92D20; }
+    .rr-karte .btn { margin-top: 12px; width: 100%; }
+    .rr-klein { font-size: 13.5px; color: var(--muted); margin-top: 6px; }
+    .rr-fehler { font-size: 15px; font-weight: 600; color: #D92D20; }
+    .rr-danke h3 { font-size: 22px; margin-bottom: 8px; }
+    .rr-danke h3:focus { outline: none; }
+    .rr-danke p { color: var(--t2); }
+    .rr-hilfe { font-size: 13.5px; color: var(--muted); margin-top: -2px; }
+    .rr-frage[hidden], .rr-danke[hidden], .rr-kontakt[hidden], .rr-mailweg[hidden], .rr-nummer[hidden] { display: none; }
+    .rr-mailweg { padding: 18px 20px 22px; display: grid; gap: 8px; }
+    .rr-mailweg h3 { font-size: 21px; line-height: 1.3; margin-bottom: 6px; }
+    .rr-mailweg h3:focus { outline: none; }
+    .rr-mailweg label, .rr-nummer label { font-size: 14px; font-weight: 700; color: var(--t2); }
+    .rr-mailweg label span { font-weight: 500; color: var(--muted); }
+    .rr-karte textarea {
+      width: 100%; padding: 13px 15px; border-radius: 12px; border: 1.5px solid var(--borders);
+      background: var(--bg2); color: var(--text); font: inherit; font-size: 16px; outline: none; resize: vertical;
+    }
+    .rr-karte textarea:focus { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(var(--accent-rgb), .18); }
+    .rr-mailweg .btn { margin-top: 8px; width: 100%; }
+    .rr-nummer { display: grid; gap: 8px; margin-top: 16px; }
+    .rr-nummer .btn { margin-top: 4px; width: 100%; }
+    .rr-wahl .btn[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--text); }
+    .rr-frage, .rr-danke { padding: 18px 20px 22px; }
+    .rr-frage h3 { font-size: 22px; line-height: 1.25; margin-bottom: 6px; }
+    .rr-frage h3:focus, .kk-name:focus { outline: none; }
+    .rr-frage-tel { color: var(--t2); margin-bottom: 16px; }
+    .rr-frage-tel span { font-weight: 700; color: var(--text); white-space: nowrap; }
+    .rr-wahl { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .rr-wahl .btn { margin: 0; width: 100%; padding: 15px 14px; }
+    .rr-zurueck { margin-top: 14px; font-size: 14px; color: var(--muted); }
+    .rr-kontakt { padding: 26px 22px 24px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .rr-kontakt:not([hidden]), .rr-danke:not([hidden]) { animation: rr-rein .5s ease both; }
+    @keyframes rr-rein { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    .rr-karte.ist-kontakt {
+      box-shadow: var(--glow-soft); border: 1.5px solid rgba(var(--accent-rgb), .45);
+      transition: transform .4s var(--pop-ease), box-shadow .4s ease, border-color .35s ease;
+    }
+    .kk-foto {
+      width: 96px; height: 96px; border-radius: 50%; object-fit: cover;
+      box-shadow: 0 0 0 3px var(--bg2), 0 0 0 5px rgba(var(--accent-rgb), .7);
+      margin-bottom: 14px;
+    }
+    .kk-name { font-size: 22px; line-height: 1.2; }
+    .kk-firma { font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); margin-top: 4px; }
+    .kk-text { color: var(--t2); margin: 14px 0 12px; max-width: 360px; }
+    .kk-tel { font-family: var(--fh); font-size: 26px; font-weight: 800; letter-spacing: -0.01em; color: var(--text); text-decoration: none; margin-bottom: 16px; }
+    .kk-tel:hover { color: var(--ink); }
+    .rr-karte .kk-speichern { width: auto; margin-top: 0; }
+    @media (hover: hover) and (pointer: fine) {
+      .rr-karte.ist-kontakt:hover { transform: translateY(-3px) scale(1.01); box-shadow: var(--glow-strong); border-color: rgba(var(--accent-rgb), .8); }
+    }
+    @media (max-width: 400px) {
+      .rr-wahl { grid-template-columns: 1fr; }
+      .kk-tel { font-size: 23px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .rr-feld { transition: none; }
+      .rr-kontakt:not([hidden]), .rr-danke:not([hidden]) { animation: none; }
+      .rr-karte.ist-kontakt { transition: none; }
+    }
+    @media (max-width: 760px) {
+      .reel .rr-karte form, .reel .rr-danke { padding: 14px 14px 16px; }
+      .reel .rr-kopf { padding-left: 14px; }
+    }
+
+    /* ─── HOVER nur mit Maus ─── */
+    @media (hover: hover) and (pointer: fine) {
+      .btn:hover::after { transform: skewX(-45deg) scale(1, 1); }
+      .btn:hover { color: var(--sweep-text); }
+      .card:hover { transform: var(--pop-lift); border-color: rgba(var(--accent-rgb), .8); box-shadow: var(--glow-strong); }
+      .modus:hover { border-color: var(--ink); transform: scale(1.06); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1080px) {
+      .schritte { grid-template-columns: repeat(2, 1fr); }
+      .danach-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 900px) {
+      .check-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+      .check-spalte { max-width: 460px; width: 100%; margin: 0 auto; }
+      .erklaer { position: static; max-width: 460px; width: 100%; margin: 0 auto; }
+      .mail-bereich { grid-template-columns: minmax(0, 1fr); }
+      .mail-hinweis { order: -1; }
+    }
+    @media (max-width: 760px) {
+      .s-pad { padding: 76px 20px; }
+      .kopf { padding: 48px 20px 72px; }
+      .nav { padding: 0 16px; height: 62px; }
+      .nav-fuer { display: none; }
+      .logo img { height: 26px; }
+      .logo-wort { font-size: 17px; }
+      .reels {
+        grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 80%;
+        overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+        margin: 44px -20px 0; padding: 8px 20px 18px; gap: 14px; scroll-padding: 0 20px;
+      }
+      .reel { scroll-snap-align: start; padding: 12px 12px 20px; }
+      .reels-hinweis { display: block; text-align: center; font-size: 14px; color: var(--muted); margin-top: 4px; }
+      .schritte { grid-template-columns: 1fr; }
+      .card { padding: 26px 22px; }
+      .k-body { padding: 22px 18px 18px; min-height: 440px; }
+      .k-box-euro { font-size: 22px; }
+      footer { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 380px) {
+      .k-optionen.zwei { grid-template-columns: 1fr; }
+      .k-ergebnis { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .card, .btn, .modus { transition: none; }
+      .card:hover { transform: none; }
+      .btn::after { transition: none; animation: none; }
+      .k-balken span { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <a class="logo" href="https://monetascale.de/" aria-label="MonetaScale, zur Startseite">
+      <img class="logo-hell" src="../assets/lp/ms-zeichen-hell.svg" alt="" width="61" height="30">
+      <img class="logo-dunkel" src="../brand/ms-zeichen.svg" alt="" width="61" height="30">
+      <span class="logo-wort">Moneta<span>Scale</span></span>
+    </a>
+    <div class="nav-rechts">
+      <span class="nav-fuer">Für {{kurzname}}</span>
+      <button class="modus" id="modusKnopf" type="button" aria-label="Dunkle Ansicht" aria-pressed="false">
+        <svg class="sonne" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+        <svg class="mond" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ══════ 1 · KOPF + REELS ══════ -->
+    <section class="kopf" id="reels" aria-labelledby="kopfTitel">
+      <div class="s-in">
+        <div class="kopf-text">
+          <div class="eyebrow">Drei Reels · fertig gebaut</div>
+          <h1 id="kopfTitel">Für {{kurzname}} in <span>{{ort}}</span></h1>
+          <p class="intro">Am 01.02.2027 sinkt die Förderung. Diese Frist ist ein großer Hebel für Ihr Marketing. Für Hausbesitzer ist sie der stärkste Grund, jetzt anzufragen. Die 3 Videos unten sind Beispiele. So kann das aussehen.</p>
+          {{#chips}}<div class="chips">
+            {{#report}}<a class="chip chip-link" href="{{report_link}}">Ihr Markt-Report ansehen</a>{{/report}}
+          </div>{{/chips}}
+        </div>
+
+        <div class="figur-hinweis" role="note">
+          <span class="fh-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></span>
+          <p><strong>Hier spricht noch eine gezeichnete Figur.</strong> Auf dem Shirt steht schon Ihr Name, im Bild sehen Sie Ihre Farben. Später spricht hier jemand aus Ihrem Team. Will sich niemand zeigen? Dann gibt es eine eigene Figur, die man sofort wiedererkennt.</p>
+        </div>
+
+        <div class="reels">
+{{{reels}}}
+        </div>
+        <p class="reels-hinweis">Zur Seite wischen für Reel 2 und 3</p>
+      </div>
+    </section>
+
+    <!-- ══════ 2 · STRATEGIE ══════ -->
+    <section class="s-pad band" id="strategie" aria-labelledby="strategieTitel">
+      <div class="s-in">
+        <div class="s-kopf">
+          <div class="eyebrow">Die Strategie</div>
+          <h2 id="strategieTitel">Vom Video bis zum Termin.</h2>
+          <p class="intro">Die Reels verkaufen nicht. Sie zeigen Zahlen, die Hausbesitzer betreffen. Den Rest machen der Förder-Check und eine kluge Mail-Folge.</p>
+        </div>
+        <div class="schritte">
+          <div class="card schritt">
+            <span class="schritt-zahl">1</span>
+            <h3>Zahlen sehen</h3>
+            <p>Hausbesitzer sehen echte Zahlen: Heizkosten, Förderung und den Stichtag 1. Februar 2027.</p>
+          </div>
+          <div class="card schritt">
+            <span class="schritt-zahl">2</span>
+            <h3>Auf den Link tippen</h3>
+            <p>Jedes Reel endet mit der Frage: Wie viel bekommen Sie? Der Link steht im Profil.</p>
+          </div>
+          <div class="card schritt">
+            <span class="schritt-zahl">3</span>
+            <h3>Den Check machen</h3>
+            <p>Ein paar kurze Fragen zum Haus. Dann steht die Förderung in Euro da. Der Check kostet nichts.</p>
+          </div>
+          <div class="card schritt">
+            <span class="schritt-zahl">4</span>
+            <h3>Zur Anfrage werden</h3>
+            <p>Für das PDF gibt der Hausbesitzer seine Mail-Adresse. So kommt er bei Ihnen an. Heizung, Haus und Kosten kennen Sie dann schon.</p>
+          </div>
+        </div>
+        <div class="schritte schritte-2">
+          <div class="card schritt">
+            <span class="schritt-zahl">5</span>
+            <h3>Sofort antworten</h3>
+            <p>Das PDF mit dem Ergebnis geht sofort raus, in Ihrem Namen. Der Kunde denkt gerade an sein Haus. Genau dann hört er von Ihnen.</p>
+          </div>
+          <div class="card schritt">
+            <span class="schritt-zahl">6</span>
+            <h3>Klug nachfassen</h3>
+            <p>Nicht jeder entscheidet sofort. Eine Folge von Mails beantwortet Fragen und erinnert an den Stichtag. Das läuft von allein.</p>
+          </div>
+          <div class="card schritt">
+            <span class="schritt-zahl">7</span>
+            <h3>Termin vor Ort</h3>
+            <p>Am Ende steht ein Termin vor Ort. Haus, Heizung und Förderung kennen Sie schon vorher. Jede Mail zielt auf ein klares Ja oder Nein.</p>
+          </div>
+        </div>
+        <p class="fussnote">Warum das wirkt: Jedes Reel beginnt bei der Lage des Zuschauers. Der Stichtag gibt einen Grund, jetzt zu handeln. Und der Check gibt etwas zurück, bevor jemand anruft.</p>
+      </div>
+    </section>
+
+    <!-- ══════ 3 · FÖRDER-CHECK ══════ -->
+    <section class="s-pad" id="check" aria-labelledby="checkTitel">
+      <div class="s-in">
+        <div class="s-kopf">
+          <div class="eyebrow">Ihr Förder-Check</div>
+          <h2 id="checkTitel">So sehen Ihre Kunden den Check.</h2>
+          <p class="intro">Probieren Sie ihn selbst aus. Er trägt Ihren Namen und Ihre Farben. Zu jedem Schritt gibt es eine kurze Erklärung.</p>
+        </div>
+
+        <div class="check-grid">
+          <div class="check-spalte">
+            <div class="check-label">Ansicht Ihrer Kunden</div>
+            <div class="kunde" id="kunde">
+              <div class="k-kopf">
+                <span class="k-marke" aria-hidden="true">{{initialen}}</span>
+                <div>
+                  <div class="k-name">{{name}}</div>
+                  <div class="k-unter">Förder-Check Wärmepumpe</div>
+                </div>
+              </div>
+              <div class="k-balken" aria-hidden="true"><span id="kBalken"></span></div>
+              <div class="k-body" id="kBody" tabindex="-1" aria-live="polite"></div>
+              <div class="k-fuss">Stand: KfW-Merkblatt 458, 09/2026. Schätzung, keine Zusage.</div>
+            </div>
+          </div>
+
+          <aside class="erklaer" aria-labelledby="erklaerTitel">
+            <div class="card">
+              <div class="eyebrow">Was hier passiert und warum</div>
+              <h3 class="erklaer-titel" id="erklaerTitel">Der Einstieg</h3>
+              <div class="erklaer-text" id="erklaerText" aria-live="polite"></div>
+              <ol class="stufen" id="stufen" aria-label="Ablauf des Checks">
+                <li data-n="1" data-stufe="1">Einstieg</li>
+                <li data-n="2" data-stufe="2">Fragen zum Haus</li>
+                <li data-n="3" data-stufe="3">Fragen zum Geld</li>
+                <li data-n="4" data-stufe="4">Ergebnis</li>
+                <li data-n="5" data-stufe="5">PDF per Mail</li>
+              </ol>
+              <a class="btn btn-rand erklaer-link" id="zurMail" href="#mail">Zur Mail-Vorschau</a>
+            </div>
+          </aside>
+        </div>
+
+        <div class="mail-bereich" id="mail" hidden>
+          <div class="mailfenster" aria-label="Vorschau der Mail">
+            <div class="mf-leiste" aria-hidden="true"><i></i><i></i><i></i><span>Posteingang</span><b>Vorschau</b></div>
+            <div class="mf-kopf">
+              <div class="mf-betreff" id="mfBetreff"></div>
+              <div class="mf-von">
+                <span class="mf-avatar" aria-hidden="true">{{initialen}}</span>
+                <div>
+                  <div class="mf-von-name">{{name}}</div>
+                  <div class="mf-von-an">an <span id="mfAn"></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="mf-anhang">
+              <svg viewBox="0 0 26 30" aria-hidden="true"><path d="M3 1h14l8 8v18a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2Z" fill="#FEE4E2" stroke="#D92D20" stroke-width="1.5"/><path d="M17 1v8h8" fill="none" stroke="#D92D20" stroke-width="1.5"/><text x="13" y="23" text-anchor="middle" font-size="7" font-weight="700" fill="#D92D20" font-family="Arial, sans-serif">PDF</text></svg>
+              <span><span id="mfDatei"></span><small>PDF-Anhang</small></span>
+            </div>
+            <iframe class="mf-inhalt" id="mfInhalt" title="Text der Mail" sandbox="allow-same-origin"></iframe>
+          </div>
+          <div class="mail-hinweis">
+            <div class="eyebrow">Die Mail dazu</div>
+            <h3>So käme die Mail bei Ihrem Kunden an.</h3>
+            <p>In dieser Vorschau geht keine Mail raus. Im echten Check geht sie sofort raus, im Namen von {{name}}.</p>
+            <p>Das PDF hängt an. Der nächste Schritt steht gleich darin: ein Termin bei Ihnen.</p>
+          </div>
+        </div>
+
+        <!-- Förder-Check geschenkt: zweites Angebot neben dem Gespräch ganz unten -->
+        <div class="geschenk" id="geschenk" role="region" aria-labelledby="geschenkTitel">
+          <div class="gs-kopf">
+            <span class="fh-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-1.5-3-5-4-5-1.5S10 8 12 8Zm0 0c1.5-3 5-4 5-1.5S14 8 12 8Z"/></svg></span>
+            <div>
+              <h3 id="geschenkTitel">Diesen Förder-Check können Sie übrigens geschenkt haben.</h3>
+              <p class="gs-satz">Dazu gehört:</p>
+              <ul class="gs-liste">
+                <li>eine eigene Check-Seite mit Ihrem Namen und Ihren Farben</li>
+                <li>ein Link für Ihr Profil und Ihre Website</li>
+              </ul>
+            </div>
+          </div>
+          <button type="button" class="btn btn-gruen gs-knopf" id="gsKnopf" aria-expanded="false" aria-controls="gsFeld">Förder-Check sichern
+            <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="gs-feld" id="gsFeld" hidden>
+            <div class="gs-innen">
+              <form class="gs-form" id="gsForm" action="https://formspree.io/f/xwvjoeak" method="POST" novalidate>
+                <div class="gs-zeile">
+                  <div><label for="gsVorname">Vorname</label><input id="gsVorname" name="vorname" type="text" autocomplete="given-name" maxlength="80" required></div>
+                  <div><label for="gsNachname">Nachname</label><input id="gsNachname" name="nachname" type="text" autocomplete="family-name" maxlength="80" required></div>
+                </div>
+                <label for="gsMail">E-Mail</label>
+                <input id="gsMail" name="email" type="email" autocomplete="email" inputmode="email" maxlength="160" required>
+                <input type="hidden" name="anliegen" value="foerdercheck-geschenk">
+                <input type="hidden" name="quelle" value="{{slug}} · Förder-Check geschenkt">
+                <input type="hidden" name="_subject" value="Förder-Check geschenkt: {{name}}">
+                <p class="rr-fehler" id="gsFehler" role="alert" hidden></p>
+                <button class="btn btn-gruen" type="submit" id="gsAbsenden">Absenden
+                  <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <p class="rr-klein">Ihre Angaben gehen über Formspree an MonetaScale. Wir nutzen sie nur für Ihren Förder-Check. <a href="../datenschutz.html">Datenschutz</a></p>
+              </form>
+              <div class="gs-danke" id="gsDanke" hidden>
+                <h4 tabindex="-1" id="gsDankeTitel"></h4>
+                <p>Sie hören von uns, sobald wir Ihre Nachricht gesehen haben.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {{#beispiel}}
+    <!-- ══════ KUNDENBEISPIEL (nur mit Feld „beispiel“ in betriebe.json) ══════ -->
+    <section class="s-pad" id="beispiel" aria-labelledby="beispielTitel">
+      <div class="s-in">
+        <div class="s-kopf">
+          <div class="eyebrow">Aus der Praxis</div>
+          <h2 id="beispielTitel">So läuft es bei Betrieben wie Ihrem</h2>
+        </div>
+        <div class="card beispiel-karte">
+          <div class="card-num">{{beispiel_wer}}</div>
+          <p class="beispiel-text">{{beispiel_text}}</p>
+          {{#beispiel_quelle}}<p class="beispiel-quelle">{{beispiel_quelle}}</p>{{/beispiel_quelle}}
+        </div>
+      </div>
+    </section>
+    {{/beispiel}}
+
+    <!-- ══════ 5 · ABSCHLUSS: der einzige Aufruf ══════ -->
+    <section class="s-pad band abschluss" id="weiter" aria-labelledby="weiterTitel">
+      <div class="s-in">
+        <div class="abschluss-kopf">
+          <div class="eyebrow">Ihr nächster Schritt</div>
+          <h2 id="weiterTitel">Wir wollen diesen Weg gemeinsam mit Ihnen gehen.</h2>
+          <p>Wir sehen in Ihrem Betrieb die Chance, mit der richtigen Strategie Marktführer zu werden. Dafür bauen wir Ihre Sichtbarkeit Schritt für Schritt auf: überall und in großer Menge.</p>
+          <p class="einladung"><strong>Wir laden Sie zu einem Gespräch von 20 Minuten ein.</strong> Darin zeigen wir Ihnen einen 90-Tage-Fahrplan, mit dem Sie zum Marktführer in Ihrer Region werden.</p>
+        </div>
+
+        <div class="paket-rahmen">
+          <h3 class="paket-titel">Unser Marktführerpaket</h3>
+          <p class="leistungen-hilfe">Ein Klick auf eine Kachel zeigt, wie wir das machen.</p>
+          <ul class="leistungen">
+          <li class="leistung">
+            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-1"><span class="lk-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="13" height="13" rx="3"/><path d="M16 10.2l4.5-2.7v9l-4.5-2.7"/><circle class="a-rec" cx="7" cy="9.5" r="1.4" fill="currentColor" stroke="none"/></svg></span><span class="lk-titel">300 Posts im Monat</span><span class="lk-tag">60 Videos · 5 Apps</span><span class="lk-kurz">Jeden Tag sichtbar, auf jeder wichtigen App.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
+            <div class="lk-mehr" id="lst-1"><div class="lk-innen"><ul><li>Markt-Röntgen: die 20 stärksten Konten Ihrer Branche und die 30 häufigsten Fragen Ihrer Kunden.</li><li>90-Tage-Fahrplan mit fünf festen Themen. Jedes Skript startet mit drei Hooks zur Wahl.</li><li>Video-Fabrik: Schnitt, Untertitel und Animation in Ihren Farben. Fertig in 72 Stunden.</li><li>Jede App bekommt ihre eigene Fassung, zur besten Zeit. Jede Woche ein Test, Gewinner werden zur Serie.</li><li>Ihr Aufwand: 30 Minuten Dreh pro Woche.</li></ul></div></div>
+          </li>
+          <li class="leistung">
+            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-2"><span class="lk-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10v4h3l6.5 4.5v-13L6.5 10h-3z"/><path class="a-w1" d="M16.5 9.2a4 4 0 010 5.6"/><path class="a-w2" d="M19.3 6.6a7.7 7.7 0 010 10.8"/></svg></span><span class="lk-titel">Anfragen-Motor</span><span class="lk-tag">Meta Ads</span><span class="lk-kurz">Ihre besten Videos als Werbung in Ihrer Region.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
+            <div class="lk-mehr" id="lst-2"><div class="lk-innen"><ul><li>Ihre besten Videos laufen als Werbung auf Meta Ads, also bei Facebook und Instagram.</li><li>Nur Menschen aus Ihrer Region sehen sie.</li><li>Wir bauen und steuern die Werbung für Sie.</li></ul></div></div>
+          </li>
+          <li class="leistung">
+            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-3"><span class="lk-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path class="a-play" d="M10 9.2v5.6l4.8-2.8z" fill="currentColor"/></svg></span><span class="lk-titel">Vertrauens-Kanal</span><span class="lk-tag">Lange Videos · YouTube</span><span class="lk-kurz">Lange Videos zu den Fragen Ihrer Kunden.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
+            <div class="lk-mehr" id="lst-3"><div class="lk-innen"><ul><li>Lange Videos auf YouTube beantworten die Fragen Ihrer Kunden.</li><li>Die Themen kommen aus dem Markt-Röntgen.</li><li>So vertrauen Kunden Ihnen schon vor dem ersten Anruf.</li></ul></div></div>
+          </li>
+          <li class="leistung" data-kachel="such-magnet">
+            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-4"><span class="lk-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><g class="a-such"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></g></svg></span><span class="lk-titel">Gebaut für die Top 5 in der Google-Suche</span><span class="lk-tag">Such-Magnet</span><span class="lk-kurz">Gefunden werden, wenn Kunden suchen.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
+            <div class="lk-mehr" id="lst-4"><div class="lk-innen"><ul><li>Wir pflegen Ihr Google-Profil: Ort, Zeiten, Branche, Text.</li><li>Videos und Texte nutzen die Suchwörter Ihrer Region.</li><li>Jede Frage von Kunden bekommt eine klare Antwort. Die können auch KI-Suchen wie ChatGPT finden.</li><li>Lange YouTube-Videos geben die Antworten.</li><li>Jeden Monat schauen wir: Wo tauchen Sie bei Google und in KI-Suchen auf?</li></ul><p class="lk-klein">Plätze bei Google können wir nicht zusagen. Wir arbeiten jeden Monat daran.</p></div></div>
+          </li>
+          <li class="leistung">
+            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-5"><span class="lk-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><g class="a-mail"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.8 7l8.2 6 8.2-6"/></g></svg></span><span class="lk-titel">Anfragen-Strecke</span><span class="lk-tag">Stichwort · Mail-Folge</span><span class="lk-kurz">Die Schritte 5 bis 7 von oben laufen für Sie.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
+            <div class="lk-mehr" id="lst-5"><div class="lk-innen"><ul><li>Jedes Video endet mit einem klaren Schritt, zum Beispiel einem Stichwort im Kommentar.</li><li>Wer kommentiert, bekommt sofort eine Nachricht mit Link zu einer kurzen Seite.</li><li>Mails zum Nachfassen bleiben dran, bis eine Entscheidung fällt.</li><li>Jede Woche sehen Sie, welches Video welche Anfrage gebracht hat.</li></ul></div></div>
+          </li>
+          <li class="leistung">
+            <h3><button type="button" class="lk-knopf" aria-expanded="false" aria-controls="lst-6"><span class="lk-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5h16v10H9.5L4 19.5z"/><circle class="a-dot a-d1" cx="8.5" cy="10.5" r="1.2" fill="currentColor" stroke="none"/><circle class="a-dot a-d2" cx="12" cy="10.5" r="1.2" fill="currentColor" stroke="none"/><circle class="a-dot a-d3" cx="15.5" cy="10.5" r="1.2" fill="currentColor" stroke="none"/></svg></span><span class="lk-titel">Kommentar-Wache</span><span class="lk-tag">Auch am Wochenende</span><span class="lk-kurz">Kein Kommentar bleibt liegen.</span><span class="lk-zeichen" aria-hidden="true"></span></button></h3>
+            <div class="lk-mehr" id="lst-6"><div class="lk-innen"><ul><li>Wir antworten in der ersten Stunde nach dem Posten.</li><li>Auch am Wochenende.</li><li>Wer kaufen will, landet sofort bei Ihnen.</li></ul></div></div>
+          </li>
+          </ul>
+
+          <div class="abschluss-cta">
+            <button type="button" class="btn btn-gruen btn-gross" data-rueckruf data-stelle="Abschluss" aria-expanded="false" aria-controls="rueckrufFeld">Kostenloses Gespräch anfragen
+              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <p class="pakete-link">Gespräch von 20 Minuten, kostenlos. <a href="https://monetascale.de/#pakete">Alle Pakete ansehen</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Persönlich erstellt für {{name}} · MonetaScale</span>
+    <nav aria-label="Rechtliches">
+      <a href="../impressum.html">Impressum</a>
+      <a href="../datenschutz.html">Datenschutz</a>
+    </nav>
+  </footer>
+
+  <!-- ══════ RÜCKRUF-FELD (eines für alle Aufrufe, klappt unter dem gewählten Knopf auf) ══════ -->
+  <div class="rr-feld" id="rueckrufFeld" role="region" aria-label="Kostenloses Gespräch anfragen" hidden>
+    <div class="rr-innen">
+      <div class="rr-karte">
+        <div class="rr-kopf"><span>Kostenloses Gespräch</span>
+          <button type="button" class="rr-zu" aria-label="Schließen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+          </button>
+        </div>
+
+        <!-- Schritt 1: Angaben -->
+        <form id="rrForm" action="https://formspree.io/f/xwvjoeak" method="POST" novalidate>
+          <label for="rrName">Name</label>
+          <input id="rrName" name="name" type="text" autocomplete="name" maxlength="120" required>
+          <label for="rrMail">E-Mail</label>
+          <input id="rrMail" name="email" type="email" autocomplete="email" inputmode="email" maxlength="160" required>
+          <label for="rrTel">Telefon <span>(optional)</span></label>
+          <input id="rrTel" name="telefon" type="tel" autocomplete="tel" inputmode="tel" maxlength="60">
+          <input type="hidden" name="rueckruf" id="rrRueckruf" value="">
+          <input type="hidden" name="quelle" id="rrQuelle" value="{{quelle}}">
+          <input type="hidden" name="_subject" id="rrBetreff" value="Kostenloses Gespräch: {{name}}">
+          <p class="rr-fehler" id="rrFehler" role="alert" hidden></p>
+          <button class="btn btn-gruen" type="submit" id="rrWeiter">Weiter
+            <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="rr-klein">Ihre Angaben gehen über Formspree an MonetaScale. Wir nutzen sie nur für das Gespräch. Anrufen dürfen wir nur, wenn Sie zustimmen. <a href="../datenschutz.html">Datenschutz</a></p>
+        </form>
+
+        <!-- Schritt 2: Einwilligung zum Anruf (§ 7 UWG), nichts vorausgewählt -->
+        <div class="rr-frage" id="rrFrage" hidden>
+          <h3 tabindex="-1" id="rrFrageTitel">Dürfen wir Sie anrufen?</h3>
+          <p class="rr-frage-tel" id="rrFrageMitTel">Unter <span id="rrFrageTel"></span>. Es geht um Ihr kostenloses Gespräch.</p>
+          <p class="rr-frage-tel" id="rrFrageOhneTel">Es geht um Ihr kostenloses Gespräch.</p>
+          <div class="rr-wahl" role="group" aria-labelledby="rrFrageTitel">
+            <button type="button" class="btn btn-gruen" data-rr-wahl="ja" aria-pressed="false">Ja, gern anrufen</button>
+            <button type="button" class="btn btn-rand" data-rr-wahl="nein" aria-pressed="false">Nein, lieber per Mail</button>
+          </div>
+          <div class="rr-nummer" id="rrNummer" hidden>
+            <label for="rrTel2">Gern. Unter welcher Nummer erreichen wir Sie?</label>
+            <input id="rrTel2" type="tel" autocomplete="tel" inputmode="tel" maxlength="60">
+            <button type="button" class="btn btn-gruen" id="rrNummerWeiter">Absenden
+              <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <p class="rr-fehler" id="rrFehler2" role="alert" hidden></p>
+          <button type="button" class="link-knopf rr-zurueck" data-rr-zurueck="form">Angaben ändern</button>
+        </div>
+
+        <!-- Schritt 3 bei „Nein“: per Mail, optional ein Terminwunsch -->
+        <div class="rr-mailweg" id="rrMailweg" hidden>
+          <h3 tabindex="-1" id="rrMailwegTitel">Alles klar. Wir melden uns per Mail, um einen Termin zu finden.</h3>
+          <label for="rrNotiz">Haben Sie einen Terminwunsch? <span>(optional)</span></label>
+          <textarea id="rrNotiz" name="notiz" form="rrForm" rows="3" maxlength="500" placeholder="Zum Beispiel: Dienstag ab 15 Uhr"></textarea>
+          <p class="rr-fehler" id="rrFehler3" role="alert" hidden></p>
+          <button type="button" class="btn btn-gruen" id="rrMailAbsenden">Absenden
+            <svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button type="button" class="link-knopf rr-zurueck" data-rr-zurueck="frage">Zurück</button>
+        </div>
+
+        <!-- Ende per Mail -->
+        <div class="rr-danke" id="rrDanke" hidden>
+          <h3 tabindex="-1" id="rrDankeTitel">Danke! Kerem meldet sich ganz einfach per Mail bei Ihnen.</h3>
+        </div>
+
+        <!-- Ende mit Anruf: Kontaktkarte -->
+        <div class="rr-kontakt" id="rrKontakt" hidden>
+          <img class="kk-foto" src="../assets/lp/kerem-ulas.jpg" alt="Foto von Kerem Ulas" width="96" height="96" loading="lazy">
+          <h3 class="kk-name" tabindex="-1" id="rrKontaktTitel">Kerem Ulas</h3>
+          <div class="kk-firma">MonetaScale</div>
+          <p class="kk-text" id="rrKarteText">Ich rufe Sie in den nächsten Stunden an, oft sogar sofort. Es geht um mehr Anfragen für {{kurzname}}.</p>
+          <a class="kk-tel" href="tel:{{tel_link}}">{{tel_text}}</a>
+          <button type="button" class="btn btn-gruen kk-speichern" id="rrVcard">Nummer speichern
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="application/json" id="lp-daten">{{{daten_json}}}</script>
+  <script>
+  (function () {
+    'use strict';
+    var D = JSON.parse(document.getElementById('lp-daten').textContent);
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    /* ─── Hell / Dunkel ─── */
+    var root = document.documentElement;
+    var modusKnopf = document.getElementById('modusKnopf');
+    function zeigeModus() {
+      var dunkel = root.getAttribute('data-theme') === 'dunkel';
+      modusKnopf.setAttribute('aria-pressed', dunkel ? 'true' : 'false');
+      modusKnopf.setAttribute('aria-label', dunkel ? 'Helle Ansicht' : 'Dunkle Ansicht');
+    }
+    modusKnopf.addEventListener('click', function () {
+      var neu = root.getAttribute('data-theme') === 'dunkel' ? 'hell' : 'dunkel';
+      root.setAttribute('data-theme', neu);
+      try { localStorage.setItem('ulas.theme', neu); } catch (e) {}
+      zeigeModus();
+    });
+    zeigeModus();
+
+    /* ─── Sweep: Aktion erst nach der Animation ─── */
+    function nachSweep(btn, fn) {
+      if (btn._acting) return;
+      if (reduce.matches) { fn(); return; }
+      btn._acting = true;
+      var fertig = false;
+      var einmal = function () {
+        if (fertig) return;
+        fertig = true;
+        btn.classList.remove('is-activating');
+        btn._acting = false;
+        fn();
+      };
+      btn.classList.remove('is-activating');
+      void btn.offsetWidth;
+      btn.classList.add('is-activating');
+      btn.addEventListener('animationend', einmal, { once: true });
+      setTimeout(einmal, 650);
+    }
+    /* ─── Rückruf: ein Feld, klappt unter dem gewählten Knopf auf ─── */
+    var rrFeld = document.getElementById('rueckrufFeld');
+    var rrForm = document.getElementById('rrForm');
+    var rrFehler = document.getElementById('rrFehler');
+    var rrQuelle = document.getElementById('rrQuelle');
+    var rrQuelleBasis = rrQuelle.value;
+    var rrKnopf = null;      // Knopf, unter dem das Feld gerade offen ist
+    var rrZeit = null, ankerZeit = null;
+    function ankerAus() {
+      root.classList.add('rr-klappt');
+      clearTimeout(ankerZeit);
+      ankerZeit = setTimeout(function () { root.classList.remove('rr-klappt'); }, 700);
+    }
+    function rrSchliessen(fokusZurueck) {
+      if (!rrKnopf) return;
+      var k = rrKnopf;
+      rrKnopf = null;
+      k.setAttribute('aria-expanded', 'false');
+      ankerAus();
+      rrFeld.classList.remove('ganz-offen');
+      rrFeld.classList.remove('is-offen');
+      clearTimeout(rrZeit);
+      rrZeit = setTimeout(function () { if (!rrKnopf) rrFeld.hidden = true; }, reduce.matches ? 0 : 460);
+      if (fokusZurueck) { try { k.focus({ preventScroll: true }); } catch (x) {} }
+    }
+    function rrOeffnen(knopf) {
+      if (rrKnopf) {                       // offen an anderer Stelle: dort sofort zu
+        rrKnopf.setAttribute('aria-expanded', 'false');
+        rrFeld.classList.remove('is-offen', 'ganz-offen');
+      }
+      clearTimeout(rrZeit);
+      var ort = knopf.closest('.reel-frage') || knopf;
+      ankerAus();
+      rrFeld.hidden = true;
+      ort.parentNode.insertBefore(rrFeld, ort.nextSibling);
+      rrFeld.hidden = false;
+      rrKnopf = knopf;
+      knopf.setAttribute('aria-expanded', 'true');
+      rrQuelle.value = rrQuelleBasis + (knopf.getAttribute('data-stelle') ? ' · ' + knopf.getAttribute('data-stelle') : '');
+      void rrFeld.offsetHeight;            // erst zeichnen, dann aufklappen
+      requestAnimationFrame(function () { rrFeld.classList.add('is-offen'); });
+      var erstes = rrFokusZiel();
+      try { erstes.focus({ preventScroll: true }); } catch (x) { erstes.focus(); }
+      setTimeout(function () {
+        if (rrKnopf === knopf) rrFeld.classList.add('ganz-offen');
+        var r = rrFeld.getBoundingClientRect();
+        if (r.bottom > window.innerHeight - 12) rrFeld.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'nearest' });
+      }, reduce.matches ? 0 : 470);
+    }
+    function rrUmschalten(knopf) {
+      if (rrKnopf === knopf) rrSchliessen(false); else rrOeffnen(knopf);
+    }
+    rrFeld.querySelector('.rr-zu').addEventListener('click', function () { rrSchliessen(true); });
+    /* ─── Leistungs-Kacheln: Klick oder Enter klappt die Beschreibung auf ─── */
+    Array.prototype.forEach.call(document.querySelectorAll('.lk-knopf'), function (k) {
+      k.addEventListener('click', function () {
+        var auf = k.getAttribute('aria-expanded') !== 'true';
+        k.setAttribute('aria-expanded', auf ? 'true' : 'false');
+        document.getElementById(k.getAttribute('aria-controls')).classList.toggle('offen', auf);
+        k.closest('.leistung').classList.toggle('ist-offen', auf);
+      });
+    });
+
+    /* ─── Förder-Check geschenkt: Formular klappt unter dem Knopf auf ─── */
+    var gsKnopf = document.getElementById('gsKnopf');
+    var gsFeld = document.getElementById('gsFeld');
+    var gsForm = document.getElementById('gsForm');
+    var gsFehler = document.getElementById('gsFehler');
+    var gsZeit = null, gsGesendet = false;
+    function gsOffen() { return gsKnopf.getAttribute('aria-expanded') === 'true'; }
+    function gsUmschalten(auf) {
+      clearTimeout(gsZeit);
+      gsKnopf.setAttribute('aria-expanded', auf ? 'true' : 'false');
+      if (auf) {
+        gsFeld.hidden = false;
+        void gsFeld.offsetHeight;
+        requestAnimationFrame(function () { gsFeld.classList.add('is-offen'); });
+        var ziel = gsForm.hidden ? document.getElementById('gsDankeTitel') : document.getElementById('gsVorname');
+        try { ziel.focus({ preventScroll: true }); } catch (x) { ziel.focus(); }
+        setTimeout(function () {
+          var r = gsFeld.getBoundingClientRect();
+          if (r.bottom > window.innerHeight - 12) gsFeld.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'nearest' });
+        }, reduce.matches ? 0 : 470);
+      } else {
+        gsFeld.classList.remove('is-offen');
+        gsZeit = setTimeout(function () { if (!gsOffen()) gsFeld.hidden = true; }, reduce.matches ? 0 : 460);
+      }
+    }
+    /* Fehlerhinweis verschwindet, sobald jemand im Feld tippt */
+    [['gsForm', 'gsFehler'], ['rrForm', 'rrFehler'], ['rrFrage', 'rrFehler2'], ['rrMailweg', 'rrFehler3']].forEach(function (paar) {
+      document.getElementById(paar[0]).addEventListener('input', function (e) {
+        document.getElementById(paar[1]).hidden = true;
+        if (e.target && e.target.removeAttribute) e.target.removeAttribute('aria-invalid');
+      });
+    });
+    gsKnopf.addEventListener('click', function () {
+      nachSweep(gsKnopf, function () { gsUmschalten(!gsOffen()); });
+    });
+    gsForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var vor = document.getElementById('gsVorname'), nach = document.getElementById('gsNachname'), mail = document.getElementById('gsMail');
+      [vor, nach, mail].forEach(function (f) { f.removeAttribute('aria-invalid'); });
+      gsFehler.hidden = true;
+      if (!vor.value.trim()) return fehlerZeigen(gsFehler, 'Ihr Vorname fehlt noch.', vor);
+      if (!nach.value.trim()) return fehlerZeigen(gsFehler, 'Ihr Nachname fehlt noch.', nach);
+      if (!mail.value.trim()) return fehlerZeigen(gsFehler, 'Wohin dürfen wir den Förder-Check schicken? Die E-Mail-Adresse fehlt noch.', mail);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail.value.trim())) return fehlerZeigen(gsFehler, 'Die E-Mail-Adresse sieht noch nicht vollständig aus.', mail);
+      if (gsGesendet) return;
+      var knopf = document.getElementById('gsAbsenden');
+      nachSweep(knopf, function () {
+        if (gsGesendet) return;
+        gsGesendet = true;
+        knopf.disabled = true;
+        var adresse = mail.value.trim();
+        fetch(gsForm.action, { method: 'POST', body: new FormData(gsForm), headers: { 'Accept': 'application/json' } })
+          .then(function (res) {
+            if (!res.ok) throw new Error('Status ' + res.status);
+            document.getElementById('gsDankeTitel').textContent = 'Danke! Wir richten den Förder-Check für ' + D.kurzname + ' ein und schicken ihn an ' + adresse + '.';
+            gsForm.hidden = true;
+            document.getElementById('gsDanke').hidden = false;
+            document.getElementById('gsDankeTitel').focus();
+          })
+          .catch(function () {
+            gsGesendet = false;
+            fehlerZeigen(gsFehler, 'Das hat leider nicht geklappt. Bitte gleich noch einmal versuchen.');
+          })
+          .then(function () { knopf.disabled = false; });
+      });
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && gsOffen() && gsFeld.contains(document.activeElement)) {
+        e.preventDefault(); gsUmschalten(false); gsKnopf.focus(); return;
+      }
+      if (e.key === 'Escape' && rrKnopf) { e.preventDefault(); rrSchliessen(true); }
+    });
+    /* Ablauf: Angaben → Frage zum Anruf → (Nummer) → Kontaktkarte  |  → Mail-Weg mit Terminwunsch → Danke.
+       Pro Anfrage genau ein Versand an Formspree, erst ganz am Ende. */
+    var rrSchritte = {
+      form: rrForm, frage: document.getElementById('rrFrage'), mailweg: document.getElementById('rrMailweg'),
+      danke: document.getElementById('rrDanke'), kontakt: document.getElementById('rrKontakt')
+    };
+    var rrStand = 'form', rrGesendet = false;
+    var rrKarte = rrFeld.querySelector('.rr-karte');
+    var rrFehler2 = document.getElementById('rrFehler2');
+    var rrFehler3 = document.getElementById('rrFehler3');
+    var rrWeiter = document.getElementById('rrWeiter');
+    var rrTel = document.getElementById('rrTel');
+    var rrNummer = document.getElementById('rrNummer');
+    var rrTel2 = document.getElementById('rrTel2');
+    var rrWahl = rrFeld.querySelectorAll('[data-rr-wahl]');
+    function rrZeige(stand, fokus) {
+      rrStand = stand;
+      Object.keys(rrSchritte).forEach(function (k) { rrSchritte[k].hidden = (k !== stand); });
+      rrKarte.classList.toggle('ist-kontakt', stand === 'kontakt');
+      var ziel = fokus || rrFokusZiel();
+      try { ziel.focus({ preventScroll: true }); } catch (x) { ziel.focus(); }
+    }
+    function rrFokusZiel() {
+      return { form: document.getElementById('rrName'), frage: document.getElementById('rrFrageTitel'),
+               mailweg: document.getElementById('rrMailwegTitel'), danke: document.getElementById('rrDankeTitel'),
+               kontakt: document.getElementById('rrKontaktTitel') }[rrStand];
+    }
+    function ziffern(wert) { return String(wert || '').replace(/[^\d]/g, ''); }
+    function fehlerZeigen(feldFehler, text, feld) {
+      feldFehler.textContent = text;
+      feldFehler.hidden = false;
+      if (feld) { feld.setAttribute('aria-invalid', 'true'); feld.focus(); }
+    }
+    function wahlZuruecksetzen() {
+      Array.prototype.forEach.call(rrWahl, function (b) { b.setAttribute('aria-pressed', 'false'); });
+      rrNummer.hidden = true;
+      rrFehler2.hidden = true;
+    }
+
+    rrForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = document.getElementById('rrName'), mail = document.getElementById('rrMail');
+      [name, mail, rrTel].forEach(function (f) { f.removeAttribute('aria-invalid'); });
+      rrFehler.hidden = true;
+      if (!name.value.trim()) return fehlerZeigen(rrFehler, 'Wie dürfen wir Sie ansprechen? Ihr Name fehlt noch.', name);
+      if (!mail.value.trim()) return fehlerZeigen(rrFehler, 'Wohin dürfen wir schreiben? Die E-Mail-Adresse fehlt noch.', mail);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail.value.trim())) return fehlerZeigen(rrFehler, 'Die E-Mail-Adresse sieht noch nicht vollständig aus.', mail);
+      if (rrTel.value.trim() && ziffern(rrTel.value).length < 6) return fehlerZeigen(rrFehler, 'Die Telefonnummer sieht noch nicht vollständig aus. Sie können das Feld auch leer lassen.', rrTel);
+      nachSweep(rrWeiter, function () {
+        var mitTel = ziffern(rrTel.value).length >= 6;
+        document.getElementById('rrFrageTel').textContent = rrTel.value.trim();
+        document.getElementById('rrFrageMitTel').hidden = !mitTel;
+        document.getElementById('rrFrageOhneTel').hidden = mitTel;
+        wahlZuruecksetzen();
+        rrZeige('frage');
+      });
+    });
+
+    Array.prototype.forEach.call(rrWahl, function (b) {
+      b.addEventListener('click', function () {
+        var wert = b.getAttribute('data-rr-wahl');
+        nachSweep(b, function () {
+          Array.prototype.forEach.call(rrWahl, function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+          rrFehler2.hidden = true;
+          if (wert === 'nein') { rrNummer.hidden = true; rrZeige('mailweg'); return; }
+          if (ziffern(rrTel.value).length >= 6) { rrSenden('ja', rrFehler2); return; }
+          rrNummer.hidden = false;           // Ja, aber ohne Nummer: freundlich danach fragen
+          try { rrTel2.focus({ preventScroll: true }); } catch (x) { rrTel2.focus(); }
+        });
+      });
+    });
+    var rrNummerWeiter = document.getElementById('rrNummerWeiter');
+    function nummerAbsenden() {
+      rrTel2.removeAttribute('aria-invalid');
+      if (ziffern(rrTel2.value).length < 6) return fehlerZeigen(rrFehler2, 'Bitte eine Telefonnummer eintragen. Oder lieber per Mail?', rrTel2);
+      rrFehler2.hidden = true;
+      nachSweep(rrNummerWeiter, function () {
+        rrTel.value = rrTel2.value.trim();
+        rrSenden('ja', rrFehler2);
+      });
+    }
+    rrNummerWeiter.addEventListener('click', nummerAbsenden);
+    rrTel2.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); nummerAbsenden(); } });
+
+    var rrMailAbsenden = document.getElementById('rrMailAbsenden');
+    rrMailAbsenden.addEventListener('click', function () {
+      nachSweep(rrMailAbsenden, function () { rrSenden('nein', rrFehler3); });
+    });
+    Array.prototype.forEach.call(rrFeld.querySelectorAll('[data-rr-zurueck]'), function (b) {
+      b.addEventListener('click', function () {
+        var ziel = b.getAttribute('data-rr-zurueck');
+        if (ziel === 'frage') wahlZuruecksetzen();
+        rrZeige(ziel);
+      });
+    });
+
+    function rrSenden(rueckruf, fehlerFeld) {
+      if (rrGesendet) return;                // genau ein Versand pro Anfrage
+      rrGesendet = true;
+      document.getElementById('rrRueckruf').value = rueckruf;
+      if (rueckruf === 'ja') document.getElementById('rrNotiz').value = '';
+      document.getElementById('rrBetreff').value = (rueckruf === 'ja' ? 'ANRUF erwünscht · ' : 'Per Mail · ') + 'Kostenloses Gespräch: ' + D.name;
+      var knoepfe = rrFeld.querySelectorAll('button.btn');
+      Array.prototype.forEach.call(knoepfe, function (k) { k.disabled = true; });
+      fetch(rrForm.action, { method: 'POST', body: new FormData(rrForm), headers: { 'Accept': 'application/json' } })
+        .then(function (res) {
+          if (!res.ok) throw new Error('Status ' + res.status);
+          if (window.msLp) window.msLp('gespraech', 'abgeschickt');
+          rrZeige(rueckruf === 'ja' ? 'kontakt' : 'danke');
+          rrForm.reset();
+          document.getElementById('rrNotiz').value = '';
+        })
+        .catch(function () {
+          rrGesendet = false;
+          fehlerZeigen(fehlerFeld, 'Das hat leider nicht geklappt. Bitte gleich noch einmal versuchen. Oder direkt anrufen: ' + D.telText);
+        })
+        .then(function () { Array.prototype.forEach.call(knoepfe, function (k) { k.disabled = false; }); });
+    }
+
+
+    function vcardFoto() {
+      return new Promise(function (ok) {
+        var img = new Image();
+        img.onload = function () {
+          try {
+            var c = document.createElement('canvas');
+            c.width = 200; c.height = 200;
+            c.getContext('2d').drawImage(img, 0, 0, 200, 200);
+            ok(c.toDataURL('image/jpeg', 0.82).split(',')[1] || '');
+          } catch (x) { ok(''); }
+        };
+        img.onerror = function () { ok(''); };
+        img.src = D.fotoUrl;
+      });
+    }
+    function falte(zeile) {                // vCard: Zeilen über 75 Zeichen umbrechen
+      var teile = [];
+      while (zeile.length > 75) { teile.push(zeile.slice(0, 75)); zeile = ' ' + zeile.slice(75); }
+      teile.push(zeile);
+      return teile.join('\r\n');
+    }
+    function vcardText(foto) {
+      var z = ['BEGIN:VCARD', 'VERSION:3.0', 'N:Ulas;Kerem;;;', 'FN:Kerem Ulas', 'ORG:MonetaScale',
+               'TEL;TYPE=CELL:' + D.telLink, 'URL:https://monetascale.de'];
+      if (foto) z.push('PHOTO;ENCODING=b;TYPE=JPEG:' + foto);
+      z.push('END:VCARD');
+      return z.map(falte).join('\r\n') + '\r\n';
+    }
+    var vcardKnopf = document.getElementById('rrVcard');
+    vcardKnopf.addEventListener('click', function () {
+      nachSweep(vcardKnopf, function () {
+        vcardFoto().then(function (foto) {
+          var blob = new Blob([vcardText(foto)], { type: 'text/vcard;charset=utf-8' });
+          var url = URL.createObjectURL(blob);
+          var ios = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+          if (ios) {
+            window.location.href = url;    // iPhone: öffnet das Kontakt-Fenster
+          } else {
+            var a = document.createElement('a');
+            a.href = url; a.download = 'Kerem-Ulas-MonetaScale.vcf';
+            document.body.appendChild(a); a.click(); a.remove();
+          }
+          setTimeout(function () { URL.revokeObjectURL(url); }, 60000);
+        });
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      var r = e.target.closest('[data-rueckruf]');
+      if (r) {
+        e.preventDefault();
+        if (r.classList.contains('btn')) nachSweep(r, function () { rrUmschalten(r); });
+        else rrUmschalten(r);
+        return;
+      }
+      var a = e.target.closest('a.btn');
+      if (!a) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1 || a.target === '_blank') return;
+      e.preventDefault();
+      nachSweep(a, function () {
+        var href = a.getAttribute('href') || '';
+        if (href.charAt(0) === '#') {
+          var ziel = null;
+          try { ziel = document.querySelector(href); } catch (x) {}
+          if (ziel) ziel.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'start' });
+        } else if (href) {
+          window.location.href = href;
+        }
+      });
+    });
+
+    /* ─── Videos: Hinweis, wenn eine Datei fehlt ─── */
+    Array.prototype.forEach.call(document.querySelectorAll('.reel-video video'), function (v) {
+      var markiere = function () { v.parentNode.classList.add('ist-leer'); };
+      v.addEventListener('error', markiere);
+      if (v.error) markiere();
+    });
+
+    /* ─── Förderstand: KfW-Merkblatt 458, Stand 09/2026 ─── */
+    var F = {
+      grund: 30,
+      klima: { bis: 16, ab: 12 },
+      grenze: { bis: 28000, ab: 27250 },
+      einkommen: [[30000, 40], [40000, 30], [50000, 10]],
+      deckel: 70,
+      deckelHoch: 80,
+      kindAbzug: 10000,
+      /* Kosten, wenn noch kein Angebot da ist: Mittelwert der Gesamtkosten (Gerät und Einbau) von
+         160 Angeboten für Luft-Wasser-Wärmepumpen in Ein- und Zweifamilienhäusern, erstellt 09/2025 bis 04/2026.
+         Quelle: Verbraucherzentrale Rheinland-Pfalz, „Luft-Wasser-Wärmepumpen: 160 Angebote aus Rheinland-Pfalz
+         im zweiten Check“ (Bericht 07/2026, Tabelle 1: Mittelwert 36.397 €, Median 34.898 €, Spanne 21.099–54.168 €),
+         Pressemitteilung vom 02.07.2026. Abgerufen am 29.10.2026. Gerundet auf 36.400 €. */
+      kostenSchnitt: 36400
+    };
+    var KLIMA_HEIZUNG = ['oel', 'kohle', 'gasetage', 'nachtspeicher'];
+
+    var NB = String.fromCharCode(160); // geschütztes Leerzeichen: Zahl und Zeichen bleiben zusammen
+    function euro(n) { return Math.round(n).toLocaleString('de-DE') + NB + '€'; }
+    function prozent(n) { return n.toLocaleString('de-DE') + NB + '%'; }
+    function esc(s) {
+      return String(s).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+
+    function einkommenWirksam(a) {
+      if (a.wohnen !== 'selbst') return null;
+      var e = a.einkommen;
+      if (!e || e === 'keine') return null;
+      if (e === 'mehr') return Infinity;
+      var n = Number(e);
+      if (a.kind === 'ja' && (e === '40000' || e === '50000' || e === '60000')) n -= F.kindAbzug;
+      return n;
+    }
+
+    function rechne(a) {
+      var selbst = a.wohnen === 'selbst';
+      var heizungZaehlt = KLIMA_HEIZUNG.indexOf(a.heizung) >= 0 || (a.heizung === 'gas' && a.gasalter === 'alt');
+      var klima = selbst && heizungZaehlt && a.laeuft === 'ja';
+      var klimaGrund = '';
+      if (!selbst) klimaGrund = 'Sie wohnen nicht selbst im Haus. Dann gibt es diesen Bonus nicht.';
+      else if (a.heizung === 'andere') klimaGrund = 'Für diese Heizung rechnet der Check ohne Bonus. ' + D.name + ' prüft das genau.';
+      else if (a.heizung === 'gas' && a.gasalter !== 'alt') klimaGrund = 'Eine Gasheizung zählt erst ab 20 Jahren.';
+      else if (a.laeuft !== 'ja') klimaGrund = 'Die alte Heizung läuft nicht mehr. Dann gibt es diesen Bonus nicht.';
+
+      var ew = einkommenWirksam(a);
+      var eink = 0, einkGrund = '';
+      if (!selbst) einkGrund = 'Sie wohnen nicht selbst im Haus. Dann gibt es diesen Bonus nicht.';
+      else if (ew === null) einkGrund = 'Ohne Angabe rechnet der Check ohne diesen Bonus.';
+      else {
+        for (var i = 0; i < F.einkommen.length; i++) {
+          if (ew <= F.einkommen[i][0]) { eink = F.einkommen[i][1]; break; }
+        }
+        if (!eink) einkGrund = 'Den Bonus gibt es bis 50.000 Euro Einkommen.';
+      }
+      var deckel = eink === 40 ? F.deckelHoch : F.deckel;
+      var kosten = Math.max(0, Number(a.kosten) || 0);
+
+      function teil(zeit) {
+        var summe = F.grund + (klima ? F.klima[zeit] : 0) + eink;
+        var quote = Math.min(summe, deckel);
+        var basis = Math.min(kosten, F.grenze[zeit]);
+        return { summe: summe, prozent: quote, basis: basis, euro: Math.round(basis * quote / 100) };
+      }
+      var bis = teil('bis'), ab = teil('ab');
+      return {
+        bis: bis, ab: ab, diff: bis.euro - ab.euro,
+        klima: klima, klimaGrund: klimaGrund, eink: eink, einkGrund: einkGrund,
+        deckel: deckel, kosten: kosten
+      };
+    }
+
+    /* ─── Schritte ─── */
+    var S = {
+      start: {
+        stufe: 1,
+        erklTitel: 'Der Einstieg',
+        erkl: ['Am Anfang steht nur der Nutzen: Wie viel Geld gibt es?', 'Es gibt kein Formular und keine Pflichtfelder. So fangen mehr Menschen an.']
+      },
+      bundesland: {
+        stufe: 2, frage: 'In welchem Bundesland steht Ihr Haus?', land: true,
+        erklTitel: 'Frage: Wo steht das Haus?',
+        erkl: ['Das Bundesland sortiert Anfragen von weit weg früh aus. So kommen nur Anfragen aus Ihrem Gebiet bei Ihnen an.']
+      },
+      fern: {
+        stufe: 2,
+        erklTitel: 'Anfrage von weit weg',
+        erkl: ['So sieht es aus, wenn jemand von weit weg den Check macht. Er bekommt einen freundlichen Hinweis.', 'Seine Zahlen darf er trotzdem sehen. Eine Anfrage bei Ihnen entsteht aber nicht.']
+      },
+      wohnen: {
+        stufe: 2, frage: 'Wer wohnt im Haus?',
+        optionen: [['selbst', 'Ich wohne selbst darin'], ['vermietet', 'Ich vermiete es']],
+        erklTitel: 'Frage: Wer wohnt im Haus?',
+        erkl: ['Wohnt der Besitzer selbst im Haus? Nur dann gibt es die Boni.', 'Die erste Frage ist leicht. So bleibt der Kunde dabei.']
+      },
+      heizung: {
+        stufe: 2, frage: 'Welche Heizung haben Sie heute?', zwei: true,
+        optionen: [['oel', 'Öl'], ['gas', 'Gas'], ['gasetage', 'Gas-Etagenheizung'], ['kohle', 'Kohle'], ['nachtspeicher', 'Nachtspeicher'], ['andere', 'Etwas anderes']],
+        erklTitel: 'Frage: Welche Heizung?',
+        erkl: ['Die alte Heizung entscheidet über den Bonus für schnellen Tausch. Öl, Kohle, Gas-Etagenheizung und Nachtspeicher zählen immer.', 'Sie sehen später sofort, was im Keller steht.']
+      },
+      gasalter: {
+        stufe: 2, frage: 'Wie alt ist Ihre Gasheizung?',
+        optionen: [['alt', '20 Jahre oder älter'], ['jung', 'Jünger als 20 Jahre']],
+        erklTitel: 'Frage: Wie alt ist die Gasheizung?',
+        erkl: ['Eine Gasheizung zählt erst ab 20 Jahren.', 'Darum fragt der Check nur bei Gas nach dem Alter.']
+      },
+      laeuft: {
+        stufe: 2, frage: 'Läuft die alte Heizung noch?',
+        optionen: [['ja', 'Ja, sie läuft noch'], ['nein', 'Nein, sie ist kaputt']],
+        erklTitel: 'Frage: Läuft sie noch?',
+        erkl: ['Hier steckt der Haken. Die alte Heizung muss noch laufen. Nur dann gibt es den Bonus.', '„Die läuft ja noch“ ist der häufigste Grund zum Warten. 54 von 100 Hausbesitzern nennen ihn (Verivox, 07/2026). Hier wird er zum Grund für den Tausch.']
+      },
+      einkommen: {
+        stufe: 3, frage: 'Wie hoch ist das Einkommen im Haushalt?', zwei: true,
+        hilfe: 'Gemeint ist das zu versteuernde Einkommen im Jahr. Es steht im Steuerbescheid.',
+        optionen: [['30000', 'bis 30.000 €'], ['40000', 'bis 40.000 €'], ['50000', 'bis 50.000 €'], ['60000', 'bis 60.000 €'], ['mehr', 'mehr als 60.000 €'], ['keine', 'Möchte ich nicht sagen']],
+        erklTitel: 'Frage: Wie hoch ist das Einkommen?',
+        erkl: ['Der Bonus für Einkommen bringt bis zu 40 Prozent. Viele Hausbesitzer kennen ihn nicht. Hier wird der Check für Ihre Kunden wertvoll.', 'Wer nichts sagen will, rechnet ohne diesen Bonus weiter.']
+      },
+      kind: {
+        stufe: 3, frage: 'Lebt ein Kind unter 18 im Haus?',
+        hilfe: 'Dann zählen 10.000 Euro weniger Einkommen.',
+        optionen: [['ja', 'Ja'], ['nein', 'Nein']], zweiFest: true,
+        erklTitel: 'Frage: Lebt ein Kind im Haus?',
+        erkl: ['Mit einem Kind unter 18 zählen 10.000 Euro weniger. So kommt manche Familie in eine bessere Stufe.', 'Der Check fragt das nur, wenn es etwas ändert.']
+      },
+      kosten: {
+        stufe: 3,
+        erklTitel: 'Die Kosten',
+        erkl: ['Viele Hausbesitzer haben noch kein Angebot. Darum rechnet der Check mit dem Schnitt: rund 36.400 Euro.', 'Wer schon ein Angebot hat, trägt den Betrag ein. Gefördert werden höchstens 28.000 Euro. Ab 1. Februar 2027 sind es 27.250 Euro.']
+      },
+      ergebnis: {
+        stufe: 4,
+        erklTitel: 'Das Ergebnis',
+        erkl: ['Das Ergebnis steht sofort da, in Prozent und in Euro. Daneben steht der Wert ab Februar. So sieht der Kunde: Warten kostet Geld.', 'Für das PDF gibt er seine Mail-Adresse. Das ist Ihre Anfrage.'],
+        erklFern: ['Diese Anfrage kommt von weit weg. Der Hausbesitzer sieht seine Zahlen.', 'Den Weg zum PDF gibt es hier nicht. Bei Ihnen kommt keine Anfrage an.']
+      },
+      fertig: {
+        stufe: 5,
+        erklTitel: 'Das PDF per Mail',
+        erkl: ['Im echten Check geht das PDF jetzt per Mail an Ihren Kunden. In dieser Vorschau lädt es direkt herunter.', 'Unten sehen Sie die Mail dazu.']
+      }
+    };
+
+    function naechster(id, a) {
+      switch (id) {
+        case 'start': return 'bundesland';
+        case 'bundesland': return a.bundesland && a.bundesland !== D.bundesland ? 'fern' : 'wohnen';
+        case 'fern': return 'wohnen';
+        case 'wohnen': return 'heizung';
+        case 'heizung':
+          if (a.wohnen !== 'selbst') return 'kosten';
+          if (a.heizung === 'gas') return 'gasalter';
+          if (a.heizung === 'andere') return 'einkommen';
+          return 'laeuft';
+        case 'gasalter': return a.gasalter === 'alt' ? 'laeuft' : 'einkommen';
+        case 'laeuft': return 'einkommen';
+        case 'einkommen': return (a.einkommen === '40000' || a.einkommen === '50000' || a.einkommen === '60000') ? 'kind' : 'kosten';
+        case 'kind': return 'kosten';
+        case 'kosten': return 'ergebnis';
+        case 'ergebnis': return 'fertig';
+      }
+      return null;
+    }
+
+    /* Weg durch den Check mit den jetzigen Antworten (fehlende Antworten: längster üblicher Weg) */
+    function pfad(a) {
+      var probe = {
+        bundesland: a.bundesland || D.bundesland,
+        wohnen: a.wohnen || 'selbst', heizung: a.heizung || 'oel', gasalter: a.gasalter || 'alt',
+        laeuft: a.laeuft || 'ja', einkommen: a.einkommen || '40000', kind: a.kind || 'nein'
+      };
+      var liste = [], id = 'bundesland';
+      while (id && id !== 'ergebnis') { liste.push(id); id = naechster(id, probe); }
+      return liste;
+    }
+    function fragenGesamt(a) {
+      return pfad(a).filter(function (id) { return S[id].frage; }).length;
+    }
+
+    var a = {};
+    var verlauf = ['start'];
+    var QUELLE_KOSTEN = 'Quelle: Verbraucherzentrale Rheinland-Pfalz, 160 Angebote für Luft-Wasser-Wärmepumpen in Ein- und Zweifamilienhäusern, 09/2025 bis 04/2026.';
+    var body = document.getElementById('kBody');
+    var balken = document.getElementById('kBalken');
+    var erklTitel = document.getElementById('erklaerTitel');
+    var erklText = document.getElementById('erklaerText');
+    var stufen = document.querySelectorAll('#stufen li');
+    var zurMail = document.getElementById('zurMail');
+    var mailBereich = document.getElementById('mail');
+    var letztesPdf = null;
+
+    var PFEIL = '<svg viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+    function zeigeErklaerung(id) {
+      var s = S[id];
+      erklTitel.textContent = s.erklTitel;
+      var texte = (id === 'ergebnis' && istFern()) ? s.erklFern : s.erkl;
+      erklText.innerHTML = texte.map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('');
+      Array.prototype.forEach.call(stufen, function (li) {
+        var n = Number(li.getAttribute('data-stufe'));
+        li.classList.toggle('aktiv', n === s.stufe);
+        li.classList.toggle('fertig', n < s.stufe);
+        if (n === s.stufe) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current');
+      });
+      zurMail.classList.toggle('zeigen', id === 'fertig');
+    }
+
+    function istFern() { return !!a.bundesland && a.bundesland !== D.bundesland; }
+
+    function fragenNummer() {
+      var n = 0;
+      for (var i = 0; i < verlauf.length; i++) if (S[verlauf[i]].frage) n++;
+      return n;
+    }
+
+    function setzeBalken(id) {
+      var w = 0, weg = pfad(a), stelle = weg.indexOf(id);
+      if (stelle >= 0) w = Math.round((stelle + 1) / (weg.length + 1) * 100);
+      if (id === 'ergebnis') w = 92;
+      if (id === 'fertig') w = 100;
+      balken.style.width = w + '%';
+    }
+
+    function zeige(id, fokus) {
+      var s = S[id];
+      var html = '';
+      // Förder-Check-Schritt melden (lp-tracking.js); nur bei Schritten durch den Besucher, nicht beim ersten Aufbau
+      if (fokus && window.msLp) window.msLp('check', id);
+      if (id === 'start') {
+        html =
+          '<div class="k-eyebrow">Kostenloser Förder-Check</div>' +
+          '<h3 class="k-titel">Wie viel Förderung bekommen Sie für Ihre Wärmepumpe?</h3>' +
+          '<p class="k-text">Ein paar kurze Fragen. Danach sehen Sie Ihre Förderung in Euro. Am 1. Februar 2027 sinkt sie.</p>' +
+          '<div class="k-unten" style="margin-top:auto;display:block"><button type="button" class="btn k-btn" data-aktion="weiter">Check starten ' + PFEIL + '</button></div>';
+      } else if (s.land) {
+        html =
+          '<div class="k-eyebrow">Frage ' + fragenNummer() + ' von ' + fragenGesamt(a) + '</div>' +
+          '<h3 class="k-titel">' + esc(s.frage) + '</h3>' +
+          '<div style="height:8px"></div>' +
+          '<label class="sr-only" for="kLand">Bundesland</label>' +
+          '<div class="k-feld k-auswahl"><select id="kLand"><option value="">Bitte wählen</option>' +
+            D.laender.map(function (l) { return '<option' + (a.bundesland === l ? ' selected' : '') + '>' + esc(l) + '</option>'; }).join('') +
+          '</select></div>' +
+          '<p class="k-fehler" id="kLandFehler" hidden></p>' +
+          '<button type="button" class="btn k-btn" data-aktion="land" style="margin-top:16px">Weiter ' + PFEIL + '</button>' +
+          '<div class="k-unten"><button type="button" class="k-link" data-aktion="zurueck">Zurück</button></div>';
+      } else if (id === 'fern') {
+        html =
+          '<div class="k-eyebrow">Gut zu wissen</div>' +
+          '<h3 class="k-titel">' + esc(D.kurzname) + ' arbeitet in ' + esc(D.bundesland) + '.</h3>' +
+          '<p class="k-text">Für Ihr Haus finden Sie besser einen Betrieb in Ihrer Nähe. Ihre Zahlen sehen Sie trotzdem.</p>' +
+          '<button type="button" class="btn k-btn" data-aktion="weiter">Trotzdem ausrechnen ' + PFEIL + '</button>' +
+          '<div class="k-unten"><button type="button" class="k-link" data-aktion="zurueck">Bundesland ändern</button></div>';
+      } else if (s.optionen) {
+        var nr = fragenNummer();
+        html =
+          '<div class="k-eyebrow">Frage ' + nr + ' von ' + fragenGesamt(a) + '</div>' +
+          '<h3 class="k-titel">' + esc(s.frage) + '</h3>' +
+          (s.hilfe ? '<p class="k-hilfe">' + esc(s.hilfe) + '</p>' : '<div style="height:8px"></div>') +
+          '<div class="k-optionen' + (s.zwei || s.zweiFest ? ' zwei' : '') + '" role="group" aria-label="' + esc(s.frage) + '">' +
+          s.optionen.map(function (o) {
+            var gew = a[id] === o[0];
+            return '<button type="button" class="btn k-opt' + (gew ? ' gewaehlt' : '') + '" data-wert="' + esc(o[0]) + '" aria-pressed="' + gew + '">' + esc(o[1]) + '</button>';
+          }).join('') +
+          '</div>' +
+          '<div class="k-unten"><button type="button" class="k-link" data-aktion="zurueck">Zurück</button></div>';
+      } else if (id === 'kosten') {
+        var eigen = a.kostenArt === 'angebot';
+        html =
+          '<div class="k-eyebrow">Die Kosten</div>' +
+          '<h3 class="k-titel">Wir rechnen mit rund ' + euro(F.kostenSchnitt) + '.</h3>' +
+          '<p class="k-text">So viel kostet eine Wärmepumpe mit Einbau im Schnitt.</p>' +
+          '<p class="k-quelle">' + esc(QUELLE_KOSTEN) + '</p>' +
+          '<button type="button" class="k-umschalter" id="kAngebotKnopf" aria-expanded="' + eigen + '" aria-controls="kAngebot">' +
+            '<span class="k-haken" aria-hidden="true"></span>Ich habe schon ein Angebot</button>' +
+          '<div class="k-kosten" id="kAngebot"' + (eigen ? '' : ' hidden') + '>' +
+            '<label class="k-label" for="kKosten">Betrag aus Ihrem Angebot, mit Einbau</label>' +
+            '<div class="k-feld"><input id="kKosten" type="text" inputmode="numeric" autocomplete="off" placeholder="zum Beispiel 32.000" value="' + (eigen && a.kosten ? Number(a.kosten).toLocaleString('de-DE') : '') + '"><span>€</span></div>' +
+          '</div>' +
+          '<p class="k-fehler" id="kKostenFehler" hidden></p>' +
+          '<button type="button" class="btn k-btn" data-aktion="weiter">Ergebnis zeigen ' + PFEIL + '</button>' +
+          '<div class="k-unten"><button type="button" class="k-link" data-aktion="zurueck">Zurück</button></div>';
+      } else if (id === 'ergebnis') {
+        var r = rechne(a);
+        var diffSatz = r.diff > 0
+          ? 'Ein Antrag bis 31.01.2027 bringt rund ' + euro(r.diff) + ' mehr.'
+          : 'In Ihrem Fall bleibt die Summe gleich.';
+        html =
+          '<div class="k-eyebrow">Ihr Ergebnis</div>' +
+          '<h3 class="k-titel">So viel Förderung ist möglich</h3>' +
+          '<div class="k-ergebnis">' +
+            '<div class="k-box jetzt"><div class="k-box-label">Antrag bis 31.01.2027</div><div class="k-box-euro">' + euro(r.bis.euro) + '</div><div class="k-box-proz">' + prozent(r.bis.prozent) + ' von ' + euro(r.bis.basis) + '</div></div>' +
+            '<div class="k-box"><div class="k-box-label">Antrag ab 01.02.2027</div><div class="k-box-euro">' + euro(r.ab.euro) + '</div><div class="k-box-proz">' + prozent(r.ab.prozent) + ' von ' + euro(r.ab.basis) + '</div></div>' +
+          '</div>' +
+          '<p class="k-diff">' + esc(diffSatz) + '</p>' +
+          '<details class="k-teile"><summary>So setzt sich das zusammen</summary><ul>' +
+            teileListe(r).map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') +
+          '</ul></details>' +
+          '<p class="k-hinweis">Schätzung, keine Zusage. Die KfW entscheidet. Es zählt der Tag des Antrags.</p>' +
+          (istFern()
+            ? '<div class="k-fern"><p><strong>Für Ihr Haus finden Sie besser einen Betrieb in Ihrer Nähe.</strong> ' + esc(D.kurzname) + ' arbeitet in ' + esc(D.bundesland) + '.</p>' +
+              '<p class="k-demo">Vorschau: Diese Anfrage geht nicht an den Betrieb.</p></div>'
+            :
+          '<form class="k-mail" id="kMail" novalidate>' +
+            '<p class="k-mail-satz">Sie bekommen Ihren Förder-Check als PDF per Mail.</p>' +
+            '<label for="kEmail">Ihre E-Mail-Adresse</label>' +
+            '<input id="kEmail" type="email" name="email" autocomplete="email" placeholder="name@beispiel.de" required value="' + esc(a.email || '') + '">' +
+            '<p class="k-fehler" id="kFehler" hidden></p>' +
+            '<button type="submit" class="btn k-btn">PDF anfordern ' + PFEIL + '</button>' +
+            '<p class="k-demo">Vorschau: Hier geht keine Mail raus. Das PDF lädt direkt herunter. Nichts wird gespeichert.</p>' +
+          '</form>') +
+          '<div class="k-unten"><button type="button" class="k-link" data-aktion="zurueck">Angaben ändern</button></div>';
+      } else if (id === 'fertig') {
+        html =
+          '<div class="k-fertig-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>' +
+          '<div class="k-eyebrow">Fertig</div>' +
+          '<h3 class="k-titel">Ihr Förder-Check ist fertig.</h3>' +
+          '<p class="k-text">Vorschau: Das PDF ist jetzt auf Ihrem Gerät. Eine Mail geht hier nicht raus.</p>' +
+          '<button type="button" class="btn k-btn" data-aktion="pdf">PDF noch einmal laden</button>' +
+          '<div class="k-unten"><button type="button" class="k-link" data-aktion="neu">Check neu starten</button></div>';
+      }
+      body.innerHTML = html;
+      zeigeErklaerung(id);
+      setzeBalken(id);
+      if (id === 'kosten') verbindeKosten();
+      if (id === 'ergebnis' && !istFern()) verbindeMail();
+      if (fokus) body.focus({ preventScroll: true });
+    }
+
+    function teileListe(r) {
+      var t = [];
+      t.push('Grundförderung: ' + prozent(F.grund) + '.');
+      if (r.klima) t.push('Bonus für schnellen Tausch: ' + prozent(F.klima.bis) + '. Ab 01.02.2027 nur ' + prozent(F.klima.ab) + '.');
+      else t.push('Bonus für schnellen Tausch: nicht dabei. ' + r.klimaGrund);
+      if (r.eink) t.push('Bonus für Einkommen: ' + prozent(r.eink) + '.');
+      else t.push('Bonus für Einkommen: nicht dabei. ' + r.einkGrund);
+      t.push('Höchstens ' + prozent(r.deckel) + ' der Kosten.' + (r.bis.summe > r.deckel ? ' Ihre Summe ist ' + prozent(r.bis.summe) + '. Der Check kürzt sie auf ' + prozent(r.deckel) + '.' : ''));
+      t.push((a.kostenArt === 'angebot' ? 'Ihr Angebot: ' + euro(r.kosten) + '.' : 'Gerechnet mit rund ' + euro(r.kosten) + ', dem Schnitt mit Einbau.') +
+        ' Gefördert werden höchstens ' + euro(F.grenze.bis) + '. Ab 01.02.2027 sind es ' + euro(F.grenze.ab) + '.');
+      return t;
+    }
+
+    function zahlAus(text) {
+      var n = parseInt(String(text).replace(/[^\d]/g, ''), 10);
+      return isNaN(n) ? 0 : n;
+    }
+
+    function verbindeKosten() {
+      var knopf = document.getElementById('kAngebotKnopf');
+      var bereich = document.getElementById('kAngebot');
+      var feld = document.getElementById('kKosten');
+      knopf.addEventListener('click', function () {
+        var offen = knopf.getAttribute('aria-expanded') !== 'true';
+        knopf.setAttribute('aria-expanded', offen ? 'true' : 'false');
+        bereich.hidden = !offen;
+        document.getElementById('kKostenFehler').hidden = true;
+        if (offen) feld.focus();
+      });
+      feld.addEventListener('blur', function () {
+        var n = zahlAus(feld.value);
+        if (n) feld.value = Math.min(n, 500000).toLocaleString('de-DE');
+      });
+    }
+    /* Kosten übernehmen: eigenes Angebot oder Schnitt. Gibt false zurück, wenn ein Betrag fehlt. */
+    function kostenUebernehmen() {
+      var knopf = document.getElementById('kAngebotKnopf');
+      var fehler = document.getElementById('kKostenFehler');
+      if (knopf && knopf.getAttribute('aria-expanded') === 'true') {
+        var n = Math.min(zahlAus(document.getElementById('kKosten').value), 500000);
+        if (n < 1000) {
+          fehler.textContent = 'Bitte den Betrag aus dem Angebot eintragen. Oder ohne Angebot mit dem Schnitt rechnen.';
+          fehler.hidden = false;
+          document.getElementById('kKosten').focus();
+          return false;
+        }
+        a.kosten = n; a.kostenArt = 'angebot';
+      } else {
+        a.kosten = F.kostenSchnitt; a.kostenArt = 'schnitt';
+      }
+      return true;
+    }
+
+    function verbindeMail() {
+      var form = document.getElementById('kMail');
+      var feld = document.getElementById('kEmail');
+      var fehler = document.getElementById('kFehler');
+      var knopf = form.querySelector('button[type="submit"]');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var mail = feld.value.trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(mail)) {
+          fehler.textContent = 'Bitte eine gültige E-Mail-Adresse eingeben.';
+          fehler.hidden = false;
+          feld.focus();
+          return;
+        }
+        fehler.hidden = true;
+        a.email = mail;
+        nachSweep(knopf, function () { abschicken(knopf, fehler); });
+      });
+    }
+
+    function abschicken(knopf, fehler) {
+      knopf.disabled = true;
+      var r = rechne(a);
+      erstellePdf(r).then(function () {
+        zeigeMail(r);
+        geheZu('fertig');
+      }).catch(function (err) {
+        knopf.disabled = false;
+        fehler.textContent = 'Das PDF ließ sich nicht erstellen. Bitte die Seite neu laden.';
+        fehler.hidden = false;
+        if (window.console) console.warn(err);
+      });
+    }
+
+    function geheZu(id) {
+      verlauf.push(id);
+      zeige(id, true);
+    }
+
+    body.addEventListener('click', function (e) {
+      var opt = e.target.closest('.k-opt');
+      var akt = e.target.closest('[data-aktion]');
+      var jetzt = verlauf[verlauf.length - 1];
+      if (opt) {
+        Array.prototype.forEach.call(body.querySelectorAll('.k-opt'), function (b) {
+          b.classList.toggle('gewaehlt', b === opt);
+          b.setAttribute('aria-pressed', b === opt ? 'true' : 'false');
+        });
+        nachSweep(opt, function () {
+          a[jetzt] = opt.getAttribute('data-wert');
+          geheZu(naechster(jetzt, a));
+        });
+        return;
+      }
+      if (!akt) return;
+      var was = akt.getAttribute('data-aktion');
+      if (was === 'weiter') {
+        if (jetzt === 'kosten' && !kostenUebernehmen()) return;
+        nachSweep(akt, function () { geheZu(naechster(jetzt, a)); });
+      } else if (was === 'land') {
+        var wahl = document.getElementById('kLand').value;
+        if (!wahl) {
+          var lf = document.getElementById('kLandFehler');
+          lf.textContent = 'Bitte das Bundesland wählen.';
+          lf.hidden = false;
+          document.getElementById('kLand').focus();
+          return;
+        }
+        nachSweep(akt, function () { a.bundesland = wahl; geheZu(naechster('bundesland', a)); });
+      } else if (was === 'zurueck') {
+        if (verlauf.length > 1) {
+          verlauf.pop();
+          var vorher = verlauf[verlauf.length - 1];
+          zeige(vorher, true);
+        }
+      } else if (was === 'neu') {
+        a = {};
+        verlauf = ['start'];
+        letztesPdf = null;
+        zeige('start', true);
+      } else if (was === 'pdf') {
+        nachSweep(akt, function () { if (letztesPdf) letztesPdf.save(dateiname()); });
+      }
+    });
+
+    /* ─── PDF im Browser (jsPDF, nur bei Bedarf geladen) ─── */
+    function ladeJsPdf() {
+      if (window.jspdf && window.jspdf.jsPDF) return Promise.resolve(window.jspdf.jsPDF);
+      return new Promise(function (ok, nein) {
+        var s = document.createElement('script');
+        s.src = D.pdfLib;
+        s.onload = function () { (window.jspdf && window.jspdf.jsPDF) ? ok(window.jspdf.jsPDF) : nein(new Error('jsPDF fehlt')); };
+        s.onerror = function () { nein(new Error('jsPDF nicht geladen')); };
+        document.head.appendChild(s);
+      });
+    }
+    function rgb(hex) {
+      var h = hex.replace('#', '');
+      return [parseInt(h.substr(0, 2), 16), parseInt(h.substr(2, 2), 16), parseInt(h.substr(4, 2), 16)];
+    }
+    function dateiname() { return 'Foerder-Check-' + D.slug + '.pdf'; }
+
+    var LABEL = {
+      bundesland: 'Bundesland',
+      wohnen: 'Wer wohnt im Haus?', heizung: 'Heizung heute', gasalter: 'Alter der Gasheizung',
+      laeuft: 'Läuft die alte Heizung noch?', einkommen: 'Einkommen im Haushalt', kind: 'Kind unter 18 im Haus?',
+      kosten: 'Kosten der neuen Heizung'
+    };
+    function angaben() {
+      var liste = [];
+      verlauf.forEach(function (id) {
+        if (!LABEL[id]) return;
+        var wert = a[id];
+        if (id === 'kosten') wert = euro(a.kosten) + (a.kostenArt === 'angebot' ? ' (Ihr Angebot)' : ' (Schnitt mit Einbau)');
+        else if (id === 'bundesland') wert = a.bundesland;
+        else {
+          var opt = (S[id].optionen || []).filter(function (o) { return o[0] === wert; })[0];
+          wert = opt ? opt[1] : '–';
+        }
+        liste.push([LABEL[id], wert]);
+      });
+      return liste;
+    }
+
+    function erstellePdf(r) {
+      return ladeJsPdf().then(function (JsPDF) {
+        var doc = new JsPDF({ unit: 'mm', format: 'a4' });
+        var f1 = rgb(D.farben.primaer), f1t = rgb(D.farben.primaerText);
+        var f2 = rgb(D.farben.sekundaer), f2t = rgb(D.farben.sekundaerText);
+        var f1h = rgb(D.farben.primaerHell);
+        var dunkel = [31, 41, 51], grau = [107, 114, 128], rand = [229, 231, 235];
+        var L = 18, B = 174, y;
+        var heute = new Date().toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
+
+        doc.setProperties({ title: 'Förder-Check Wärmepumpe · ' + D.name, author: D.name, subject: 'Förder-Check Wärmepumpe' });
+
+        // Kopf in den Farben des Betriebs
+        doc.setFillColor.apply(doc, f1); doc.rect(0, 0, 210, 34, 'F');
+        doc.setFillColor.apply(doc, f2); doc.circle(L + 9, 17, 9, 'F');
+        doc.setTextColor.apply(doc, f2t); doc.setFont('helvetica', 'bold'); doc.setFontSize(13);
+        doc.text(D.initialen, L + 9, 17, { align: 'center', baseline: 'middle' });
+        doc.setTextColor.apply(doc, f1t); doc.setFontSize(16);
+        doc.text(D.name, L + 23, 15.5);
+        doc.setFont('helvetica', 'normal'); doc.setFontSize(10.5);
+        doc.text('Förder-Check Wärmepumpe · ' + D.ort, L + 23, 22.5);
+
+        // Titel
+        y = 50;
+        doc.setTextColor.apply(doc, dunkel); doc.setFont('helvetica', 'bold'); doc.setFontSize(21);
+        doc.text('Ihr Förder-Check', L, y);
+        doc.setFont('helvetica', 'normal'); doc.setFontSize(10); doc.setTextColor.apply(doc, grau);
+        doc.text('Erstellt am ' + heute + ' für ' + a.email, L, y + 7);
+
+        // Ergebnis
+        y = 66;
+        var bw = (B - 6) / 2;
+        doc.setFillColor.apply(doc, f1h); doc.setDrawColor.apply(doc, f1); doc.setLineWidth(0.6);
+        doc.roundedRect(L, y, bw, 34, 3, 3, 'FD');
+        doc.setFillColor(249, 250, 251); doc.setDrawColor.apply(doc, rand); doc.setLineWidth(0.3);
+        doc.roundedRect(L + bw + 6, y, bw, 34, 3, 3, 'FD');
+        [[r.bis, 'Antrag bis 31.01.2027', L, f1], [r.ab, 'Antrag ab 01.02.2027', L + bw + 6, dunkel]].forEach(function (k) {
+          doc.setFont('helvetica', 'normal'); doc.setFontSize(10); doc.setTextColor(75, 85, 99);
+          doc.text(k[1], k[2] + 6, y + 8);
+          doc.setFont('helvetica', 'bold'); doc.setFontSize(22); doc.setTextColor.apply(doc, k[3]);
+          doc.text(euro(k[0].euro), k[2] + 6, y + 20);
+          doc.setFont('helvetica', 'normal'); doc.setFontSize(10.5); doc.setTextColor(75, 85, 99);
+          doc.text(prozent(k[0].prozent) + ' von ' + euro(k[0].basis), k[2] + 6, y + 28);
+        });
+
+        y = 110;
+        doc.setFont('helvetica', 'bold'); doc.setFontSize(12); doc.setTextColor.apply(doc, dunkel);
+        doc.text(r.diff > 0 ? 'Ein Antrag bis 31.01.2027 bringt rund ' + euro(r.diff) + ' mehr.' : 'In Ihrem Fall bleibt die Summe gleich.', L, y);
+
+        function abschnitt(titel) {
+          y += 11;
+          doc.setFont('helvetica', 'bold'); doc.setFontSize(12.5); doc.setTextColor.apply(doc, f1);
+          doc.text(titel, L, y);
+          doc.setDrawColor.apply(doc, rand); doc.setLineWidth(0.3); doc.line(L, y + 2, L + B, y + 2);
+          y += 8;
+        }
+        function zeile(text, fett) {
+          doc.setFont('helvetica', fett ? 'bold' : 'normal'); doc.setFontSize(10.5); doc.setTextColor.apply(doc, dunkel);
+          var z = doc.splitTextToSize(text, B - 4);
+          doc.text(z, L + 2, y);
+          y += z.length * 5 + 1.5;
+        }
+
+        abschnitt('So setzt sich das zusammen');
+        teileListe(r).forEach(function (t) {
+          doc.setFont('helvetica', 'normal'); doc.setFontSize(10.5); doc.setTextColor.apply(doc, f1);
+          doc.text('•', L + 2, y);
+          doc.setTextColor.apply(doc, dunkel);
+          var z = doc.splitTextToSize(t, B - 9);
+          doc.text(z, L + 7, y);
+          y += z.length * 5 + 1.5;
+        });
+
+        abschnitt('Ihre Angaben');
+        angaben().forEach(function (p) {
+          doc.setFont('helvetica', 'normal'); doc.setFontSize(10.5); doc.setTextColor.apply(doc, grau);
+          doc.text(p[0], L + 2, y);
+          doc.setTextColor.apply(doc, dunkel); doc.setFont('helvetica', 'bold');
+          doc.text(String(p[1]), L + 80, y);
+          y += 6;
+        });
+
+        abschnitt('Der nächste Schritt');
+        zeile('Wir schauen uns Ihr Haus vor Ort an. Dann wissen Sie, welche Wärmepumpe passt und was sie kostet. Antworten Sie einfach auf unsere Mail. Wir melden uns für einen Termin.');
+        if (D.telefon) zeile('Oder rufen Sie uns an: ' + D.telefon, true);
+
+        // Hinweis
+        y += 4;
+        doc.setFillColor(249, 250, 251); doc.setDrawColor.apply(doc, rand);
+        var hinweis = doc.splitTextToSize('Schätzung, keine Zusage. Die KfW entscheidet. Es zählt der Tag des Antrags. Grundlage: KfW-Merkblatt 458, Stand 09/2026.', B - 12);
+        var hh = hinweis.length * 5 + 8;
+        doc.roundedRect(L, y, B, hh, 2, 2, 'FD');
+        doc.setFont('helvetica', 'normal'); doc.setFontSize(10); doc.setTextColor(75, 85, 99);
+        doc.text(hinweis, L + 6, y + 7);
+
+        // Fuß
+        doc.setDrawColor.apply(doc, rand); doc.line(L, 282, L + B, 282);
+        doc.setFontSize(9); doc.setTextColor.apply(doc, grau);
+        doc.text(D.name + ' · ' + D.ort, L, 288);
+        doc.text('Vorschau des Förder-Checks', L + B, 288, { align: 'right' });
+
+        letztesPdf = doc;
+        doc.save(dateiname());
+        return doc.getNumberOfPages();
+      });
+    }
+
+    /* ─── Vorschau der Mail (es geht keine Mail raus) ─── */
+    function fuelle(vorlage, werte) {
+      return vorlage.replace(/\{\{(\w+)\}\}/g, function (m, k) { return Object.prototype.hasOwnProperty.call(werte, k) ? werte[k] : m; });
+    }
+    function zeigeMail(r) {
+      var werte = {
+        betrieb: D.name, ort: D.ort, email: a.email, bundesland: a.bundesland || '',
+        prozent_bis: prozent(r.bis.prozent), euro_bis: euro(r.bis.euro),
+        prozent_ab: prozent(r.ab.prozent), euro_ab: euro(r.ab.euro),
+        basis_bis: euro(r.bis.basis), basis_ab: euro(r.ab.basis),
+        unterschied_satz: r.diff > 0 ? 'Ein Antrag bis 31.01.2027 bringt rund ' + euro(r.diff) + ' mehr.' : 'In Ihrem Fall bleibt die Summe gleich.',
+        telefon_satz: D.telefon ? 'Oder rufen Sie uns an: ' + D.telefon + '.' : '',
+        farbe: D.farben.primaer, farbe_text: D.farben.primaerText, dateiname: dateiname()
+      };
+      var werteHtml = {};
+      Object.keys(werte).forEach(function (k) { werteHtml[k] = esc(werte[k]); });
+      document.getElementById('mfBetreff').textContent = fuelle(D.mail.betreff, werte);
+      document.getElementById('mfAn').textContent = a.email;
+      document.getElementById('mfDatei').textContent = dateiname();
+      var rahmen = document.getElementById('mfInhalt');
+      rahmen.onload = function () {
+        try { rahmen.style.height = (rahmen.contentDocument.documentElement.scrollHeight + 8) + 'px'; } catch (x) {}
+      };
+      rahmen.srcdoc = fuelle(D.mail.html, werteHtml);
+      mailBereich.hidden = false;
+    }
+
+    zeige('start', false);
+  })();
+  </script>
+</body>
+</html>
