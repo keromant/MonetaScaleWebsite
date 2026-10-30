@@ -461,10 +461,8 @@
 
     .pakete-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      gap: 24px;
     }
-    .pakete-grid .card { padding: 40px 34px; }
 
     .card {
       background: var(--bg2);
@@ -509,29 +507,6 @@
     .card:hover::before { opacity: 1; }
     .card:hover::after  { left: 140%; }
 
-    .card.featured {
-      background: linear-gradient(155deg, rgba(101,200,61,0.055) 0%, var(--bg2) 55%);
-      border-color: rgba(101,200,61,0.18);
-    }
-    .card.featured::before { opacity: 1; }
-    .card.featured:hover { border-color: rgba(101,200,61,0.4); }
-
-    .card-badge {
-      display: inline-flex;
-      align-items: center;
-      padding: 5px 14px;
-      background: rgba(101,200,61,0.1);
-      border: 1px solid rgba(101,200,61,0.22);
-      border-radius: 100px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 28px;
-      width: fit-content;
-    }
-
     .card-num {
       font-family: var(--fh);
       font-size: 11px;
@@ -575,40 +550,6 @@
       margin-bottom: 36px;
     }
 
-    .card-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 26px;
-      font-family: var(--fb);
-      font-size: 14px;
-      font-weight: 600;
-      border-radius: 14px;
-      border: 1px solid var(--borders);
-      color: var(--t2);
-      background: transparent;
-      width: fit-content;
-      transition:
-        color 0.2s,
-        border-color 0.2s,
-        background 0.2s,
-        transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
-        box-shadow 0.3s;
-    }
-    .card-btn:hover {
-      color: var(--white);
-      border-color: var(--muted);
-      transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-
-    .card.featured .card-btn {
-      background: var(--green);
-      color: #0A0A0A;
-      border-color: var(--green);
-    }
-    .card.featured .card-btn:hover { background: var(--green-hi); border-color: var(--green-hi); }
-
     .card-menge {
       font-size: 15px;
       color: var(--t2);
@@ -623,9 +564,6 @@
       color: var(--white);
       margin-right: 6px;
     }
-    .card.featured .card-menge span { color: var(--green); }
-    .pakete-grid .card-menge span { font-size: clamp(44px, 4.4vw, 56px); }
-    .pakete-grid .card-name { font-size: clamp(24px, 2.4vw, 29px); }
 
     .card-list {
       list-style: none;
@@ -771,38 +709,51 @@
     .start-grid .card { padding: 28px 30px; }
     .start-grid .card-name { font-size: 18px; margin-bottom: 10px; }
 
-    /* ─── PAKET MARKTFÜHRER ───
-       Eigene Karte: Petrol-Bühne, wandernder Rahmen-Glanz, Krone.
+    /* ─── PAKET-KACHELN ───
+       Alle drei Pakete nutzen dieselbe Kachel. Nur .mf-card bekommt die
+       Petrol-Bühne, den wandernden Rahmen-Glanz und die Krone.
        Spotlight dauerhaft weich, beim Hover kräftig + Pop (easeOutBack).
-       Reveal sitzt auf .mf-wrap, Hover auf .mf-card: GSAP schreibt sonst
+       Reveal sitzt auf .pk-wrap, Hover auf .pk-card: GSAP schreibt sonst
        ein Inline-transform und hebelt den Hover aus. */
     @property --mf-winkel {
       syntax: '<angle>';
       inherits: false;
       initial-value: 0deg;
     }
-    .mf-wrap { grid-column: 1 / -1; margin-top: 16px; }
-    .mf-card {
-      --mf-glow-soft:
-        0 0 0 1px rgba(var(--green-rgb), 0.18),
-        0 30px 64px -26px rgba(var(--green-rgb), 0.40),
-        0 0 90px -24px rgba(var(--green-rgb), 0.26);
-      --mf-glow-strong:
-        0 0 0 1px rgba(var(--green-rgb), 0.45),
-        0 42px 84px -24px rgba(var(--green-rgb), 0.58),
-        0 0 130px -14px rgba(var(--green-rgb), 0.36);
+    .pk-card {
+      --pk-glow-soft: 0 24px 56px -32px rgba(0, 0, 0, 0.7);
+      --pk-glow-strong: 0 32px 64px -28px rgba(0, 0, 0, 0.85);
       position: relative;
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
       grid-template-areas:
-        "badge   badge"
-        "kopf    neu"
-        "partner neu"
-        "knopf   liste";
+        "badge badge"
+        "kopf  neu"
+        "knopf neu"
+        "liste liste";
       grid-template-rows: auto auto 1fr auto;
       column-gap: 56px;
       padding: 48px 52px;
       border-radius: 24px;
+      border: 1px solid var(--border);
+      background:
+        radial-gradient(110% 85% at 0% 0%, rgba(255, 255, 255, 0.035) 0%, transparent 55%),
+        var(--bg2);
+      box-shadow: var(--pk-glow-soft);
+      transition:
+        transform  0.45s var(--pop-ease),
+        box-shadow 0.4s ease,
+        border-color 0.3s;
+    }
+    .mf-card {
+      --pk-glow-soft:
+        0 0 0 1px rgba(var(--green-rgb), 0.18),
+        0 30px 64px -26px rgba(var(--green-rgb), 0.40),
+        0 0 90px -24px rgba(var(--green-rgb), 0.26);
+      --pk-glow-strong:
+        0 0 0 1px rgba(var(--green-rgb), 0.45),
+        0 42px 84px -24px rgba(var(--green-rgb), 0.58),
+        0 0 130px -14px rgba(var(--green-rgb), 0.36);
       border: 1.5px solid transparent;
       background:
         radial-gradient(110% 85% at 0% 0%, rgba(var(--green-rgb), 0.17) 0%, transparent 55%) padding-box,
@@ -816,42 +767,46 @@
           var(--green) 220deg,
           rgba(var(--green-rgb), 0.22) 270deg,
           rgba(var(--green-rgb), 0.22) 360deg) border-box;
-      box-shadow: var(--mf-glow-soft);
-      transition:
-        transform  0.45s var(--pop-ease),
-        box-shadow 0.4s ease;
       animation: mf-glanz 9s linear infinite;
     }
     @keyframes mf-glanz { to { --mf-winkel: 360deg; } }
 
-    .mf-badge {
+    .pk-badge {
       grid-area: badge;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       width: fit-content;
-      padding: 7px 16px 7px 12px;
+      padding: 7px 16px;
       margin-bottom: 26px;
       border-radius: 100px;
-      background: linear-gradient(90deg, var(--green) 0%, var(--green-hi) 100%);
-      color: #0A0A0A;
+      border: 1px solid var(--borders);
+      color: var(--t2);
       font-family: var(--fh);
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+    }
+    .pk-badge svg { width: 17px; height: 17px; flex-shrink: 0; }
+    .mf-card .pk-badge {
+      padding-left: 12px;
+      border-color: transparent;
+      background: linear-gradient(90deg, var(--green) 0%, var(--green-hi) 100%);
+      color: #0A0A0A;
       box-shadow: 0 8px 24px -8px rgba(var(--green-rgb), 0.65);
     }
-    .mf-badge svg { width: 17px; height: 17px; flex-shrink: 0; }
 
-    .mf-kopf { grid-area: kopf; }
-    .pakete-grid .mf-card .card-name { font-size: clamp(34px, 3.8vw, 48px); margin-bottom: 4px; }
+    .pk-kopf { grid-area: kopf; }
+    .pakete-grid .card-name { font-size: clamp(28px, 3vw, 38px); margin-bottom: 4px; }
+    .pakete-grid .card-menge span { font-size: clamp(44px, 4.6vw, 60px); }
+    .pakete-grid .mf-card .card-name { font-size: clamp(34px, 3.8vw, 48px); }
     .pakete-grid .mf-card .card-menge span { font-size: clamp(52px, 5.4vw, 72px); color: var(--green); }
-    .mf-card .paket-satz { font-size: 17px; margin-bottom: 0; }
+    .pk-card .paket-satz { font-size: 17px; margin-bottom: 0; }
 
-    .mf-neu { grid-area: neu; }
-    .mf-neu-label,
-    .mf-liste-label {
+    .pk-neu { grid-area: neu; }
+    .pk-neu-label,
+    .pk-liste-label {
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.2em;
@@ -859,24 +814,28 @@
       color: var(--green);
       margin-bottom: 14px;
     }
-    .mf-neu-grid {
+    .pk-neu-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
     }
-    .mf-leistung {
+    .pk-leistung {
       padding: 20px 20px 18px;
       border-radius: 16px;
-      background: rgba(10, 10, 10, 0.42);
-      border: 1px solid rgba(var(--green-rgb), 0.28);
+      background: var(--bg);
+      border: 1px solid var(--border);
     }
-    .mf-leistung-kopf {
+    .mf-card .pk-leistung {
+      background: rgba(10, 10, 10, 0.42);
+      border-color: rgba(var(--green-rgb), 0.28);
+    }
+    .pk-leistung-kopf {
       display: flex;
       align-items: center;
       gap: 12px;
       margin-bottom: 12px;
     }
-    .mf-icon {
+    .pk-icon {
       width: 38px;
       height: 38px;
       border-radius: 11px;
@@ -886,8 +845,8 @@
       background: rgba(var(--green-rgb), 0.14);
       color: var(--green);
     }
-    .mf-icon svg { width: 20px; height: 20px; }
-    .mf-leistung h4 {
+    .pk-icon svg { width: 20px; height: 20px; }
+    .pk-leistung h4 {
       font-family: var(--fh);
       font-size: 18px;
       font-weight: 800;
@@ -895,7 +854,7 @@
       line-height: 1.2;
       color: var(--white);
     }
-    .mf-tag {
+    .pk-tag {
       display: block;
       margin-top: 2px;
       font-size: 11px;
@@ -904,51 +863,33 @@
       text-transform: uppercase;
       color: var(--t2);
     }
-    .mf-leistung p { font-size: 14px; line-height: 1.6; color: var(--t2); }
-    .mf-leistung-breit { grid-column: 1 / -1; }
+    .pk-leistung p { font-size: 14px; line-height: 1.6; color: var(--t2); }
+    .pk-leistung-breit { grid-column: 1 / -1; }
 
-    .mf-liste {
+    .pk-liste {
       grid-area: liste;
       margin-top: 28px;
       padding-top: 26px;
-      border-top: 1px solid rgba(var(--green-rgb), 0.18);
+      border-top: 1px solid var(--border);
     }
-    .mf-card .card-list {
+    .mf-card .pk-liste { border-top-color: rgba(var(--green-rgb), 0.18); }
+    .pk-card .card-list {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 10px 24px;
       margin-bottom: 0;
     }
 
-    .mf-partner {
-      grid-area: partner;
-      margin-top: 28px;
-      padding: 18px 20px;
-      border-radius: 14px;
-      background: rgba(var(--green-rgb), 0.07);
-      border: 1px solid rgba(var(--green-rgb), 0.24);
-    }
-    .mf-partner strong {
-      display: block;
-      font-family: var(--fh);
-      font-size: 16px;
-      font-weight: 800;
-      letter-spacing: -0.01em;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-    .mf-partner p { font-size: 14px; line-height: 1.6; color: var(--t2); }
-
-    .mf-aktion {
+    .pk-aktion {
       grid-area: knopf;
-      align-self: end;
+      align-self: start;
       display: flex;
       align-items: center;
       gap: 18px;
       flex-wrap: wrap;
       margin-top: 26px;
     }
-    .mf-preis {
+    .pk-preis {
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.04em;
@@ -956,15 +897,16 @@
     }
 
     /* Knopf: schräger Farb-Sweep, Sprung erst nach der Animation (JS) */
-    .mf-btn {
-      --sweep: var(--white);
+    .pk-btn {
+      --sweep: var(--green);
       display: inline-flex;
       align-items: center;
       gap: 10px;
       padding: 16px 30px;
       border-radius: 14px;
-      background: var(--green);
-      color: #0A0A0A;
+      border: 1px solid var(--borders);
+      background: transparent;
+      color: var(--white);
       font-family: var(--fb);
       font-size: 15px;
       font-weight: 700;
@@ -973,10 +915,16 @@
       z-index: 1;
       overflow: hidden;
       isolation: isolate;
-      box-shadow: 0 10px 28px -10px rgba(var(--green-rgb), 0.75);
       transition: color 0.45s ease, box-shadow 0.35s ease;
     }
-    .mf-btn::after {
+    .mf-card .pk-btn {
+      --sweep: var(--white);
+      border-color: transparent;
+      background: var(--green);
+      color: #0A0A0A;
+      box-shadow: 0 10px 28px -10px rgba(var(--green-rgb), 0.75);
+    }
+    .pk-btn::after {
       content: '';
       position: absolute;
       inset: 0 -20%;
@@ -986,20 +934,24 @@
       transform-origin: center;
       transition: transform 0.5s ease;
     }
-    .mf-btn.is-activating::after { animation: mf-sweep 0.5s ease forwards; }
-    @keyframes mf-sweep {
+    .pk-btn.is-activating { color: #0A0A0A; }
+    .pk-btn.is-activating::after { animation: pk-sweep 0.5s ease forwards; }
+    @keyframes pk-sweep {
       from { transform: skewX(-45deg) scale(0, 1); }
       to   { transform: skewX(-45deg) scale(1, 1); }
     }
-    .mf-btn:focus-visible { outline: 2px solid var(--green-hi); outline-offset: 3px; }
+    .pk-btn:focus-visible { outline: 2px solid var(--green-hi); outline-offset: 3px; }
 
     @media (hover: hover) and (pointer: fine) {
-      .mf-card:hover {
+      .pk-card:hover {
         transform: translateY(-6px) scale(1.012);
-        box-shadow: var(--mf-glow-strong);
+        box-shadow: var(--pk-glow-strong);
+        border-color: var(--borders);
       }
-      .mf-btn:hover::after { transform: skewX(-45deg) scale(1, 1); }
-      .mf-btn:hover { box-shadow: 0 14px 34px -10px rgba(var(--green-rgb), 0.9); }
+      .mf-card:hover { border-color: transparent; }
+      .pk-btn:hover::after { transform: skewX(-45deg) scale(1, 1); }
+      .pk-btn:hover { color: #0A0A0A; }
+      .mf-card .pk-btn:hover { box-shadow: 0 14px 34px -10px rgba(var(--green-rgb), 0.9); }
     }
 
     /* Formular: Paket-Auswahl */
@@ -1251,11 +1203,11 @@
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1100px) {
-      .pakete-grid .card { padding: 36px 26px; }
       .strecke-grid { grid-template-columns: repeat(3, 1fr); }
       .boni-grid { grid-template-columns: repeat(2, 1fr); }
-      .mf-card { padding: 42px 38px; column-gap: 40px; }
-      .mf-neu-grid { grid-template-columns: 1fr; }
+      .pk-card { padding: 42px 38px; column-gap: 40px; }
+      .pk-neu-grid { grid-template-columns: 1fr; }
+      .pk-card .card-list { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 900px) {
       .leistungen-grid,
@@ -1282,34 +1234,31 @@
       }
       .ansatz-grid { grid-template-columns: 1fr; gap: 36px; }
       .ansatz-left { position: static; }
-      .pakete-grid,
       .zahlen-grid,
       .ablauf-grid,
       .garantie-grid { grid-template-columns: 1fr; }
-      .pakete-grid .card,
       .zahlen-grid .card,
       .ablauf-grid .card { padding: 34px 26px; }
       .card { padding: 34px 26px; }
-      .mf-wrap { margin-top: 8px; }
-      .mf-card {
+      .pk-card {
         grid-template-columns: minmax(0, 1fr);
-        grid-template-areas: "badge" "kopf" "neu" "liste" "partner" "knopf";
+        grid-template-areas: "badge" "kopf" "neu" "liste" "knopf";
         grid-template-rows: none;
         padding: 36px 28px;
       }
-      .mf-neu { margin-top: 28px; }
-      .mf-neu-grid { grid-template-columns: 1fr 1fr; }
+      .pk-neu { margin-top: 28px; }
+      .pk-neu-grid { grid-template-columns: 1fr 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .form-submit { width: 100%; justify-content: center; }
       footer { flex-direction: column; gap: 20px; text-align: center; padding: 28px 24px; }
       .footer-links { justify-content: center; flex-wrap: wrap; }
     }
     @media (max-width: 640px) {
-      .mf-card { padding: 32px 22px; border-radius: 20px; }
-      .mf-neu-grid,
-      .mf-card .card-list { grid-template-columns: 1fr; }
-      .mf-btn { width: 100%; justify-content: center; }
-      .mf-aktion { justify-content: center; }
+      .pk-card { padding: 32px 22px; border-radius: 20px; }
+      .pk-neu-grid,
+      .pk-card .card-list { grid-template-columns: 1fr; }
+      .pk-btn { width: 100%; justify-content: center; }
+      .pk-aktion { justify-content: center; }
     }
 
     /* ─── HERO DESKTOP-FIT (nur Desktop; Mobile bleibt unberuehrt) ───
@@ -1334,8 +1283,8 @@
       .scroll-hint { display: none; }
       * { transition-duration: 0.01ms !important; }
       .mf-card { animation: none; }
-      .mf-card:hover { transform: none; }
-      .mf-btn::after { transition: none; animation: none; }
+      .pk-card:hover { transform: none; }
+      .pk-btn::after { transition: none; animation: none; }
     }
   </style>
 </head>
@@ -1624,56 +1573,177 @@
       </div>
 
       <div class="pakete-grid">
-        <div class="card reveal">
-          <div class="card-num">Paket</div>
-          <h3 class="card-name">Sichtbar</h3>
-          <div class="card-menge"><span>45</span> Posts&nbsp;im&nbsp;Monat</div>
-          <div class="card-price">15 Short-Form-Videos · auf&nbsp;3&nbsp;Apps</div>
-          <p class="paket-satz">Raus aus der Stille. Kunden sehen Sie jede Woche, bevor sie anfragen.</p>
-          <div class="card-divider"></div>
-          <ul class="card-list">
-            <li>3 bis 4 Videos pro Woche</li>
-            <li>Markt-Röntgen, Fahrplan, Skripte, Video-Fabrik, Ausspielung</li>
-            <li>Wochen-Kompass: jede Woche 30 Minuten</li>
-            <li>Ein Test alle 2 Wochen</li>
-            <li>Anfragen-Strecke mit Stichwort und Link</li>
-            <li>7 Boni</li>
-          </ul>
-          <a href="#kontakt" class="card-btn" data-paket="Sichtbar">
-            Plan anfordern
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
+        <div class="pk-wrap reveal">
+          <article class="pk-card" aria-labelledby="pk-sichtbar">
+            <div class="pk-badge">Der Einstieg</div>
+
+            <div class="pk-kopf">
+              <h3 class="card-name" id="pk-sichtbar">Sichtbar</h3>
+              <div class="card-menge"><span>45</span> Posts&nbsp;im&nbsp;Monat</div>
+              <div class="card-price">15 Short-Form-Videos · auf&nbsp;3&nbsp;Apps</div>
+              <p class="paket-satz">Raus aus der Stille. Kunden sehen Sie jede Woche, bevor sie anfragen.</p>
+            </div>
+
+            <div class="pk-neu">
+              <div class="pk-neu-label">Das ist drin</div>
+              <div class="pk-neu-grid">
+                <div class="pk-leistung">
+                  <div class="pk-leistung-kopf">
+                    <span class="pk-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M4 20V11M10 20V4M16 20v-7M21 20H3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                    <div>
+                      <h4>Markt-Röntgen</h4>
+                      <span class="pk-tag">Jeden Monat neu</span>
+                    </div>
+                  </div>
+                  <p>Wir prüfen die 20 stärksten Konten Ihrer Branche. Wir sammeln die 30 häufigsten Fragen Ihrer Kunden.</p>
+                </div>
+                <div class="pk-leistung">
+                  <div class="pk-leistung-kopf">
+                    <span class="pk-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <rect x="7" y="2.5" width="10" height="19" rx="2.5" stroke="currentColor" stroke-width="1.7"/>
+                        <path d="M10.4 9.1v5.8l4.6-2.9-4.6-2.9z" fill="currentColor"/>
+                      </svg>
+                    </span>
+                    <div>
+                      <h4>Video-Fabrik</h4>
+                      <span class="pk-tag">Fertig in 72 Stunden</span>
+                    </div>
+                  </div>
+                  <p>Schnitt, Untertitel und Animation in Ihren Farben. Mit zwei Runden für Änderungen.</p>
+                </div>
+                <div class="pk-leistung pk-leistung-breit">
+                  <div class="pk-leistung-kopf">
+                    <span class="pk-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/>
+                        <path d="M15.8 8.2l-2.3 5.3-5.3 2.3 2.3-5.3 5.3-2.3z" fill="currentColor"/>
+                      </svg>
+                    </span>
+                    <div>
+                      <h4>Wochen-Kompass</h4>
+                      <span class="pk-tag">Jede Woche 30 Minuten</span>
+                    </div>
+                  </div>
+                  <p>Zahlen, Gewinner, Verlierer, nächste Tests. Dazu ein Bericht auf einer Seite. Am Ende steht eine klare Entscheidung.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pk-liste">
+              <div class="pk-liste-label">Und alles aus der Maschine</div>
+              <ul class="card-list">
+                <li>3 bis 4 Videos pro Woche</li>
+                <li>90-Tage-Fahrplan, Skripte und Ausspielung</li>
+                <li>Ein Test alle 2 Wochen</li>
+                <li>Anfragen-Strecke mit Stichwort und Link</li>
+                <li>7 Boni</li>
+              </ul>
+            </div>
+
+            <div class="pk-aktion">
+              <a href="#kontakt" class="pk-btn" data-paket="Sichtbar">
+                Plan anfordern
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <span class="pk-preis">Preis im Gespräch</span>
+            </div>
+          </article>
         </div>
 
-        <div class="card featured reveal">
-          <div class="card-badge">Empfohlen</div>
-          <h3 class="card-name">Überall</h3>
-          <div class="card-menge"><span>120</span> Posts&nbsp;im&nbsp;Monat</div>
-          <div class="card-price">30 Short-Form-Videos · auf&nbsp;4&nbsp;Apps</div>
-          <p class="paket-satz">Jeden Tag auf vier Apps. Kein Kommentar bleibt liegen. Wer kaufen will, landet bei Ihnen.</p>
-          <div class="card-divider"></div>
-          <ul class="card-list">
-            <li>Alles aus dem Paket Sichtbar</li>
-            <li>Instagram, Facebook, TikTok und YouTube Shorts</li>
-            <li>Ein Test pro Woche</li>
-            <li>Die ganze Anfragen-Strecke</li>
-            <li>Kommentar-Wache, Montag bis Freitag</li>
-            <li>Such-Magnet: die Grundlage für Google und KI-Suche</li>
-            <li>Alle 8 Boni</li>
-          </ul>
-          <a href="#kontakt" class="card-btn" data-paket="Überall">
-            Plan anfordern
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
+        <div class="pk-wrap reveal">
+          <article class="pk-card" aria-labelledby="pk-ueberall">
+            <div class="pk-badge">Empfohlen</div>
+
+            <div class="pk-kopf">
+              <h3 class="card-name" id="pk-ueberall">Überall</h3>
+              <div class="card-menge"><span>120</span> Posts&nbsp;im&nbsp;Monat</div>
+              <div class="card-price">30 Short-Form-Videos · auf&nbsp;4&nbsp;Apps</div>
+              <p class="paket-satz">Jeden Tag auf vier Apps. Kein Kommentar bleibt liegen. Wer kaufen will, landet bei Ihnen.</p>
+            </div>
+
+            <div class="pk-neu">
+              <div class="pk-neu-label">Neu dazu</div>
+              <div class="pk-neu-grid">
+                <div class="pk-leistung">
+                  <div class="pk-leistung-kopf">
+                    <span class="pk-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M4 5h16a1.5 1.5 0 011.5 1.5v9A1.5 1.5 0 0120 17h-9.5L6 20.5V17H4a1.5 1.5 0 01-1.5-1.5v-9A1.5 1.5 0 014 5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                        <path d="M8.5 11l2.4 2.4 4.6-4.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                    <div>
+                      <h4>Kommentar-Wache</h4>
+                      <span class="pk-tag">Montag bis Freitag</span>
+                    </div>
+                  </div>
+                  <p>Kein Kommentar bleibt liegen. Wir antworten in der ersten Stunde nach dem Posten.</p>
+                </div>
+                <div class="pk-leistung">
+                  <div class="pk-leistung-kopf">
+                    <span class="pk-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M3.5 5h17L14 13v6.5l-4-2V13L3.5 5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                    <div>
+                      <h4>Anfragen-Strecke</h4>
+                      <span class="pk-tag">Die ganze Strecke</span>
+                    </div>
+                  </div>
+                  <p>Aus Zuschauern werden Anfragen. Ein Stichwort im Kommentar reicht. Der Rest läuft von allein bis in Ihre Liste.</p>
+                </div>
+                <div class="pk-leistung pk-leistung-breit">
+                  <div class="pk-leistung-kopf">
+                    <span class="pk-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none">
+                        <circle cx="10.5" cy="10.5" r="6.2" stroke="currentColor" stroke-width="1.7"/>
+                        <path d="M15.2 15.2L20.5 20.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                        <path d="M10.5 7.4l.85 1.95 1.95.85-1.95.85-.85 1.95-.85-1.95-1.95-.85 1.95-.85.85-1.95z" fill="currentColor"/>
+                      </svg>
+                    </span>
+                    <div>
+                      <h4>Such-Magnet</h4>
+                      <span class="pk-tag">Google &amp; KI-Suche · die Grundlage</span>
+                    </div>
+                  </div>
+                  <p>Wir pflegen Ihr Google-Profil: Ort, Zeiten, Branche, Text. Videos und Texte nutzen die Suchwörter aus Ihrer Region.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="pk-liste">
+              <div class="pk-liste-label">Und alles aus der Maschine</div>
+              <ul class="card-list">
+                <li>Alles aus dem Paket Sichtbar</li>
+                <li>Instagram, Facebook, TikTok und YouTube Shorts</li>
+                <li>Ein Test pro Woche</li>
+                <li>Alle 8 Boni</li>
+              </ul>
+            </div>
+
+            <div class="pk-aktion">
+              <a href="#kontakt" class="pk-btn" data-paket="Überall">
+                Plan anfordern
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <span class="pk-preis">Preis im Gespräch</span>
+            </div>
+          </article>
         </div>
 
-        <div class="mf-wrap reveal">
-          <article class="mf-card" aria-labelledby="mf-name">
-            <div class="mf-badge">
+        <div class="pk-wrap reveal">
+          <article class="pk-card mf-card" aria-labelledby="mf-name">
+            <div class="pk-badge">
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M3 8.5l4.6 3.6L12 5l4.4 7.1L21 8.5 19.2 18H4.8L3 8.5z" fill="currentColor"/>
                 <rect x="4.8" y="19.4" width="14.4" height="1.8" rx=".9" fill="currentColor"/>
@@ -1681,19 +1751,19 @@
               Für die Nummer&nbsp;1 vor&nbsp;Ort
             </div>
 
-            <div class="mf-kopf">
+            <div class="pk-kopf">
               <h3 class="card-name" id="mf-name">Marktführer</h3>
               <div class="card-menge"><span>300</span> Posts&nbsp;im&nbsp;Monat</div>
               <div class="card-price">60 Short-Form-Videos · auf&nbsp;5&nbsp;Apps · plus Werbung und&nbsp;YouTube</div>
               <p class="paket-satz">Ihre Region sieht Sie jeden Tag. Kurze Videos, Werbung und YouTube arbeiten für Sie.</p>
             </div>
 
-            <div class="mf-neu">
-              <div class="mf-neu-label">Neu dazu</div>
-              <div class="mf-neu-grid">
-                <div class="mf-leistung">
-                  <div class="mf-leistung-kopf">
-                    <span class="mf-icon" aria-hidden="true">
+            <div class="pk-neu">
+              <div class="pk-neu-label">Neu dazu</div>
+              <div class="pk-neu-grid">
+                <div class="pk-leistung">
+                  <div class="pk-leistung-kopf">
+                    <span class="pk-icon" aria-hidden="true">
                       <svg viewBox="0 0 24 24" fill="none">
                         <path d="M3.5 10v4h3l6.5 4.5v-13L6.5 10h-3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
                         <path d="M16.5 9.2a4 4 0 010 5.6M19.3 6.6a7.7 7.7 0 010 10.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
@@ -1701,14 +1771,14 @@
                     </span>
                     <div>
                       <h4>Anfragen-Motor</h4>
-                      <span class="mf-tag">Meta Ads</span>
+                      <span class="pk-tag">Meta Ads</span>
                     </div>
                   </div>
                   <p>Ihre besten Videos laufen als Werbung. Nur Menschen aus Ihrer Region sehen sie.</p>
                 </div>
-                <div class="mf-leistung">
-                  <div class="mf-leistung-kopf">
-                    <span class="mf-icon" aria-hidden="true">
+                <div class="pk-leistung">
+                  <div class="pk-leistung-kopf">
+                    <span class="pk-icon" aria-hidden="true">
                       <svg viewBox="0 0 24 24" fill="none">
                         <rect x="2.5" y="5" width="19" height="14" rx="4" stroke="currentColor" stroke-width="1.7"/>
                         <path d="M10.2 9.4v5.2l4.6-2.6-4.6-2.6z" fill="currentColor"/>
@@ -1716,14 +1786,14 @@
                     </span>
                     <div>
                       <h4>Vertrauens-Kanal</h4>
-                      <span class="mf-tag">Lange Videos · YouTube</span>
+                      <span class="pk-tag">Lange Videos · YouTube</span>
                     </div>
                   </div>
                   <p>Lange Videos beantworten die Fragen von Ihren Kunden. So vertrauen Kunden Ihnen vor dem ersten Anruf.</p>
                 </div>
-                <div class="mf-leistung mf-leistung-breit">
-                  <div class="mf-leistung-kopf">
-                    <span class="mf-icon" aria-hidden="true">
+                <div class="pk-leistung pk-leistung-breit">
+                  <div class="pk-leistung-kopf">
+                    <span class="pk-icon" aria-hidden="true">
                       <svg viewBox="0 0 24 24" fill="none">
                         <circle cx="10.5" cy="10.5" r="6.2" stroke="currentColor" stroke-width="1.7"/>
                         <path d="M15.2 15.2L20.5 20.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
@@ -1732,7 +1802,7 @@
                     </span>
                     <div>
                       <h4>Such-Magnet, voll</h4>
-                      <span class="mf-tag">Google &amp; KI-Suche</span>
+                      <span class="pk-tag">Google &amp; KI-Suche</span>
                     </div>
                   </div>
                   <p>Lange YouTube-Videos geben Antwort auf Fragen aus Ihrer Region. Jeden Monat prüfen wir: Wo tauchen Sie bei Google und in KI-Suchen auf?</p>
@@ -1740,8 +1810,8 @@
               </div>
             </div>
 
-            <div class="mf-liste">
-              <div class="mf-liste-label">Und alles aus der Maschine</div>
+            <div class="pk-liste">
+              <div class="pk-liste-label">Und alles aus der Maschine</div>
               <ul class="card-list">
                 <li>Alles aus dem Paket Überall</li>
                 <li>Dazu LinkedIn oder Pinterest, je nach Branche</li>
@@ -1752,19 +1822,14 @@
               </ul>
             </div>
 
-            <div class="mf-partner">
-              <strong>Partner auf Erfolg</strong>
-              <p>Ein fester Betrag im Monat. Ein Teil hängt am Erfolg.</p>
-            </div>
-
-            <div class="mf-aktion">
-              <a href="#kontakt" class="mf-btn" data-paket="Marktführer">
+            <div class="pk-aktion">
+              <a href="#kontakt" class="pk-btn" data-paket="Marktführer">
                 Gespräch anfragen
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                   <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </a>
-              <span class="mf-preis">Preis im Gespräch</span>
+              <span class="pk-preis">Preis im Gespräch</span>
             </div>
           </article>
         </div>
@@ -2249,8 +2314,8 @@
     } catch (_) {}
 
     /* ── PAKETE: Paket im Formular vorauswählen ──
-       Karten-Knöpfe tragen data-paket. Der Marktführer-Knopf spielt erst
-       den Sweep ab und springt danach zum Formular. Link-Variante:
+       Paket-Knöpfe tragen data-paket. Sie spielen erst den Sweep ab
+       und springen danach zum Formular. Link-Variante:
        ?paket=sichtbar | ueberall | marktfuehrer */
     (function () {
       const auswahl = document.getElementById('cf-paket');
@@ -2267,7 +2332,7 @@
       document.querySelectorAll('[data-paket]').forEach((knopf) => {
         knopf.addEventListener('click', (e) => {
           waehle(knopf.dataset.paket);
-          if (!knopf.classList.contains('mf-btn')) return;
+          if (!knopf.classList.contains('pk-btn')) return;
           if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
           e.preventDefault();
           if (knopf._aktiv) return;

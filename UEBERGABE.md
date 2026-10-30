@@ -2,6 +2,14 @@
 
 Kurze Notiz für die nächste Sitzung. Neueste oben, höchstens drei Blöcke. Push auf `master` = Live-Deploy (GitHub Pages).
 
+## 2026-10-30 – Pakete in einer Kachel, „Partner auf Erfolg“ raus (PC)
+**Erledigt:** Sichtbar, Überall und Marktführer nutzen dieselbe breite Kachel (`.pk-card`), je eine pro Zeile: Kopf + Knopf links,
+3 innere Kacheln rechts, Liste über die ganze Breite. Nur `.mf-card` hat Petrol, Rahmen-Glanz, Krone und grünen Knopf.
+Block „Partner auf Erfolg“ entfernt, „Preis im Gespräch“ steht jetzt an allen drei Kacheln.
+**Offene Fäden:** Die Texte der inneren Kacheln von Sichtbar und Überall stammen aus Abschnitt „Zwölf Teile“; neu ist nur das Etikett „Der Einstieg“.
+**Fallstricke:** `pk-*` = Bauteile aller Kacheln, `mf-*` = nur die Hervorhebung. `.pk-card` trägt bewusst nicht `.card`, sonst greift das 3D-Kippen (GSAP) und hebelt den Hover aus.
+**Wichtige Dateien:** `index.html` (#pakete, CSS „PAKET-KACHELN“).
+
 ## 2026-10-29 – 10 persönliche Seiten live, Tracking, Datenschutz (PC)
 **Erledigt:** `foerder/landingpages` nach `master` gemergt: 10 Seiten `/<slug>/` (Dream 100 Wärmepumpe), Videos und
 Vorschaubilder von `media.ulas.systems/wp/<slug>/` (R2-Bucket `dream100-videos`, EU), `assets/lp-tracking.js`
