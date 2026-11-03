@@ -2,6 +2,15 @@
 
 Kurze Notiz für die nächste Sitzung. Neueste oben, höchstens drei Blöcke. Push auf `master` = Live-Deploy (GitHub Pages).
 
+## 2026-11-03 – Link-Vorschau „Reels für <Betrieb>“ (PC)
+**Erledigt:** `og:title` der persönlichen Seiten = „Reels für <Name>“ statt „Ihre Förder-Reels und Ihr Förder-Check“,
+`<title>` = „Reels für <Name> · MonetaScale“. Vorlage + `build.mjs` geändert, die 10 Seiten + Muster per Ersetzung nachgezogen
+(gleiche zwei Zeilen wie ein Neubau, an `muster-waermepumpe` geprüft). `build.mjs` liest `mail-foerder-check.md` jetzt auch mit CRLF.
+**Offene Fäden:** Schon verschickte Links behalten in DMs meist die alte Vorschau (Instagram/WhatsApp speichern sie zwischen).
+**Nächster Schritt:** Seiten der 27 neuen Betriebe (Videos in `C:\Website-Business\Akquise\Dream100-neue-Videos`) mit `build.mjs --daten` bauen.
+**Fallstricke:** Ohne die CRLF-Zeile scheiterte `build.mjs` am PC mit „Abschnitt ## Betreff fehlt“ (core.autocrlf=true).
+**Wichtige Dateien:** `tools/landingpages/vorlage.html` (Kopf), `tools/landingpages/build.mjs` (`titel`).
+
 ## 2026-10-30 – Pakete in einer Kachel, „Partner auf Erfolg“ raus (PC)
 **Erledigt:** Sichtbar, Überall und Marktführer nutzen dieselbe breite Kachel (`.pk-card`), je eine pro Zeile: Kopf + Knopf links,
 3 innere Kacheln rechts, Liste über die ganze Breite. Nur `.mf-card` hat Petrol, Rahmen-Glanz, Krone und grünen Knopf.
@@ -21,17 +30,3 @@ Feld `videos: [{url, poster}]`), `node tools/landingpages/build.mjs --daten <pfa
 Dashboard und Johann meldet „Seite geöffnet“. Links in Mails/DMs mit `?q=mail` bzw. `?q=dm`. Listen echter Betriebe nie
 einchecken (Repo öffentlich). Datenschutz ist 381 px breit bei 375 px (schon vorher so, kein sichtbares Element).
 **Wichtige Dateien:** `tools/landingpages/vorlage.html`, `assets/lp-tracking.js`, `datenschutz.html`.
-
-## 2026-10-28 – Neue Telefonnummer, Marktführer und persönliche Seiten in Arbeit (PC)
-**Erledigt:** Impressum und Datenschutz nennen jetzt +49 176 3209802 (vorher +49 176 70368821), live über `master`.
-**Offene Fäden:** Zwei Zweige, noch nicht in `master`:
-- `paket/marktfuehrer` (Worktree `C:\Website-Business\ms-paket`): drittes Paket „Marktführer“ statt „Allgegenwärtig“,
-  Abschnitt „Elf Teile“, Paket-Auswahl im Formular. Fertig geprüft, wartet auf Kerems Ja zum Livegang.
-- `foerder/landingpages` (Worktree `C:\Website-Business\ms-foerder`): Generator `tools/landingpages/` für persönliche
-  Seiten `/<slug>/` der Dream-100-Betriebe (Wärmepumpe), Musterseite `muster-waermepumpe/`, Ergänzung `datenschutz.html`
-  (Formspree, Cloudflare R2). Ändert ebenfalls `datenschutz.html` – beim Zusammenführen auf Konflikt achten.
-**Nächster Schritt:** Nach Kerems Abnahme beide Zweige nach `master` mergen, echte Betriebe nur über
-`node tools/landingpages/build.mjs --daten <pfad außerhalb des Repos>` erzeugen (Repo ist öffentlich).
-**Fallstricke:** Das Repo ist öffentlich: keine Listen echter Betriebe einchecken, nur die erzeugten Seiten der
-tatsächlich angeschriebenen Betriebe. monetascale.de hat keinen Hell/Dunkel-Umschalter (eigene Aufgabe).
-**Wichtige Dateien:** `index.html` (#pakete, Formular), `impressum.html`, `datenschutz.html`, `tools/landingpages/`.

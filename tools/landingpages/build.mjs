@@ -158,7 +158,8 @@ async function existiert(p) {
 
 async function main() {
   const vorlage = await readFile(path.join(HIER, 'vorlage.html'), 'utf8');
-  const mail = mailBloecke(await readFile(path.join(HIER, 'mail-foerder-check.md'), 'utf8'));
+  // Windows-Klon (core.autocrlf) liefert CRLF – die Abschnitts-Suche erwartet \n
+  const mail = mailBloecke((await readFile(path.join(HIER, 'mail-foerder-check.md'), 'utf8')).replace(/\r\n/g, '\n'));
   const liste = JSON.parse(await readFile(datenPfad, 'utf8'));
   if (!Array.isArray(liste)) throw new Error('Die Datendatei muss eine Liste sein');
 
@@ -220,7 +221,8 @@ async function main() {
 
     const html = render(vorlage, {
       slug: b.slug,
-      titel: `Förder-Reels für ${b.name} · MonetaScale`,
+      // Steht in der Link-Vorschau (DM, Mail) – darum der Name des Betriebs vorn
+      titel: `Reels für ${b.name} · MonetaScale`,
       og_url: `https://monetascale.de/${b.slug}/`,
       name: b.name,
       ort: b.ort,
