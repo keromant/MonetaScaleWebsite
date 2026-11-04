@@ -2,6 +2,14 @@
 
 Kurze Notiz für die nächste Sitzung. Neueste oben, höchstens drei Blöcke. Push auf `master` = Live-Deploy (GitHub Pages).
 
+## 2026-11-04 – 15 neue Dream-100-Seiten per Knopf (PC)
+**Erledigt:** 15 persönliche Seiten samt Fahrplan live (Commit 25ae556), gebaut von `neue-seiten.mjs` im Repo monetascale-videos
+(Skill `ulas:dream100-seiten`). Links stehen im Dashboard. Danach Ort auf 5 Seiten wie im Video gekürzt (b77b9e5).
+**Offene Fäden:** 12 der 27 Betriebe vom 02.11. haben Videos im Netz, aber noch keine Seite. Der nächste Knopfdruck nimmt sie zuerst.
+**Nächster Schritt:** Anschreiben über den Versand-Ordner (`versand-ordner.mjs --probe` zeigt die 15). Neue Seiten nur noch über den Knopf.
+**Fallstricke:** Der Knopf committet nur die neuen Ordner und pusht auf master. Fremde, nicht gepushte Commits im Klon halten ihn an.
+**Wichtige Dateien:** `tools/landingpages/build.mjs`, `tools/landingpages/fahrplan.mjs`, im Video-Repo `akquise/dream100/src/dream100/neue-seiten.mjs`.
+
 ## 2026-11-04 – 30-Tage-Fahrplan Paket Überall je Betrieb (Laptop)
 **Erledigt:** Neue Seite `/<slug>/fahrplan/` für alle 10 Dream-100-Betriebe + Muster. Angebot 500 € Startgebühr, Monat 1
 geschenkt, Wochenkalender Tag 1–30 (Wir / Ihr Team / Live), Stichtag 01.02.2027, Garantie Start in 7 Tagen, Druck als PDF.
@@ -19,11 +27,3 @@ mit Screenshot geprüft. Aufrufe zählen über `lp-tracking.js` unter dem Slug d
 **Nächster Schritt:** Seiten der 27 neuen Betriebe (Videos in `C:\Website-Business\Akquise\Dream100-neue-Videos`) mit `build.mjs --daten` bauen.
 **Fallstricke:** Ohne die CRLF-Zeile scheiterte `build.mjs` am PC mit „Abschnitt ## Betreff fehlt“ (core.autocrlf=true).
 **Wichtige Dateien:** `tools/landingpages/vorlage.html` (Kopf), `tools/landingpages/build.mjs` (`titel`).
-
-## 2026-10-30 – Pakete in einer Kachel, „Partner auf Erfolg“ raus (PC)
-**Erledigt:** Sichtbar, Überall und Marktführer nutzen dieselbe breite Kachel (`.pk-card`), je eine pro Zeile: Kopf + Knopf links,
-3 innere Kacheln rechts, Liste über die ganze Breite. Nur `.mf-card` hat Petrol, Rahmen-Glanz, Krone und grünen Knopf.
-Block „Partner auf Erfolg“ entfernt, „Preis im Gespräch“ steht jetzt an allen drei Kacheln.
-**Offene Fäden:** Die Texte der inneren Kacheln von Sichtbar und Überall stammen aus Abschnitt „Zwölf Teile“; neu ist nur das Etikett „Der Einstieg“.
-**Fallstricke:** `pk-*` = Bauteile aller Kacheln, `mf-*` = nur die Hervorhebung. `.pk-card` trägt bewusst nicht `.card`, sonst greift das 3D-Kippen (GSAP) und hebelt den Hover aus.
-**Wichtige Dateien:** `index.html` (#pakete, CSS „PAKET-KACHELN“).
