@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<!-- lp:generiert · Diese Datei erzeugt tools/landingpages/fahrplan.mjs aus fahrplan-vorlage.html. Nicht von Hand ändern. -->
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>30-Tage-Fahrplan für HKW · MonetaScale</title>
+  <meta name="description" content="Der erste Monat im Paket Überall. Tag für Tag geplant.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://monetascale.de/hkw-kassel/fahrplan/">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="MonetaScale">
+  <meta property="og:title" content="30-Tage-Fahrplan für HKW">
+  <meta property="og:description" content="Der erste Monat im Paket Überall. Tag für Tag geplant.">
+  <meta property="og:image" content="https://monetascale.de/brand/profilbild/monetascale-profilbild-dunkel-1080.png">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" type="image/png" href="../../brand/profilbild/monetascale-profilbild-hell-1080.png">
+  <!-- Nutzung zählen wie auf der Reels-Seite (ohne Cookies, Datenschutz Abschnitt 8); ?intern=1 sendet nichts -->
+  <script src="/assets/lp-tracking.js" defer></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --fh: 'Sora', system-ui, sans-serif;
+      --fb: 'Hanken Grotesk', system-ui, sans-serif;
+      --green: #65C83D;
+      --ink: #2F7A17;
+      --bg: #F5F7F3;
+      --bg2: #FFFFFF;
+      --bg3: #ECF0E8;
+      --text: #0A0A0A;
+      --t2: #3B4237;
+      --muted: #5E665A;
+      --border: #E0E5DC;
+      --borders: #C8D0C2;
+      --band: #0A0A0A;
+      /* Farben des Betriebs */
+      --b1: #000AE1;
+      --b1-text: #FFFFFF;
+      --b1-hell: #E6E7FC;
+    }
+    html { overflow-x: hidden; }
+    body { background: var(--bg); color: var(--text); font-family: var(--fb); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid rgba(79, 181, 42, .7); outline-offset: 3px; border-radius: 6px; }
+    h1, h2, h3 { font-family: var(--fh); letter-spacing: -0.02em; line-height: 1.15; }
+
+    .nav { height: 64px; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); background: var(--bg); }
+    .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo img { height: 28px; width: auto; }
+    .logo-wort { font-family: var(--fh); font-weight: 800; font-size: 18px; letter-spacing: -0.02em; }
+    .logo-wort span { color: var(--ink); }
+    .nav-fuer { font-size: 14px; font-weight: 600; color: var(--t2); }
+
+    .s-in { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+    section { padding: 56px 0; }
+    .eyebrow { display: inline-block; font-family: var(--fh); font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); margin-bottom: 14px; }
+
+    /* Kopf */
+    .kopf { padding: 64px 0 40px; }
+    .kopf h1 { font-size: clamp(34px, 5vw, 56px); font-weight: 800; max-width: 16ch; }
+    .kopf h1 span { color: var(--ink); }
+    .kopf .intro { font-size: 19px; color: var(--t2); max-width: 60ch; margin-top: 18px; }
+    .kopf-knoepfe { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--fh); font-weight: 700; font-size: 15px; padding: 13px 22px; border-radius: 999px; text-decoration: none; border: 2px solid var(--text); background: var(--text); color: #fff; cursor: pointer; }
+    .btn.gruen { background: var(--green); border-color: var(--green); color: #0A0A0A; }
+    .btn.leer { background: transparent; color: var(--text); }
+    .btn:hover { transform: translateY(-1px); }
+
+    /* Angebot */
+    .angebot { display: grid; grid-template-columns: 1.2fr 1fr; gap: 0; background: var(--band); color: #fff; border-radius: 22px; overflow: hidden; }
+    .angebot-links { padding: 36px 40px; }
+    .angebot-links h2 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 800; }
+    .angebot-links h2 span { color: var(--green); }
+    .angebot-links p { color: #CFCFCF; margin-top: 12px; max-width: 46ch; }
+    .angebot-rechts { padding: 36px 40px; background: #141A12; display: grid; gap: 14px; align-content: center; }
+    .preis { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-bottom: 1px solid #2A3326; padding-bottom: 12px; }
+    .preis:last-child { border-bottom: 0; padding-bottom: 0; }
+    .preis b { font-family: var(--fh); font-size: 26px; font-weight: 800; color: var(--green); white-space: nowrap; }
+    .preis span { color: #E6E6E6; }
+
+    /* Zahlen */
+    .zahlen { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 18px; }
+    .zahl { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+    .zahl b { display: block; font-family: var(--fh); font-size: 34px; font-weight: 800; line-height: 1.1; }
+    .zahl span { font-size: 15px; color: var(--muted); }
+
+    /* Warum jetzt */
+    .frist { display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: center; background: var(--b1-hell); border-left: 6px solid var(--b1); border-radius: 14px; padding: 24px 28px; }
+    .frist-datum { font-family: var(--fh); font-weight: 800; font-size: 15px; text-align: center; background: var(--b1); color: var(--b1-text); border-radius: 12px; padding: 12px 16px; line-height: 1.2; }
+    .frist-datum b { display: block; font-size: 30px; }
+    .frist h2 { font-size: 22px; }
+    .frist p { color: var(--t2); margin-top: 6px; }
+
+    /* Legende */
+    .h2-gross { font-size: clamp(28px, 3.6vw, 40px); font-weight: 800; }
+    .unter { color: var(--t2); margin-top: 10px; max-width: 62ch; }
+    .legende { display: flex; flex-wrap: wrap; gap: 10px 22px; margin: 22px 0 8px; font-size: 15px; color: var(--t2); }
+    .legende span { display: inline-flex; align-items: center; gap: 8px; }
+
+    .tag-mark { display: inline-block; font-family: var(--fh); font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; border-radius: 999px; padding: 2px 9px; line-height: 1.6; white-space: nowrap; }
+    .m-wir { background: #DDF3D2; color: #1F5C0C; }
+    .m-team { background: var(--b1); color: var(--b1-text); }
+    .m-live { background: #0A0A0A; color: #fff; }
+
+    /* Wochen */
+    .woche { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 26px; margin-top: 22px; break-inside: avoid; }
+    .woche-kopf { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; margin-bottom: 6px; }
+    .woche-nr { font-family: var(--fh); font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+    .woche h3 { font-size: 24px; font-weight: 800; }
+    .woche-ziel { color: var(--t2); font-size: 16px; margin-bottom: 14px; }
+    .immer { display: flex; flex-wrap: wrap; gap: 8px 18px; background: var(--bg3); border-radius: 10px; padding: 10px 14px; font-size: 14px; color: var(--t2); margin-bottom: 14px; }
+    .immer b { color: var(--text); }
+    .tage { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+    .tag { border: 1px solid var(--border); border-radius: 12px; padding: 12px; background: var(--bg); display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+    .tag-nr { font-family: var(--fh); font-weight: 800; font-size: 15px; }
+    .eintrag { font-size: 14px; line-height: 1.45; color: var(--t2); }
+    .eintrag .tag-mark { margin-bottom: 4px; }
+    .tag.ziel { background: #F0F9EA; border-color: #B9E2A5; }
+
+    .bilanz { display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start; background: var(--band); color: #fff; border-radius: 20px; padding: 26px 28px; margin-top: 22px; break-inside: avoid; }
+    .bilanz .tag-nr { color: var(--green); font-size: 18px; white-space: nowrap; }
+    .bilanz h3 { font-size: 22px; }
+    .bilanz ul { margin: 10px 0 0 1.1em; color: #DADADA; }
+    .bilanz li { margin: 4px 0; }
+
+    /* Ihr Aufwand, Ausblick */
+    .zwei { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 22px; }
+    .karte { background: var(--bg2); border: 1px solid var(--border); border-radius: 18px; padding: 26px; break-inside: avoid; }
+    .karte h3 { font-size: 20px; margin-bottom: 10px; }
+    .karte ul { margin-left: 1.1em; color: var(--t2); }
+    .karte li { margin: 5px 0; }
+    .karte p { color: var(--t2); }
+    .karte .gross { font-family: var(--fh); font-weight: 800; font-size: 30px; color: var(--ink); line-height: 1.1; margin-bottom: 8px; }
+    .monat { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--border); }
+    .monat:first-of-type { border-top: 0; }
+    .monat b { font-family: var(--fh); }
+
+    .garantie { border: 2px solid var(--green); }
+    .klein { font-size: 14px; color: var(--muted); margin-top: 10px; }
+
+    /* Schluss */
+    .schluss { text-align: center; }
+    .schluss h2 { font-size: clamp(28px, 3.6vw, 40px); font-weight: 800; }
+    .schluss p { color: var(--t2); margin: 12px auto 0; max-width: 52ch; }
+    .schluss .kopf-knoepfe { justify-content: center; }
+    .hinweis { font-size: 14px; color: var(--muted); max-width: 70ch; margin: 28px auto 0; }
+
+    footer { border-top: 1px solid var(--border); padding: 22px 32px; display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; font-size: 14px; color: var(--muted); }
+    footer nav { display: flex; gap: 18px; }
+
+    @media (max-width: 1000px) {
+      .tage { grid-template-columns: repeat(2, 1fr); }
+      .zahlen { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 760px) {
+      .angebot, .zwei { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      body { font-size: 16px; }
+      .nav { padding: 0 18px; }
+      .nav-fuer { display: none; }
+      .s-in { padding: 0 18px; }
+      section { padding: 40px 0; }
+      .kopf { padding: 40px 0 24px; }
+      .angebot-links, .angebot-rechts { padding: 26px 22px; }
+      .tage { grid-template-columns: 1fr; }
+      .woche { padding: 20px 16px; }
+      .frist, .bilanz { grid-template-columns: 1fr; padding: 22px 20px; }
+      .frist-datum { justify-self: start; }
+      .zahl b { font-size: 28px; }
+      .monat { grid-template-columns: 1fr; gap: 2px; }
+      footer { padding: 20px 18px; }
+    }
+
+    /* Druck: als PDF speichern und weiterschicken */
+    @media print {
+      @page { size: A4; margin: 12mm; }
+      body { background: #fff; font-size: 12px; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .nav { height: auto; padding: 0 0 8px; }
+      .s-in { padding: 0; max-width: none; }
+      section { padding: 14px 0; }
+      .kopf { padding: 10px 0 6px; }
+      .kopf-knoepfe, .schluss .kopf-knoepfe, .nur-bildschirm { display: none !important; }
+      .tage { grid-template-columns: repeat(7, 1fr); gap: 6px; }
+      .tag { padding: 7px; }
+      .eintrag { font-size: 10.5px; }
+      .woche { padding: 14px; margin-top: 12px; }
+      .woche-im-druck-neu { break-before: page; }
+      footer { padding: 10px 0 0; }
+    }
+    @media (prefers-reduced-motion: reduce) { .btn:hover { transform: none; } }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <a class="logo" href="https://monetascale.de/" aria-label="MonetaScale, zur Startseite">
+      <img src="../../assets/lp/ms-zeichen-hell.svg" alt="" width="57" height="28">
+      <span class="logo-wort">Moneta<span>Scale</span></span>
+    </a>
+    <span class="nav-fuer">Für HKW</span>
+  </header>
+
+  <main>
+    <!-- ══════ KOPF ══════ -->
+    <section class="kopf">
+      <div class="s-in">
+        <div class="eyebrow">Paket Überall · 30-Tage-Fahrplan</div>
+        <h1>Die ersten 30 Tage für <span>HKW</span></h1>
+        <p class="intro">So läuft der erste Monat. Tag für Tag. Was wir machen. Was Ihr Team macht. Und was online geht. Am Tag 8 läuft das erste Video.</p>
+        <div class="kopf-knoepfe">
+          <a class="btn gruen" href="#start">Start besprechen</a>
+          <button class="btn leer" type="button" onclick="window.print()">Als PDF speichern</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ ANGEBOT ══════ -->
+    <section style="padding-top:0">
+      <div class="s-in">
+        <div class="angebot">
+          <div class="angebot-links">
+            <div class="eyebrow" style="color:var(--green)">Ihr Start</div>
+            <h2>Der erste Monat ist <span>geschenkt.</span></h2>
+            <p>Sie zahlen nur die Startgebühr. Damit richten wir alles ein: Apps, Förder-Check, Strecke für Anfragen. Danach sehen Sie 30 Tage lang, wie die Maschine läuft.</p>
+          </div>
+          <div class="angebot-rechts">
+            <div class="preis"><span>Startgebühr, einmal</span><b>500 €</b></div>
+            <div class="preis"><span>Monat 1 im Paket Überall</span><b>0 €</b></div>
+            <div class="preis"><span>Förder-Check mit Ihrem Namen</span><b>dabei</b></div>
+          </div>
+        </div>
+        <div class="zahlen">
+          <div class="zahl"><b>30</b><span>Videos im Monat</span></div>
+          <div class="zahl"><b>4</b><span>Apps: Instagram, Facebook, TikTok, YouTube</span></div>
+          <div class="zahl"><b>120</b><span>Posts im Monat</span></div>
+          <div class="zahl"><b>1 Std.</b><span>Ihr Aufwand pro Woche</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ WARUM JETZT ══════ -->
+    <section style="padding-top:0">
+      <div class="s-in">
+        <div class="frist">
+          <div class="frist-datum">Stichtag<b>01.02.</b>2027</div>
+          <div>
+            <h2>Warum der Start jetzt zählt</h2>
+            <p>Am 1. Februar 2027 sinkt die Förderung. Viele Hausbesitzer entscheiden vorher. Ein Start im November passt genau. Im Januar laufen die Videos dann schon zwei Monate. Wer dann sucht, kennt HKW schon.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ KALENDER ══════ -->
+    <section style="padding-top:8px">
+      <div class="s-in">
+        <div class="eyebrow">Der Kalender</div>
+        <h2 class="h2-gross">Vier Wochen, ein klarer Plan.</h2>
+        <p class="unter">Jeder Tag hat eine Aufgabe. Die Farbe zeigt, wer sie macht.</p>
+        <div class="legende" aria-label="Legende">
+          <span><i class="tag-mark m-wir">Wir</i> macht MonetaScale</span>
+          <span><i class="tag-mark m-team">Ihr Team</i> macht HKW</span>
+          <span><i class="tag-mark m-live">Live</i> geht online</span>
+        </div>
+
+        <!-- Woche 1 -->
+        <article class="woche" aria-labelledby="w1">
+          <div class="woche-kopf"><span class="woche-nr">Woche 1 · Tag 1 bis 7</span><h3 id="w1">Aufbauen</h3></div>
+          <p class="woche-ziel">Ziel: Am Tag 7 sind 10 Videos fertig.</p>
+          <div class="tage">
+            <div class="tag"><div class="tag-nr">Tag 1</div>
+              <div class="eintrag"><i class="tag-mark m-team">Ihr Team</i><br>Start-Termin, 30 Minuten. Gebiet, Angebot und Ziele klären.</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>Zugänge zu den Apps einrichten.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 2</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>Markt-Röntgen: die 20 stärksten Konten der Branche.</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>Die 30 häufigsten Fragen von Hausbesitzern.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 3</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>Profil-Neustart auf 4 Apps: Bio, Bild, Link.</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>Google-Profil pflegen. Liste für den Dreh schicken.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 4</div>
+              <div class="eintrag"><i class="tag-mark m-team">Ihr Team</i><br>Dreh 1, 30 Minuten. Mit dem Handy, nach Liste.</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>10 Skripte, jedes mit 3 Hooks.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 5</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>Förder-Check mit Ihrem Namen geht live.</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>Stichwort und Nachricht mit Link einrichten.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 6</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>Video-Fabrik: Schnitt, Untertitel, Ihre Farben.</div></div>
+            <div class="tag ziel"><div class="tag-nr">Tag 7</div>
+              <div class="eintrag"><i class="tag-mark m-team">Ihr Team</i><br>10 Videos ansehen und freigeben.</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>Plan für 90 Tage steht im Board.</div></div>
+          </div>
+        </article>
+
+        <!-- Woche 2 -->
+        <article class="woche" aria-labelledby="w2">
+          <div class="woche-kopf"><span class="woche-nr">Woche 2 · Tag 8 bis 14</span><h3 id="w2">Live gehen</h3></div>
+          <p class="woche-ziel">Ziel: Die ersten Hausbesitzer machen den Förder-Check.</p>
+          <div class="immer"><span><b>Ab jetzt jeden Tag:</b> 1 Video auf 4 Apps, zur besten Zeit.</span><span><b>Montag bis Freitag:</b> Kommentar-Wache, Antwort in der ersten Stunde.</span></div>
+          <div class="tage">
+            <div class="tag ziel"><div class="tag-nr">Tag 8</div>
+              <div class="eintrag"><i class="tag-mark m-live">Live</i><br>Video 1 auf Instagram, Facebook, TikTok und YouTube.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 9</div>
+              <div class="eintrag"><i class="tag-mark m-live">Live</i><br>Stichwort im Kommentar. Sofort kommt eine Nachricht mit Link zum Check.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 10</div>
+              <div class="eintrag"><i class="tag-mark m-live">Live</i><br>Wer den Check macht, bekommt sofort das PDF. In Ihrem Namen.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 11</div>
+              <div class="eintrag"><i class="tag-mark m-team">Ihr Team</i><br>Dreh 2, 30 Minuten.</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>Kaufsignale gehen sofort an Sie.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 12</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>Konkurrenz-Radar: die 3 stärksten Videos der Konkurrenz.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 13</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>Antwort-Muster für Nachrichten und Kommentare.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 14</div>
+              <div class="eintrag"><i class="tag-mark m-team">Ihr Team</i><br>Wochen-Kompass 1, 30 Minuten. Erste Zahlen, erste Gewinner.</div></div>
+          </div>
+        </article>
+
+        <!-- Woche 3 -->
+        <article class="woche woche-im-druck-neu" aria-labelledby="w3">
+          <div class="woche-kopf"><span class="woche-nr">Woche 3 · Tag 15 bis 21</span><h3 id="w3">Testen</h3></div>
+          <p class="woche-ziel">Ziel: Wir finden heraus, welcher Einstieg am besten zieht.</p>
+          <div class="immer"><span><b>Jeden Tag:</b> 1 Video auf 4 Apps.</span><span><b>Montag bis Freitag:</b> Kommentar-Wache.</span></div>
+          <div class="tage">
+            <div class="tag"><div class="tag-nr">Tag 15</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>Test 1: gleiches Thema, neuer Hook. Nur eine Sache ändert sich.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 16</div>
+              <div class="eintrag"><i class="tag-mark m-live">Live</i><br>Video zum Stichtag: was der 1. Februar in Euro heißt.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 17</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>10 neue Skripte aus den Fragen in den Kommentaren.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 18</div>
+              <div class="eintrag"><i class="tag-mark m-team">Ihr Team</i><br>Dreh 3, 30 Minuten.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 19</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>Die nächsten 10 Videos sind fertig. Sie geben frei.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 20</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>Hook-Bank: 100 erprobte Einstiege für Wärmepumpen. Sie gehört Ihnen.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 21</div>
+              <div class="eintrag"><i class="tag-mark m-team">Ihr Team</i><br>Wochen-Kompass 2. Welcher Hook hat gewonnen?</div></div>
+          </div>
+        </article>
+
+        <!-- Woche 4 -->
+        <article class="woche" aria-labelledby="w4">
+          <div class="woche-kopf"><span class="woche-nr">Woche 4 · Tag 22 bis 28</span><h3 id="w4">Verstärken</h3></div>
+          <p class="woche-ziel">Ziel: Was gewinnt, wird zur Serie.</p>
+          <div class="immer"><span><b>Jeden Tag:</b> 1 Video auf 4 Apps.</span><span><b>Montag bis Freitag:</b> Kommentar-Wache.</span></div>
+          <div class="tage">
+            <div class="tag"><div class="tag-nr">Tag 22</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>Test 2: Wie lang darf ein Video sein?</div></div>
+            <div class="tag"><div class="tag-nr">Tag 23</div>
+              <div class="eintrag"><i class="tag-mark m-live">Live</i><br>Der Gewinner aus Test 1 wird zur Serie.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 24</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>Google-Profil: neue Bilder und Beiträge aus den Videos.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 25</div>
+              <div class="eintrag"><i class="tag-mark m-team">Ihr Team</i><br>Dreh 4, 30 Minuten.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 26</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>Die letzten 10 Videos sind fertig. 7 davon liegen als Vorrat für Monat 2.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 27</div>
+              <div class="eintrag"><i class="tag-mark m-wir">Wir</i><br>Fragen aus Kommentaren und Nachrichten sammeln. Daraus werden neue Themen.</div></div>
+            <div class="tag"><div class="tag-nr">Tag 28</div>
+              <div class="eintrag"><i class="tag-mark m-team">Ihr Team</i><br>Wochen-Kompass 3, 30 Minuten.</div></div>
+          </div>
+        </article>
+
+        <!-- Tag 29 + 30 -->
+        <div class="bilanz">
+          <div class="tag-nr">Tag 29 und 30</div>
+          <div>
+            <h3>Bilanz nach 30 Tagen</h3>
+            <ul>
+              <li>Ein Bericht auf einer Seite. Oben steht ein Satz als Fazit.</li>
+              <li>Welches Video hat welche Anfrage gebracht?</li>
+              <li>Wie viele Hausbesitzer haben den Förder-Check gemacht?</li>
+              <li>Der Plan für Monat 2 und 3. Bis zum Stichtag am 1. Februar.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ AUFWAND + AUSBLICK ══════ -->
+    <section style="padding-top:8px">
+      <div class="s-in">
+        <div class="zwei">
+          <div class="karte">
+            <h3>Das macht Ihr Team</h3>
+            <p class="gross">Rund 1 Stunde pro Woche</p>
+            <ul>
+              <li>Ein Dreh pro Woche, 30 Minuten. Wir schicken die Liste mit den Clips.</li>
+              <li>Ein Termin pro Woche, 30 Minuten: der Wochen-Kompass.</li>
+              <li>Videos ansehen und freigeben.</li>
+            </ul>
+            <p class="klein">Will sich niemand zeigen? Dann spricht eine eigene Figur in Ihren Farben.</p>
+          </div>
+          <div class="karte">
+            <h3>Wie es weitergeht</h3>
+            <div class="monat"><b>Monat 1</b><span>Aufbauen, live gehen, die ersten Gewinner finden.</span></div>
+            <div class="monat"><b>Monat 2</b><span>Gewinner werden zu Serien. Jede Woche ein neuer Test.</span></div>
+            <div class="monat"><b>Monat 3</b><span>Die Zeit vor dem Stichtag. Das Thema Förderung steht vorn.</span></div>
+          </div>
+        </div>
+        <div class="zwei">
+          <div class="karte garantie">
+            <h3>Start in 7 Tagen, sonst Geld zurück</h3>
+            <p>Am Tag 7 sind die ersten 10 Videos fertig. Sonst bekommen Sie die 500 Euro zurück.</p>
+            <p class="klein">Bedingung: Der Dreh am Tag 4 findet statt.</p>
+          </div>
+          <div class="karte">
+            <h3>Was wir ehrlich sagen</h3>
+            <p>Anfragen versprechen wir nicht. Sie hängen auch von Angebot, Preis und Markt ab. Unser Teil: Jedes Video ist geplant, getestet und hat einen Weg zur Anfrage.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ SCHLUSS ══════ -->
+    <section class="schluss" id="start">
+      <div class="s-in">
+        <h2>Bereit für Tag 1?</h2>
+        <p>Ein kurzer Anruf reicht. Dann legen wir den Start-Termin fest.</p>
+        <div class="kopf-knoepfe">
+          <a class="btn gruen" href="tel:+491763209802">Kerem anrufen: 0176 3209802</a>
+          <a class="btn leer" href="mailto:ulas@monetascale.de?subject=Start%20Paket%20%C3%9Cberall%3A%20HKW">Per Mail antworten</a>
+          <a class="btn leer nur-bildschirm" href="../">Zu Ihren Reels und dem Förder-Check</a>
+        </div>
+        <p class="hinweis">Preise netto. Alle Videos im Hochformat 9 zu 16. Mit KI erstellte Inhalte sind gekennzeichnet. Die Förderung legt die KfW fest. Das Datum stammt aus den Regeln, die heute bekannt sind.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Persönlich erstellt für HKW Heizungs - Klima- und Wärmepumpentechnik GmbH · MonetaScale</span>
+    <nav aria-label="Rechtliches">
+      <a href="../../impressum.html">Impressum</a>
+      <a href="../../datenschutz.html">Datenschutz</a>
+    </nav>
+  </footer>
+</body>
+</html>

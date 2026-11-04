@@ -2,6 +2,15 @@
 
 Kurze Notiz für die nächste Sitzung. Neueste oben, höchstens drei Blöcke. Push auf `master` = Live-Deploy (GitHub Pages).
 
+## 2026-11-04 – 30-Tage-Fahrplan Paket Überall je Betrieb (Laptop)
+**Erledigt:** Neue Seite `/<slug>/fahrplan/` für alle 10 Dream-100-Betriebe + Muster. Angebot 500 € Startgebühr, Monat 1
+geschenkt, Wochenkalender Tag 1–30 (Wir / Ihr Team / Live), Stichtag 01.02.2027, Garantie Start in 7 Tagen, Druck als PDF.
+**Offene Fäden:** Laufzeit und Preis ab Monat 2 stehen bewusst nicht drin (Kerem klärt im Gespräch). Druckansicht nicht
+mit Screenshot geprüft. Aufrufe zählen über `lp-tracking.js` unter dem Slug der Reels-Seite (nicht getrennt).
+**Nächster Schritt:** Für neue Betriebe nach `build.mjs` auch `node tools/landingpages/fahrplan.mjs` (`--nur <slug>`).
+**Fallstricke:** `fahrplan.mjs` liest Name, Kurzname und Farben aus der gebauten `<slug>/index.html` (lp-daten + „Für …“).
+**Wichtige Dateien:** `tools/landingpages/fahrplan-vorlage.html`, `tools/landingpages/fahrplan.mjs`.
+
 ## 2026-11-03 – Link-Vorschau „Reels für <Betrieb>“ (PC)
 **Erledigt:** `og:title` der persönlichen Seiten = „Reels für <Name>“ statt „Ihre Förder-Reels und Ihr Förder-Check“,
 `<title>` = „Reels für <Name> · MonetaScale“. Vorlage + `build.mjs` geändert, die 10 Seiten + Muster per Ersetzung nachgezogen
@@ -18,15 +27,3 @@ Block „Partner auf Erfolg“ entfernt, „Preis im Gespräch“ steht jetzt an
 **Offene Fäden:** Die Texte der inneren Kacheln von Sichtbar und Überall stammen aus Abschnitt „Zwölf Teile“; neu ist nur das Etikett „Der Einstieg“.
 **Fallstricke:** `pk-*` = Bauteile aller Kacheln, `mf-*` = nur die Hervorhebung. `.pk-card` trägt bewusst nicht `.card`, sonst greift das 3D-Kippen (GSAP) und hebelt den Hover aus.
 **Wichtige Dateien:** `index.html` (#pakete, CSS „PAKET-KACHELN“).
-
-## 2026-10-29 – 10 persönliche Seiten live, Tracking, Datenschutz (PC)
-**Erledigt:** `foerder/landingpages` nach `master` gemergt: 10 Seiten `/<slug>/` (Dream 100 Wärmepumpe), Videos und
-Vorschaubilder von `media.ulas.systems/wp/<slug>/` (R2-Bucket `dream100-videos`, EU), `assets/lp-tracking.js`
-(meldet an dashboard.ulas.systems/api/lp/ereignis), Datenschutz Abschnitt 8 „Nutzung der persönlichen Seiten“.
-**Offene Fäden:** `paket/marktfuehrer` war schon in `master`. Kein Hell/Dunkel-Umschalter auf der Hauptseite (eigene Aufgabe).
-**Nächster Schritt:** Weitere Betriebe: Daten-JSON außerhalb des Repos (Vorlage `tools/landingpages/betriebe.json`,
-Feld `videos: [{url, poster}]`), `node tools/landingpages/build.mjs --daten <pfad>`, nur die neuen Ordner committen.
-**Fallstricke:** Eigene Besuche und Prüfungen der echten Seiten immer mit `?intern=1`, sonst landen sie beim Lead im
-Dashboard und Johann meldet „Seite geöffnet“. Links in Mails/DMs mit `?q=mail` bzw. `?q=dm`. Listen echter Betriebe nie
-einchecken (Repo öffentlich). Datenschutz ist 381 px breit bei 375 px (schon vorher so, kein sichtbares Element).
-**Wichtige Dateien:** `tools/landingpages/vorlage.html`, `assets/lp-tracking.js`, `datenschutz.html`.
