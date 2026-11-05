@@ -2,6 +2,15 @@
 
 Kurze Notiz für die nächste Sitzung. Neueste oben, höchstens drei Blöcke. Push auf `master` = Live-Deploy (GitHub Pages).
 
+## 2026-11-05 – Allgemeiner Wärmepumpen-Contentplan für 21 Dream-100-Betriebe (PC)
+**Erledigt:** `/<slug>/contentplan/` für alle 21 angeschriebenen Betriebe (HKW hat die Daume-Seite). Ein allgemeiner Plan in Sie-Form,
+nur der Name in der Überschrift wechselt (`{betrieb}` in `seite.json`). Neu auf der Seite: Aufnahme mit und ohne Gesicht im Detail
+und „So starten wir“ (7 Tage bis zum ersten Video, wer was macht). Tor 1 bestanden, Gutachter Runde 2 bestanden.
+**Offene Fäden:** Die 3 Betriebe mit Seite, aber ohne Nachricht (Preuss, Sandholzer, HEIZHELD), haben noch keinen Plan. Die Reels-Seiten verlinken den Plan noch nicht.
+**Nächster Schritt:** Weitere Betriebe: `node tools/landingpages/contentplan.mjs --daten C:\Website-Business\Akquise\Contentplaene\waermepumpe-allgemein\seite-allgemein.json --slugs <slug,…>`.
+**Fallstricke:** `--slugs` braucht die gebaute Reels-Seite je Slug (Name, Farben). Die Daume-Seite nicht mit der neuen Vorlage neu bauen, ohne den Diff anzusehen (nur CSS kommt dazu).
+**Wichtige Dateien:** `tools/landingpages/contentplan.mjs`, `tools/landingpages/contentplan-vorlage.html`, Daten + Links in `Akquise\Contentplaene\waermepumpe-allgemein\`.
+
 ## 2026-11-05 – Gratis-Contentplan für die Daume-Gruppe (PC)
 **Erledigt:** Neue Seite `/daume-gruppe/contentplan/`: 30-Tage-Contentplan (Lead Magnet) für alle 22 Daume-Betriebe mit
 Wärmepumpen, du-Form, kein Ortsname („bei dir in der Region“), CHECK → Förder-Check (4×) und Wärmepumpencheck (2×).
@@ -19,12 +28,3 @@ Ohne `betrieb` in `seite.json` liest das Skript Name und Farben aus der gebauten
 **Nächster Schritt:** Anschreiben über den Versand-Ordner (`versand-ordner.mjs --probe` zeigt die 15). Neue Seiten nur noch über den Knopf.
 **Fallstricke:** Der Knopf committet nur die neuen Ordner und pusht auf master. Fremde, nicht gepushte Commits im Klon halten ihn an.
 **Wichtige Dateien:** `tools/landingpages/build.mjs`, `tools/landingpages/fahrplan.mjs`, im Video-Repo `akquise/dream100/src/dream100/neue-seiten.mjs`.
-
-## 2026-11-04 – 30-Tage-Fahrplan Paket Überall je Betrieb (Laptop)
-**Erledigt:** Neue Seite `/<slug>/fahrplan/` für alle 10 Dream-100-Betriebe + Muster. Angebot 500 € Startgebühr, Monat 1
-geschenkt, Wochenkalender Tag 1–30 (Wir / Ihr Team / Live), Stichtag 01.02.2027, Garantie Start in 7 Tagen, Druck als PDF.
-**Offene Fäden:** Laufzeit und Preis ab Monat 2 stehen bewusst nicht drin (Kerem klärt im Gespräch). Druckansicht nicht
-mit Screenshot geprüft. Aufrufe zählen über `lp-tracking.js` unter dem Slug der Reels-Seite (nicht getrennt).
-**Nächster Schritt:** Für neue Betriebe nach `build.mjs` auch `node tools/landingpages/fahrplan.mjs` (`--nur <slug>`).
-**Fallstricke:** `fahrplan.mjs` liest Name, Kurzname und Farben aus der gebauten `<slug>/index.html` (lp-daten + „Für …“).
-**Wichtige Dateien:** `tools/landingpages/fahrplan-vorlage.html`, `tools/landingpages/fahrplan.mjs`.

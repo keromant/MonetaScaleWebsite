@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<!-- lp:generiert · Diese Datei erzeugt tools/landingpages/contentplan.mjs aus contentplan-vorlage.html. Nicht von Hand ändern. -->
+<html lang="de" data-theme="hell">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>30-Tage-Contentplan für Traut · MonetaScale</title>
+  <meta name="description" content="30 Tage Wärmepumpen-Videos für Traut. Jedes beantwortet eine echte Frage. Geschenkt.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://monetascale.de/traut-frankfurt/contentplan/">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="MonetaScale">
+  <meta property="og:title" content="30-Tage-Contentplan für Traut">
+  <meta property="og:description" content="30 Tage Wärmepumpen-Videos für Traut. Jedes beantwortet eine echte Frage. Geschenkt.">
+  <meta property="og:image" content="https://monetascale.de/brand/profilbild/monetascale-profilbild-dunkel-1080.png">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="1080">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" type="image/png" href="../../brand/profilbild/monetascale-profilbild-hell-1080.png">
+  <!-- Nutzung zählen wie auf der Reels-Seite (ohne Cookies, Datenschutz Abschnitt 8); ?intern=1 sendet nichts -->
+  <script src="/assets/lp-tracking.js" defer></script>
+
+  <script>
+    (function () {
+      var t = 'hell';
+      try { var s = localStorage.getItem('ulas.theme'); if (s === 'hell' || s === 'dunkel') t = s; } catch (e) {}
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── TOKENS (MonetaScale, hell + dunkel; gleich wie vorlage.html) ─── */
+    :root {
+      --fh: 'Sora', system-ui, sans-serif;
+      --fb: 'Hanken Grotesk', system-ui, sans-serif;
+      --green: #65C83D;
+      --on-green: #0A0A0A;
+      --pop-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --pop-lift: translateY(-4px) scale(1.02);
+      --glow-soft:   0 0 0 1px rgba(var(--accent-rgb), .30),
+                     0 16px 34px -16px rgba(var(--accent-rgb), .26),
+                     0 5px 14px rgba(var(--accent-rgb), .10);
+      --glow-strong: 0 0 0 2px rgba(var(--accent-rgb), .75),
+                     0 30px 55px -12px rgba(var(--accent-rgb), .42),
+                     0 12px 26px rgba(var(--accent-rgb), .22);
+      /* Farben des Betriebs (aus der Reels-Seite) */
+      --b1: #0071E3;
+      --b1-text: #FFFFFF;
+      --b1-dunkel: #0051A3;
+      --b1-hell: #E6F1FC;
+    }
+    :root, [data-theme="hell"] {
+      --bg: #F5F7F3; --bg2: #FFFFFF; --bg3: #ECF0E8;
+      --text: #0A0A0A; --t2: #3B4237; --muted: #5E665A;
+      --border: #E0E5DC; --borders: #C8D0C2;
+      --ink: #2F7A17; --accent-rgb: 79, 181, 42;
+      --sweep: #0A0A0A; --on-sweep: #FFFFFF;
+      --nav-bg: rgba(245, 247, 243, .88);
+      --band: #0A0A0A; --band-text: #FFFFFF; --band-t2: #B8B8B8;
+      --betrieb-fl: var(--b1-hell);
+      color-scheme: light;
+    }
+    [data-theme="dunkel"] {
+      --bg: #0A0A0A; --bg2: #111111; --bg3: #1A1A1A;
+      --text: #FFFFFF; --t2: #B8B8B8; --muted: #8C8C8C;
+      --border: #232323; --borders: #333333;
+      --ink: #65C83D; --accent-rgb: 101, 200, 61;
+      --sweep: #FFFFFF; --on-sweep: #0A0A0A;
+      --nav-bg: rgba(10, 10, 10, .86);
+      --band: #141A12; --band-text: #FFFFFF; --band-t2: #B8B8B8;
+      --betrieb-fl: #15171F;
+      color-scheme: dark;
+    }
+
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: var(--fb); font-size: 17px; line-height: 1.65;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
+      transition: background-color .3s ease, color .3s ease;
+    }
+    img, svg { display: block; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid rgba(var(--accent-rgb), .7); outline-offset: 3px; border-radius: 6px; }
+    h1, h2, h3 { font-family: var(--fh); letter-spacing: -0.025em; text-wrap: balance; }
+    h2 { font-size: clamp(28px, 3.8vw, 44px); font-weight: 800; line-height: 1.12; }
+
+    /* ─── NAV ─── */
+    .nav {
+      position: sticky; top: 0; z-index: 50; height: 68px; padding: 0 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--nav-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+    .logo img { height: 30px; width: auto; }
+    .logo-wort { font-family: var(--fh); font-weight: 800; font-size: 19px; letter-spacing: -0.02em; }
+    .logo-wort span { color: var(--ink); }
+    .logo-dunkel { display: none; }
+    [data-theme="dunkel"] .logo-hell { display: none; }
+    [data-theme="dunkel"] .logo-dunkel { display: block; }
+    .nav-rechts { display: flex; align-items: center; gap: 14px; }
+    .nav-fuer { font-size: 13px; color: var(--muted); font-weight: 600; }
+    .modus {
+      width: 42px; height: 42px; border-radius: 50%;
+      border: 1px solid var(--borders); background: var(--bg2); color: var(--text);
+      display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+      transition: border-color .2s ease, transform .4s var(--pop-ease);
+    }
+    .modus svg { width: 19px; height: 19px; }
+    .modus .mond { display: none; }
+    [data-theme="dunkel"] .modus .sonne { display: none; }
+    [data-theme="dunkel"] .modus .mond { display: block; }
+
+    /* ─── BUTTONS: schräger Sweep, Aktion nach der Animation ─── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+      padding: 15px 28px; border-radius: 14px; border: 0;
+      font-family: var(--fb); font-size: 16px; font-weight: 700; line-height: 1.2;
+      text-decoration: none; cursor: pointer;
+      position: relative; z-index: 1; overflow: hidden; isolation: isolate;
+      transition: color .45s ease, box-shadow .35s ease, transform .4s var(--pop-ease);
+    }
+    .btn::after {
+      content: ""; position: absolute; inset: 0 -20%; z-index: -1;
+      background: var(--sweep-farbe);
+      transform: skewX(-45deg) scale(0, 1); transform-origin: center;
+      transition: transform .5s ease;
+    }
+    .btn.is-activating::after { animation: btn-sweep .5s ease forwards; }
+    .btn.is-activating { color: var(--sweep-text); }
+    @keyframes btn-sweep { from { transform: skewX(-45deg) scale(0, 1); } to { transform: skewX(-45deg) scale(1, 1); } }
+    .btn-gruen { background: var(--green); color: var(--on-green); --sweep-farbe: var(--sweep); --sweep-text: var(--on-sweep); }
+    .btn-rand { background: transparent; color: var(--text); box-shadow: inset 0 0 0 1.5px var(--borders); --sweep-farbe: var(--text); --sweep-text: var(--bg); }
+    .band .btn-rand { color: var(--band-text); box-shadow: inset 0 0 0 1.5px #3A3A3A; --sweep-farbe: #FFFFFF; --sweep-text: #0A0A0A; }
+
+    /* ─── CARDS: Spotlight dauerhaft weich, beim Hover kräftig + Pop ─── */
+    .card {
+      background: var(--bg2);
+      border: 1.5px solid rgba(var(--accent-rgb), .35);
+      border-radius: 22px; padding: 28px;
+      box-shadow: var(--glow-soft);
+      transition: transform .4s var(--pop-ease), box-shadow .4s ease, border-color .35s ease;
+    }
+    .card h3 { font-size: 21px; font-weight: 800; line-height: 1.2; margin-bottom: 8px; }
+    .card p { color: var(--t2); font-size: 16px; }
+    .card-num { font-family: var(--fh); font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); margin-bottom: 10px; }
+
+    /* ─── LAYOUT ─── */
+    .s-pad { padding: 88px 32px; }
+    .s-in { max-width: 1140px; margin: 0 auto; }
+    .s-kopf { max-width: 740px; margin: 0 auto 44px; text-align: center; }
+    .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--ink); margin-bottom: 16px; }
+    .intro { margin-top: 16px; font-size: 18px; color: var(--t2); }
+
+    /* Kopf */
+    .kopf { padding: 72px 32px 40px; }
+    .kopf-text { max-width: 860px; margin: 0 auto; text-align: center; }
+    .kopf h1 { font-size: clamp(36px, 5.4vw, 64px); font-weight: 800; line-height: 1.05; }
+    .kopf h1 span { color: var(--ink); }
+    .kopf .intro { max-width: 660px; margin-left: auto; margin-right: auto; font-size: 19px; }
+    .knoepfe { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; }
+    .geschenk-chip { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: var(--bg2); border: 1px solid var(--borders); font-size: 14px; font-weight: 600; color: var(--t2); margin-bottom: 18px; }
+    .geschenk-chip b { color: var(--ink); }
+
+    /* Zahlen */
+    .zahlen { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1000px; margin: 40px auto 0; }
+    .zahl { padding: 22px 22px 20px; text-align: left; }
+    .zahl b { display: block; font-family: var(--fh); font-size: 34px; font-weight: 800; line-height: 1.1; color: var(--text); }
+    .zahl span { font-size: 15px; color: var(--muted); }
+
+    /* Persona */
+    .persona { display: grid; grid-template-columns: 1fr 1.15fr; gap: 22px; align-items: stretch; }
+    .persona-satz { background: var(--band); color: var(--band-text); border-radius: 22px; padding: 34px; display: flex; flex-direction: column; justify-content: center; }
+    .persona-satz .eyebrow { color: var(--green); }
+    .persona-satz p { font-family: var(--fh); font-size: clamp(22px, 2.6vw, 30px); font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; }
+    .persona-satz small { display: block; margin-top: 16px; color: var(--band-t2); font-size: 15px; }
+    .stimmen { display: grid; gap: 12px; }
+    .stimme { padding: 18px 22px; }
+    .stimme q { font-size: 17px; color: var(--text); font-style: italic; quotes: "„" "“"; }
+    .stimme span { display: block; font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+    /* Betriebe der Gruppe */
+    .betriebe { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+    .betrieb { padding: 16px 18px; }
+    .betrieb b { display: block; font-family: var(--fh); font-size: 16px; line-height: 1.3; hyphens: auto; overflow-wrap: anywhere; }
+    .betrieb { min-width: 0; }
+    .betrieb span { display: block; font-size: 14px; color: var(--muted); margin-top: 2px; }
+    .betrieb .mark { display: inline-flex; margin-top: 8px; }
+    .ort-hinweis { max-width: 760px; margin: 22px auto 0; text-align: center; font-size: 15px; color: var(--t2); }
+    .ort-hinweis code { font-family: var(--fh); font-weight: 700; background: var(--bg3); border-radius: 6px; padding: 1px 6px; }
+
+    /* Säulen */
+    .saeulen { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .saeule { padding: 22px 20px; }
+    .saeule h3 { font-size: 18px; }
+    .saeule p { font-size: 15px; }
+    .saeule .punkt { width: 12px; height: 12px; border-radius: 50%; margin-bottom: 12px; }
+
+    /* Mit / ohne Gesicht */
+    .gesicht { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .gesicht .card ul { margin: 10px 0 0 1.1em; color: var(--t2); }
+    .gesicht .card li { margin: 4px 0; }
+    .gesicht .gross, .start-wer .gross { font-family: var(--fh); font-size: 15px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); margin-bottom: 8px; }
+    .aufnahme { display: grid; gap: 14px; margin-top: 16px; }
+    .aufnahme > div { background: var(--bg3); border-radius: 14px; padding: 14px 16px; }
+    .aufnahme h4, .start-tag { font-family: var(--fh); font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
+    .gesicht .aufnahme ul, .gesicht .aufnahme ol { margin: 6px 0 0 1.2em; }
+    .gesicht .aufnahme li { font-size: 15px; }
+
+    /* So starten wir */
+    .start-schritte { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .start-schritt .start-tag { display: inline-block; background: var(--b1); color: var(--b1-text); border-radius: 999px; padding: 3px 12px; margin-bottom: 14px; letter-spacing: .06em; }
+    .start-wer { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
+    .start-wer ul { margin: 6px 0 0 1.1em; color: var(--t2); }
+    .start-wer li { margin: 4px 0; }
+
+    /* Kalender */
+    .legende { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; margin: -18px 0 30px; font-size: 15px; color: var(--t2); }
+    .legende span { display: inline-flex; align-items: center; gap: 8px; }
+    .woche { margin-top: 34px; }
+    .woche-kopf { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; margin-bottom: 14px; }
+    .woche-nr { font-family: var(--fh); font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; }
+    .woche h3 { font-size: 24px; font-weight: 800; }
+    .woche-ziel { color: var(--t2); font-size: 16px; }
+    .videos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; align-items: start; }
+    details.video { padding: 0; border-radius: 18px; overflow: hidden; }
+    details.video > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 80px 1fr auto; gap: 14px; align-items: center; padding: 16px 18px; }
+    details.video > summary::-webkit-details-marker { display: none; }
+    .v-tag { font-family: var(--fh); text-align: center; line-height: 1.15; border-radius: 12px; padding: 8px 4px; background: var(--bg3); }
+    .v-tag b { display: block; font-size: 19px; font-weight: 800; white-space: nowrap; }
+    .v-tag span { font-size: 12px; color: var(--muted); font-weight: 600; }
+    .v-titel { font-weight: 700; font-size: 16px; line-height: 1.35; }
+    .v-marken { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .mark { font-style: normal; display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 2px 10px; line-height: 1.7; white-space: nowrap; background: var(--bg3); color: var(--t2); }
+    .mark i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .mark-check { background: var(--green); color: var(--on-green); letter-spacing: .04em; }
+    .pfeil { width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--borders); display: grid; place-items: center; transition: transform .35s var(--pop-ease); }
+    .pfeil svg { width: 14px; height: 14px; }
+    details.video[open] .pfeil { transform: rotate(180deg); }
+    .v-inhalt { padding: 4px 20px 22px 106px; display: grid; gap: 14px; }
+    .v-inhalt h4 { font-family: var(--fh); font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); margin-bottom: 4px; }
+    .v-inhalt ol { margin-left: 1.2em; color: var(--text); }
+    .v-inhalt li { margin: 3px 0; }
+    .v-inhalt p { color: var(--t2); font-size: 16px; }
+    .v-wege { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .v-weg { background: var(--bg3); border-radius: 12px; padding: 12px 14px; }
+    .v-weg p { font-size: 15px; }
+    .v-warum { font-size: 14px; color: var(--muted); border-top: 1px dashed var(--borders); padding-top: 10px; }
+    .v-warum a { color: var(--ink); }
+
+    /* Weg zur Anfrage */
+    .band { background: var(--band); color: var(--band-text); }
+    .band h2 { color: var(--band-text); }
+    .band .intro { color: var(--band-t2); }
+    .band .eyebrow { color: var(--green); }
+    .weg { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .weg .card { background: #121212; border-color: rgba(101, 200, 61, .35); }
+    .weg .card h3 { color: #fff; }
+    .weg .card p { color: var(--band-t2); }
+    .weg-nr { font-family: var(--fh); font-weight: 800; font-size: 30px; color: var(--green); line-height: 1; margin-bottom: 12px; }
+    .wort { font-family: var(--fh); font-weight: 800; background: var(--green); color: var(--on-green); border-radius: 8px; padding: 0 8px; }
+
+    /* Belege */
+    .belege { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .beleg b { display: block; font-family: var(--fh); font-size: 40px; font-weight: 800; color: var(--ink); line-height: 1.05; }
+    details.quellen { margin-top: 18px; padding: 0; }
+    details.quellen > summary { cursor: pointer; padding: 18px 22px; font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    details.quellen > summary::-webkit-details-marker { display: none; }
+    details.quellen[open] .pfeil { transform: rotate(180deg); }
+    .quellen-liste { padding: 0 22px 20px; columns: 2; column-gap: 28px; font-size: 14px; color: var(--t2); }
+    .quellen-liste li { break-inside: avoid; margin: 0 0 8px 1em; }
+    .quellen-liste a { color: var(--ink); word-break: break-word; }
+
+    /* Auswertung + Schluss */
+    .auswertung { display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center; background: var(--betrieb-fl); border-left: 6px solid var(--b1); border-radius: 18px; padding: 26px 30px; }
+    .auswertung-datum { font-family: var(--fh); font-weight: 800; font-size: 14px; text-align: center; background: var(--b1); color: var(--b1-text); border-radius: 12px; padding: 12px 16px; line-height: 1.2; }
+    .auswertung-datum b { display: block; font-size: 28px; }
+    .auswertung h3 { font-size: 22px; }
+    .auswertung p { color: var(--t2); margin-top: 6px; }
+    .schluss { text-align: center; }
+    .schluss .intro { max-width: 600px; margin-left: auto; margin-right: auto; }
+    .hinweis { font-size: 14px; color: var(--muted); max-width: 72ch; margin: 30px auto 0; }
+
+    footer { border-top: 1px solid var(--border); padding: 22px 32px; display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; font-size: 14px; color: var(--muted); }
+    footer nav { display: flex; gap: 18px; }
+
+    /* ─── HOVER nur mit Maus ─── */
+    @media (hover: hover) and (pointer: fine) {
+      .btn:hover::after { transform: skewX(-45deg) scale(1, 1); }
+      .btn:hover { color: var(--sweep-text); }
+      .card:hover { transform: var(--pop-lift); border-color: rgba(var(--accent-rgb), .8); box-shadow: var(--glow-strong); }
+      details.video:hover, details.quellen:hover { transform: translateY(-2px) scale(1.005); }
+      .modus:hover { border-color: var(--ink); transform: scale(1.06); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1080px) {
+      .saeulen { grid-template-columns: repeat(3, 1fr); }
+      .weg, .start-schritte { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 900px) {
+      .videos, .persona, .gesicht, .start-wer { grid-template-columns: 1fr; }
+      .zahlen { grid-template-columns: repeat(2, 1fr); }
+      .belege { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 760px) {
+      .s-pad { padding: 64px 20px; }
+      .kopf { padding: 44px 20px 24px; }
+      .nav { padding: 0 16px; height: 62px; }
+      .nav-fuer { display: none; }
+      .logo img { height: 26px; }
+      .logo-wort { font-size: 17px; }
+      .saeulen { grid-template-columns: 1fr 1fr; }
+      .betriebe { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+      .betrieb { padding: 12px 12px; border-radius: 16px; }
+      .betrieb b { font-size: 14px; }
+      .betrieb span { font-size: 12.5px; }
+      .card { padding: 22px 20px; }
+      .v-inhalt { padding: 2px 16px 18px; }
+      .v-wege { grid-template-columns: 1fr; }
+      .quellen-liste { columns: 1; }
+      .auswertung { grid-template-columns: 1fr; padding: 22px 20px; }
+      .auswertung-datum { justify-self: start; }
+      footer { flex-direction: column; text-align: center; padding: 20px; }
+    }
+    @media (max-width: 480px) {
+      .saeulen, .weg, .start-schritte { grid-template-columns: 1fr; }
+      details.video > summary { grid-template-columns: 68px 1fr auto; gap: 10px; padding: 14px; }
+      .v-tag { padding: 8px 2px; }
+      .v-tag b { font-size: 15px; white-space: nowrap; }
+      .v-tag span { font-size: 11px; white-space: nowrap; }
+      .zahl b { font-size: 28px; }
+    }
+
+    /* Druck: alles offen, als PDF speichern */
+    @media print {
+      @page { size: A4; margin: 12mm; }
+      :root, [data-theme] { --bg: #fff; --bg2: #fff; --text: #0A0A0A; --t2: #333; --muted: #555; }
+      body { background: #fff; font-size: 11.5px; }
+      * { -webkit-print-color-adjust: exact; print-color-adjust: exact; box-shadow: none !important; }
+      .nav { position: static; height: auto; padding: 0 0 8px; backdrop-filter: none; }
+      .modus, .knoepfe, .nur-bildschirm, .pfeil { display: none !important; }
+      .s-pad { padding: 14px 0; }
+      .kopf { padding: 8px 0; }
+      .band { background: #fff; color: #0A0A0A; }
+      .band h2, .weg .card h3 { color: #0A0A0A; }
+      .weg .card { background: #fff; }
+      .weg .card p, .band .intro { color: #333; }
+      .videos { grid-template-columns: 1fr 1fr; gap: 6px; }
+      details.video, .card { break-inside: avoid; }
+      details.video > summary { padding: 8px 10px; }
+      .v-inhalt { padding: 0 10px 10px; gap: 6px; }
+      .woche { break-inside: auto; margin-top: 14px; }
+      footer { padding: 10px 0 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .card, .btn, .modus, .pfeil { transition: none; }
+      .card:hover, details.video:hover { transform: none; }
+      .btn::after { transition: none; animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <a class="logo" href="https://monetascale.de/" aria-label="MonetaScale, zur Startseite">
+      <img class="logo-hell" src="../../assets/lp/ms-zeichen-hell.svg" alt="" width="61" height="30">
+      <img class="logo-dunkel" src="../../brand/ms-zeichen.svg" alt="" width="61" height="30">
+      <span class="logo-wort">Moneta<span>Scale</span></span>
+    </a>
+    <div class="nav-rechts">
+      <span class="nav-fuer">Für Traut</span>
+      <button class="modus" id="modusKnopf" type="button" aria-label="Dunkle Ansicht" aria-pressed="false">
+        <svg class="sonne" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+        <svg class="mond" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ══════ KOPF ══════ -->
+    <section class="kopf" aria-labelledby="kopfTitel">
+      <div class="s-in">
+        <div class="kopf-text">
+          <div class="geschenk-chip">Geschenk für Traut · <b>0 €</b></div>
+          <div class="eyebrow">30-Tage-Contentplan für volle Auftragsbücher</div>
+          <h1 id="kopfTitel">30 Tage Wärmepumpen-Videos für <span>Traut</span></h1>
+          <p class="intro">Jedes Video beantwortet eine Frage, die Hausbesitzer wirklich stellen. Jedes geht mit Gesicht oder ohne. Und manche zeigen den Weg zum Förder-Check von Traut.</p>
+          <div class="knoepfe">
+            <a class="btn btn-gruen" href="#kalender" data-sweep>Zum Kalender</a>
+            <button class="btn btn-rand" type="button" data-drucken>Als PDF speichern</button>
+          </div>
+        </div>
+        <div class="zahlen">
+          <div class="card zahl"><b>30</b><span>Videos in 30 Tagen</span></div>
+          <div class="card zahl"><b>5</b><span>feste Themen</span></div>
+          <div class="card zahl"><b>6</b><span>Videos mit dem Wort CHECK</span></div>
+          <div class="card zahl"><b>2 Wege</b><span>jedes Video mit oder ohne Gesicht</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ FÜR WEN ══════ -->
+    <section class="s-pad" style="padding-top:48px" aria-labelledby="werTitel">
+      <div class="s-in">
+        <div class="s-kopf">
+          <div class="eyebrow">Für wen die Videos sind</div>
+          <h2 id="werTitel">Eine Person steht im Mittelpunkt.</h2>
+          <p class="intro">Jedes Video spricht genau diese Person an. Ihre Fragen sind die Themen. Ihre Worte stehen im ersten Satz.</p>
+        </div>
+        <div class="persona">
+          <div class="persona-satz">
+            <div class="eyebrow">In einem Satz</div>
+            <p>Hausbesitzer aus der Region von Traut, Mitte 50 bis Mitte 60. Die Gas- oder Ölheizung wird alt. Vor der Rente soll klar sein: Lohnt sich eine Wärmepumpe bei meinem Haus, ohne dass ich über den Tisch gezogen werde?</p>
+            <small>Aus Kommentaren, Foren und Bewertungen. Zusammengefasst, nicht wörtlich.</small>
+          </div>
+          <div class="stimmen">
+            <div class="card stimme"><q>Erstmal bin ich unsicher was für ein Preis ‚normal‘ ist</q><span>Forum für Haustechnik</span></div>
+            <div class="card stimme"><q>Ich möchte auch die Öl Heizung los werden, aber wenn ich mir ansehe, auf was man da alles achten kann oder muss, fühle ich mich leicht überfordert</q><span>Kommentar unter einem Wärmepumpen-Video</span></div>
+            <div class="card stimme"><q>Der Punkt Lärm ist auch wichtig, wir haben oft Häuser ohne viel Luft zum Nachbarhaus.</q><span>Kommentar unter einem Wärmepumpen-Video</span></div>
+            <div class="card stimme"><q>Am liebsten wäre einfach ein guter Monteur, der mit mir alles vernünftig durchgeht</q><span>Forum für Haustechnik</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ══════ SÄULEN ══════ -->
+    <section class="s-pad" style="padding-top:0" aria-labelledby="saeulenTitel">
+      <div class="s-in">
+        <div class="s-kopf">
+          <div class="eyebrow">Die Themen</div>
+          <h2 id="saeulenTitel">Fünf feste Themen tragen den Kanal.</h2>
+          <p class="intro">Jedes Video gehört zu einem Thema. So sieht man schnell, wofür Traut steht.</p>
+        </div>
+        <div class="saeulen">
+          <div class="card saeule"><div class="punkt" style="background:#65C83D"></div><h3>Was es wirklich kostet</h3><p>Preise, Stromkosten und Förderung, offen vorgerechnet. Ohne Schönreden.</p></div>
+          <div class="card saeule"><div class="punkt" style="background:#0071E3"></div><h3>Geht das bei meinem Haus?</h3><p>Alte Heizkörper, Lärm und Frost: ehrlich geprüft, am echten Haus.</p></div>
+          <div class="card saeule"><div class="punkt" style="background:#97DAF9"></div><h3>Vom Angebot bis zur Wärme</h3><p>Wie ein Tausch abläuft und woran man einen guten Betrieb erkennt.</p></div>
+          <div class="card saeule"><div class="punkt" style="background:#8C8C8C"></div><h3>Aus dem Heizungskeller</h3><p>Echte Funde: was schiefgeht und woran man es erkennt.</p></div>
+          <div class="card saeule"><div class="punkt" style="background:#1E9AA0"></div><h3>Leben mit der Wärmepumpe</h3><p>Thermostate, Räume, Strom und Wartung im Alltag.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ MIT ODER OHNE GESICHT ══════ -->
+    <section class="s-pad" style="padding-top:0" aria-labelledby="gesichtTitel">
+      <div class="s-in">
+        <div class="s-kopf">
+          <div class="eyebrow">Mit oder ohne Gesicht</div>
+          <h2 id="gesichtTitel">Jedes Video geht auf zwei Wegen.</h2>
+          <p class="intro">Bei jedem Video stehen beide Wege. Traut sucht aus. Auch ein Mix geht. So läuft die Aufnahme:</p>
+        </div>
+        <div class="gesicht">
+          <div class="card">
+            <div class="gross">Mit Gesicht · empfohlen</div>
+            <h3>Ein Mensch von Traut spricht.</h3>
+            <p>Hausbesitzer lassen nur Leute ins Haus, denen sie trauen. Ein Gesicht schafft dieses Vertrauen am schnellsten.</p>
+            <div class="aufnahme">
+              <div><h4>Das braucht es</h4><ul><li>Ein Handy mit guter Kamera. Gefilmt wird hochkant.</li><li>Ein kleines Stativ. Oder ein Kollege hält das Handy.</li><li>Ein Mikrofon zum Anstecken. Dann ist der Ton klar, auch draußen am Gerät.</li><li>Licht von vorn: mit dem Gesicht zum Fenster oder ins Tageslicht.</li></ul></div>
+              <div><h4>So läuft der Dreh</h4><ol><li>Vor dem Dreh kommt die Liste. Für jedes Video stehen dort die Frage und der erste Satz.</li><li>Ein Dreh pro Woche, rund 30 Minuten. Mehrere Videos am Stück.</li><li>Den ersten Satz zweimal sagen. Dann frei antworten, wie im Gespräch mit einem Kunden.</li><li>Danach 5 Minuten Bilder ohne Ton: Hände am Gerät, Display, Keller, Außengerät.</li><li>Alles in einen gemeinsamen Ordner laden. Den Rest machen wir.</li></ol></div>
+              <div><h4>Darauf achten</h4><ul><li>In die Linse schauen, nicht auf das Bild am Handy.</li><li>Arbeitskleidung mit Logo. Ein ruhiger Ort, das Gerät im Hintergrund.</li><li>Versprecher sind kein Problem. Wir schneiden sie raus.</li></ul></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="gross">Ohne Gesicht</div>
+            <h3>Hände, Technik und Stimme.</h3>
+            <p>Will sich niemand zeigen, klappt jedes Video trotzdem. Dann sieht man die Arbeit statt der Person.</p>
+            <div class="aufnahme">
+              <div><h4>Das braucht es</h4><ul><li>Nur ein Handy. Ein Stativ ist nicht nötig.</li><li>Einen gemeinsamen Ordner für die Clips.</li></ul></div>
+              <div><h4>So läuft der Dreh</h4><ol><li>Auf jeder Baustelle 3 bis 5 kurze Clips filmen. Jeder dauert etwa 10 Sekunden, hochkant.</li><li>Gerät, Hände, Display und Keller zeigen. Am besten vorher und nachher.</li><li>Ein Mensch aus dem Team spricht den Text als Sprachnachricht ein.</li><li>Oder es spricht eine KI-Stimme. Oder die Figur aus den 3 Förder-Reels, in den Farben von Traut.</li><li>Zahlen und Rechnungen bauen wir als Grafik ins Bild.</li></ol></div>
+              <div><h4>Darauf achten</h4><ul><li>Keine Gesichter von Kunden. Keine Hausnummer, kein Kennzeichen am Auto.</li><li>Bilder aus Häusern von Kunden nur mit schriftlicher Erlaubnis.</li><li>Stimmen und Bilder von einer KI werden gekennzeichnet.</li></ul></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ KALENDER ══════ -->
+    <section class="s-pad" style="padding-top:0" id="kalender" aria-labelledby="kalenderTitel">
+      <div class="s-in">
+        <div class="s-kopf">
+          <div class="eyebrow">Der Kalender</div>
+          <h2 id="kalenderTitel">Ein Video am Tag. 30 Tage lang.</h2>
+          <p class="intro">Beispiel-Start am 16. November, letztes Video am 15. Dezember 2026. Der Start ist frei wählbar. Ein Klick auf ein Video zeigt den ersten Satz, beide Wege und warum es im Plan steht.</p>
+        </div>
+        <div class="legende" aria-label="Legende">
+          <span><i class="mark"><i style="background:#65C83D"></i>Was es wirklich kostet</i></span>
+          <span><i class="mark"><i style="background:#0071E3"></i>Geht das bei meinem Haus?</i></span>
+          <span><i class="mark"><i style="background:#97DAF9"></i>Vom Angebot bis zur Wärme</i></span>
+          <span><i class="mark"><i style="background:#8C8C8C"></i>Aus dem Heizungskeller</i></span>
+          <span><i class="mark"><i style="background:#1E9AA0"></i>Leben mit der Wärmepumpe</i></span>
+          <span><i class="mark mark-check">CHECK</i> Video mit Aufruf</span>
+        </div>
+        <div class="woche">
+          <div class="woche-kopf"><span class="woche-nr">Woche 1 · Tag 1 bis 7 · 16. November bis 22. November</span><h3>Vertrauen aufbauen</h3></div>
+          <p class="woche-ziel">Ziel: Die großen Sorgen kommen zuerst. Strom, alte Heizkörper, Förderung.</p>
+          <div class="videos" style="margin-top:14px">
+          <details class="card video" name="woche1" data-gruppe="woche1">
+            <summary>
+              <span class="v-tag"><b>Tag 1</b><span>Mo 16.11.</span></span>
+              <span><span class="v-titel">Am 1. Februar sinkt die Förderung: Was das für Ihr Haus heißt</span>
+                <span class="v-marken"><span class="mark"><i style="background:#65C83D"></i>Was es wirklich kostet</span><span class="mark">Anfrage</span><span class="mark mark-check">CHECK</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>Ab dem 1. Februar gibt es weniger Förderung für die Wärmepumpe. Betrifft das Ihr Haus?</li><li>Ihre Gastherme läuft noch? Genau dann zählt der 1. Februar für Sie.</li><li>Ein Tausch braucht Vorlauf: Angebot, Antrag, Termin. Reicht die Zeit bis Februar?</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Ein Monteur steht vor einer alten Gastherme im Keller. Er sagt in drei Sätzen, was sich am 1. Februar ändert. Die Zahlen stehen als Text im Bild.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Ein Kalenderblatt „1. Februar“, daneben ein Balken, der kleiner wird. Eine Stimme erklärt, Zahlen kommen als Grafik.</p></div>
+              </div>
+              <div><h4>Am Ende</h4><p>Wie viel Förderung bei Ihrem Haus drin ist, zeigt der Förder-Check von Traut. Kommentieren Sie CHECK, dann kommt der Link.</p></div>
+              <p class="v-warum"><b>Warum im Plan:</b> Förder-Nachrichten liefen bei einem Heizungs-Konto 6-mal so gut wie sonst. Ein einfaches Beispiel für ein normales Haus fehlt im Markt. <a href="https://www.tiktok.com/@shkinfo/video/7660200668883455264" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche1" data-gruppe="woche1">
+            <summary>
+              <span class="v-tag"><b>Tag 2</b><span>Di 17.11.</span></span>
+              <span><span class="v-titel">Wärmepumpe frisst Strom? Woran es wirklich liegt (Teil 1)</span>
+                <span class="v-marken"><span class="mark"><i style="background:#65C83D"></i>Was es wirklich kostet</span><span class="mark">Vertrauen</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>„Ihr werdet 1000 Euro Strom im Monat zahlen.“ Diesen Satz hören viele vor der Wärmepumpe. Was ist dran?</li><li>Sorge vor einer hohen Stromrechnung mit Wärmepumpe? Das hat fast immer einen Grund.</li><li>Wenn die Stromrechnung der Wärmepumpe explodiert, ist meist nicht die Wärmepumpe schuld.</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Gespräch zu zweit: Einer liest einen echten Kommentar vom Handy vor. Der Monteur antwortet vor der Wärmepumpe. Am Ende bleibt eine Frage offen, Teil 2 folgt morgen.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Das Handy mit dem Kommentar groß im Bild. Dann Stromzähler und Rechnung als Grafik. Eine Stimme erklärt.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Das stärkste Thema im Markt: Ein Video über explodierte Stromkosten lief 93-mal so gut wie sonst bei diesem Konto. <a href="https://www.tiktok.com/@sonnefreihaus/video/7624594446046203168" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche1" data-gruppe="woche1">
+            <summary>
+              <span class="v-tag"><b>Tag 3</b><span>Mi 18.11.</span></span>
+              <span><span class="v-titel">Ein Jahr heizte nur der Strom-Heizstab: Der teuerste Fehler bei der Wärmepumpe (Teil 2)</span>
+                <span class="v-marken"><span class="mark"><i style="background:#8C8C8C"></i>Aus dem Heizungskeller</span><span class="mark">Vertrauen</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>Eine Wärmepumpe lief ein Jahr lang nur über den Strom-Heizstab. Keiner hat es gemerkt.</li><li>Sie planen eine Wärmepumpe? Diese eine Zahl zeigt später, ob sie richtig läuft.</li><li>Teil 2: So findet ein Monteur heraus, warum die Stromrechnung explodiert ist.</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Monteur steht am Display der Wärmepumpe. Er zeigt die Stunden von Verdichter und Heizstab und sagt, was normal ist.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Nahaufnahme vom Display. Die zwei Zahlen werden markiert, eine Stimme erklärt den Unterschied.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Teil 2 einer Serie lief 61-mal so gut wie sonst. Eine offene Frage am Ende von Teil 1 hält die Zuschauer bis hierher. <a href="https://www.tiktok.com/@sonnefreihaus/video/7625309518120914209" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche1" data-gruppe="woche1">
+            <summary>
+              <span class="v-tag"><b>Tag 4</b><span>Do 19.11.</span></span>
+              <span><span class="v-titel">Reichen meine alten Heizkörper für eine Wärmepumpe? Der Test im Haus</span>
+                <span class="v-marken"><span class="mark"><i style="background:#0071E3"></i>Geht das bei meinem Haus?</span><span class="mark">Vertrauen</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>Alte Heizkörper und trotzdem Wärmepumpe? Wir messen es nach, statt zu raten.</li><li>„Leider haben wir auch noch alte Heizkörper.“ Das muss kein Nein sein.</li><li>Ein Haus wie viele bei Ihnen in der Region: alte Heizkörper unter dem Fenster. Reicht das?</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Monteur kniet am Heizkörper und hält das Messgerät in die Kamera: Wert vorher, ein Handgriff, Wert nachher.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Nur Hände und Messgerät am Heizkörper. Die Werte stehen als Text im Bild.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Ein Praxistest an alten Heizkörpern lief 25-mal so gut wie sonst. Messen statt behaupten wirkt. <a href="https://www.tiktok.com/@shkinfo/video/7694315092405423393" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche1" data-gruppe="woche1">
+            <summary>
+              <span class="v-tag"><b>Tag 5</b><span>Fr 20.11.</span></span>
+              <span><span class="v-titel">Heizungstausch Tag für Tag: So lange ist das Haus ohne Heizung</span>
+                <span class="v-marken"><span class="mark"><i style="background:#97DAF9"></i>Vom Angebot bis zur Wärme</span><span class="mark">Vertrauen</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>Sie wollten schon immer wissen, wie ein Heizungstausch abläuft? Dann passen Sie jetzt auf.</li><li>Wie viele Tage ist das Haus ohne Heizung, wenn die Wärmepumpe kommt?</li><li>„Arbeit, Handwerker, Dreck im Haus.“ So läuft ein Heizungstausch wirklich ab.</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Monteur geht die Tage durch. Zu jedem Tag ein kurzer Clip von der Baustelle. Die echte Dauer im eigenen Betrieb kommt aus dem Start-Termin.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Zeitraffer im Keller. „Tag 1“, „Tag 2“ und so weiter als Text im Bild.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Schritt-für-Schritt-Videos liefen bei einem Elektriker 68-mal so gut wie sonst. Zum Heizungstausch gibt es im Markt kaum solche Videos. <a href="https://www.tiktok.com/@dieelektromeister/video/7627936801780501792" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche1" data-gruppe="woche1">
+            <summary>
+              <span class="v-tag"><b>Tag 6</b><span>Sa 21.11.</span></span>
+              <span><span class="v-titel">Öl, Gas oder Wärmepumpe: Was Sie wirklich zahlen, mit Förderung</span>
+                <span class="v-marken"><span class="mark"><i style="background:#65C83D"></i>Was es wirklich kostet</span><span class="mark">Anfrage</span><span class="mark mark-check">CHECK</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>Die neue Gastherme kostet weniger als eine Wärmepumpe. Ist sie am Ende auch billiger?</li><li>Ein Angebot für die Brennwerttherme, drei für die Wärmepumpe. Welche Rechnung stimmt?</li><li>Was bleibt von einem Wärmepumpen-Angebot übrig, wenn die Förderung abgezogen ist?</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Ein Meister am Tisch mit drei Zetteln: Öl, Gas, Wärmepumpe. Er rechnet mit dem Stift, Zeile für Zeile.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Ein Rechenzettel als Grafik. Zeile für Zeile kommt dazu, eine Stimme liest mit.</p></div>
+              </div>
+              <div><h4>Am Ende</h4><p>Was die Förderung bei Ihrem Haus abzieht, zeigt der Förder-Check von Traut. Kommentieren Sie CHECK, dann kommt der Link.</p></div>
+              <p class="v-warum"><b>Warum im Plan:</b> Ein Preisvergleich als Antwort auf einen Kommentar lief fast 4-mal so gut wie sonst. Hausbesitzer fragen genau das. <a href="https://www.tiktok.com/@diewaermepumpenprofis/video/7371842577517137184" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche1" data-gruppe="woche1">
+            <summary>
+              <span class="v-tag"><b>Tag 7</b><span>So 22.11.</span></span>
+              <span><span class="v-titel">Alte Heizkörper, ein Zimmer bleibt kalt: Die zweite Skala hinter dem Thermostat</span>
+                <span class="v-marken"><span class="mark"><i style="background:#1E9AA0"></i>Leben mit der Wärmepumpe</span><span class="mark">Reichweite</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>„Leider haben wir auch noch alte Heizkörper.“ Bevor Sie die abschreiben: Schauen Sie hinter den Thermostatkopf.</li><li>Ein Zimmer wird nie richtig warm, das andere ist zu heiß? Daran liegt es oft.</li><li>Alle Thermostate auf 5 und trotzdem kalt? Schauen Sie mal hinter den Kopf.</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Monteur nimmt den Thermostatkopf ab und zeigt die Skala am Ventil, nah an der Kamera.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Makro-Aufnahme: Eine Hand dreht den Kopf ab, die Skala erscheint, ein Pfeil zeigt darauf.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Ein Video zur versteckten Skala lief 18-mal so gut wie sonst bei diesem Konto. <a href="https://www.tiktok.com/@shkinfo/video/7599703604970196246" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          </div>
+        </div>
+        <div class="woche">
+          <div class="woche-kopf"><span class="woche-nr">Woche 2 · Tag 8 bis 14 · 23. November bis 29. November</span><h3>Zweifel ausräumen</h3></div>
+          <p class="woche-ziel">Ziel: Lärm, Frost und „erst sanieren“ werden ehrlich geprüft.</p>
+          <div class="videos" style="margin-top:14px">
+          <details class="card video" name="woche2" data-gruppe="woche2">
+            <summary>
+              <span class="v-tag"><b>Tag 8</b><span>Mo 23.11.</span></span>
+              <span><span class="v-titel">Das billigste Angebot: Was später oft fehlt</span>
+                <span class="v-marken"><span class="mark"><i style="background:#97DAF9"></i>Vom Angebot bis zur Wärme</span><span class="mark">Vertrauen</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>Drei Angebote, 20.000 Euro Unterschied. Was fehlt im billigsten?</li><li>„Wird man beim Angebot angezogen?“ Daran erkennen Sie es.</li><li>Schauen Sie nicht nur auf den Preis. Diese Zeilen gehören in jedes Wärmepumpen-Angebot.</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Meister hält zwei Angebote nebeneinander in die Kamera und zeigt mit dem Finger auf die Zeilen, die im billigen fehlen.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Zwei Angebote auf dem Tisch, von oben gefilmt. Fehlende Zeilen werden rot markiert.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Beim Dachdecker ist „billig gegen gut“ das stärkste Muster (89-mal so gut wie sonst). Bei Heizungen fehlt das Thema fast ganz. <a href="https://www.tiktok.com/@perfect_home_sanierung/video/7535760539599867158" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche2" data-gruppe="woche2">
+            <summary>
+              <span class="v-tag"><b>Tag 9</b><span>Di 24.11.</span></span>
+              <span><span class="v-titel">Erst das ganze Haus sanieren? Was ein Haus von 1961 zeigt</span>
+                <span class="v-marken"><span class="mark"><i style="background:#0071E3"></i>Geht das bei meinem Haus?</span><span class="mark">Vertrauen</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>„Erst muss das ganze Haus für 200.000 Euro saniert werden.“ Stimmt nicht immer.</li><li>Wärmepumpe nur im Neubau? Das ist schon lange nicht mehr so.</li><li>Ein Haus von 1961, ohne Dämmung, und trotzdem warm. Wie geht das?</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Monteur steht vor einem älteren Haus und sagt, worauf es wirklich ankommt. Dann kurz drinnen am Heizkörper.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Bilder vom älteren Haus und vom Heizkörper. Der Satz „erst sanieren?“ wird als Text durchgestrichen.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Videos gegen den Irrtum „nur im Neubau“ liefen bis zu 10-mal so gut wie sonst. Der Satz „erst sanieren“ fällt in den Kommentaren immer wieder. <a href="https://www.tiktok.com/@diewaermepumpenprofis/video/7405242857092582689" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche2" data-gruppe="woche2">
+            <summary>
+              <span class="v-tag"><b>Tag 10</b><span>Mi 25.11.</span></span>
+              <span><span class="v-titel">Wie laut ist eine Wärmepumpe wirklich? Gemessen am Zaun zum Nachbarn</span>
+                <span class="v-marken"><span class="mark"><i style="background:#0071E3"></i>Geht das bei meinem Haus?</span><span class="mark">Vertrauen</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>„Der kleine Düsenjet im Garten.“ So nennen manche die Wärmepumpe. Wir messen nach.</li><li>Wie laut ist eine Wärmepumpe am Zaun zum Nachbarn?</li><li>Doppelhaus, wenig Platz bis zum Nachbarn. Geht da eine Wärmepumpe?</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Monteur mit Schallmessgerät: direkt am Gerät, drei Meter weg, am Zaun. Er nennt jeden Wert.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Nur das Messgerät im Bild, die Werte als Text. Der Ton der Anlage ist echt zu hören.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Viele fragen nach dem Lärm. Im Markt gibt es dazu nur 3 Videos, keins lief gut. Hier ist der Platz frei. <a href="https://www.youtube.com/watch?v=Oq6ewTQl5Qg&amp;lc=UgzaMhrP3yCSHMmFFWt4AaABAg" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche2" data-gruppe="woche2">
+            <summary>
+              <span class="v-tag"><b>Tag 11</b><span>Do 26.11.</span></span>
+              <span><span class="v-titel">Ein Haus, eine Rechnung: Wann sich die Wärmepumpe bezahlt hat</span>
+                <span class="v-marken"><span class="mark"><i style="background:#65C83D"></i>Was es wirklich kostet</span><span class="mark">Anfrage</span><span class="mark mark-check">CHECK</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>„Wann geht das Ding in die Gewinnzone?“ Rechnen wir es an einem Haus durch.</li><li>Bin fast 60, lohnt sich das noch? Hier ist die Rechnung für ein Beispiel-Haus.</li><li>Was kostet eine Wärmepumpe im Jahr? Ein Beispiel mit echten Zahlen.</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Meister rechnet auf einem Flipchart: Preis, Förderung, Heizkosten im Jahr, nach wie vielen Jahren das Geld wieder drin ist.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Ein Rechenzettel als Grafik, Schritt für Schritt. Am Ende steht groß das Jahr, in dem es sich bezahlt hat.</p></div>
+              </div>
+              <div><h4>Am Ende</h4><p>Ihre eigene Rechnung beginnt mit der Förderung. Der Förder-Check von Traut zeigt sie. Kommentieren Sie CHECK, dann kommt der Link.</p></div>
+              <p class="v-warum"><b>Warum im Plan:</b> Eine Jahresrechnung für ein Haus lief fast 4-mal so gut wie sonst. „Wann rechnet sich das?“ ist die häufigste Frage in den Kommentaren. <a href="https://www.tiktok.com/@diewaermepumpenprofis/video/7371463154456366368" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche2" data-gruppe="woche2">
+            <summary>
+              <span class="v-tag"><b>Tag 12</b><span>Fr 27.11.</span></span>
+              <span><span class="v-titel">Neuer Brenner für 2.000 Euro oder gleich tauschen? Ein Fund im Heizungskeller</span>
+                <span class="v-marken"><span class="mark"><i style="background:#8C8C8C"></i>Aus dem Heizungskeller</span><span class="mark">Reichweite</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>Diese Ölheizung lief noch. Schauen Sie mal genau hin.</li><li>Knapp 2.000 Euro für einen neuen Brenner. Hält das noch 10 Jahre?</li><li>Was hätten Sie gemacht: flicken oder tauschen?</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Monteur hält das Handy auf eine alte Ölheizung, zeigt mit dem Finger auf das Detail und fragt die Zuschauer: flicken oder tauschen? Den echten Fund legt der Betrieb vor dem Dreh fest.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Eine Einstellung ohne Schnitt, nur der Fund in Nahaufnahme. Die Frage steht fest oben im Bild.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Ein Fund mit einer Frage an die Zuschauer lief beim Dachdecker 97-mal so gut wie sonst und brachte fast 700 Kommentare. <a href="https://www.tiktok.com/@perfect_home_sanierung/video/7477535112637189398" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche2" data-gruppe="woche2">
+            <summary>
+              <span class="v-tag"><b>Tag 13</b><span>Sa 28.11.</span></span>
+              <span><span class="v-titel">Frost draußen: Heizt die Wärmepumpe dann noch?</span>
+                <span class="v-marken"><span class="mark"><i style="background:#0071E3"></i>Geht das bei meinem Haus?</span><span class="mark">Vertrauen</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>„Bei minus 10 Grad ist die überfordert.“ Stimmt das?</li><li>Warum haben in Skandinavien so viele Häuser eine Wärmepumpe?</li><li>Frost bei Ihnen in der Region: Wie warm wird das Haus mit Wärmepumpe?</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>An einem kalten Morgen draußen am Außengerät. Der Monteur zeigt Außentemperatur und Vorlauf am Display.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Thermometer draußen, Display drinnen. Beide Werte als Text, eine Stimme erklärt.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Videos zur Kälte liefen bis zu 8-mal so gut wie sonst. „Bei Frost überfordert“ ist ein häufiger Einwand. <a href="https://www.tiktok.com/@diewaermepumpenprofis/video/7418643380869106976" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche2" data-gruppe="woche2">
+            <summary>
+              <span class="v-tag"><b>Tag 14</b><span>So 29.11.</span></span>
+              <span><span class="v-titel">Stromausfall bei Frost: Was passiert dann mit der Wärmepumpe?</span>
+                <span class="v-marken"><span class="mark"><i style="background:#1E9AA0"></i>Leben mit der Wärmepumpe</span><span class="mark">Reichweite</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>„Und wenn der Strom bei Frost länger ausfällt, gehen die Dinger kaputt?“</li><li>Stromausfall im Winter: Was die Wärmepumpe dann macht.</li><li>Die Frage aus den Kommentaren: Frost und kein Strom. Was nun?</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Monteur liest die Frage vom Handy vor und antwortet vor dem Außengerät in drei klaren Punkten.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Die Frage als Text im Bild, dann Bilder vom Gerät mit den drei Punkten als Grafik.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Ein Video zu Stromausfall bei Frost lief fast 6-mal so gut wie sonst. Die Frage steht wörtlich in den Kommentaren. <a href="https://www.tiktok.com/@shkinfo/video/7597410594563673366" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          </div>
+        </div>
+        <div class="woche">
+          <div class="woche-kopf"><span class="woche-nr">Woche 3 · Tag 15 bis 21 · 30. November bis 6. Dezember</span><h3>Zeigen, wie es geht</h3></div>
+          <p class="woche-ziel">Ziel: Einstellung, Wartung und die Frage „jetzt oder warten“.</p>
+          <div class="videos" style="margin-top:14px">
+          <details class="card video" name="woche3" data-gruppe="woche3">
+            <summary>
+              <span class="v-tag"><b>Tag 15</b><span>Mo 30.11.</span></span>
+              <span><span class="v-titel">Anschließen reicht nicht: Warum eine neue Wärmepumpe teuer laufen kann</span>
+                <span class="v-marken"><span class="mark"><i style="background:#97DAF9"></i>Vom Angebot bis zur Wärme</span><span class="mark">Vertrauen</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>Eine Wärmepumpe kann man nicht einfach anschließen und loslegen.</li><li>Ein Einzelfall aus den Kommentaren: Nach dem Umstellen zahlte jemand nur noch ein Drittel.</li><li>Was am ersten Tag nach dem Einbau passieren muss, damit die Rechnung stimmt.</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Monteur am Display beim ersten Einschalten. Er zeigt zwei Einstellungen und sagt, was sie kosten oder sparen.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Nur das Display und die Hand an den Tasten. Vorher und nachher als Text.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Ein Video zur Einstellung lief 10-mal so gut wie sonst. In den Kommentaren klagen viele über schlecht eingestellte Anlagen. <a href="https://www.tiktok.com/@sonnefreihaus/video/7625680628641484065" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche3" data-gruppe="woche3">
+            <summary>
+              <span class="v-tag"><b>Tag 16</b><span>Di 1.12.</span></span>
+              <span><span class="v-titel">Ohne Solaranlage lohnt sich keine Wärmepumpe? Ein Irrtum mit Rechnung</span>
+                <span class="v-marken"><span class="mark"><i style="background:#65C83D"></i>Was es wirklich kostet</span><span class="mark">Vertrauen</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>„Wer keine PV hat, für den ist die Wärmepumpe ein Geldfresser.“ Rechnen wir nach.</li><li>Brauche ich eine Solaranlage, damit sich die Wärmepumpe lohnt?</li><li>Im Winter liefert die Solaranlage wenig. Was heißt das für die Wärmepumpe?</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Monteur neben dem Stromzähler. Er rechnet einmal mit und einmal ohne Solaranlage.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Zwei Spalten als Grafik: mit und ohne Solaranlage. Die Stimme rechnet mit.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Ein Video mit echten Winter-Zahlen zu Wärmepumpe und Solar lief 8-mal so gut wie sonst. Der Satz „ohne PV ein Geldfresser“ steht oft in den Kommentaren. <a href="https://www.tiktok.com/@sonnefreihaus/video/7608255044630088992" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche3" data-gruppe="woche3">
+            <summary>
+              <span class="v-tag"><b>Tag 17</b><span>Mi 2.12.</span></span>
+              <span><span class="v-titel">Die Gastherme läuft noch: Jetzt tauschen oder warten?</span>
+                <span class="v-marken"><span class="mark"><i style="background:#65C83D"></i>Was es wirklich kostet</span><span class="mark">Anfrage</span><span class="mark mark-check">CHECK</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>„Meine Gasheizung ist 35 Jahre alt. Warten oder jetzt tauschen?“</li><li>„Die schmeiße ich doch nicht raus.“ Wann sich der Tausch trotzdem lohnt.</li><li>Ihre Heizung läuft noch? Warum der Zeitpunkt beim Tausch trotzdem zählt.</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Monteur vor einer laufenden Gastherme. Er nennt die zwei Fälle, in denen Warten Sinn hat, und die zwei, in denen nicht.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Die Gastherme im Bild, dazu eine Waage als Grafik: warten oder tauschen.</p></div>
+              </div>
+              <div><h4>Am Ende</h4><p>Ob sich der Tausch vor dem 1. Februar lohnt, hängt von der Förderung ab. Der Förder-Check von Traut zeigt sie. Kommentieren Sie CHECK.</p></div>
+              <p class="v-warum"><b>Warum im Plan:</b> Die Frage „jetzt tauschen oder warten?“ ist häufig. Im Markt gibt es dazu kaum Videos und keins lief gut. <a href="https://www.youtube.com/watch?v=Oq6ewTQl5Qg&amp;lc=UgxzI9pC2ufWLP4fUpF4AaABAg" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche3" data-gruppe="woche3">
+            <summary>
+              <span class="v-tag"><b>Tag 18</b><span>Do 3.12.</span></span>
+              <span><span class="v-titel">Braucht es eine Fußbodenheizung? Eine Zahl an Ihrer Heizung verrät es</span>
+                <span class="v-marken"><span class="mark"><i style="background:#0071E3"></i>Geht das bei meinem Haus?</span><span class="mark">Vertrauen</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>„Ohne Fußbodenheizung ist das nicht sinnvoll.“ Hören Sie das oft?</li><li>Ein Haus von 1958: 36 bis 46 Grad reichen dort selbst im Winter.</li><li>Eine Zahl an Ihrer Heizung zeigt, ob die Wärmepumpe passt.</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Monteur zeigt an der alten Heizung, wo man die Temperatur des Heizwassers abliest (den Vorlauf), und sagt, welcher Wert gut ist.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Nahaufnahme vom Thermometer an der Heizung, der Wert als Text. Eine Stimme erklärt die Grenze.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Ein Video zu niedriger Vorlauftemperatur an kleinen Heizkörpern lief fast 8-mal so gut wie sonst. <a href="https://www.tiktok.com/@shkinfo/video/7680961556724731168" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche3" data-gruppe="woche3">
+            <summary>
+              <span class="v-tag"><b>Tag 19</b><span>Fr 4.12.</span></span>
+              <span><span class="v-titel">Wie lange hält eine Wärmepumpe? Und was die Wartung bringt</span>
+                <span class="v-marken"><span class="mark"><i style="background:#1E9AA0"></i>Leben mit der Wärmepumpe</span><span class="mark">Vertrauen</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>„Eine Gastherme hält 30 Jahre.“ Und wie lange hält die Wärmepumpe?</li><li>Auch eine neue Heizung braucht Wartung. Das zeigt der Blick hinein.</li><li>Wie oft muss ein Monteur im Jahr an die Wärmepumpe?</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Monteur bei einer Wartung. Er öffnet das Gerät und zeigt, was er jedes Jahr prüft.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Nur Hände und Werkzeug bei der Wartung, die Punkte als Liste im Bild.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Bei Gasthermen laufen Wartungs-Videos bis zu 17-mal so gut wie sonst. Für Wärmepumpen gibt es dazu kaum Videos. Hier ist der Platz frei. <a href="https://www.tiktok.com/@heizungsseelsorger/video/7096537455469333766" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche3" data-gruppe="woche3">
+            <summary>
+              <span class="v-tag"><b>Tag 20</b><span>Sa 5.12.</span></span>
+              <span><span class="v-titel">Gas behalten und Wärmepumpe dazu? Die Hybrid-Lösung ehrlich erklärt</span>
+                <span class="v-marken"><span class="mark"><i style="background:#0071E3"></i>Geht das bei meinem Haus?</span><span class="mark">Vertrauen</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>„Macht eine Wärmepumpe als Zusatz Sinn?“ Die ehrliche Antwort.</li><li>Die Gastherme bleibt, die Wärmepumpe kommt dazu. Wann passt das?</li><li>Halb Gas, halb Strom: Für welche Häuser das passt.</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Monteur steht zwischen Gastherme und Wärmepumpe und sagt, wer was macht.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Zwei Geräte als Grafik, ein Pfeil zeigt, wann welches heizt.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Die Frage nach der Hybrid-Lösung kommt in den Kommentaren vor. Im Markt gibt es nur ein Video dazu. <a href="https://www.youtube.com/watch?v=L-YIS2EbVnE&amp;lc=UgxA1W8FCfFSHlxOk214AaABAg" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche3" data-gruppe="woche3">
+            <summary>
+              <span class="v-tag"><b>Tag 21</b><span>So 6.12.</span></span>
+              <span><span class="v-titel">Alte Heizkörper zu klein? Was ein Lüfter darunter bringt, live gemessen</span>
+                <span class="v-marken"><span class="mark"><i style="background:#0071E3"></i>Geht das bei meinem Haus?</span><span class="mark">Vertrauen</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>Ein kleiner Lüfter unter dem alten Heizkörper. Bringt das mehr Wärme?</li><li>Zu wenig Wärme aus dem alten Heizkörper? Wir messen, was ein Lüfter ändert.</li><li>Heizkörper aus Guss unter dem Fenster: Was bringt ein Lüfter? Live gemessen.</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Monteur legt einen Lüfter unter den Heizkörper und misst vorher und nachher. Er sagt ehrlich, wann es hilft und wann nicht.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Nur Hände, Lüfter und Messgerät. Die zwei Werte stehen groß im Bild.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Ein Live-Test mit Lüftern unter dem Heizkörper lief 20-mal so gut wie sonst. Alte Heizkörper sind der häufigste Einwand. <a href="https://www.tiktok.com/@shkinfo/video/7695096884423052576" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          </div>
+        </div>
+        <div class="woche">
+          <div class="woche-kopf"><span class="woche-nr">Woche 4 · Tag 22 bis 28 · 7. Dezember bis 13. Dezember</span><h3>Entscheiden helfen</h3></div>
+          <p class="woche-ziel">Ziel: Antrag, Preise und echte Häuser. Die Zuschauer kennen Traut jetzt.</p>
+          <div class="videos" style="margin-top:14px">
+          <details class="card video" name="woche4" data-gruppe="woche4">
+            <summary>
+              <span class="v-tag"><b>Tag 22</b><span>Mo 7.12.</span></span>
+              <span><span class="v-titel">Förderung beantragen: Der Fehler, der 1.500 Euro gekostet hat</span>
+                <span class="v-marken"><span class="mark"><i style="background:#65C83D"></i>Was es wirklich kostet</span><span class="mark">Anfrage</span><span class="mark mark-check">CHECK</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>Falsches Gerät im Antrag, 1.500 Euro weg. So vermeiden Sie das.</li><li>„Ich bin ein totaler digitaler Laie.“ Wer stellt eigentlich den Förderantrag?</li><li>Erst der Antrag oder erst der Auftrag? Die Reihenfolge bei der Förderung.</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Meister am Laptop. Er zeigt die drei Schritte zum Antrag und den einen Fehler, der Geld kostet.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Bildschirm-Aufnahme mit den drei Schritten, der Fehler wird rot markiert.</p></div>
+              </div>
+              <div><h4>Am Ende</h4><p>Bevor der Antrag kommt, sollten Sie wissen, mit wie viel Förderung Sie rechnen können. Kommentieren Sie CHECK, dann kommt der Link.</p></div>
+              <p class="v-warum"><b>Warum im Plan:</b> Ein Video zu den Pflichten bei geförderten Wärmepumpen lief 4-mal so gut wie sonst. Fehler beim Antrag kosten echtes Geld. <a href="https://www.tiktok.com/@shkinfo/video/7703963139817262368" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche4" data-gruppe="woche4">
+            <summary>
+              <span class="v-tag"><b>Tag 23</b><span>Di 8.12.</span></span>
+              <span><span class="v-titel">Warum ist die Wärmepumpe so teuer? Die Stunden vorgerechnet</span>
+                <span class="v-marken"><span class="mark"><i style="background:#65C83D"></i>Was es wirklich kostet</span><span class="mark">Vertrauen</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>„Warum kostet die Wärmepumpe hier das Doppelte?“ Wir rechnen die Stunden vor.</li><li>Was steckt in einem Angebot über 30.000 Euro? Gerät, Stunden, Material.</li><li>„Wohin geht dann wohl die Förderung?“ Ein Blick in die Rechnung.</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Meister zählt an den Fingern ab: Tage, Leute, Stunden. Daneben wächst eine Rechnung als Grafik.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Ein Angebot als Grafik, das in Teile zerfällt: Gerät, Stunden, Material, Entsorgung.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Ein Video mit vorgerechneten Lohnstunden lief fast 5-mal so gut wie sonst. Viele wollen eine volle Kostenliste. <a href="https://www.tiktok.com/@sonnefreihaus/video/7631262356399541536" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche4" data-gruppe="woche4">
+            <summary>
+              <span class="v-tag"><b>Tag 24</b><span>Mi 9.12.</span></span>
+              <span><span class="v-titel">Ein älteres Haus aus der Region wird umgebaut: Was bleibt, was muss raus</span>
+                <span class="v-marken"><span class="mark"><i style="background:#97DAF9"></i>Vom Angebot bis zur Wärme</span><span class="mark">Vertrauen</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>Dieses Haus bekommt eine Wärmepumpe, und das hier bleibt alles drin.</li><li>Heizkörper, Rohre, Schornstein: Was beim Umbau bleibt.</li><li>Ein Haus wie viele bei Ihnen in der Region. So wird die Wärmepumpe geplant.</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Monteur geht durch Keller und Wohnzimmer eines echten Hauses und zeigt, was bleibt und was neu kommt.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Rundgang mit dem Handy, Schilder „bleibt“ und „neu“ als Text im Bild.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Ein Umbau-Video mit „das bleibt alles drin“ lief fast 5-mal so gut wie sonst. Es nimmt die Angst vor Dreck und großem Umbau. <a href="https://www.tiktok.com/@hausoptimierer/video/7630517653894991137" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche4" data-gruppe="woche4">
+            <summary>
+              <span class="v-tag"><b>Tag 25</b><span>Do 10.12.</span></span>
+              <span><span class="v-titel">Gute Montage oder Pfusch? Drei Stellen am Außengerät</span>
+                <span class="v-marken"><span class="mark"><i style="background:#8C8C8C"></i>Aus dem Heizungskeller</span><span class="mark">Vertrauen</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>„Kann ich als Laie kaum dagegenhalten.“ Drei Stellen am Außengerät, die jeder prüfen kann.</li><li>Bevor Sie unterschreiben: Fragen Sie nach diesen drei Stellen am Außengerät.</li><li>Gute Montage oder Pfusch? Drei Stellen am Außengerät verraten es.</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Monteur am Außengerät zeigt nacheinander drei Stellen: Leitungen, Dämmung, Abstand zur Wand.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Nahaufnahmen der drei Stellen, je mit „gut“ oder „Pfusch“ als Text.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Ein Video zu Leitungen am Außengerät lief 21-mal so gut wie sonst. „Woran erkenne ich gute Arbeit?“ fragen viele. <a href="https://www.tiktok.com/@shkinfo/video/7674621715456036129" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche4" data-gruppe="woche4">
+            <summary>
+              <span class="v-tag"><b>Tag 26</b><span>Fr 11.12.</span></span>
+              <span><span class="v-titel">Größer ist nicht besser: Das Problem mit der zu großen Wärmepumpe</span>
+                <span class="v-marken"><span class="mark"><i style="background:#97DAF9"></i>Vom Angebot bis zur Wärme</span><span class="mark">Reichweite</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>„Wo ist das Problem bei einer zu großen Wärmepumpe?“</li><li>Größer ist bei der Wärmepumpe nicht besser. Im Gegenteil.</li><li>Viele sorgen sich nicht, ob es klappt. Sondern ob die Wärmepumpe zu groß ist.</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Monteur vor zwei Geräten, einem kleinen und einem großen. Er sagt, warum das große oft schlechter läuft.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Zwei Geräte als Grafik, beim großen leuchtet „an, aus, an, aus“.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Ein Rat gegen „zu viel“ lief beim Dachdecker 30-mal so gut wie sonst. Die Frage nach der zu großen Wärmepumpe steht in den Kommentaren. <a href="https://www.tiktok.com/@mertl_bedachungen/video/7232581235875335450" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche4" data-gruppe="woche4">
+            <summary>
+              <span class="v-tag"><b>Tag 27</b><span>Sa 12.12.</span></span>
+              <span><span class="v-titel">Vom Öltank zur Wärmepumpe: Wie lange dauert der Tausch? Im Zeitraffer</span>
+                <span class="v-marken"><span class="mark"><i style="background:#97DAF9"></i>Vom Angebot bis zur Wärme</span><span class="mark">Reichweite</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>„Meine Ölheizung hat mich seit 20 Jahren nicht im Stich gelassen.“ So sieht ihr letzter Tag im Keller aus.</li><li>Wie lange dauert der Weg vom Öltank zur Wärmepumpe? Im Zeitraffer.</li><li>Vorher Öltank, nachher Wärmepumpe: Was im Keller frei wird.</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Zeitraffer der Baustelle, dazwischen kurze Sätze vom Monteur in die Kamera.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Nur Zeitraffer mit Text: „Tag 1: Öltank raus“ und so weiter.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Ein Zeitraffer einer Montage lief bei einem Elektro-Konto 33-mal so gut wie sonst. Er zeigt: Der Tausch ist eine planbare Baustelle, nicht monatelanger Dreck im Haus. <a href="https://www.tiktok.com/@pakainvest/video/7497689028712467734" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche4" data-gruppe="woche4">
+            <summary>
+              <span class="v-tag"><b>Tag 28</b><span>So 13.12.</span></span>
+              <span><span class="v-titel">Bad warm, Schlafzimmer kühl: Geht das mit der Wärmepumpe?</span>
+                <span class="v-marken"><span class="mark"><i style="background:#1E9AA0"></i>Leben mit der Wärmepumpe</span><span class="mark">Reichweite</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>„Bad wärmer als das Schlafzimmer, geht das dann überhaupt?“</li><li>Alle Thermostate auf 5 lassen? Warum manche Monteure das raten.</li><li>Das Schlafzimmer kühl, das Bad warm: So klappt es mit der Wärmepumpe.</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Monteur geht vom Bad ins Schlafzimmer und stellt an beiden Heizkörpern ein.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Zwei Thermostate in Nahaufnahme, die Zieltemperatur je Raum als Text.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Ein Video zu „alle Thermostate auf 5“ lief 7-mal so gut wie sonst. Die Frage nach Räumen mit eigener Wärme kommt oft. <a href="https://www.tiktok.com/@sonnefreihaus/video/7616801630993812768" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          </div>
+        </div>
+        <div class="woche">
+          <div class="woche-kopf"><span class="woche-nr">Woche 5 · Tag 29 bis 30 · 14. Dezember bis 15. Dezember</span><h3>Kurz vor dem Stichtag</h3></div>
+          <p class="woche-ziel">Ziel: Die Zeit bis zum 1. Februar wird knapp.</p>
+          <div class="videos" style="margin-top:14px">
+          <details class="card video" name="woche5" data-gruppe="woche5">
+            <summary>
+              <span class="v-tag"><b>Tag 29</b><span>Mo 14.12.</span></span>
+              <span><span class="v-titel">Noch sieben Wochen bis zum 1. Februar: Reicht die Zeit noch?</span>
+                <span class="v-marken"><span class="mark"><i style="background:#65C83D"></i>Was es wirklich kostet</span><span class="mark">Anfrage</span><span class="mark mark-check">CHECK</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>Bis zum 1. Februar sind es noch sieben Wochen. Reicht das noch?</li><li>Angebot, Antrag, Termin: Was vor dem 1. Februar alles passieren muss.</li><li>Was bis zum 1. Februar erledigt sein muss, damit die heutige Förderung gilt.</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Meister mit einem Kalender in der Hand. Er streicht die Wochen ab und nennt die zwei Schritte, die vorher erledigt sein müssen.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Ein Kalender, die Wochen bis zum 1. Februar werden abgestrichen. Die zwei Schritte stehen als Liste im Bild.</p></div>
+              </div>
+              <div><h4>Am Ende</h4><p>Wer vor dem 1. Februar wissen will, wie viel Förderung drin ist: Kommentieren Sie CHECK. Dann kommt der Link zum Förder-Check von Traut.</p></div>
+              <p class="v-warum"><b>Warum im Plan:</b> Förder-Nachrichten liefen 6-mal so gut wie sonst. Kurz vor dem Stichtag sucht die Zielgruppe genau das. <a href="https://www.tiktok.com/@shkinfo/video/7660200668883455264" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          <details class="card video" name="woche5" data-gruppe="woche5">
+            <summary>
+              <span class="v-tag"><b>Tag 30</b><span>Di 15.12.</span></span>
+              <span><span class="v-titel">Die 5 Fragen, die Sie jedem Heizungsbauer stellen sollten</span>
+                <span class="v-marken"><span class="mark"><i style="background:#97DAF9"></i>Vom Angebot bis zur Wärme</span><span class="mark">Vertrauen</span></span></span>
+              <span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+            </summary>
+            <div class="v-inhalt">
+              <div><h4>Ideen für den ersten Satz</h4><ol><li>„Am liebsten wäre ein guter Monteur, der alles mit mir durchgeht.“ Diese 5 Fragen helfen dabei.</li><li>Bevor Sie ein Angebot unterschreiben: Stellen Sie diese 5 Fragen.</li><li>Woran Sie einen Heizungsbauer erkennen, der Wärmepumpe wirklich kann.</li></ol></div>
+              <div class="v-wege">
+                <div class="v-weg"><h4>Mit Gesicht</h4><p>Der Meister zählt die 5 Fragen an den Fingern ab, zu jeder ein Satz, warum sie wichtig ist.</p></div>
+                <div class="v-weg"><h4>Ohne Gesicht</h4><p>Die 5 Fragen erscheinen nacheinander als Karten im Bild, eine Stimme liest sie vor.</p></div>
+              </div>
+              
+              <p class="v-warum"><b>Warum im Plan:</b> Woran man einen guten Betrieb erkennt, fragen viele. Im Heizungs-Markt gibt es dazu fast kein Video. <a href="https://www.youtube.com/watch?v=GKfaY10C7dg&amp;lc=UgyoIwJsw1gMB5uN9gh4AaABAg" target="_blank" rel="noopener noreferrer">Beispiel ansehen</a></p>
+            </div>
+          </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ WEG ZUR ANFRAGE ══════ -->
+    <section class="s-pad band" aria-labelledby="wegTitel">
+      <div class="s-in">
+        <div class="s-kopf">
+          <div class="eyebrow">So kommt die Anfrage</div>
+          <h2 id="wegTitel">Ein Wort im Kommentar. Den Rest macht die Maschine.</h2>
+          <p class="intro">Nur 6 von 30 Videos fragen nach etwas. Die anderen geben nur. So bleiben die Zuschauer gern dran.</p>
+        </div>
+        <div class="weg">
+          <div class="card"><div class="weg-nr">1</div><h3>Video ansehen</h3><p>Ein Hausbesitzer sieht ein Video und denkt: Das betrifft mich.</p></div>
+          <div class="card"><div class="weg-nr">2</div><h3><span class="wort">CHECK</span> kommentieren</h3><p>Am Ende des Videos steht ein Grund dafür. Ein Wort reicht.</p></div>
+          <div class="card"><div class="weg-nr">3</div><h3>Förder-Check machen</h3><p>Sofort kommt eine Nachricht mit dem Link. Der Check trägt den Namen von Traut.</p></div>
+          <div class="card"><div class="weg-nr">4</div><h3>Traut meldet sich</h3><p>Wer den Check macht, ist eine echte Anfrage. Mit Haus, Heizung und Förderung schon im Blick.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ SO STARTEN WIR ══════ -->
+    <section class="s-pad" id="start-plan" aria-labelledby="startTitel">
+      <div class="s-in">
+        <div class="s-kopf">
+          <div class="eyebrow">So starten wir</div>
+          <h2 id="startTitel">In 7 Tagen sind die ersten Videos fertig.</h2>
+          <p class="intro">Der Start braucht wenig Zeit von Traut. Den größten Teil machen wir. Ein Beispiel: Start-Termin am 9. November, erstes Video am 16. November.</p>
+        </div>
+        <div class="start-schritte">
+          <div class="card start-schritt"><div class="start-tag">Tag 1</div><h3>Start-Termin, 30 Minuten</h3><p>Gebiet, Angebot und Ziele klären. Wer geht vor die Kamera? Mit oder ohne Gesicht?</p></div>
+          <div class="card start-schritt"><div class="start-tag">Tag 2 und 3</div><h3>Wir bereiten vor</h3><p>Die Liste für den Dreh und die ersten Skripte aus diesem Plan. Dazu der Förder-Check mit dem Namen von Traut.</p></div>
+          <div class="card start-schritt"><div class="start-tag">Tag 4</div><h3>Dreh 1, 30 Minuten</h3><p>Mit dem Handy, nach der Liste. Ohne Gesicht: Clips von der Baustelle in den Ordner laden.</p></div>
+          <div class="card start-schritt"><div class="start-tag">Tag 7</div><h3>Ansehen und freigeben</h3><p>Die ersten 10 Videos sind fertig. Ab Tag 8 geht jeden Tag ein Video online.</p></div>
+        </div>
+        <div class="start-wer">
+          <div class="card"><div class="gross">Das machen wir</div><ul><li>Skripte und die Liste für jeden Dreh.</li><li>Schnitt, Untertitel, Musik und die Farben von Traut.</li><li>Posten auf Instagram, Facebook, TikTok und YouTube.</li><li>Auf jedes CHECK kommt sofort eine Nachricht mit dem Link.</li><li>Jede Woche die Zahlen: Welches Video zieht?</li></ul></div>
+          <div class="card"><div class="gross">Das macht Traut</div><ul><li>Ein Dreh pro Woche, rund 30 Minuten.</li><li>Die Videos ansehen und freigeben.</li><li>Ein kurzer Termin pro Woche: Was lief gut?</li><li>Anfragen annehmen und zurückrufen.</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ BELEGE ══════ -->
+    <section class="s-pad" aria-labelledby="belegeTitel">
+      <div class="s-in">
+        <div class="s-kopf">
+          <div class="eyebrow">Woher die Ideen kommen</div>
+          <h2 id="belegeTitel">Nichts ist geraten.</h2>
+          <p class="intro">Jedes Video im Plan hat einen Grund. Entweder lief ein ähnliches Video schon sehr gut, oder Hausbesitzer fragen genau das.</p>
+        </div>
+        <div class="belege">
+          <div class="card beleg"><b>51</b><p>Videos aus dem Markt, die weit über dem Schnitt liefen. Gemessen am eigenen Konto.</p></div>
+          <div class="card beleg"><b>59</b><p>echte Sätze und Fragen von Hausbesitzern. Aus Foren, Kommentaren und Bewertungen.</p></div>
+          <div class="card beleg"><b>3</b><p>starke Konten im Detail angesehen. Übernommen wird nur der Aufbau, nie der Inhalt.</p></div>
+        </div>
+        <details class="card quellen">
+          <summary>Alle Quellen ansehen<span class="pfeil" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary>
+          <ul class="quellen-liste">
+            <li>Vorbild-Konto Solar und Wärmepumpe: <a href="https://www.tiktok.com/@sonnefreihaus" target="_blank" rel="noopener noreferrer">tiktok.com/@sonnefreihaus</a></li>
+            <li>Vorbild-Konto Heizungsbauer: <a href="https://www.tiktok.com/@shkinfo" target="_blank" rel="noopener noreferrer">tiktok.com/@shkinfo</a></li>
+            <li>Vorbild-Konto Dachdecker (andere Branche): <a href="https://www.tiktok.com/@perfect_home_sanierung" target="_blank" rel="noopener noreferrer">tiktok.com/@perfect_home_sanierung</a></li>
+            <li>KfW-Förderung Heizung (458): <a href="https://www.kfw.de/458" target="_blank" rel="noopener noreferrer">kfw.de/458</a></li>
+            <li>Video mit vielen Aufrufen (@shkinfo): <a href="https://www.tiktok.com/@shkinfo/video/7660200668883455264" target="_blank" rel="noopener noreferrer">tiktok.com/@shkinfo/video/7660200668883455264</a></li>
+            <li>Video mit vielen Aufrufen (@sonnefreihaus): <a href="https://www.tiktok.com/@sonnefreihaus/video/7624594446046203168" target="_blank" rel="noopener noreferrer">tiktok.com/@sonnefreihaus/video/7624594446046203168</a></li>
+            <li>Forum für Haustechnik: <a href="https://www.haustechnikdialog.de/Forum/t/268590/Waermepumpe-im-Altbau-unsere-Erfahrungen" target="_blank" rel="noopener noreferrer">haustechnikdialog.de/Forum/t/268590/Waermepumpe-im-Altbau-unsere-Erfahrungen</a></li>
+            <li>Video mit vielen Aufrufen (@sonnefreihaus): <a href="https://www.tiktok.com/@sonnefreihaus/video/7625309518120914209" target="_blank" rel="noopener noreferrer">tiktok.com/@sonnefreihaus/video/7625309518120914209</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=GKfaY10C7dg&amp;lc=UgzFzWW3Stggjpc1nNx4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=GKfaY10C7dg&amp;lc=UgzFzWW3Stggjpc1nNx4AaABAg</a></li>
+            <li>Video mit vielen Aufrufen (@shkinfo): <a href="https://www.tiktok.com/@shkinfo/video/7694315092405423393" target="_blank" rel="noopener noreferrer">tiktok.com/@shkinfo/video/7694315092405423393</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=FFYYzkyIP8g&amp;lc=UgySTEH07GRp330wnMd4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=FFYYzkyIP8g&amp;lc=UgySTEH07GRp330wnMd4AaABAg</a></li>
+            <li>Video mit vielen Aufrufen (@dieelektromeister): <a href="https://www.tiktok.com/@dieelektromeister/video/7627936801780501792" target="_blank" rel="noopener noreferrer">tiktok.com/@dieelektromeister/video/7627936801780501792</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=9-b6o2Ei_aQ&amp;lc=Ugy6HZqvMSKb_yzzopx4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=9-b6o2Ei_aQ&amp;lc=Ugy6HZqvMSKb_yzzopx4AaABAg</a></li>
+            <li>Video mit vielen Aufrufen (@diewaermepumpenprofis): <a href="https://www.tiktok.com/@diewaermepumpenprofis/video/7371842577517137184" target="_blank" rel="noopener noreferrer">tiktok.com/@diewaermepumpenprofis/video/7371842577517137184</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=bgWNgOd5nog&amp;lc=UgxxWksit5Jb86onQrB4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=bgWNgOd5nog&amp;lc=UgxxWksit5Jb86onQrB4AaABAg</a></li>
+            <li>Video mit vielen Aufrufen (@shkinfo): <a href="https://www.tiktok.com/@shkinfo/video/7599703604970196246" target="_blank" rel="noopener noreferrer">tiktok.com/@shkinfo/video/7599703604970196246</a></li>
+            <li>Video mit vielen Aufrufen (@sonnefreihaus): <a href="https://www.tiktok.com/@sonnefreihaus/video/7616801630993812768" target="_blank" rel="noopener noreferrer">tiktok.com/@sonnefreihaus/video/7616801630993812768</a></li>
+            <li>Video mit vielen Aufrufen (@perfect_home_sanierung): <a href="https://www.tiktok.com/@perfect_home_sanierung/video/7535760539599867158" target="_blank" rel="noopener noreferrer">tiktok.com/@perfect_home_sanierung/video/7535760539599867158</a></li>
+            <li>Forum für Haustechnik: <a href="https://www.haustechnikdialog.de/Forum/p/3947507" target="_blank" rel="noopener noreferrer">haustechnikdialog.de/Forum/p/3947507</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=FFYYzkyIP8g&amp;lc=UgydAqgXLHE2XOJr64N4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=FFYYzkyIP8g&amp;lc=UgydAqgXLHE2XOJr64N4AaABAg</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=YM__P4KLptI&amp;lc=UgxljrWVS5FGiAAGM5h4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=YM__P4KLptI&amp;lc=UgxljrWVS5FGiAAGM5h4AaABAg</a></li>
+            <li>Video mit vielen Aufrufen (@diewaermepumpenprofis): <a href="https://www.tiktok.com/@diewaermepumpenprofis/video/7405242857092582689" target="_blank" rel="noopener noreferrer">tiktok.com/@diewaermepumpenprofis/video/7405242857092582689</a></li>
+            <li>Video mit vielen Aufrufen (@diewaermepumpenprofis): <a href="https://www.tiktok.com/@diewaermepumpenprofis/video/7564437301351189782" target="_blank" rel="noopener noreferrer">tiktok.com/@diewaermepumpenprofis/video/7564437301351189782</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=Oq6ewTQl5Qg&amp;lc=Ugw4MZW-InqYKHr0znZ4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=Oq6ewTQl5Qg&amp;lc=Ugw4MZW-InqYKHr0znZ4AaABAg</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=Oq6ewTQl5Qg&amp;lc=UgzaMhrP3yCSHMmFFWt4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=Oq6ewTQl5Qg&amp;lc=UgzaMhrP3yCSHMmFFWt4AaABAg</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=FFYYzkyIP8g&amp;lc=Ugzk8OmteTws0GX8O254AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=FFYYzkyIP8g&amp;lc=Ugzk8OmteTws0GX8O254AaABAg</a></li>
+            <li>Video mit vielen Aufrufen (@diewaermepumpenprofis): <a href="https://www.tiktok.com/@diewaermepumpenprofis/video/7371463154456366368" target="_blank" rel="noopener noreferrer">tiktok.com/@diewaermepumpenprofis/video/7371463154456366368</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=9-b6o2Ei_aQ&amp;lc=Ugw4r4QRkkEl-sAhAZd4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=9-b6o2Ei_aQ&amp;lc=Ugw4r4QRkkEl-sAhAZd4AaABAg</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=9-b6o2Ei_aQ&amp;lc=Ugyvbv48aVHyx_Pe5zV4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=9-b6o2Ei_aQ&amp;lc=Ugyvbv48aVHyx_Pe5zV4AaABAg</a></li>
+            <li>Video mit vielen Aufrufen (@perfect_home_sanierung): <a href="https://www.tiktok.com/@perfect_home_sanierung/video/7477535112637189398" target="_blank" rel="noopener noreferrer">tiktok.com/@perfect_home_sanierung/video/7477535112637189398</a></li>
+            <li>Video mit vielen Aufrufen (@perfect_home_sanierung): <a href="https://www.tiktok.com/@perfect_home_sanierung/video/7441517017062051094" target="_blank" rel="noopener noreferrer">tiktok.com/@perfect_home_sanierung/video/7441517017062051094</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=5-WqVn5LyJ8&amp;lc=UgyvxTknEa_HBLjIRjV4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=5-WqVn5LyJ8&amp;lc=UgyvxTknEa_HBLjIRjV4AaABAg</a></li>
+            <li>Video mit vielen Aufrufen (@diewaermepumpenprofis): <a href="https://www.tiktok.com/@diewaermepumpenprofis/video/7418643380869106976" target="_blank" rel="noopener noreferrer">tiktok.com/@diewaermepumpenprofis/video/7418643380869106976</a></li>
+            <li>Video mit vielen Aufrufen (@sonnefreihaus): <a href="https://www.tiktok.com/@sonnefreihaus/video/7608255044630088992" target="_blank" rel="noopener noreferrer">tiktok.com/@sonnefreihaus/video/7608255044630088992</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=L-YIS2EbVnE&amp;lc=Ugzknp93KeJ9Ee2hloR4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=L-YIS2EbVnE&amp;lc=Ugzknp93KeJ9Ee2hloR4AaABAg</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=Oq6ewTQl5Qg&amp;lc=UgzqMHgnVz1Lzx7q0LF4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=Oq6ewTQl5Qg&amp;lc=UgzqMHgnVz1Lzx7q0LF4AaABAg</a></li>
+            <li>Video mit vielen Aufrufen (@shkinfo): <a href="https://www.tiktok.com/@shkinfo/video/7597410594563673366" target="_blank" rel="noopener noreferrer">tiktok.com/@shkinfo/video/7597410594563673366</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=Oq6ewTQl5Qg&amp;lc=Ugw2dUhoXXeSX6qNDKR4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=Oq6ewTQl5Qg&amp;lc=Ugw2dUhoXXeSX6qNDKR4AaABAg</a></li>
+            <li>Video mit vielen Aufrufen (@sonnefreihaus): <a href="https://www.tiktok.com/@sonnefreihaus/video/7625680628641484065" target="_blank" rel="noopener noreferrer">tiktok.com/@sonnefreihaus/video/7625680628641484065</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=GKfaY10C7dg&amp;lc=UgyOdIqPIIBwRsGjd8l4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=GKfaY10C7dg&amp;lc=UgyOdIqPIIBwRsGjd8l4AaABAg</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=9-b6o2Ei_aQ&amp;lc=Ugy8fEK1ZPwQSBos_i94AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=9-b6o2Ei_aQ&amp;lc=Ugy8fEK1ZPwQSBos_i94AaABAg</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=Oq6ewTQl5Qg&amp;lc=UgxzI9pC2ufWLP4fUpF4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=Oq6ewTQl5Qg&amp;lc=UgxzI9pC2ufWLP4fUpF4AaABAg</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=FFYYzkyIP8g&amp;lc=Ugwv8HcK467Wuh5n6jl4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=FFYYzkyIP8g&amp;lc=Ugwv8HcK467Wuh5n6jl4AaABAg</a></li>
+            <li>Video mit vielen Aufrufen (@shkinfo): <a href="https://www.tiktok.com/@shkinfo/video/7680961556724731168" target="_blank" rel="noopener noreferrer">tiktok.com/@shkinfo/video/7680961556724731168</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=GKfaY10C7dg&amp;lc=UgyiOnvsoAulHN28su54AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=GKfaY10C7dg&amp;lc=UgyiOnvsoAulHN28su54AaABAg</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=Oq6ewTQl5Qg&amp;lc=Ugxg-D31lHzpG-JIkEJ4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=Oq6ewTQl5Qg&amp;lc=Ugxg-D31lHzpG-JIkEJ4AaABAg</a></li>
+            <li>Video mit vielen Aufrufen (@heizungsseelsorger): <a href="https://www.tiktok.com/@heizungsseelsorger/video/7096537455469333766" target="_blank" rel="noopener noreferrer">tiktok.com/@heizungsseelsorger/video/7096537455469333766</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=5-WqVn5LyJ8&amp;lc=Ugyq2tvHyzE3MnBfGJ14AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=5-WqVn5LyJ8&amp;lc=Ugyq2tvHyzE3MnBfGJ14AaABAg</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=5-WqVn5LyJ8&amp;lc=Ugy5BgTZbJxj4gHhyU94AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=5-WqVn5LyJ8&amp;lc=Ugy5BgTZbJxj4gHhyU94AaABAg</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=L-YIS2EbVnE&amp;lc=UgxA1W8FCfFSHlxOk214AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=L-YIS2EbVnE&amp;lc=UgxA1W8FCfFSHlxOk214AaABAg</a></li>
+            <li>Video mit vielen Aufrufen (@shkinfo): <a href="https://www.tiktok.com/@shkinfo/video/7695096884423052576" target="_blank" rel="noopener noreferrer">tiktok.com/@shkinfo/video/7695096884423052576</a></li>
+            <li>Video mit vielen Aufrufen (@shkinfo): <a href="https://www.tiktok.com/@shkinfo/video/7703963139817262368" target="_blank" rel="noopener noreferrer">tiktok.com/@shkinfo/video/7703963139817262368</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=L-YIS2EbVnE&amp;lc=Ugyww37jUBaNiBorns54AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=L-YIS2EbVnE&amp;lc=Ugyww37jUBaNiBorns54AaABAg</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=UwIIO8O2vwc&amp;lc=UgzbIpt83V2XkkppGt14AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=UwIIO8O2vwc&amp;lc=UgzbIpt83V2XkkppGt14AaABAg</a></li>
+            <li>Video mit vielen Aufrufen (@sonnefreihaus): <a href="https://www.tiktok.com/@sonnefreihaus/video/7631262356399541536" target="_blank" rel="noopener noreferrer">tiktok.com/@sonnefreihaus/video/7631262356399541536</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=FFYYzkyIP8g&amp;lc=Ugzu5KgjT6lFEmxi14Z4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=FFYYzkyIP8g&amp;lc=Ugzu5KgjT6lFEmxi14Z4AaABAg</a></li>
+            <li>Forum für Haustechnik: <a href="https://www.haustechnikdialog.de/Forum/t/287450/Installation-Waermepumpe" target="_blank" rel="noopener noreferrer">haustechnikdialog.de/Forum/t/287450/Installation-Waermepumpe</a></li>
+            <li>Video mit vielen Aufrufen (@hausoptimierer): <a href="https://www.tiktok.com/@hausoptimierer/video/7630517653894991137" target="_blank" rel="noopener noreferrer">tiktok.com/@hausoptimierer/video/7630517653894991137</a></li>
+            <li>Video mit vielen Aufrufen (@shkinfo): <a href="https://www.tiktok.com/@shkinfo/video/7674621715456036129" target="_blank" rel="noopener noreferrer">tiktok.com/@shkinfo/video/7674621715456036129</a></li>
+            <li>Video mit vielen Aufrufen (@mertl_bedachungen): <a href="https://www.tiktok.com/@mertl_bedachungen/video/7232581235875335450" target="_blank" rel="noopener noreferrer">tiktok.com/@mertl_bedachungen/video/7232581235875335450</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=L-YIS2EbVnE&amp;lc=UgzeUTZQ0KdL-cEQX7Z4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=L-YIS2EbVnE&amp;lc=UgzeUTZQ0KdL-cEQX7Z4AaABAg</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=L-YIS2EbVnE&amp;lc=Ugz_RbDdEr7Vk8O48lN4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=L-YIS2EbVnE&amp;lc=Ugz_RbDdEr7Vk8O48lN4AaABAg</a></li>
+            <li>Video mit vielen Aufrufen (@pakainvest): <a href="https://www.tiktok.com/@pakainvest/video/7497689028712467734" target="_blank" rel="noopener noreferrer">tiktok.com/@pakainvest/video/7497689028712467734</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=YM__P4KLptI&amp;lc=UgwmALgluiaOn8mEGYp4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=YM__P4KLptI&amp;lc=UgwmALgluiaOn8mEGYp4AaABAg</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=Oq6ewTQl5Qg&amp;lc=UgzxUVKrTGLP9ydHUlF4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=Oq6ewTQl5Qg&amp;lc=UgzxUVKrTGLP9ydHUlF4AaABAg</a></li>
+            <li>Kommentar unter einem Wärmepumpen-Video: <a href="https://www.youtube.com/watch?v=GKfaY10C7dg&amp;lc=UgyoIwJsw1gMB5uN9gh4AaABAg" target="_blank" rel="noopener noreferrer">youtube.com/watch?v=GKfaY10C7dg&amp;lc=UgyoIwJsw1gMB5uN9gh4AaABAg</a></li>
+            <li>Forum für Haustechnik: <a href="https://www.energiesparhaus.at/forum-umruestung-gas-auf-waermepumpe-efh-bj-1992/85951" target="_blank" rel="noopener noreferrer">energiesparhaus.at/forum-umruestung-gas-auf-waermepumpe-efh-bj-1992/85951</a></li>
+          </ul>
+        </details>
+      </div>
+    </section>
+
+    <!-- ══════ AUSWERTUNG ══════ -->
+    <section class="s-pad" style="padding-top:0" aria-labelledby="auswertungTitel">
+      <div class="s-in">
+        <div class="auswertung">
+          <div class="auswertung-datum">Auswertung<b>14.12.</b>2026</div>
+          <div>
+            <h3 id="auswertungTitel">Nach vier Wochen wird gezählt.</h3>
+            <p>Welches Video hat Anfragen gebracht? Welcher erste Satz hat am längsten gehalten? Was gewinnt, kommt im nächsten Plan öfter vor. Was nicht zieht, fliegt raus.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ SCHLUSS ══════ -->
+    <section class="s-pad schluss" style="padding-top:24px" id="start" aria-labelledby="schlussTitel">
+      <div class="s-in">
+        <div class="eyebrow">Der nächste Schritt</div>
+        <h2 id="schlussTitel">Soll der Plan für Traut laufen?</h2>
+        <p class="intro">Der Plan gehört Traut, auch ohne uns. Auf Wunsch setzen wir ihn um: Skripte, Schnitt, Untertitel und Posten. Traut dreht 30 Minuten pro Woche. Oder gar nicht.</p>
+        <div class="knoepfe">
+          <a class="btn btn-gruen" href="tel:+491763209802" data-sweep>Kerem anrufen: 0176 3209802</a>
+          <a class="btn btn-rand" href="mailto:ulas@monetascale.de?subject=Contentplan%20f%C3%BCr%20Traut" data-sweep>Per Mail antworten</a>
+          <a class="btn btn-rand nur-bildschirm" href="../fahrplan/" data-sweep>So laufen die ersten 30 Tage</a>
+          <a class="btn btn-rand nur-bildschirm" href="../" data-sweep>Zu den 3 Reels und dem Förder-Check</a>
+        </div>
+        <p class="hinweis">Anfragen versprechen wir nicht. Sie hängen auch von Angebot, Preis und Markt ab. Die Förderung legt die KfW fest. Zahlen und Daten stammen aus den Regeln, die heute bekannt sind. Mit KI erstellte Inhalte werden gekennzeichnet.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Persönlich erstellt für Traut Sanitär und Heizung GmbH · MonetaScale · Stand 05.11.2026</span>
+    <nav aria-label="Rechtliches">
+      <a href="../../impressum.html">Impressum</a>
+      <a href="../../datenschutz.html">Datenschutz</a>
+    </nav>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    /* ─── Hell / Dunkel ─── */
+    var root = document.documentElement;
+    var modusKnopf = document.getElementById('modusKnopf');
+    function zeigeModus() {
+      var dunkel = root.getAttribute('data-theme') === 'dunkel';
+      modusKnopf.setAttribute('aria-pressed', dunkel ? 'true' : 'false');
+      modusKnopf.setAttribute('aria-label', dunkel ? 'Helle Ansicht' : 'Dunkle Ansicht');
+    }
+    modusKnopf.addEventListener('click', function () {
+      var neu = root.getAttribute('data-theme') === 'dunkel' ? 'hell' : 'dunkel';
+      root.setAttribute('data-theme', neu);
+      try { localStorage.setItem('ulas.theme', neu); } catch (e) {}
+      zeigeModus();
+    });
+    zeigeModus();
+
+    /* ─── Sweep: Aktion erst nach der Animation ─── */
+    function nachSweep(btn, fn) {
+      if (btn._acting) return;
+      if (reduce.matches) { fn(); return; }
+      btn._acting = true;
+      var fertig = false;
+      var einmal = function () {
+        if (fertig) return;
+        fertig = true;
+        btn.classList.remove('is-activating');
+        btn._acting = false;
+        fn();
+      };
+      btn.classList.remove('is-activating');
+      void btn.offsetWidth;
+      btn.classList.add('is-activating');
+      btn.addEventListener('animationend', einmal, { once: true });
+      setTimeout(einmal, 650);
+    }
+    document.querySelectorAll('a[data-sweep]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+        e.preventDefault();
+        var ziel = a.getAttribute('href');
+        nachSweep(a, function () {
+          if (ziel.charAt(0) === '#') {
+            var el = document.querySelector(ziel);
+            if (el) el.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth' });
+            history.replaceState(null, '', ziel);
+          } else {
+            window.location.href = ziel;
+          }
+        });
+      });
+    });
+
+    /* ─── Drucken: alle Videos offen, danach wie vorher ─── */
+    var offenVorher = [];
+    window.addEventListener('beforeprint', function () {
+      offenVorher = [];
+      document.querySelectorAll('details').forEach(function (d) {
+        offenVorher.push(d.open);
+        d.removeAttribute('name');
+        d.open = !d.classList.contains('quellen');
+      });
+    });
+    window.addEventListener('afterprint', function () {
+      document.querySelectorAll('details').forEach(function (d, i) {
+        d.open = !!offenVorher[i];
+        if (d.dataset.gruppe) d.setAttribute('name', d.dataset.gruppe);
+      });
+    });
+    document.querySelectorAll('[data-drucken]').forEach(function (b) {
+      b.addEventListener('click', function () { nachSweep(b, function () { window.print(); }); });
+    });
+  })();
+  </script>
+</body>
+</html>

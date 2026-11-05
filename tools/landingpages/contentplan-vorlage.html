@@ -208,7 +208,19 @@
     .gesicht { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .gesicht .card ul { margin: 10px 0 0 1.1em; color: var(--t2); }
     .gesicht .card li { margin: 4px 0; }
-    .gesicht .gross { font-family: var(--fh); font-size: 15px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); margin-bottom: 8px; }
+    .gesicht .gross, .start-wer .gross { font-family: var(--fh); font-size: 15px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); margin-bottom: 8px; }
+    .aufnahme { display: grid; gap: 14px; margin-top: 16px; }
+    .aufnahme > div { background: var(--bg3); border-radius: 14px; padding: 14px 16px; }
+    .aufnahme h4, .start-tag { font-family: var(--fh); font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
+    .gesicht .aufnahme ul, .gesicht .aufnahme ol { margin: 6px 0 0 1.2em; }
+    .gesicht .aufnahme li { font-size: 15px; }
+
+    /* So starten wir */
+    .start-schritte { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .start-schritt .start-tag { display: inline-block; background: var(--b1); color: var(--b1-text); border-radius: 999px; padding: 3px 12px; margin-bottom: 14px; letter-spacing: .06em; }
+    .start-wer { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
+    .start-wer ul { margin: 6px 0 0 1.1em; color: var(--t2); }
+    .start-wer li { margin: 4px 0; }
 
     /* Kalender */
     .legende { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; margin: -18px 0 30px; font-size: 15px; color: var(--t2); }
@@ -292,10 +304,10 @@
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1080px) {
       .saeulen { grid-template-columns: repeat(3, 1fr); }
-      .weg { grid-template-columns: repeat(2, 1fr); }
+      .weg, .start-schritte { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 900px) {
-      .videos, .persona, .gesicht { grid-template-columns: 1fr; }
+      .videos, .persona, .gesicht, .start-wer { grid-template-columns: 1fr; }
       .zahlen { grid-template-columns: repeat(2, 1fr); }
       .belege { grid-template-columns: 1fr; }
     }
@@ -320,7 +332,7 @@
       footer { flex-direction: column; text-align: center; padding: 20px; }
     }
     @media (max-width: 480px) {
-      .saeulen, .weg { grid-template-columns: 1fr; }
+      .saeulen, .weg, .start-schritte { grid-template-columns: 1fr; }
       details.video > summary { grid-template-columns: 68px 1fr auto; gap: 10px; padding: 14px; }
       .v-tag { padding: 8px 2px; }
       .v-tag b { font-size: 15px; white-space: nowrap; }
@@ -439,28 +451,20 @@
         <div class="s-kopf">
           <div class="eyebrow">Mit oder ohne Gesicht</div>
           <h2 id="gesichtTitel">Jedes Video geht auf zwei Wegen.</h2>
-          <p class="intro">Bei jedem Video stehen beide Wege. {{kurzname}} sucht aus. Auch ein Mix geht.</p>
+          <p class="intro">{{gesicht_intro}}</p>
         </div>
         <div class="gesicht">
           <div class="card">
             <div class="gross">Mit Gesicht · empfohlen</div>
             <h3>Ein Mensch von {{kurzname}} spricht.</h3>
             <p>Hausbesitzer lassen nur Leute ins Haus, denen sie trauen. Ein Gesicht schafft dieses Vertrauen am schnellsten.</p>
-            <ul>
-              <li>Meister oder Monteur, mit dem Handy gefilmt.</li>
-              <li>Ein Dreh pro Woche, rund 30 Minuten.</li>
-              <li>Die Fragen kommen vorher als Liste. Ablesen muss niemand.</li>
-            </ul>
+            {{{gesicht_mit}}}
           </div>
           <div class="card">
             <div class="gross">Ohne Gesicht</div>
             <h3>Hände, Technik und Stimme.</h3>
             <p>Will sich niemand zeigen, klappt jedes Video trotzdem. Dann sieht man die Arbeit statt der Person.</p>
-            <ul>
-              <li>Hände, Werkzeug, Heizungskeller, Baustelle.</li>
-              <li>Zahlen und Rechnungen als Grafik im Bild.</li>
-              <li>Oder eine eigene Figur in den Farben von {{kurzname}}.</li>
-            </ul>
+            {{{gesicht_ohne}}}
           </div>
         </div>
       </div>
@@ -496,6 +500,7 @@
       </div>
     </section>
 
+{{{start_abschnitt}}}
     <!-- ══════ BELEGE ══════ -->
     <section class="s-pad" aria-labelledby="belegeTitel">
       <div class="s-in">
