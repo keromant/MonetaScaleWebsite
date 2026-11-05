@@ -2,6 +2,16 @@
 
 Kurze Notiz für die nächste Sitzung. Neueste oben, höchstens drei Blöcke. Push auf `master` = Live-Deploy (GitHub Pages).
 
+## 2026-11-05 – Gratis-Contentplan für die Daume-Gruppe (PC)
+**Erledigt:** Neue Seite `/daume-gruppe/contentplan/`: 30-Tage-Contentplan (Lead Magnet) für alle 22 Daume-Betriebe mit
+Wärmepumpen, du-Form, kein Ortsname („bei dir in der Region“), CHECK → Förder-Check (4×) und Wärmepumpencheck (2×).
+Neu: `tools/landingpages/contentplan.mjs` + `contentplan-vorlage.html` (hell/dunkel, 30 Videos aufklappbar, Druck = alles offen).
+**Offene Fäden:** Wärmepumpencheck nur für die Daume GmbH belegt; Förder-Check mit Gruppen-Namen gibt es noch nicht (Link führt zur HKW-Seite als Beispiel).
+**Nächster Schritt:** Für weitere Betriebe: Plan nach Skill contentplan bauen, dann `node tools/landingpages/contentplan.mjs --daten <seite.json>`.
+**Fallstricke:** `seite.json` und Plan-Daten liegen außerhalb des Repos (`C:\Website-Business\Akquise\Contentplaene\<slug>\`), Repo ist öffentlich.
+Ohne `betrieb` in `seite.json` liest das Skript Name und Farben aus der gebauten Reels-Seite `<slug>/index.html`.
+**Wichtige Dateien:** `tools/landingpages/contentplan.mjs`, `tools/landingpages/contentplan-vorlage.html`, `daume-gruppe/contentplan/index.html`.
+
 ## 2026-11-04 – 15 neue Dream-100-Seiten per Knopf (PC)
 **Erledigt:** 15 persönliche Seiten samt Fahrplan live (Commit 25ae556), gebaut von `neue-seiten.mjs` im Repo monetascale-videos
 (Skill `ulas:dream100-seiten`). Links stehen im Dashboard. Danach Ort auf 5 Seiten wie im Video gekürzt (b77b9e5).
@@ -18,12 +28,3 @@ mit Screenshot geprüft. Aufrufe zählen über `lp-tracking.js` unter dem Slug d
 **Nächster Schritt:** Für neue Betriebe nach `build.mjs` auch `node tools/landingpages/fahrplan.mjs` (`--nur <slug>`).
 **Fallstricke:** `fahrplan.mjs` liest Name, Kurzname und Farben aus der gebauten `<slug>/index.html` (lp-daten + „Für …“).
 **Wichtige Dateien:** `tools/landingpages/fahrplan-vorlage.html`, `tools/landingpages/fahrplan.mjs`.
-
-## 2026-11-03 – Link-Vorschau „Reels für <Betrieb>“ (PC)
-**Erledigt:** `og:title` der persönlichen Seiten = „Reels für <Name>“ statt „Ihre Förder-Reels und Ihr Förder-Check“,
-`<title>` = „Reels für <Name> · MonetaScale“. Vorlage + `build.mjs` geändert, die 10 Seiten + Muster per Ersetzung nachgezogen
-(gleiche zwei Zeilen wie ein Neubau, an `muster-waermepumpe` geprüft). `build.mjs` liest `mail-foerder-check.md` jetzt auch mit CRLF.
-**Offene Fäden:** Schon verschickte Links behalten in DMs meist die alte Vorschau (Instagram/WhatsApp speichern sie zwischen).
-**Nächster Schritt:** Seiten der 27 neuen Betriebe (Videos in `C:\Website-Business\Akquise\Dream100-neue-Videos`) mit `build.mjs --daten` bauen.
-**Fallstricke:** Ohne die CRLF-Zeile scheiterte `build.mjs` am PC mit „Abschnitt ## Betreff fehlt“ (core.autocrlf=true).
-**Wichtige Dateien:** `tools/landingpages/vorlage.html` (Kopf), `tools/landingpages/build.mjs` (`titel`).
