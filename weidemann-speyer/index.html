@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<!-- lp:generiert · Diese Datei erzeugt tools/landingpages/branche.mjs aus tools/landingpages/branchen/<slug>.json. Nicht von Hand ändern. -->
+<html lang="de" data-theme="hell">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Videos, die zu Anfragen führen · Für Weidemann in Speyer</title>
+  <meta name="description" content="Sechs Videos im Look von Weidemann: vier gegen Vorurteile, zwei als Anzeige. Wärmepumpe und Klima. Gratis ansehen.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://monetascale.de/weidemann-speyer/">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:site_name" content="MonetaScale">
+  <meta property="og:title" content="Videos, die zu Anfragen führen · Für Weidemann in Speyer">
+  <meta property="og:description" content="Sechs Videos im Look von Weidemann: vier gegen Vorurteile, zwei als Anzeige. Wärmepumpe und Klima. Gratis ansehen.">
+  <meta property="og:image" content="https://monetascale.de/brand/profilbild/monetascale-profilbild-dunkel-1080.png">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" type="image/png" href="../brand/profilbild/monetascale-profilbild-hell-1080.png">
+  <!-- Nutzung der Seite zählen (ohne Cookies, Datenschutz Abschnitt 8); ?intern=1 sendet nichts -->
+  <script src="/assets/lp-tracking.js" defer></script>
+  <script>
+    (function () {
+      var t = 'hell';
+      try { var s = localStorage.getItem('ulas.theme'); if (s === 'hell' || s === 'dunkel') t = s; } catch (e) {}
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── TOKENS (MonetaScale, hell + dunkel) ─── */
+    :root {
+      --fh: 'Sora', system-ui, sans-serif;
+      --fb: 'Hanken Grotesk', system-ui, sans-serif;
+      --green: #65C83D;
+      --on-green: #0A0A0A;
+      --pop-ease: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --pop-lift: translateY(-4px) scale(1.02);
+      --glow-soft:   0 0 0 1px rgba(var(--accent-rgb), .30), 0 16px 34px -16px rgba(var(--accent-rgb), .26), 0 5px 14px rgba(var(--accent-rgb), .10);
+      --glow-strong: 0 0 0 2px rgba(var(--accent-rgb), .75), 0 30px 55px -12px rgba(var(--accent-rgb), .42), 0 12px 26px rgba(var(--accent-rgb), .22);
+    }
+    :root, [data-theme="hell"] {
+      --bg: #F5F7F3; --bg2: #FFFFFF; --bg3: #ECF0E8;
+      --text: #0A0A0A; --t2: #3B4237; --muted: #5E665A;
+      --border: #E0E5DC; --borders: #C8D0C2;
+      --ink: #2F7A17; --accent-rgb: 79, 181, 42;
+      --sweep: #0A0A0A; --on-sweep: #FFFFFF;
+      --nav-bg: rgba(245, 247, 243, .88);
+      --band: #0A0A0A; --band-text: #FFFFFF; --band-t2: #B8B8B8; --band-card: #161A14;
+      color-scheme: light;
+    }
+    [data-theme="dunkel"] {
+      --bg: #0A0A0A; --bg2: #111111; --bg3: #1A1A1A;
+      --text: #FFFFFF; --t2: #B8B8B8; --muted: #8C8C8C;
+      --border: #232323; --borders: #333333;
+      --ink: #65C83D; --accent-rgb: 101, 200, 61;
+      --sweep: #FFFFFF; --on-sweep: #0A0A0A;
+      --nav-bg: rgba(10, 10, 10, .86);
+      --band: #141A12; --band-text: #FFFFFF; --band-t2: #B8B8B8; --band-card: #0E120C;
+      color-scheme: dark;
+    }
+
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { background: var(--bg); color: var(--text); font-family: var(--fb); font-size: 17px; line-height: 1.65;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden; transition: background-color .3s ease, color .3s ease; }
+    img, svg, video { display: block; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid rgba(var(--accent-rgb), .7); outline-offset: 3px; border-radius: 6px; }
+
+    /* ─── NAV ─── */
+    .nav { position: sticky; top: 0; z-index: 50; height: 68px; padding: 0 32px; display: flex; align-items: center; justify-content: space-between;
+      background: var(--nav-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+    .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+    .logo img { height: 30px; width: auto; }
+    .logo-wort { font-family: var(--fh); font-weight: 800; font-size: 19px; letter-spacing: -0.02em; }
+    .logo-wort span { color: var(--ink); }
+    .logo-dunkel { display: none; }
+    [data-theme="dunkel"] .logo-hell { display: none; }
+    [data-theme="dunkel"] .logo-dunkel { display: block; }
+    .nav-rechts { display: flex; align-items: center; gap: 14px; }
+    .nav-fuer { font-size: 13px; color: var(--muted); font-weight: 600; }
+    .modus { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--borders); background: var(--bg2); color: var(--text);
+      display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: border-color .2s ease, transform .4s var(--pop-ease); }
+    .modus svg { width: 19px; height: 19px; }
+    .modus .mond { display: none; }
+    [data-theme="dunkel"] .modus .sonne { display: none; }
+    [data-theme="dunkel"] .modus .mond { display: block; }
+
+    /* ─── BUTTONS: schräger Sweep, Aktion nach der Animation ─── */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 15px 28px; border-radius: 14px; border: 0;
+      font-family: var(--fb); font-size: 16px; font-weight: 700; line-height: 1.2; text-decoration: none; cursor: pointer; text-align: center;
+      position: relative; z-index: 1; overflow: hidden; isolation: isolate; transition: color .45s ease, box-shadow .35s ease, transform .4s var(--pop-ease); }
+    .btn::after { content: ""; position: absolute; inset: 0 -20%; z-index: -1; background: var(--sweep-farbe);
+      transform: skewX(-45deg) scale(0, 1); transform-origin: center; transition: transform .5s ease; }
+    .btn.is-activating::after { animation: btn-sweep .5s ease forwards; }
+    .btn.is-activating { color: var(--sweep-text); }
+    @keyframes btn-sweep { from { transform: skewX(-45deg) scale(0, 1); } to { transform: skewX(-45deg) scale(1, 1); } }
+    .btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+    .btn-gruen { background: var(--green); color: var(--on-green); --sweep-farbe: var(--sweep); --sweep-text: var(--on-sweep); }
+    .btn-rand { background: transparent; color: var(--text); box-shadow: inset 0 0 0 1.5px var(--borders); --sweep-farbe: var(--text); --sweep-text: var(--bg); }
+    .btn-gross { padding: 18px 32px; font-size: 17px; }
+
+    /* ─── LAYOUT ─── */
+    .s-pad { padding: 104px 32px; }
+    .s-in { max-width: 1140px; margin: 0 auto; }
+    .s-kopf { max-width: 760px; margin: 0 auto 56px; text-align: center; }
+    .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--ink); margin-bottom: 16px; }
+    h1, h2, h3 { font-family: var(--fh); letter-spacing: -0.025em; text-wrap: balance; }
+    h2 { font-size: clamp(30px, 4.2vw, 50px); font-weight: 800; line-height: 1.1; }
+    .intro { margin-top: 18px; font-size: 18px; color: var(--t2); }
+    .band { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    /* ─── CARDS: Spotlight + Pop-Hover ─── */
+    .card { background: var(--bg2); border: 1.5px solid rgba(var(--accent-rgb), .35); border-radius: 22px; padding: 30px;
+      box-shadow: var(--glow-soft); transition: transform .4s var(--pop-ease), box-shadow .4s ease, border-color .35s ease; }
+    .band .card { background: var(--bg); }
+    .card-num { font-family: var(--fh); font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); margin-bottom: 10px; }
+    .card h3 { font-size: 22px; font-weight: 800; line-height: 1.2; margin-bottom: 10px; }
+    .card p { color: var(--t2); font-size: 16px; }
+
+    /* ─── HANDY-RAHMEN mit Video ─── */
+    .handy { position: relative; aspect-ratio: 9 / 16; width: 100%; border-radius: 22px; overflow: hidden;
+      background: #0A0A0A; box-shadow: 0 0 0 6px var(--bg3), 0 24px 48px -24px rgba(0,0,0,.45); }
+    .handy video { width: 100%; height: 100%; object-fit: cover; }
+    .handy-leer { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; padding: 18px;
+      color: #FFFFFF; background:
+        radial-gradient(120% 70% at 20% 10%, rgba(101,200,61,.55), transparent 60%),
+        radial-gradient(90% 60% at 90% 90%, rgba(54,173,217,.45), transparent 60%), #0F1410; }
+    .handy-leer::before { content: ""; position: absolute; inset: 0;
+      background: repeating-linear-gradient(115deg, rgba(255,255,255,.05) 0 2px, transparent 2px 22px); animation: schieben 6s linear infinite; }
+    @keyframes schieben { from { background-position: 0 0; } to { background-position: 220px 0; } }
+    .handy-leer > * { position: relative; }
+    .handy-tag { align-self: flex-start; padding: 5px 11px; border-radius: 999px; background: var(--green); color: #0A0A0A;
+      font-family: var(--fh); font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .handy-titel { font-family: var(--fh); font-weight: 800; font-size: 19px; line-height: 1.2; letter-spacing: -0.01em; }
+    .handy-folgt { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+    .handy-play { position: absolute; inset: 0; display: grid; place-items: center; background: transparent; border: 0; cursor: pointer; color: #FFFFFF; }
+    .handy-play span { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; background: rgba(10,10,10,.55);
+      box-shadow: 0 0 0 2px rgba(255,255,255,.7); transition: transform .4s var(--pop-ease); }
+    .handy-play svg { width: 24px; height: 24px; margin-left: 3px; }
+    .handy.spielt .handy-play { display: none; }
+
+    /* ─── 1 · KOPF ─── */
+    .kopf { padding: 64px 32px 88px; }
+    .kopf-grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 64px; align-items: center; }
+    .gratis-badge { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 20px; padding: 6px 16px 6px 6px; border-radius: 999px;
+      background: rgba(var(--accent-rgb), .12); border: 1.5px solid rgba(var(--accent-rgb), .55); box-shadow: var(--glow-soft);
+      font-size: 14px; font-weight: 600; color: var(--t2); animation: badge-puls 2.6s ease-in-out infinite; }
+    .gratis-badge svg { width: 18px; height: 18px; color: var(--on-green); }
+    .gratis-badge b { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px 6px 12px; margin-left: -34px; padding-left: 36px; border-radius: 999px;
+      background: var(--green); color: var(--on-green); font-family: var(--fh); font-size: 15px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .gratis-badge svg { position: relative; z-index: 1; margin-left: 10px; }
+    .gratis-badge span { white-space: nowrap; }
+    .gratis-badge i { font-style: normal; }
+    @media (max-width: 440px) { .gratis-badge i { display: none; } }
+    @keyframes badge-puls { 0%, 100% { box-shadow: var(--glow-soft); } 50% { box-shadow: var(--glow-strong); } }
+    .kopf h1 { font-size: clamp(36px, 5.2vw, 62px); font-weight: 800; line-height: 1.05; }
+    .kopf h1 span { color: var(--ink); }
+    .kopf .intro { font-size: 19px; max-width: 600px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .chip { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; background: var(--bg2);
+      border: 1px solid var(--borders); font-size: 14px; font-weight: 600; color: var(--t2); }
+    .chip svg { width: 15px; height: 15px; color: var(--ink); }
+    .kopf-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .kopf-handy { max-width: 300px; width: 100%; justify-self: center; transform: rotate(2deg); }
+
+    /* ─── 2 · WOCHE ─── */
+    .woche { display: grid; grid-auto-flow: column; grid-auto-columns: 230px; gap: 22px; overflow-x: auto; scroll-snap-type: x mandatory;
+      padding: 10px 32px 26px; margin: 0 -32px; scroll-padding: 0 32px; -webkit-overflow-scrolling: touch; }
+    .woche-tag { scroll-snap-align: start; padding: 14px 14px 18px; }
+    .woche-tag .card-num { margin: 16px 0 4px; }
+    .woche-tag h3 { font-size: 17px; line-height: 1.3; margin: 0; }
+    @media (min-width: 761px) {
+      .woche { display: flex; flex-wrap: wrap; justify-content: center; overflow: visible; margin: 0; padding: 0; }
+      .woche-tag { width: calc((100% - 66px) / 4); }
+      .wisch { display: none; }
+    }
+    .wisch { text-align: center; font-size: 14px; color: var(--muted); margin-top: 6px; }
+    .hinweis { display: flex; align-items: center; gap: 16px; max-width: 780px; margin: 40px auto 0; padding: 16px 22px;
+      border: 1.5px solid rgba(var(--accent-rgb), .55); background: rgba(var(--accent-rgb), .10); border-radius: 16px;
+      box-shadow: var(--glow-soft); font-size: 17px; line-height: 1.5; }
+    .hinweis-icon { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--green); color: var(--on-green); }
+    .hinweis-icon svg { width: 24px; height: 24px; }
+
+    /* ─── 3 · ANZEIGEN ─── */
+    .anzeigen { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; max-width: 860px; margin: 0 auto; }
+    .anzeige { padding: 20px 20px 26px; }
+    .anzeige .handy { max-width: 320px; margin: 0 auto; }
+    .anzeige .card-num { margin-top: 20px; }
+    .unterzeile { text-align: center; margin-top: 36px; font-family: var(--fh); font-weight: 700; font-size: 20px; letter-spacing: -0.01em; }
+
+    /* ─── 4 · CTA-BAND ─── */
+    .cta-band { padding: 56px 32px; text-align: center; }
+    .cta-band p { margin-top: 12px; color: var(--muted); font-size: 15px; }
+
+    /* ─── 5 · BEWEIS ─── */
+    .beweis { background: var(--band); color: var(--band-text); }
+    .beweis .eyebrow { color: var(--green); }
+    .beweis .intro { color: var(--band-t2); }
+    .zahlen { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+    .zahl { background: var(--band-card); border-color: rgba(101,200,61,.35); text-align: center; padding: 30px 18px; }
+    .zahl-wert { font-family: var(--fh); font-weight: 800; font-size: clamp(34px, 4vw, 52px); line-height: 1; color: var(--green); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+    .zahl-name { margin-top: 10px; font-size: 15px; font-weight: 700; color: var(--band-text); }
+    .follower { max-width: 760px; margin: 44px auto 0; text-align: center; font-family: var(--fh); font-weight: 800;
+      font-size: clamp(22px, 2.6vw, 30px); line-height: 1.25; letter-spacing: -0.02em; }
+    .follower span { color: var(--green); }
+    .balken { max-width: 640px; margin: 36px auto 0; display: grid; gap: 12px; }
+    .balken-zeile { display: grid; grid-template-columns: 130px minmax(0, 1fr) 76px; gap: 14px; align-items: center; font-size: 15px; }
+    .balken-spur { height: 10px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; }
+    .balken-spur i { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--green); transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+    .balken-zahl { text-align: right; font-variant-numeric: tabular-nums; color: var(--band-t2); }
+    .beweis-fuss { max-width: 720px; margin: 30px auto 0; text-align: center; font-size: 14px; color: var(--band-t2); }
+
+    /* ─── 6 · FRAGE ─── */
+    .frage { padding: 120px 32px; text-align: center; }
+    .frage h2 { max-width: 900px; margin: 0 auto; font-size: clamp(30px, 4.4vw, 54px); }
+    .frage-pfeil { width: 38px; height: 38px; margin: 34px auto 0; color: var(--ink); animation: wippen 2s ease-in-out infinite; }
+    @keyframes wippen { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+
+    /* ─── 7 · BAUSTEINE ─── */
+    .bausteine { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+    .baustein-gross { font-family: var(--fh); font-weight: 800; font-size: 40px; line-height: 1; color: var(--ink); letter-spacing: -0.03em; margin-bottom: 14px; }
+    .baustein-gross small { font-size: 16px; color: var(--muted); letter-spacing: 0; margin-left: 6px; }
+    .warum { max-width: 760px; margin: 48px auto 0; text-align: center; font-family: var(--fh); font-weight: 700; font-size: clamp(21px, 2.4vw, 27px); line-height: 1.35; letter-spacing: -0.015em; }
+
+    .plan { max-width: 960px; margin: 48px auto 0; padding: 36px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 36px; align-items: center; }
+    .plan-badge { display: inline-block; padding: 5px 12px; border-radius: 999px; background: var(--green); color: var(--on-green);
+      font-family: var(--fh); font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 14px; }
+    .plan h3 { font-size: clamp(22px, 2.4vw, 28px); }
+    .plan-phasen { list-style: none; display: grid; gap: 12px; }
+    .plan-phasen li { display: grid; grid-template-columns: 92px minmax(0, 1fr); column-gap: 14px; padding: 14px 16px; border-radius: 14px; background: var(--bg); border: 1px solid var(--border); }
+    .band .plan-phasen li { background: var(--bg2); }
+    .plan-phasen b { grid-row: span 2; align-self: center; font-family: var(--fh); font-size: 14px; font-weight: 800; color: var(--ink); }
+    .plan-phasen strong { font-family: var(--fh); font-size: 17px; line-height: 1.3; }
+    .plan-phasen span { font-size: 15px; color: var(--t2); line-height: 1.45; }
+    @media (max-width: 860px) { .plan { grid-template-columns: 1fr; padding: 26px 20px; gap: 22px; } .plan-phasen li { grid-template-columns: 78px minmax(0, 1fr); } }
+
+    /* ─── 8 · ANFRAGE ─── */
+    .anfrage-box { max-width: 820px; margin: 0 auto; padding: 44px 44px 40px; border-radius: 26px;
+      border: 2px solid rgba(var(--accent-rgb), .6); background: var(--bg2); box-shadow: var(--glow-strong); text-align: center; }
+    .anfrage-box h2 { font-size: clamp(28px, 3.6vw, 44px); }
+      font-family: var(--fh); font-weight: 800; font-size: 18px; }
+    .anfrage-text { max-width: 560px; margin: 20px auto 0; font-size: 20px; line-height: 1.5; color: var(--t2); }
+    .anfrage-text strong { color: var(--text); }
+    .anfrage-knopf { margin-top: 30px; }
+    .anfrage-klein { margin-top: 14px; font-size: 14px; color: var(--muted); }
+
+    footer { display: flex; justify-content: space-between; gap: 16px; padding: 28px 32px; border-top: 1px solid var(--border); font-size: 14px; color: var(--muted); }
+    footer nav { display: flex; gap: 22px; }
+    footer a { text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    /* Einblenden beim Scrollen: nur mit JS (Klasse js), sonst sofort sichtbar */
+    .js .rein { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s cubic-bezier(0.22, 1, 0.36, 1); }
+    .js .rein.da { opacity: 1; transform: none; }
+
+    /* ─── HOVER nur mit Maus ─── */
+    @media (hover: hover) and (pointer: fine) {
+      .btn:hover::after { transform: skewX(-45deg) scale(1, 1); }
+      .btn:hover { color: var(--sweep-text); }
+      .card:hover { transform: var(--pop-lift); border-color: rgba(var(--accent-rgb), .8); box-shadow: var(--glow-strong); }
+      .modus:hover { border-color: var(--ink); transform: scale(1.06); }
+      .handy-play:hover span { transform: scale(1.1); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 980px) {
+      .kopf-grid { grid-template-columns: 1fr; gap: 44px; text-align: center; }
+      .kopf .intro { margin-left: auto; margin-right: auto; }
+      .chips, .kopf-cta { justify-content: center; }
+      .kopf-handy { max-width: 240px; }
+      .zahlen { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .bausteine { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+    }
+    @media (max-width: 760px) {
+      .s-pad { padding: 76px 20px; }
+      .kopf { padding: 44px 20px 68px; }
+      .frage { padding: 88px 20px; }
+      .cta-band { padding: 48px 20px; }
+      .nav { padding: 0 16px; height: 62px; }
+      .nav-fuer { display: none; }
+      .logo img { height: 26px; }
+      .logo-wort { font-size: 17px; }
+      .woche { grid-auto-columns: 72%; padding: 10px 20px 22px; margin: 0 -20px; scroll-padding: 0 20px; gap: 14px; }
+      .anzeigen { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 82%; overflow-x: auto; scroll-snap-type: x mandatory;
+        margin: 0 -20px; padding: 8px 20px 18px; gap: 14px; scroll-padding: 0 20px; }
+      .anzeige { scroll-snap-align: start; }
+      .card { padding: 24px 20px; }
+      .hinweis { padding: 14px 16px; font-size: 16px; gap: 12px; }
+      .balken-zeile { grid-template-columns: 96px minmax(0, 1fr) 64px; gap: 10px; font-size: 14px; }
+      .anfrage-box { padding: 30px 20px 28px; }
+      .btn-gross { width: 100%; }
+      .kopf-cta .btn { width: 100%; }
+      footer { flex-direction: column; text-align: center; align-items: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .card, .btn, .modus { transition: none; }
+      .card:hover { transform: none; }
+      .btn::after { transition: none; animation: none; }
+      .handy-leer::before, .frage-pfeil, .gratis-badge { animation: none; }
+      .js .rein { opacity: 1; transform: none; transition: none; }
+      .balken-spur i { transition: none; }
+    }
+  /* ─── Vorurteil in der Video-Karte ─── */
+    .vorurteil { margin: 0 0 8px; font-size: 14px; line-height: 1.4; font-style: italic; color: var(--t2); }
+    .vorurteil span { display: inline-block; margin-right: 6px; padding: 2px 8px; border-radius: 999px; font-style: normal; font-size: 11px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase; color: var(--ink); background: rgba(var(--accent-rgb), .12); }
+
+    /* ─── 1b · PERSÖNLICH ─── */
+    .persoenlich { padding-top: 40px; }
+    .am-stueck { white-space: nowrap; }
+    .fakten { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+    .fakt { display: flex; gap: 16px; align-items: flex-start; padding: 24px; }
+    .fakt-icon { flex: 0 0 auto; width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; background: rgba(var(--accent-rgb), .14); color: var(--ink); }
+    .fakt-icon svg { width: 24px; height: 24px; }
+    .fakt h3 { font-size: 18px; margin-bottom: 6px; }
+    .fakt p { font-size: 15px; line-height: 1.5; }
+    .fenster { margin-top: 28px; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 40px; align-items: center; padding: 36px;
+      border: 2px solid rgba(var(--accent-rgb), .6); box-shadow: var(--glow-strong); }
+    .fenster h3 { font-size: clamp(22px, 2.4vw, 28px); margin-bottom: 18px; }
+    .fenster-bild { position: relative; aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; background: var(--bg3); border: 1px solid var(--borders); }
+    .fenster-leiste { display: flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; background: var(--bg2); border-bottom: 1px solid var(--border); }
+    .fenster-leiste i { width: 9px; height: 9px; border-radius: 50%; background: var(--borders); }
+    .fenster-leiste span { margin-left: 10px; font-size: 12px; color: var(--muted); font-weight: 600; }
+    .fenster-seite { display: grid; gap: 10px; padding: 22px 20px; }
+    .fenster-seite b { display: block; height: 12px; border-radius: 6px; background: var(--border); }
+    .fenster-seite b:first-child { width: 70%; height: 18px; background: var(--borders); }
+    .fenster-seite b.kurz { width: 45%; }
+    .fenster-blase { position: absolute; right: 14px; bottom: 14px; width: 40%; max-width: 160px; aspect-ratio: 3 / 4; border-radius: 14px; overflow: hidden;
+      display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 8px; padding: 10px;
+      background: radial-gradient(90% 70% at 50% 25%, rgba(101,200,61,.55), transparent 70%), #0F1410; color: #FFFFFF;
+      box-shadow: 0 0 0 3px var(--green), 0 18px 30px -12px rgba(0,0,0,.5); animation: blase 2.6s ease-in-out infinite; }
+    .fenster-gesicht svg { width: 44px; height: 44px; opacity: .9; }
+    .fenster-knopf { width: 100%; padding: 6px 4px; border-radius: 8px; background: var(--green); color: #0A0A0A; font-size: 11px; font-weight: 800; text-align: center; line-height: 1.2; }
+    @keyframes blase { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+    .fenster-punkte { list-style: none; display: grid; gap: 12px; margin-bottom: 24px; }
+    .fenster-punkte li { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; align-items: start; font-size: 16px; line-height: 1.5; color: var(--t2); }
+    .fenster-punkte b { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: var(--green); color: var(--on-green);
+      font-family: var(--fh); font-size: 14px; font-weight: 800; }
+    @media (max-width: 980px) {
+      .fakten { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; }
+      .fenster { grid-template-columns: 1fr; max-width: 560px; margin-left: auto; margin-right: auto; gap: 26px; }
+    }
+    @media (max-width: 760px) {
+      .persoenlich { padding-top: 24px; }
+      .fakt { padding: 20px 18px; }
+      .fenster { padding: 22px 18px 24px; }
+      .fenster .btn { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) { .fenster-blase { animation: none; } }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <a class="logo" href="https://monetascale.de/" aria-label="MonetaScale, zur Startseite">
+      <img class="logo-hell" src="../assets/lp/ms-zeichen-hell.svg" alt="" width="61" height="30">
+      <img class="logo-dunkel" src="../brand/ms-zeichen.svg" alt="" width="61" height="30">
+      <span class="logo-wort">Moneta<span>Scale</span></span>
+    </a>
+    <div class="nav-rechts">
+      <span class="nav-fuer">Für Weidemann in Speyer</span>
+      <button class="modus" id="modusKnopf" type="button" aria-label="Dunkle Ansicht" aria-pressed="false">
+        <svg class="sonne" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
+        <svg class="mond" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ══════ 1 · KOPF ══════ -->
+    <section class="kopf" aria-labelledby="kopfTitel">
+      <div class="s-in kopf-grid">
+        <div>
+          <div class="gratis-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg><b>Gratis</b><span>In Ihrem Look<i> · Fertig zum Posten</i></span></div>
+          <h1 id="kopfTitel">Videos, die zu Anfragen führen. Für <span>Weidemann</span>.</h1>
+          <p class="intro">Sechs Videos in Ihrem Look. Vier räumen Vorurteile ab. Zwei holen als Anzeige neue Leute. Sie müssen nichts drehen.</p>
+          <div class="chips">
+            <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Mit Ihrem Logo</span>
+            <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Wärmepumpe und Klima</span>
+            <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Für Speyer</span>
+          </div>
+          <div class="kopf-cta">
+            <a class="btn btn-gruen btn-gross" href="#anfrage" data-sprung>Ich will diese Videos für meinen Betrieb</a>
+            <a class="btn btn-rand" href="#woche" data-sprung>Videos ansehen</a>
+          </div>
+        </div>
+        <div class="kopf-handy"><div class="handy spielt" data-name="kopf"><video src="https://media.ulas.systems/wp/persoenlich/weidemann-speyer/a2-klima-ad.mp4" poster="https://media.ulas.systems/wp/persoenlich/weidemann-speyer/a2-klima-ad.jpg" muted loop playsinline preload="metadata" data-auto aria-label="Diese Klimaanlage heizt im Winter"></video></div></div>
+      </div>
+    </section>
+
+    <!-- ══════ 1b · PERSÖNLICH ══════ -->
+    <section class="s-pad persoenlich" id="gesehen" aria-labelledby="gesehenTitel">
+      <div class="s-in">
+        <div class="s-kopf rein">
+          <div class="eyebrow">Kurz vorab</div>
+          <h2 id="gesehenTitel">Was wir auf <span class="am-stueck">heizung-speyer.de</span> gesehen haben</h2>
+          <p class="intro">Ein starker Betrieb mit langer Geschichte. Drei Dinge fallen sofort auf.</p>
+        </div>
+        <div class="fakten">
+          <div class="card fakt rein"><span class="fakt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.6 2.1 3.3-.3.9 3.2 2.8 1.8-1.3 3.1 1.3 3.1-2.8 1.8-.9 3.2-3.3-.3L12 22l-2.6-2.1-3.3.3-.9-3.2-2.8-1.8 1.3-3.1-1.3-3.1 2.8-1.8.9-3.2 3.3.3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span><div><h3>Bosch Premiumpartner</h3><p>Dazu alles aus einer Hand. Planung, Einbau und Service.</p></div></div>
+          <div class="card fakt rein"><span class="fakt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg></span><div><h3>Meisterbetrieb seit über 60 Jahren</h3><p>Seit 2012 führt die nächste Generation. Zwei Meister sind im Team.</p></div></div>
+          <div class="card fakt rein"><span class="fakt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M12 13V7M9 10l3-3 3 3"/></svg></span><div><h3>Online-Konfigurator</h3><p>Für Wärmepumpe und Klimaanlage. Fotos hochladen, das Angebot kommt.</p></div></div>
+        </div>
+        <div class="card fenster rein">
+          <div class="fenster-bild" aria-hidden="true">
+            <div class="fenster-leiste"><i></i><i></i><i></i><span>heizung-speyer.de</span></div>
+            <div class="fenster-seite"><b></b><b></b><b></b><b class="kurz"></b></div>
+            <div class="fenster-blase"><span class="fenster-gesicht"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><span class="fenster-knopf">Jetzt informieren!</span></div>
+          </div>
+          <div class="fenster-text">
+            <div class="card-num">Das Videofenster unten rechts</div>
+            <h3>Ein Schritt in die richtige Richtung</h3>
+            <ol class="fenster-punkte">
+              <li><b>1</b><span>Menschen kaufen beim Gesicht, nicht beim Text. Das Videofenster zeigt genau das.</span></li>
+              <li><b>2</b><span>Das Video leistet Vorarbeit. Es klärt Fragen und Zweifel vor dem Anruf.</span></li>
+              <li><b>3</b><span>Diese Vorarbeit geht auch früher. Auf Instagram, TikTok, YouTube und Facebook. Dann kommen Kunden mit weniger Zweifeln auf Ihre Seite. Und sie rufen eher an.</span></li>
+              <li><b>4</b><span>Die vier Videos unten zeigen das. Je eins pro Vorurteil. Die Anzeigen holen neue Leute dazu.</span></li>
+            </ol>
+            <a class="btn btn-rand" href="#woche" data-sprung>Die vier Videos ansehen<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ 2 · EINE WOCHE CONTENT ══════ -->
+    <section class="s-pad band" id="woche" aria-labelledby="wocheTitel">
+      <div class="s-in">
+        <div class="s-kopf rein">
+          <div class="eyebrow">Wärmepumpe und Klima</div>
+          <h2 id="wocheTitel">Vier Videos, vier Vorurteile weniger</h2>
+          <p class="intro">Viele Kunden zweifeln lange vor dem Anruf. Jedes Video räumt einen Zweifel ab. Zwei Videos zur Wärmepumpe, zwei zur Klimaanlage.</p>
+        </div>
+        <div class="woche" role="list">
+          <article class="card woche-tag" role="listitem"><div class="handy" data-name="woche-1"><video src="https://media.ulas.systems/wp/persoenlich/weidemann-speyer/e1-altbau.mp4" poster="https://media.ulas.systems/wp/persoenlich/weidemann-speyer/e1-altbau.jpg" playsinline preload="none" aria-label="Video"></video><button class="handy-play" type="button" aria-label="Video abspielen"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div><div class="card-num">Wärmepumpe · Video 1</div><p class="vorurteil"><span>Vorurteil</span>„Im Altbau geht das nicht“</p><h3>Passt eine Wärmepumpe in mein altes Haus? Drei Fragen.</h3></article>
+          <article class="card woche-tag" role="listitem"><div class="handy" data-name="woche-2"><video src="https://media.ulas.systems/wp/persoenlich/weidemann-speyer/e2-solar.mp4" poster="https://media.ulas.systems/wp/persoenlich/weidemann-speyer/e2-solar.jpg" playsinline preload="none" aria-label="Video"></video><button class="handy-play" type="button" aria-label="Video abspielen"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div><div class="card-num">Wärmepumpe · Video 2</div><p class="vorurteil"><span>Vorurteil</span>„Der Strom frisst die Ersparnis“</p><h3>Warum Wärmepumpe und Solaranlage ein Team sind.</h3></article>
+          <article class="card woche-tag" role="listitem"><div class="handy" data-name="woche-3"><video src="https://media.ulas.systems/wp/persoenlich/weidemann-speyer/e3-klima-heizt.mp4" poster="https://media.ulas.systems/wp/persoenlich/weidemann-speyer/e3-klima-heizt.jpg" playsinline preload="none" aria-label="Video"></video><button class="handy-play" type="button" aria-label="Video abspielen"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div><div class="card-num">Klima · Video 3</div><p class="vorurteil"><span>Vorurteil</span>„Klima ist nur was für den Sommer“</p><h3>Kann eine Klimaanlage heizen? Ja, so geht's.</h3></article>
+          <article class="card woche-tag" role="listitem"><div class="handy" data-name="woche-4"><video src="https://media.ulas.systems/wp/persoenlich/weidemann-speyer/e4-reserve.mp4" poster="https://media.ulas.systems/wp/persoenlich/weidemann-speyer/e4-reserve.jpg" playsinline preload="none" aria-label="Video"></video><button class="handy-play" type="button" aria-label="Video abspielen"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div><div class="card-num">Klima · Video 4</div><p class="vorurteil"><span>Vorurteil</span>„Fällt die Heizung aus, frieren wir“</p><h3>Heizung kaputt im Januar? So bleibt es trotzdem warm.</h3></article></div>
+        <p class="wisch">Zur Seite wischen für alle 4 Videos</p>
+        <div class="hinweis rein">
+          <span class="hinweis-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 2l20 20"/><path d="M7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12"/><path d="M15 15V9.5l5-3.5v12"/></svg></span>
+          <span>Jedes Video räumt <strong>ein Vorurteil</strong> ab. Mit Ihrem Logo, Ihren Farben und Ihrem Auftritt.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ 3 · ZWEI WERBEANZEIGEN ══════ -->
+    <section class="s-pad" id="anzeigen" aria-labelledby="anzeigenTitel">
+      <div class="s-in">
+        <div class="s-kopf rein">
+          <div class="eyebrow">Eine Stufe mehr</div>
+          <h2 id="anzeigenTitel">So sieht eine Anzeige aus, die Anfragen sammelt</h2>
+          <p class="intro">Zwei kurze Anzeigen mit viel Bewegung. Gemacht für bezahlte Werbung auf Instagram und Facebook.</p>
+        </div>
+        <div class="anzeigen" role="list">
+          <article class="card anzeige rein" role="listitem"><div class="handy" data-name="anzeige-1"><video src="https://media.ulas.systems/wp/persoenlich/weidemann-speyer/a1-waermepumpe-ad.mp4" poster="https://media.ulas.systems/wp/persoenlich/weidemann-speyer/a1-waermepumpe-ad.jpg" playsinline preload="none" aria-label="Video"></video><button class="handy-play" type="button" aria-label="Video abspielen"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div><div class="card-num">Anzeige 1 · Wärmepumpe: Erst prüfen, dann kaufen</div><p>Die Anzeige zeigt, was vor dem Kauf zählt. Wer mehr wissen will, fragt direkt an.</p></article>
+          <article class="card anzeige rein" role="listitem"><div class="handy" data-name="anzeige-2"><video src="https://media.ulas.systems/wp/persoenlich/weidemann-speyer/a2-klima-ad.mp4" poster="https://media.ulas.systems/wp/persoenlich/weidemann-speyer/a2-klima-ad.jpg" playsinline preload="none" aria-label="Video"></video><button class="handy-play" type="button" aria-label="Video abspielen"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></span></button></div><div class="card-num">Anzeige 2 · Klima: Diese Klimaanlage heizt im Winter</div><p>Die Anzeige räumt mit einem Irrtum auf. Eine Klimaanlage heizt auch. Wer mehr will, fragt direkt an.</p></article></div>
+        <p class="unterzeile rein">Ihr Logo, Ihre Farben, Ihre Themen. Videos, die zu Anfragen führen.</p>
+      </div>
+    </section>
+
+    <!-- ══════ 4 · CTA 1 ══════ -->
+    <section class="cta-band band" aria-label="Videos anfragen">
+      <a class="btn btn-gruen btn-gross" href="#anfrage" data-sprung>Ich will diese Videos für meinen Betrieb</a>
+      <p>Gratis. Mit Ihrem Logo und Ihren Farben.</p>
+    </section>
+
+    <!-- ══════ 5 · BEWEIS ══════ -->
+    <section class="s-pad beweis" id="beweis" aria-labelledby="beweisTitel">
+      <div class="s-in">
+        <div class="s-kopf rein">
+          <div class="eyebrow">Unser eigenes Ergebnis</div>
+          <h2 id="beweisTitel">4 Wochen. Neue Konten. Das kam heraus.</h2>
+          <p class="intro">So haben wir MonetaScale selbst sichtbar gemacht. Vom 21.10. bis 17.11.2026. So läuft es auch bei Ihnen.</p>
+        </div>
+        <div class="zahlen">
+          <div class="card zahl rein"><div class="zahl-wert" data-zahl="51219">51.219</div><div class="zahl-name">Aufrufe</div></div>
+          <div class="card zahl rein"><div class="zahl-wert" data-zahl="149">149</div><div class="zahl-name">Videos</div></div>
+          <div class="card zahl rein"><div class="zahl-wert" data-zahl="4">4</div><div class="zahl-name">Plattformen</div></div>
+          <div class="card zahl rein"><div class="zahl-wert" data-zahl="2">2</div><div class="zahl-name">Großaufträge</div></div>
+        </div>
+        <p class="follower rein">Und das mit nur <span>167 Followern</span> auf allen Konten zusammen.</p>
+        <div class="balken rein" aria-label="Aufrufe je Plattform">
+          <div class="balken-zeile"><span>TikTok</span><span class="balken-spur"><i data-breite="100.0%"></i></span><span class="balken-zahl">23.493</span></div>
+          <div class="balken-zeile"><span>Instagram</span><span class="balken-spur"><i data-breite="90.5%"></i></span><span class="balken-zahl">21.272</span></div>
+          <div class="balken-zeile"><span>YouTube Shorts</span><span class="balken-spur"><i data-breite="18.1%"></i></span><span class="balken-zahl">4.261</span></div>
+          <div class="balken-zeile"><span>Facebook</span><span class="balken-spur"><i data-breite="9.3%"></i></span><span class="balken-zahl">2.193</span></div></div>
+        <p class="beweis-fuss">TikTok und YouTube haben bei null angefangen. Zahlen aus Metricool. Unser Ergebnis, kein Versprechen.</p>
+      </div>
+    </section>
+
+    <!-- ══════ 6 · FRAGE ══════ -->
+    <section class="frage" aria-labelledby="frageTitel">
+      <h2 id="frageTitel" class="rein">Wie wird Weidemann in Speyer die erste Wahl für Wärmepumpe und Klima?</h2>
+      <svg class="frage-pfeil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
+    </section>
+
+    <!-- ══════ 7 · WAS DAS FÜR AUFTRÄGE HEISST ══════ -->
+    <section class="s-pad band" id="system" aria-labelledby="systemTitel">
+      <div class="s-in">
+        <div class="s-kopf rein">
+          <div class="eyebrow">Das volle System</div>
+          <h2 id="systemTitel">Was das für Ihre Aufträge heißt</h2>
+          <p class="intro">Sechs Videos sind der Anfang. Volle Sichtbarkeit hat drei Teile. Sie laufen zusammen.</p>
+        </div>
+        <div class="bausteine">
+          <div class="card rein">
+            <div class="baustein-gross">300<small>Posts im Monat</small></div>
+            <div class="card-num">Teil 1 · Videos</div>
+            <h3>Bis zu 60 Videos im Monat</h3>
+            <p>Jedes Video geht auf alle Plattformen. So ist Ihr Betrieb jeden Tag zu sehen.</p>
+          </div>
+          <div class="card rein">
+            <div class="baustein-gross">24/7</div>
+            <div class="card-num">Teil 2 · Anfragen-Motor</div>
+            <h3>Werbung auf Instagram und Facebook</h3>
+            <p>Die besten Videos laufen als Anzeige in Ihrer Region. Wer Interesse hat, fragt direkt an.</p>
+          </div>
+          <div class="card rein">
+            <div class="baustein-gross">Google</div>
+            <div class="card-num">Teil 3 · Such-Magnet</div>
+            <h3>Gefunden bei Google und KI-Suche</h3>
+            <p>Wer in Speyer eine Wärmepumpe sucht, soll auf Ihren Betrieb stoßen.</p>
+          </div>
+        </div>
+        <p class="warum rein">Wer jeden Tag zu sehen ist, fällt zuerst ein. Gerade dann, wenn im Winter die Heizung streikt.</p>
+        <div class="plan card rein">
+          <div class="plan-kopf">
+            <span class="plan-badge">Gratis dazu</span>
+            <h3>Ihr 90-Tage-Plan zum Marktführer in Ihrer Region</h3>
+            <p>Neben den Videos schicken wir Ihnen einen Plan für 90 Tage. Jeder Schritt ist klar und einfach umzusetzen. So wächst Ihr Betrieb Schritt für Schritt zur ersten Wahl in Ihrer Region.</p>
+          </div>
+          <ol class="plan-phasen">
+            <li><b>Tag 1–30</b><strong>Jeden Tag sichtbar</strong><span>Videos laufen auf allen Plattformen.</span></li>
+            <li><b>Tag 31–60</b><strong>Anfragen holen</strong><span>Die besten Videos werden zur Anzeige.</span></li>
+            <li><b>Tag 61–90</b><strong>Gefunden werden</strong><span>Kunden finden Ihren Betrieb bei Google und KI-Suche.</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ 8 · ANFRAGE ══════ -->
+    <section class="s-pad" id="anfrage" aria-labelledby="anfrageTitel" tabindex="-1">
+      <div class="anfrage-box rein">
+        <div class="eyebrow">Gratis für <span>Weidemann</span></div>
+        <h2 id="anfrageTitel">Schreiben Sie uns einfach kurz.</h2>
+        <p class="anfrage-text">Dann schicken wir Ihnen <strong>alle sechs Videos</strong> und <strong>den 90-Tage-Plan</strong>. Fertig zum Posten.</p>
+        <div class="anfrage-knopf"><a class="btn btn-gruen btn-gross" id="mailKnopf" href="mailto:ulas@monetascale.de?subject=Videos%20f%C3%BCr%20Weidemann&amp;body=Videos">Mail schreiben</a></div>
+        <p class="anfrage-klein">Der Knopf öffnet eine fertige Nachricht.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>MonetaScale · Videos, die zu Anfragen führen</span>
+    <nav aria-label="Rechtliches">
+      <a href="../impressum.html">Impressum</a>
+      <a href="../datenschutz.html">Datenschutz</a>
+    </nav>
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+    document.documentElement.classList.add('js');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var melden = function (a, z, w) { if (window.msLp) window.msLp(a, z, w); };
+
+    /* ─── Hell/Dunkel ─── */
+    var modusKnopf = document.getElementById('modusKnopf');
+    function zeigeModus() {
+      var d = document.documentElement.getAttribute('data-theme') === 'dunkel';
+      modusKnopf.setAttribute('aria-pressed', d ? 'true' : 'false');
+      modusKnopf.setAttribute('aria-label', d ? 'Helle Ansicht' : 'Dunkle Ansicht');
+    }
+    modusKnopf.addEventListener('click', function () {
+      var neu = document.documentElement.getAttribute('data-theme') === 'dunkel' ? 'hell' : 'dunkel';
+      document.documentElement.setAttribute('data-theme', neu);
+      try { localStorage.setItem('ulas.theme', neu); } catch (e) {}
+      zeigeModus();
+    });
+    zeigeModus();
+
+    /* ─── Name des Betriebs aus dem Link (?b=Firma) ─── */
+    var betrieb = '';
+    try { betrieb = (new URLSearchParams(location.search).get('b') || '').replace(/[<>"]/g, '').trim().slice(0, 60); } catch (e) {}
+    if (betrieb) {
+      document.querySelectorAll('[data-betrieb]').forEach(function (el) { el.textContent = betrieb; });
+      var mk = document.getElementById('mailKnopf');
+      mk.href = 'mailto:ulas@monetascale.de?subject=' + encodeURIComponent('Videos für ' + betrieb) + '&body=Videos';
+    }
+
+    /* ─── Sweep: Aktion erst nach der Animation ─── */
+    function nachSweep(btn, fn) {
+      if (btn._acting) return;
+      if (reduce.matches) { fn(); return; }
+      btn._acting = true;
+      var fertig = false;
+      var einmal = function () { if (fertig) return; fertig = true; btn.classList.remove('is-activating'); btn._acting = false; fn(); };
+      btn.classList.remove('is-activating'); void btn.offsetWidth; btn.classList.add('is-activating');
+      btn.addEventListener('animationend', einmal, { once: true });
+      setTimeout(einmal, 650);
+    }
+    document.querySelectorAll('.btn').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        var href = btn.getAttribute('href');
+        if (!href) return;
+        e.preventDefault();
+        if (btn.hasAttribute('data-sprung')) melden('klick', href.slice(1));
+        if (btn.id === 'mailKnopf') melden('klick', 'mail');
+        nachSweep(btn, function () {
+          if (href.charAt(0) === '#') {
+            var ziel = document.querySelector(href);
+            if (ziel) { ziel.scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'start' }); if (href === '#anfrage') ziel.focus({ preventScroll: true }); }
+            history.replaceState(null, '', href);
+          } else { location.href = btn.href; }
+        });
+      });
+    });
+
+    /* ─── Videos: laden erst beim Antippen ─── */
+    document.querySelectorAll('.handy-play').forEach(function (k) {
+      k.addEventListener('click', function () {
+        var h = k.closest('.handy'); var v = h.querySelector('video');
+        if (!v) return;
+        h.classList.add('spielt'); v.controls = true; v.muted = false;
+        var p = v.play(); if (p && p.catch) p.catch(function () {});
+        melden('video', h.getAttribute('data-name') || '');
+      });
+    });
+    var heroVideo = document.querySelector('.kopf-handy video[data-auto]');
+    if (heroVideo && !reduce.matches) { heroVideo.muted = true; var hp = heroVideo.play(); if (hp && hp.catch) hp.catch(function () {}); }
+
+    /* ─── Einblenden, Zahlen zählen hoch, Balken wachsen ─── */
+    var fmt = function (n) { return Math.round(n).toLocaleString('de-DE'); };
+    function zaehlen(el) {
+      var ziel = +el.getAttribute('data-zahl');
+      if (reduce.matches || !ziel) { el.textContent = fmt(ziel); return; }
+      var start = null, dauer = 1400;
+      el.textContent = '0';
+      function schritt(t) {
+        if (!start) start = t;
+        var x = Math.min(1, (t - start) / dauer);
+        el.textContent = fmt(ziel * (1 - Math.pow(1 - x, 3)));
+        if (x < 1) requestAnimationFrame(schritt);
+      }
+      requestAnimationFrame(schritt);
+    }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (eintraege) {
+        eintraege.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var el = e.target; io.unobserve(el);
+          el.classList.add('da');
+          el.querySelectorAll('[data-zahl]').forEach(zaehlen);
+          el.querySelectorAll('[data-breite]').forEach(function (b) { b.style.width = b.getAttribute('data-breite'); });
+        });
+      }, { threshold: 0.2 });
+      document.querySelectorAll('.rein').forEach(function (el) { io.observe(el); });
+    } else {
+      document.querySelectorAll('.rein').forEach(function (el) { el.classList.add('da'); });
+      document.querySelectorAll('[data-breite]').forEach(function (b) { b.style.width = b.getAttribute('data-breite'); });
+    }
+  })();
+  </script>
+</body>
+</html>
