@@ -352,6 +352,15 @@
       .fenster .btn { width: 100%; }
     }
     @media (prefers-reduced-motion: reduce) { .fenster-blase { animation: none; } }
+
+    .kl-dunkel { display: none; }
+    [data-theme="dunkel"] .kl-hell { display: none; }
+    [data-theme="dunkel"] .kl-dunkel { display: block; }
+    .kl-nav { display: inline-flex; align-items: center; gap: 12px; }
+    .kl-nav i { font-style: normal; font-size: 15px; font-weight: 700; color: var(--muted); }
+    .kl-nav img { height: 30px; width: auto; }
+    .kl-kopf img { height: 64px; width: auto; margin-bottom: 22px; }
+    @media (max-width: 760px) { .kl-nav img { height: 24px; } .kl-kopf { display: flex; justify-content: center; } .kl-kopf img { height: 48px; margin-bottom: 16px; } }
   </style>
 </head>
 <body>
@@ -363,6 +372,7 @@
       <span class="logo-wort">Moneta<span>Scale</span></span>
     </a>
     <div class="nav-rechts">
+      <span class="kl-nav"><i aria-hidden="true">×</i><img class="kl-hell " src="../assets/lp/kunden/weidemann-logo-hell.svg" alt="Weidemann Heizung · Klima"><img class="kl-dunkel " src="../assets/lp/kunden/weidemann-logo-dunkel.svg" alt="" aria-hidden="true"></span>
       <span class="nav-fuer">Für Weidemann in Speyer</span>
       <button class="modus" id="modusKnopf" type="button" aria-label="Dunkle Ansicht" aria-pressed="false">
         <svg class="sonne" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M4.2 4.2l1.8 1.8M18 18l1.8 1.8M2 12h2.5M19.5 12H22M4.2 19.8 6 18M18 6l1.8-1.8"/></svg>
@@ -376,6 +386,7 @@
     <section class="kopf" aria-labelledby="kopfTitel">
       <div class="s-in kopf-grid">
         <div>
+          <div class="kl-kopf"><img class="kl-hell " src="../assets/lp/kunden/weidemann-logo-hell.svg" alt="Weidemann Heizung · Klima"><img class="kl-dunkel " src="../assets/lp/kunden/weidemann-logo-dunkel.svg" alt="" aria-hidden="true"></div>
           <div class="gratis-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg><b>Gratis</b><span>In Ihrem Look<i> · Fertig zum Posten</i></span></div>
           <h1 id="kopfTitel">Videos, die zu Anfragen führen. Für <span>Weidemann</span>.</h1>
           <p class="intro">Sechs Videos in Ihrem Look. Vier räumen Vorurteile ab. Zwei holen als Anzeige neue Leute. Sie müssen nichts drehen.</p>
